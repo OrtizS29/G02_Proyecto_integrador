@@ -4,13 +4,15 @@
 
 package com.mycompany.mavenproject1;
 
+import Modelo.ConexionORACLE;
+
 /**
  *
  * @author SAlA-9
  */
-public class Constructora_Horizontes_Urbanos {
+public class Mavenproject1 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ConexionORACLE conn = new ConexionORACLE();
     }
 }
