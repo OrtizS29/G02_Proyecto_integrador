@@ -1,13 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package CONTROLADOR;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
- * @author CLAUDIA
+ * @author Santiago
  */
+@Entity
+@Table(name = "TORRE")
 public class Torre {
     
+    @Id
+    private int Id_torre;
+    
+    /**
+     * Falta poner llaves foraneas
+     */
 }
