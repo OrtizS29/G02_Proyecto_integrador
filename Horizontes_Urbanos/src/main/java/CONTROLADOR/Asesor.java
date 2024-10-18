@@ -7,15 +7,17 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Santiago
+ * author Santiago
+ * Clase que representa la entidad Asesor
  */
 @Entity
-@Table(name = "PROYECTO")
-public class Proyecto {
+@Table(name = "ASESOR")
+public class Asesor {
     
     @Id
-    private int Id_proyecto;
-    
+    private int Cedula;
+    private String Nombre;
+    private String Direccion;
     /**
      * Falta poner llaves foraneas
      */

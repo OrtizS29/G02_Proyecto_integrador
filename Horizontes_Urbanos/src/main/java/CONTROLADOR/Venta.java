@@ -10,11 +10,11 @@ import javax.persistence.Table;
  * @author Santiago
  */
 @Entity
-@Table(name = "PROYECTO")
-public class Proyecto {
+@Table(name = "VENTA")
+public class Venta {
     
     @Id
-    private int Id_proyecto;
+    private int Id_venta;
     
     /**
      * Falta poner llaves foraneas

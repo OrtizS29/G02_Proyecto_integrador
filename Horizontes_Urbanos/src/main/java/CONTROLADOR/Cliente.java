@@ -8,13 +8,14 @@ import javax.persistence.Table;
 /**
  *
  * @author Santiago
+ * 
  */
 @Entity
-@Table(name = "PROYECTO")
-public class Proyecto {
+@Table(name = "CLIENTE")
+public class Cliente {
     
     @Id
-    private int Id_proyecto;
+    private int cedula;
     
     /**
      * Falta poner llaves foraneas
