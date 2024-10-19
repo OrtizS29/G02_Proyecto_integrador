@@ -23,6 +23,7 @@ public class Administrador {
      */
     private String Nombre;
     private String Direccion;
+    
     @OneToMany
     private ArrayList<Apartamento> listaApartamentos;
     /**
