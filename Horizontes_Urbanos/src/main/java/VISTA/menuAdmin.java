@@ -60,7 +60,7 @@ public class menuAdmin extends javax.swing.JPanel {
         });
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 333, 185, 50));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\juanc\\Pictures\\Saved Pictures\\1.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/1.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
