@@ -57,7 +57,7 @@ public class registrarProyecto extends javax.swing.JPanel {
         });
         add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 198, 270, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\juanc\\Pictures\\Saved Pictures\\2.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/2.png"))); // NOI18N
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
