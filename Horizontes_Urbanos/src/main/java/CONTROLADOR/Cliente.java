@@ -15,8 +15,11 @@ import javax.persistence.Table;
 public class Cliente {
     
     @Id
-    private int cedula;
-    
+    private int Cedula;
+    private String Nombre;
+    private String Direccion;
+    private Integer subsidio_ministerio;
+    private Integer Sisben;
     /**
      * Falta poner llaves foraneas
      */
