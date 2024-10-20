@@ -8,23 +8,20 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * Clase que determina la entidad Proyecto
+ * Clase que determina la entidad Telefono Administrador
  * 
  * @author Santiago
  */
 @Entity
-@Table(name = "PROYECTO")
-public class Proyecto {
+@Table(name = "TELEFONO_ADMINISTRADOR") 
+public class Telefono_administrador {
     
-    @Id
-    private int Id_proyecto;
-    private String Nombre_proyecto;
-    private int Numero_torres;
+    @Id 
+    private int Id;
+    private Integer Telefono;
     
     @ManyToOne
     @JoinColumn(name = "Cedula_administrador", referencedColumnName = "Cedula")
-    private Administrador administrador;
-    /**
-     * Falta poner llaves foraneas
-     */
+    private Cliente cliente;
+    
 }
