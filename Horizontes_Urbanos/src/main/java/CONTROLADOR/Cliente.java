@@ -1,7 +1,7 @@
 
 package CONTROLADOR;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * @author Santiago
  */
 @Entity
-@Table(name = "CLIENTE")
+@Table(name = "Cliente")
 public class Cliente {
     
     @Id
@@ -24,10 +24,10 @@ public class Cliente {
     private Integer Sisben;
     
     @OneToMany
-    private ArrayList<Telefono_cliente> listaTelefonosClientes;
+    private LinkedList<Telefono_cliente> listaTelefonosCliente;
     
     @OneToMany
-    private ArrayList<Correo_cliente> listaCorreoClientes;
+    private LinkedList<Correo_cliente> listaCorreosCliente;
     
     
     /**
