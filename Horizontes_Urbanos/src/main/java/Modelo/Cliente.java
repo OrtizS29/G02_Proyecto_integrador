@@ -17,16 +17,16 @@ import javax.persistence.Table;
 public class Cliente {
     
     @Id
-    private int Cedula;
-    private String Nombre;
-    private String Direccion;
+    private int cedula;
+    private String nombre;
+    private String direccion;
     private Integer subsidio_ministerio;
-    private Integer Sisben;
+    private Integer sisben;
     
-    @OneToMany
+    @OneToMany(mappedBy = "cliente")
     private LinkedList<Telefono_cliente> listaTelefonosCliente;
     
-    @OneToMany
+    @OneToMany(mappedBy = "cliente")
     private LinkedList<Correo_cliente> listaCorreosCliente;
     
     
