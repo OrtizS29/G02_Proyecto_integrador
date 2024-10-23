@@ -1,6 +1,8 @@
 
-package CONTROLADOR;
+package Modelo;
 
+import Modelo.Cliente;
+import Modelo.Asesor;
 import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;

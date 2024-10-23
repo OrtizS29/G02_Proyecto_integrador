@@ -1,5 +1,5 @@
 
-package CONTROLADOR;
+package Modelo;
 
 import java.util.LinkedList;
 import javax.persistence.Entity;

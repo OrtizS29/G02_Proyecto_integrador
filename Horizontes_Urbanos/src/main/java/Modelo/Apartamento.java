@@ -1,5 +1,5 @@
 
-package CONTROLADOR;
+package Modelo;
 
 import java.sql.Date;
 import javax.persistence.Entity;

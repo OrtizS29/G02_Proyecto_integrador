@@ -1,6 +1,10 @@
 
-package CONTROLADOR;
+package Modelo;
 
+import Modelo.Pago;
+import Modelo.Cliente;
+import Modelo.Asesor;
+import Modelo.Apartamento;
 import java.util.LinkedList;
 import javax.persistence.Entity;
 import javax.persistence.Id;

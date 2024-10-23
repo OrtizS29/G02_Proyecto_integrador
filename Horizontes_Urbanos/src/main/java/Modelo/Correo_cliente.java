@@ -1,6 +1,8 @@
 
-package CONTROLADOR;
+package Modelo;
 
+import Modelo.Cliente;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -17,8 +19,10 @@ import javax.persistence.Table;
 public class Correo_cliente {
     
     @Id
-    private int Id;
-    private String Correo;
+    private int id;
+    
+    @Column(nullable = true)
+    private String correo;
     
     @ManyToOne
     @JoinColumn(name = "Cedula_cliente", referencedColumnName = "Cedula")

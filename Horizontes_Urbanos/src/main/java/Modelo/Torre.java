@@ -1,6 +1,8 @@
 
-package CONTROLADOR;
+package Modelo;
 
+import Modelo.Proyecto;
+import Modelo.Apartamento;
 import java.util.LinkedList;
 import javax.persistence.Entity;
 import javax.persistence.Id;
