@@ -6,6 +6,7 @@ import Modelo.Cliente;
 import Modelo.Asesor;
 import Modelo.Apartamento;
 import java.util.LinkedList;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -23,20 +24,22 @@ import javax.persistence.Table;
 public class Venta {
     
     @Id
-    private int Id_venta;
+    private int id_venta;
     private int precio_base;
-    private int Numero_coutas;
+    private int numero_coutas;
     private int precio_final;
-    private Integer Intereses;
+    
+    @Column(nullable = false)
+    private Integer intereses;
     private int numero_apartamentos_comprados;
     
-    @OneToMany
+    @OneToMany(mappedBy = "venta")
     private LinkedList<Apartamento> listaApartamentos;
     
-    @OneToMany
+    @OneToMany(mappedBy = "venta")
     private LinkedList<Pago> listaPagos;
     
-    @ManyToOne
+    @ManyToOne(optional=false)
     @JoinColumn(name = "Cedula_asesor", referencedColumnName = "Cedula")
     private Asesor asesor;
     
@@ -44,7 +47,5 @@ public class Venta {
     @JoinColumn(name = "Cedula_cliente", referencedColumnName = "Cedula")
     private Cliente cliente;
     
-    /**
-     * Falta poner llaves foraneas
-     */
+    
 }

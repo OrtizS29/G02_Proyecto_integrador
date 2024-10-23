@@ -33,9 +33,8 @@ public class Apartamento {
     @ManyToOne
     @JoinColumn(name = "Id_venta", referencedColumnName = "Id_venta")
     private Venta venta;
-    /**
-     * Falta poner llaves foraneas
-     */
+    
+    
             
            
 }

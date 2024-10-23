@@ -4,9 +4,12 @@ package Modelo;
 import Modelo.Asesor;
 import Modelo.Administrador;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -19,6 +22,8 @@ import javax.persistence.Table;
 public class Usuario {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idUsu")
+    @SequenceGenerator(name = "seq_idUsu", sequenceName = "seq_idUsu", allocationSize = 1)
     private int id;
     private String usuario;
     private String contraseña;
