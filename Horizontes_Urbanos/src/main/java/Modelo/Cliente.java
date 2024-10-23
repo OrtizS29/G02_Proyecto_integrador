@@ -1,5 +1,5 @@
 
-package CONTROLADOR;
+package Modelo;
 
 import java.util.LinkedList;
 import javax.persistence.Entity;
@@ -7,28 +7,29 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-/*
- * Clase que determina la entidad Administrador
- *
+/**
+ * Clase que determina la entidad Cliente
+ * 
  * @author Santiago
  */
 @Entity
-@Table(name = "Administrador") 
-public class Administrador {
+@Table(name = "Cliente")
+public class Cliente {
     
     @Id
     private int Cedula;
     private String Nombre;
     private String Direccion;
+    private Integer subsidio_ministerio;
+    private Integer Sisben;
     
     @OneToMany
-    private LinkedList<Apartamento> listaApartamentos;
+    private LinkedList<Telefono_cliente> listaTelefonosCliente;
     
     @OneToMany
-    private LinkedList<Telefono_administrador> listaTelefonosAdministrador;
+    private LinkedList<Correo_cliente> listaCorreosCliente;
     
-    @OneToMany
-    private LinkedList<Correo_administrador> listaCorreosAdministrador;
+    
     /**
      * Falta poner llaves foraneas
      */
