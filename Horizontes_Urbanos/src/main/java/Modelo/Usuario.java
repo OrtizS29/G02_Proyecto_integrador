@@ -3,6 +3,7 @@ package Modelo;
 
 import Modelo.Asesor;
 import Modelo.Administrador;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Usuario") 
-public class Usuario {
+public class Usuario implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idUsu")

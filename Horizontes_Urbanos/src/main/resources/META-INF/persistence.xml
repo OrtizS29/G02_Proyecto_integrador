@@ -3,8 +3,18 @@
   <persistence-unit name="HU_constructora" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Modelo.Administrador</class>
+    <class>Modelo.Apartamento</class>
+    <class>Modelo.Asesor</class>
+    <class>Modelo.Cliente</class>
+    <class>Modelo.Correo_asesor</class>
+    <class>Modelo.Correo_cliente</class>
+    <class>Modelo.Pago</class>
     <class>Modelo.Proyecto</class>
+    <class>Modelo.Telefono_asesor</class>
+    <class>Modelo.Telefono_cliente</class>
     <class>Modelo.Torre</class>
+    <class>Modelo.Usuario</class>
+    <class>Modelo.Venta</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
       <property name="javax.persistence.jdbc.user" value="Constructora"/>

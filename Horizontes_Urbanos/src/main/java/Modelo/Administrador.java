@@ -23,16 +23,16 @@ public class Administrador implements Serializable {
     private String direccion;
     
     @OneToMany(mappedBy="administrador")
-    private LinkedList<Apartamento> listaApartamentos;
+    private LinkedList<Proyecto> listaProyectos;
 
     public Administrador() {
     }
 
-    public Administrador(int cedula, String nombre, String direccion, LinkedList<Apartamento> listaApartamentos) {
+    public Administrador(int cedula, String nombre, String direccion, LinkedList<Proyecto> listaProyectos) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.direccion = direccion;
-        this.listaApartamentos = listaApartamentos;
+        this.listaProyectos = listaProyectos;
     }
 
     public int getCedula() {
@@ -59,17 +59,13 @@ public class Administrador implements Serializable {
         this.direccion = direccion;
     }
 
-    public LinkedList<Apartamento> getListaApartamentos() {
-        return listaApartamentos;
+    public LinkedList<Proyecto> getListaProyectos() {
+        return listaProyectos;
     }
 
-    public void setListaApartamentos(LinkedList<Apartamento> listaApartamentos) {
-        this.listaApartamentos = listaApartamentos;
+    public void setListaProyectos(LinkedList<Proyecto> listaProyectos) {
+        this.listaProyectos = listaProyectos;
     }
-
-    
-    
-    
     
     
 }

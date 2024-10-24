@@ -3,6 +3,7 @@ package Modelo;
 
 import Modelo.Cliente;
 import Modelo.Asesor;
+import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Pago")
-public class Pago {
+public class Pago implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idPago")
