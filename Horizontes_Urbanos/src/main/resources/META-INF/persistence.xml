@@ -2,7 +2,6 @@
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence           http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
   <persistence-unit name="HU_constructora" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>Modelo.Administrador</class>
     <class>Modelo.Apartamento</class>
     <class>Modelo.Asesor</class>
     <class>Modelo.Cliente</class>
@@ -15,6 +14,7 @@
     <class>Modelo.Torre</class>
     <class>Modelo.Usuario</class>
     <class>Modelo.Venta</class>
+    <class>Modelo.Administrador</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
       <property name="javax.persistence.jdbc.user" value="Constructora"/>

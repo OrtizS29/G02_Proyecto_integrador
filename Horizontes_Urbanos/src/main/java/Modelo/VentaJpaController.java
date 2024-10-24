@@ -16,24 +16,44 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- *
+ * Clase JPACONTROLLERS de la clase entidad Venta que permite crear, buscar, eliminar, editar
+ * 
  * @author Santiago
  */
 public class VentaJpaController implements Serializable {
 
+    /**
+     * 
+     * @param emf 
+     */
     public VentaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
+    
+    /**
+     * 
+     */
     private EntityManagerFactory emf = null;
     
+    /**
+     * 
+     */
     public VentaJpaController() {
 	emf = Persistence.createEntityManagerFactory("HU_constructora");
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-
+    
+    /**
+     * 
+     * @param venta 
+     */
     public void create(Venta venta) {
         if (venta.getListaApartamentos() == null) {
             venta.setListaApartamentos(new LinkedList<Apartamento>());
@@ -101,7 +121,14 @@ public class VentaJpaController implements Serializable {
             }
         }
     }
-
+    
+    /**
+     * 
+     * @param venta
+     * @throws IllegalOrphanException
+     * @throws NonexistentEntityException
+     * @throws Exception 
+     */
     public void edit(Venta venta) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -211,7 +238,13 @@ public class VentaJpaController implements Serializable {
             }
         }
     }
-
+    
+    /**
+     * 
+     * @param id
+     * @throws IllegalOrphanException
+     * @throws NonexistentEntityException 
+     */
     public void destroy(int id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -259,14 +292,31 @@ public class VentaJpaController implements Serializable {
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     public List<Venta> findVentaEntities() {
         return findVentaEntities(true, -1, -1);
     }
 
+    /**
+     * 
+     * @param maxResults
+     * @param firstResult
+     * @return 
+     */
     public List<Venta> findVentaEntities(int maxResults, int firstResult) {
         return findVentaEntities(false, maxResults, firstResult);
     }
-
+    
+    /**
+     * 
+     * @param all
+     * @param maxResults
+     * @param firstResult
+     * @return 
+     */
     private List<Venta> findVentaEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
@@ -283,6 +333,11 @@ public class VentaJpaController implements Serializable {
         }
     }
 
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public Venta findVenta(int id) {
         EntityManager em = getEntityManager();
         try {
@@ -292,6 +347,10 @@ public class VentaJpaController implements Serializable {
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     public int getVentaCount() {
         EntityManager em = getEntityManager();
         try {

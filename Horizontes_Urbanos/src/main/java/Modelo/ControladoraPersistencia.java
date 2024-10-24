@@ -13,7 +13,7 @@ public class ControladoraPersistencia{
     
     public void crearAdministrador(Administrador administrador) throws Exception {
        
-        //crear en la BD el Administrador
+        //crear en la BD el Administrado
         try {
            adminJpa.create(administrador); 
         } catch (PreexistingEntityException e) {
