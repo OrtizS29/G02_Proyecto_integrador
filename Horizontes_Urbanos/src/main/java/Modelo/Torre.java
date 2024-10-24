@@ -7,10 +7,13 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -23,6 +26,8 @@ import javax.persistence.Table;
 public class Torre implements Serializable {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idTorre")
+    @SequenceGenerator(name = "seq_idTorre", sequenceName = "seq_idTorre", allocationSize = 1)
     private int id_torre;
     private String nombre_torre;
     private int numero_apartamento;
@@ -30,7 +35,7 @@ public class Torre implements Serializable {
     @OneToMany(mappedBy = "torre",cascade = CascadeType.ALL)
     private LinkedList<Apartamento> listaApartamentos;
     
-    @ManyToOne
+    @ManyToOne(optional=false)
     @JoinColumn(name = "Id_torre", referencedColumnName = "Id_torre")
     private Proyecto proyecto;
 

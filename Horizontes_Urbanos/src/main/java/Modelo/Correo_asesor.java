@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Correo_asesor")
-public class Correo_asesor {
+public class Correo_asesor implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idcoase")
@@ -28,8 +29,42 @@ public class Correo_asesor {
     @Column(nullable = true)
     private String correo;
     
-    @ManyToOne
-    @JoinColumn(name = "Cedula_administrador", referencedColumnName = "Cedula")
-    private Administrador administrador;
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "Cedula_asesor", referencedColumnName = "Cedula")
+    private Asesor asesor;
+
+    public Correo_asesor() {
+    } 
+
+    public Correo_asesor(int id, String correo, Asesor asesor) {
+        this.id = id;
+        this.correo = correo;
+        this.asesor = asesor;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public Asesor getAsesor() {
+        return asesor;
+    }
+
+    public void setAsesor(Asesor asesor) {
+        this.asesor = asesor;
+    }
+    
     
 }
