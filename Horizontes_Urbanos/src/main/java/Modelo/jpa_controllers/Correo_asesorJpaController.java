@@ -1,6 +1,8 @@
 
-package Modelo;
+package Modelo.jpa_controllers;
 
+import Modelo.entities.Correo_asesor;
+import Modelo.entities.Asesor;
 import Modelo.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;

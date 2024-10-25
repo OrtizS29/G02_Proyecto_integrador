@@ -1,5 +1,5 @@
 
-package Modelo;
+package Modelo.entities;
 
 import java.io.Serializable;
 import java.sql.Date;

@@ -1,5 +1,5 @@
 
-package Modelo;
+package Modelo.entities;
 
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -9,7 +9,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /*
- * Clase que determina la entidad Administrador
+ * Clase que determina la entidad Administrado
  *
  * @author Santiago
  */
@@ -66,6 +66,10 @@ public class Administrador implements Serializable {
     public void setListaProyectos(LinkedList<Proyecto> listaProyectos) {
         this.listaProyectos = listaProyectos;
     }
+
+    
+
+    
     
     
 }

@@ -1,9 +1,9 @@
 
 package CONTROLADOR;
 
-import Modelo.Administrador;
+import Modelo.entities.Administrador;
 import Modelo.ControladoraPersistencia;
-import Modelo.Proyecto;
+import Modelo.entities.Proyecto;
 import java.util.LinkedList;
 
 /**

@@ -1,6 +1,9 @@
 
-package Modelo;
+package Modelo.jpa_controllers;
 
+import Modelo.entities.Torre;
+import Modelo.entities.Proyecto;
+import Modelo.entities.Apartamento;
 import Modelo.exceptions.IllegalOrphanException;
 import Modelo.exceptions.NonexistentEntityException;
 import java.io.Serializable;

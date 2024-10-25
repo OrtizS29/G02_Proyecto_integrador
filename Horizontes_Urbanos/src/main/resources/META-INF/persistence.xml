@@ -2,19 +2,19 @@
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence           http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
   <persistence-unit name="HU_constructora" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>Modelo.Apartamento</class>
-    <class>Modelo.Asesor</class>
-    <class>Modelo.Cliente</class>
-    <class>Modelo.Correo_asesor</class>
-    <class>Modelo.Correo_cliente</class>
-    <class>Modelo.Pago</class>
-    <class>Modelo.Proyecto</class>
-    <class>Modelo.Telefono_asesor</class>
-    <class>Modelo.Telefono_cliente</class>
-    <class>Modelo.Torre</class>
-    <class>Modelo.Usuario</class>
-    <class>Modelo.Venta</class>
-    <class>Modelo.Administrador</class>
+    <class>Modelo.entities.Administrador</class>
+    <class>Modelo.entities.Apartamento</class>
+    <class>Modelo.entities.Asesor</class>
+    <class>Modelo.entities.Cliente</class>
+    <class>Modelo.entities.Correo_asesor</class>
+    <class>Modelo.entities.Correo_cliente</class>
+    <class>Modelo.entities.Pago</class>
+    <class>Modelo.entities.Proyecto</class>
+    <class>Modelo.entities.Telefono_asesor</class>
+    <class>Modelo.entities.Telefono_cliente</class>
+    <class>Modelo.entities.Torre</class>
+    <class>Modelo.entities.Usuario</class>
+    <class>Modelo.entities.Venta</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
       <property name="javax.persistence.jdbc.user" value="Constructora"/>

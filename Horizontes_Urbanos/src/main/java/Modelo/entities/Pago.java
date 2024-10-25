@@ -1,8 +1,8 @@
 
-package Modelo;
+package Modelo.entities;
 
-import Modelo.Cliente;
-import Modelo.Asesor;
+import Modelo.entities.Cliente;
+import Modelo.entities.Asesor;
 import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Entity;

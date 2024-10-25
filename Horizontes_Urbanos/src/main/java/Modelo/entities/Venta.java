@@ -1,10 +1,10 @@
 
-package Modelo;
+package Modelo.entities;
 
-import Modelo.Pago;
-import Modelo.Cliente;
-import Modelo.Asesor;
-import Modelo.Apartamento;
+import Modelo.entities.Pago;
+import Modelo.entities.Cliente;
+import Modelo.entities.Asesor;
+import Modelo.entities.Apartamento;
 import java.io.Serializable;
 import java.util.LinkedList;
 import javax.persistence.Column;

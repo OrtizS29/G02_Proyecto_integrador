@@ -1,6 +1,8 @@
 
 package Modelo;
 
+import Modelo.jpa_controllers.AdministradorJpaController;
+import Modelo.entities.Administrador;
 import Modelo.exceptions.PreexistingEntityException;
 
 /**
