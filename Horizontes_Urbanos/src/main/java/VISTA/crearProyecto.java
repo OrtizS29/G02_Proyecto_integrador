@@ -8,12 +8,12 @@ package VISTA;
  *
  * @author juanc
  */
-public class registrarProyecto extends javax.swing.JPanel {
+public class crearProyecto extends javax.swing.JPanel {
 
     /**
      * Creates new form administrar
      */
-    public registrarProyecto() {
+    public crearProyecto() {
         initComponents();
     }
 
