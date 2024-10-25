@@ -1,5 +1,5 @@
 
-package Modelo.gestion;
+package Modelo.persistir;
 
 import Modelo.IPersistencia;
 import Modelo.entities.Cliente;
@@ -9,11 +9,11 @@ import Modelo.jpa_controllers.ClienteJpaController;
  *
  * @author Santiago
  */
-public class GestionarCliente implements IPersistencia<Cliente> {
+public class PersistirCliente implements IPersistencia<Cliente> {
 
     private ClienteJpaController clienteJpa;
 
-    public GestionarCliente() {
+    public PersistirCliente() {
         clienteJpa = new ClienteJpaController();
     }
     

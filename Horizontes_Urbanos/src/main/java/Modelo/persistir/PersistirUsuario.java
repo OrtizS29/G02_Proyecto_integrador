@@ -1,34 +1,34 @@
 
-package Modelo.gestion;
+package Modelo.persistir;
 
 import Modelo.IPersistencia;
-import Modelo.entities.Telefono_cliente;
-import Modelo.jpa_controllers.Telefono_clienteJpaController;
+import Modelo.entities.Usuario;
+import Modelo.jpa_controllers.UsuarioJpaController;
 
 /**
  *
  * @author Santiago
  */
-public class GestionarTelefono_cliente implements IPersistencia<Telefono_cliente> {
+public class PersistirUsuario implements IPersistencia<Usuario> {
     
-    private Telefono_clienteJpaController telCliJpa;
+    private UsuarioJpaController usuarioJpa;
 
-    public GestionarTelefono_cliente() {
-        telCliJpa = new Telefono_clienteJpaController();
+    public PersistirUsuario() {
+        usuarioJpa = new UsuarioJpaController();
     }
 
     @Override
-    public void crear(Telefono_cliente entidad) throws Exception {
+    public void crear(Usuario entidad) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Telefono_cliente obtener(int id) throws Exception {
+    public Usuario obtener(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void editar(Telefono_cliente entidad) throws Exception {
+    public void editar(Usuario entidad) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -36,5 +36,4 @@ public class GestionarTelefono_cliente implements IPersistencia<Telefono_cliente
     public void eliminar(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
 }

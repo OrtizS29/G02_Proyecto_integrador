@@ -1,34 +1,34 @@
 
-package Modelo.gestion;
+package Modelo.persistir;
 
 import Modelo.IPersistencia;
-import Modelo.entities.Correo_asesor;
-import Modelo.jpa_controllers.Correo_asesorJpaController;
+import Modelo.entities.Venta;
+import Modelo.jpa_controllers.VentaJpaController;
 
 /**
  *
  * @author Santiago
  */
-public class GestionarCorreo_asesor implements IPersistencia<Correo_asesor> {
+public class PersistirVenta implements IPersistencia<Venta> {
     
-    private Correo_asesorJpaController correoAseJpa; 
+    private VentaJpaController ventaJpa;
 
-    public GestionarCorreo_asesor() {
-        correoAseJpa =  new Correo_asesorJpaController();
+    public PersistirVenta() {
+        ventaJpa = new VentaJpaController();
     }
 
     @Override
-    public void crear(Correo_asesor entidad) throws Exception {
+    public void crear(Venta entidad) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Correo_asesor obtener(int id) throws Exception {
+    public Venta obtener(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void editar(Correo_asesor entidad) throws Exception {
+    public void editar(Venta entidad) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -36,7 +36,5 @@ public class GestionarCorreo_asesor implements IPersistencia<Correo_asesor> {
     public void eliminar(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-   
-   
     
 }

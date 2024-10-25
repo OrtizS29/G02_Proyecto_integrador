@@ -1,5 +1,5 @@
 
-package Modelo.gestion;
+package Modelo.persistir;
 
 import Modelo.IPersistencia;
 import Modelo.entities.Administrador;
@@ -10,11 +10,11 @@ import Modelo.jpa_controllers.AdministradorJpaController;
  *
  * @author Santiago
  */
-public class GestionarAdministrador implements IPersistencia<Administrador>{
+public class PersistirAdministrador implements IPersistencia<Administrador>{
 
     private AdministradorJpaController adminJpa;
     
-    public GestionarAdministrador() {
+    public PersistirAdministrador() {
         adminJpa = new AdministradorJpaController();
     }
     
