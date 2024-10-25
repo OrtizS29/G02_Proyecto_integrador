@@ -1,18 +1,20 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Modelo.jpa_controllers;
 
-import Modelo.entities.Torre;
-import Modelo.entities.Proyecto;
-import Modelo.entities.Administrador;
-import Modelo.exceptions.IllegalOrphanException;
-import Modelo.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import Modelo.entities.Administrador;
+import Modelo.entities.Proyecto;
+import Modelo.entities.Torre;
+import Modelo.jpa_controllers.exceptions.IllegalOrphanException;
+import Modelo.jpa_controllers.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -20,7 +22,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Santiago
+ * @author CLAUDIA
  */
 public class ProyectoJpaController implements Serializable {
 
@@ -39,7 +41,7 @@ public class ProyectoJpaController implements Serializable {
 
     public void create(Proyecto proyecto) {
         if (proyecto.getListaTorres() == null) {
-            proyecto.setListaTorres(new LinkedList<Torre>());
+            proyecto.setListaTorres(new ArrayList<Torre>());
         }
         EntityManager em = null;
         try {
@@ -50,7 +52,7 @@ public class ProyectoJpaController implements Serializable {
                 administrador = em.getReference(administrador.getClass(), administrador.getCedula());
                 proyecto.setAdministrador(administrador);
             }
-            LinkedList<Torre> attachedListaTorres = new LinkedList<Torre>();
+            ArrayList<Torre> attachedListaTorres = new ArrayList<Torre>();
             for (Torre listaTorresTorreToAttach : proyecto.getListaTorres()) {
                 listaTorresTorreToAttach = em.getReference(listaTorresTorreToAttach.getClass(), listaTorresTorreToAttach.getId_torre());
                 attachedListaTorres.add(listaTorresTorreToAttach);
@@ -86,8 +88,8 @@ public class ProyectoJpaController implements Serializable {
             Proyecto persistentProyecto = em.find(Proyecto.class, proyecto.getId_proyecto());
             Administrador administradorOld = persistentProyecto.getAdministrador();
             Administrador administradorNew = proyecto.getAdministrador();
-            LinkedList<Torre> listaTorresOld = persistentProyecto.getListaTorres();
-            LinkedList<Torre> listaTorresNew = proyecto.getListaTorres();
+            ArrayList<Torre> listaTorresOld = persistentProyecto.getListaTorres();
+            ArrayList<Torre> listaTorresNew = proyecto.getListaTorres();
             List<String> illegalOrphanMessages = null;
             for (Torre listaTorresOldTorre : listaTorresOld) {
                 if (!listaTorresNew.contains(listaTorresOldTorre)) {
@@ -104,7 +106,7 @@ public class ProyectoJpaController implements Serializable {
                 administradorNew = em.getReference(administradorNew.getClass(), administradorNew.getCedula());
                 proyecto.setAdministrador(administradorNew);
             }
-            LinkedList<Torre> attachedListaTorresNew = new LinkedList<Torre>();
+            ArrayList<Torre> attachedListaTorresNew = new ArrayList<Torre>();
             for (Torre listaTorresNewTorreToAttach : listaTorresNew) {
                 listaTorresNewTorreToAttach = em.getReference(listaTorresNewTorreToAttach.getClass(), listaTorresNewTorreToAttach.getId_torre());
                 attachedListaTorresNew.add(listaTorresNewTorreToAttach);
@@ -161,7 +163,7 @@ public class ProyectoJpaController implements Serializable {
                 throw new NonexistentEntityException("The proyecto with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            LinkedList<Torre> listaTorresOrphanCheck = proyecto.getListaTorres();
+            ArrayList<Torre> listaTorresOrphanCheck = proyecto.getListaTorres();
             for (Torre listaTorresOrphanCheckTorre : listaTorresOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();

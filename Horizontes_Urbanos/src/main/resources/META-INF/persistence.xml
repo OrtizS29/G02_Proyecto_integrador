@@ -15,7 +15,7 @@
     <class>Modelo.entities.Torre</class>
     <class>Modelo.entities.Usuario</class>
     <class>Modelo.entities.Venta</class>
-    <properties>
+    <properties>  
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
       <property name="javax.persistence.jdbc.user" value="Constructora"/>
       <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>

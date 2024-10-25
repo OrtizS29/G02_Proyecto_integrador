@@ -3,7 +3,9 @@ package Modelo.persistir;
 
 import Modelo.IPersistencia;
 import Modelo.entities.Usuario;
+import Modelo.exceptions.PreexistingEntityException;
 import Modelo.jpa_controllers.UsuarioJpaController;
+import java.util.List;
 
 /**
  *
@@ -19,21 +21,27 @@ public class PersistirUsuario implements IPersistencia<Usuario> {
 
     @Override
     public void crear(Usuario entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        usuarioJpa.create(entidad); 
     }
 
     @Override
     public Usuario obtener(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return usuarioJpa.findUsuario(id);
     }
 
     @Override
     public void editar(Usuario entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        usuarioJpa.edit(entidad);
     }
 
     @Override
     public void eliminar(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        usuarioJpa.destroy(id);
+    }
+    
+    public List<Usuario> traerUsuarios() {
+       
+        List<Usuario> listaUsuario = usuarioJpa.findUsuarioEntities();
+        return listaUsuario;  
     }
 }

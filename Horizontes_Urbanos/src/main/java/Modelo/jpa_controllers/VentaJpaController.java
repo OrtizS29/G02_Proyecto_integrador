@@ -1,70 +1,52 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Modelo.jpa_controllers;
 
-import Modelo.entities.Venta;
-import Modelo.entities.Pago;
-import Modelo.entities.Cliente;
-import Modelo.entities.Asesor;
-import Modelo.entities.Apartamento;
-import Modelo.exceptions.IllegalOrphanException;
-import Modelo.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import Modelo.entities.Asesor;
+import Modelo.entities.Cliente;
+import Modelo.entities.Apartamento;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import Modelo.entities.Pago;
+import Modelo.entities.Venta;
+import Modelo.jpa_controllers.exceptions.IllegalOrphanException;
+import Modelo.jpa_controllers.exceptions.NonexistentEntityException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * Clase JPACONTROLLERS de la clase entidad Venta que permite crear, buscar, eliminar, editar
- * 
- * @author Santiago
+ *
+ * @author CLAUDIA
  */
 public class VentaJpaController implements Serializable {
 
-    /**
-     * 
-     * @param emf 
-     */
     public VentaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
-    /**
-     * 
-     */
     private EntityManagerFactory emf = null;
     
-    /**
-     * 
-     */
     public VentaJpaController() {
 	emf = Persistence.createEntityManagerFactory("HU_constructora");
     }
-    
-    /**
-     * 
-     * @return 
-     */
+
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    
-    /**
-     * 
-     * @param venta 
-     */
+
     public void create(Venta venta) {
         if (venta.getListaApartamentos() == null) {
-            venta.setListaApartamentos(new LinkedList<Apartamento>());
+            venta.setListaApartamentos(new ArrayList<Apartamento>());
         }
         if (venta.getListaPagos() == null) {
-            venta.setListaPagos(new LinkedList<Pago>());
+            venta.setListaPagos(new ArrayList<Pago>());
         }
         EntityManager em = null;
         try {
@@ -80,13 +62,13 @@ public class VentaJpaController implements Serializable {
                 cliente = em.getReference(cliente.getClass(), cliente.getCedula());
                 venta.setCliente(cliente);
             }
-            LinkedList<Apartamento> attachedListaApartamentos = new LinkedList<Apartamento>();
+            ArrayList<Apartamento> attachedListaApartamentos = new ArrayList<Apartamento>();
             for (Apartamento listaApartamentosApartamentoToAttach : venta.getListaApartamentos()) {
                 listaApartamentosApartamentoToAttach = em.getReference(listaApartamentosApartamentoToAttach.getClass(), listaApartamentosApartamentoToAttach.getId_apartamento());
                 attachedListaApartamentos.add(listaApartamentosApartamentoToAttach);
             }
             venta.setListaApartamentos(attachedListaApartamentos);
-            LinkedList<Pago> attachedListaPagos = new LinkedList<Pago>();
+            ArrayList<Pago> attachedListaPagos = new ArrayList<Pago>();
             for (Pago listaPagosPagoToAttach : venta.getListaPagos()) {
                 listaPagosPagoToAttach = em.getReference(listaPagosPagoToAttach.getClass(), listaPagosPagoToAttach.getId_pago());
                 attachedListaPagos.add(listaPagosPagoToAttach);
@@ -126,14 +108,7 @@ public class VentaJpaController implements Serializable {
             }
         }
     }
-    
-    /**
-     * 
-     * @param venta
-     * @throws IllegalOrphanException
-     * @throws NonexistentEntityException
-     * @throws Exception 
-     */
+
     public void edit(Venta venta) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -144,10 +119,10 @@ public class VentaJpaController implements Serializable {
             Asesor asesorNew = venta.getAsesor();
             Cliente clienteOld = persistentVenta.getCliente();
             Cliente clienteNew = venta.getCliente();
-            LinkedList<Apartamento> listaApartamentosOld = persistentVenta.getListaApartamentos();
-            LinkedList<Apartamento> listaApartamentosNew = venta.getListaApartamentos();
-            LinkedList<Pago> listaPagosOld = persistentVenta.getListaPagos();
-            LinkedList<Pago> listaPagosNew = venta.getListaPagos();
+            ArrayList<Apartamento> listaApartamentosOld = persistentVenta.getListaApartamentos();
+            ArrayList<Apartamento> listaApartamentosNew = venta.getListaApartamentos();
+            ArrayList<Pago> listaPagosOld = persistentVenta.getListaPagos();
+            ArrayList<Pago> listaPagosNew = venta.getListaPagos();
             List<String> illegalOrphanMessages = null;
             for (Pago listaPagosOldPago : listaPagosOld) {
                 if (!listaPagosNew.contains(listaPagosOldPago)) {
@@ -168,14 +143,14 @@ public class VentaJpaController implements Serializable {
                 clienteNew = em.getReference(clienteNew.getClass(), clienteNew.getCedula());
                 venta.setCliente(clienteNew);
             }
-            LinkedList<Apartamento> attachedListaApartamentosNew = new LinkedList<Apartamento>();
+            ArrayList<Apartamento> attachedListaApartamentosNew = new ArrayList<Apartamento>();
             for (Apartamento listaApartamentosNewApartamentoToAttach : listaApartamentosNew) {
                 listaApartamentosNewApartamentoToAttach = em.getReference(listaApartamentosNewApartamentoToAttach.getClass(), listaApartamentosNewApartamentoToAttach.getId_apartamento());
                 attachedListaApartamentosNew.add(listaApartamentosNewApartamentoToAttach);
             }
             listaApartamentosNew = attachedListaApartamentosNew;
             venta.setListaApartamentos(listaApartamentosNew);
-            LinkedList<Pago> attachedListaPagosNew = new LinkedList<Pago>();
+            ArrayList<Pago> attachedListaPagosNew = new ArrayList<Pago>();
             for (Pago listaPagosNewPagoToAttach : listaPagosNew) {
                 listaPagosNewPagoToAttach = em.getReference(listaPagosNewPagoToAttach.getClass(), listaPagosNewPagoToAttach.getId_pago());
                 attachedListaPagosNew.add(listaPagosNewPagoToAttach);
@@ -243,13 +218,7 @@ public class VentaJpaController implements Serializable {
             }
         }
     }
-    
-    /**
-     * 
-     * @param id
-     * @throws IllegalOrphanException
-     * @throws NonexistentEntityException 
-     */
+
     public void destroy(int id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -263,7 +232,7 @@ public class VentaJpaController implements Serializable {
                 throw new NonexistentEntityException("The venta with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            LinkedList<Pago> listaPagosOrphanCheck = venta.getListaPagos();
+            ArrayList<Pago> listaPagosOrphanCheck = venta.getListaPagos();
             for (Pago listaPagosOrphanCheckPago : listaPagosOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
@@ -283,7 +252,7 @@ public class VentaJpaController implements Serializable {
                 cliente.getListaVentas().remove(venta);
                 cliente = em.merge(cliente);
             }
-            LinkedList<Apartamento> listaApartamentos = venta.getListaApartamentos();
+            ArrayList<Apartamento> listaApartamentos = venta.getListaApartamentos();
             for (Apartamento listaApartamentosApartamento : listaApartamentos) {
                 listaApartamentosApartamento.setVenta(null);
                 listaApartamentosApartamento = em.merge(listaApartamentosApartamento);
@@ -297,31 +266,14 @@ public class VentaJpaController implements Serializable {
         }
     }
 
-    /**
-     * 
-     * @return 
-     */
     public List<Venta> findVentaEntities() {
         return findVentaEntities(true, -1, -1);
     }
 
-    /**
-     * 
-     * @param maxResults
-     * @param firstResult
-     * @return 
-     */
     public List<Venta> findVentaEntities(int maxResults, int firstResult) {
         return findVentaEntities(false, maxResults, firstResult);
     }
-    
-    /**
-     * 
-     * @param all
-     * @param maxResults
-     * @param firstResult
-     * @return 
-     */
+
     private List<Venta> findVentaEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
@@ -338,11 +290,6 @@ public class VentaJpaController implements Serializable {
         }
     }
 
-    /**
-     * 
-     * @param id
-     * @return 
-     */
     public Venta findVenta(int id) {
         EntityManager em = getEntityManager();
         try {
@@ -352,10 +299,6 @@ public class VentaJpaController implements Serializable {
         }
     }
 
-    /**
-     * 
-     * @return 
-     */
     public int getVentaCount() {
         EntityManager em = getEntityManager();
         try {

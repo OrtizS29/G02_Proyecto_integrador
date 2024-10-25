@@ -1,18 +1,20 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Modelo.jpa_controllers;
 
-import Modelo.entities.Proyecto;
 import Modelo.entities.Administrador;
-import Modelo.exceptions.IllegalOrphanException;
-import Modelo.exceptions.NonexistentEntityException;
-import Modelo.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import Modelo.entities.Proyecto;
+import Modelo.jpa_controllers.exceptions.IllegalOrphanException;
+import Modelo.jpa_controllers.exceptions.NonexistentEntityException;
+import Modelo.jpa_controllers.exceptions.PreexistingEntityException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -20,7 +22,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Santiago
+ * @author CLAUDIA
  */
 public class AdministradorJpaController implements Serializable {
 
@@ -39,13 +41,13 @@ public class AdministradorJpaController implements Serializable {
 
     public void create(Administrador administrador) throws PreexistingEntityException, Exception {
         if (administrador.getListaProyectos() == null) {
-            administrador.setListaProyectos(new LinkedList<Proyecto>());
+            administrador.setListaProyectos(new ArrayList<Proyecto>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            LinkedList<Proyecto> attachedListaProyectos = new LinkedList<Proyecto>();
+            ArrayList<Proyecto> attachedListaProyectos = new ArrayList<Proyecto>();
             for (Proyecto listaProyectosProyectoToAttach : administrador.getListaProyectos()) {
                 listaProyectosProyectoToAttach = em.getReference(listaProyectosProyectoToAttach.getClass(), listaProyectosProyectoToAttach.getId_proyecto());
                 attachedListaProyectos.add(listaProyectosProyectoToAttach);
@@ -80,8 +82,8 @@ public class AdministradorJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Administrador persistentAdministrador = em.find(Administrador.class, administrador.getCedula());
-            LinkedList<Proyecto> listaProyectosOld = persistentAdministrador.getListaProyectos();
-            LinkedList<Proyecto> listaProyectosNew = administrador.getListaProyectos();
+            ArrayList<Proyecto> listaProyectosOld = persistentAdministrador.getListaProyectos();
+            ArrayList<Proyecto> listaProyectosNew = administrador.getListaProyectos();
             List<String> illegalOrphanMessages = null;
             for (Proyecto listaProyectosOldProyecto : listaProyectosOld) {
                 if (!listaProyectosNew.contains(listaProyectosOldProyecto)) {
@@ -94,7 +96,7 @@ public class AdministradorJpaController implements Serializable {
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            LinkedList<Proyecto> attachedListaProyectosNew = new LinkedList<Proyecto>();
+            ArrayList<Proyecto> attachedListaProyectosNew = new ArrayList<Proyecto>();
             for (Proyecto listaProyectosNewProyectoToAttach : listaProyectosNew) {
                 listaProyectosNewProyectoToAttach = em.getReference(listaProyectosNewProyectoToAttach.getClass(), listaProyectosNewProyectoToAttach.getId_proyecto());
                 attachedListaProyectosNew.add(listaProyectosNewProyectoToAttach);
@@ -143,7 +145,7 @@ public class AdministradorJpaController implements Serializable {
                 throw new NonexistentEntityException("The administrador with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            LinkedList<Proyecto> listaProyectosOrphanCheck = administrador.getListaProyectos();
+            ArrayList<Proyecto> listaProyectosOrphanCheck = administrador.getListaProyectos();
             for (Proyecto listaProyectosOrphanCheckProyecto : listaProyectosOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();

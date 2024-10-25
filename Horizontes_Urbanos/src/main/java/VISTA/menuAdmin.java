@@ -8,13 +8,16 @@ package VISTA;
  *
  * @author juanc
  */
-public class menuAdmin extends javax.swing.JPanel {
+public class menuAdmin extends javax.swing.JFrame {
+
 
     /**
      * Creates new form adminProyecto
      */
     public menuAdmin() {
         initComponents();
+        setSize(912, 510); // Ajusta el tamaño según tus necesidades
+        setLocationRelativeTo(null);
     }
 
     /**

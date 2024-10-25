@@ -1,18 +1,20 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Modelo.jpa_controllers;
 
-import Modelo.entities.Torre;
-import Modelo.entities.Proyecto;
-import Modelo.entities.Apartamento;
-import Modelo.exceptions.IllegalOrphanException;
-import Modelo.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import Modelo.entities.Proyecto;
+import Modelo.entities.Apartamento;
+import Modelo.entities.Torre;
+import Modelo.jpa_controllers.exceptions.IllegalOrphanException;
+import Modelo.jpa_controllers.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -20,7 +22,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Santiago
+ * @author CLAUDIA
  */
 public class TorreJpaController implements Serializable {
 
@@ -39,7 +41,7 @@ public class TorreJpaController implements Serializable {
 
     public void create(Torre torre) {
         if (torre.getListaApartamentos() == null) {
-            torre.setListaApartamentos(new LinkedList<Apartamento>());
+            torre.setListaApartamentos(new ArrayList<Apartamento>());
         }
         EntityManager em = null;
         try {
@@ -50,7 +52,7 @@ public class TorreJpaController implements Serializable {
                 proyecto = em.getReference(proyecto.getClass(), proyecto.getId_proyecto());
                 torre.setProyecto(proyecto);
             }
-            LinkedList<Apartamento> attachedListaApartamentos = new LinkedList<Apartamento>();
+            ArrayList<Apartamento> attachedListaApartamentos = new ArrayList<Apartamento>();
             for (Apartamento listaApartamentosApartamentoToAttach : torre.getListaApartamentos()) {
                 listaApartamentosApartamentoToAttach = em.getReference(listaApartamentosApartamentoToAttach.getClass(), listaApartamentosApartamentoToAttach.getId_apartamento());
                 attachedListaApartamentos.add(listaApartamentosApartamentoToAttach);
@@ -86,8 +88,8 @@ public class TorreJpaController implements Serializable {
             Torre persistentTorre = em.find(Torre.class, torre.getId_torre());
             Proyecto proyectoOld = persistentTorre.getProyecto();
             Proyecto proyectoNew = torre.getProyecto();
-            LinkedList<Apartamento> listaApartamentosOld = persistentTorre.getListaApartamentos();
-            LinkedList<Apartamento> listaApartamentosNew = torre.getListaApartamentos();
+            ArrayList<Apartamento> listaApartamentosOld = persistentTorre.getListaApartamentos();
+            ArrayList<Apartamento> listaApartamentosNew = torre.getListaApartamentos();
             List<String> illegalOrphanMessages = null;
             for (Apartamento listaApartamentosOldApartamento : listaApartamentosOld) {
                 if (!listaApartamentosNew.contains(listaApartamentosOldApartamento)) {
@@ -104,7 +106,7 @@ public class TorreJpaController implements Serializable {
                 proyectoNew = em.getReference(proyectoNew.getClass(), proyectoNew.getId_proyecto());
                 torre.setProyecto(proyectoNew);
             }
-            LinkedList<Apartamento> attachedListaApartamentosNew = new LinkedList<Apartamento>();
+            ArrayList<Apartamento> attachedListaApartamentosNew = new ArrayList<Apartamento>();
             for (Apartamento listaApartamentosNewApartamentoToAttach : listaApartamentosNew) {
                 listaApartamentosNewApartamentoToAttach = em.getReference(listaApartamentosNewApartamentoToAttach.getClass(), listaApartamentosNewApartamentoToAttach.getId_apartamento());
                 attachedListaApartamentosNew.add(listaApartamentosNewApartamentoToAttach);
@@ -161,7 +163,7 @@ public class TorreJpaController implements Serializable {
                 throw new NonexistentEntityException("The torre with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            LinkedList<Apartamento> listaApartamentosOrphanCheck = torre.getListaApartamentos();
+            ArrayList<Apartamento> listaApartamentosOrphanCheck = torre.getListaApartamentos();
             for (Apartamento listaApartamentosOrphanCheckApartamento : listaApartamentosOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();

@@ -1,8 +1,11 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Modelo.jpa_controllers;
 
 import Modelo.entities.Usuario;
-import Modelo.exceptions.NonexistentEntityException;
+import Modelo.jpa_controllers.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -15,7 +18,7 @@ import javax.persistence.criteria.Root;
 
 /**
  *
- * @author Santiago
+ * @author CLAUDIA
  */
 public class UsuarioJpaController implements Serializable {
 
