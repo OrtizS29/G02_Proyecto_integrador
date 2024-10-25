@@ -1,34 +1,34 @@
 
-package Modelo.gestion;
+package Modelo.persistir;
 
 import Modelo.IPersistencia;
-import Modelo.entities.Telefono_asesor;
-import Modelo.jpa_controllers.Telefono_asesorJpaController;
+import Modelo.entities.Torre;
+import Modelo.jpa_controllers.TorreJpaController;
 
 /**
  *
  * @author Santiago
  */
-public class GestionarTelefono_asesor implements IPersistencia<Telefono_asesor> {
+public class PersistirTorre implements IPersistencia<Torre> {
     
-    private Telefono_asesorJpaController telAseJpa;
+    private TorreJpaController torreJpa;
 
-    public GestionarTelefono_asesor() {
-        telAseJpa = new Telefono_asesorJpaController();
+    public PersistirTorre() {
+        torreJpa = new TorreJpaController();
     }
 
     @Override
-    public void crear(Telefono_asesor entidad) throws Exception {
+    public void crear(Torre entidad) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Telefono_asesor obtener(int id) throws Exception {
+    public Torre obtener(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void editar(Telefono_asesor entidad) throws Exception {
+    public void editar(Torre entidad) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -36,7 +36,5 @@ public class GestionarTelefono_asesor implements IPersistencia<Telefono_asesor> 
     public void eliminar(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    
     
 }

@@ -1,34 +1,34 @@
 
-package Modelo.gestion;
+package Modelo.persistir;
 
 import Modelo.IPersistencia;
-import Modelo.entities.Usuario;
-import Modelo.jpa_controllers.UsuarioJpaController;
+import Modelo.entities.Apartamento;
+import Modelo.jpa_controllers.ApartamentoJpaController;
 
 /**
  *
  * @author Santiago
  */
-public class GestionarUsuario implements IPersistencia<Usuario> {
+public class PersistirApartamento implements IPersistencia<Apartamento> {
     
-    private UsuarioJpaController usuarioJpa;
+    private ApartamentoJpaController proyectoJpa;
 
-    public GestionarUsuario() {
-        usuarioJpa = new UsuarioJpaController();
+    public PersistirApartamento() {
+        proyectoJpa = new ApartamentoJpaController();
     }
 
     @Override
-    public void crear(Usuario entidad) throws Exception {
+    public void crear(Apartamento entidad) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Usuario obtener(int id) throws Exception {
+    public Apartamento obtener(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void editar(Usuario entidad) throws Exception {
+    public void editar(Apartamento entidad) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -36,4 +36,5 @@ public class GestionarUsuario implements IPersistencia<Usuario> {
     public void eliminar(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
 }

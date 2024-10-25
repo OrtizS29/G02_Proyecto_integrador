@@ -1,34 +1,34 @@
 
-package Modelo.gestion;
+package Modelo.persistir;
 
 import Modelo.IPersistencia;
-import Modelo.entities.Pago;
-import Modelo.jpa_controllers.PagoJpaController;
+import Modelo.entities.Telefono_cliente;
+import Modelo.jpa_controllers.Telefono_clienteJpaController;
 
 /**
  *
  * @author Santiago
  */
-public class GestionarPago implements IPersistencia<Pago> {
+public class PersistirTelefono_cliente implements IPersistencia<Telefono_cliente> {
     
-    private PagoJpaController pagoJpa;
+    private Telefono_clienteJpaController telCliJpa;
 
-    public GestionarPago() {
-        pagoJpa = new PagoJpaController();
+    public PersistirTelefono_cliente() {
+        telCliJpa = new Telefono_clienteJpaController();
     }
 
     @Override
-    public void crear(Pago entidad) throws Exception {
+    public void crear(Telefono_cliente entidad) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Pago obtener(int id) throws Exception {
+    public Telefono_cliente obtener(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void editar(Pago entidad) throws Exception {
+    public void editar(Telefono_cliente entidad) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -36,6 +36,5 @@ public class GestionarPago implements IPersistencia<Pago> {
     public void eliminar(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
     
 }
