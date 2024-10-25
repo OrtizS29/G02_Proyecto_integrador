@@ -26,7 +26,4 @@ public class Controladora {
         
         controlPer.crearAdministrador(administrador);
     } 
-    
-    
-    
 }
