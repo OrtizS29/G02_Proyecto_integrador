@@ -2,7 +2,7 @@
 package Modelo.entities;
 
 import java.io.Serializable;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -23,12 +23,12 @@ public class Administrador implements Serializable {
     private String direccion;
     
     @OneToMany(mappedBy="administrador")
-    private LinkedList<Proyecto> listaProyectos;
+    private ArrayList<Proyecto> listaProyectos;
 
     public Administrador() {
     }
 
-    public Administrador(int cedula, String nombre, String direccion, LinkedList<Proyecto> listaProyectos) {
+    public Administrador(int cedula, String nombre, String direccion, ArrayList<Proyecto> listaProyectos) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -59,17 +59,11 @@ public class Administrador implements Serializable {
         this.direccion = direccion;
     }
 
-    public LinkedList<Proyecto> getListaProyectos() {
+    public ArrayList<Proyecto> getListaProyectos() {
         return listaProyectos;
     }
 
-    public void setListaProyectos(LinkedList<Proyecto> listaProyectos) {
+    public void setListaProyectos(ArrayList<Proyecto> listaProyectos) {
         this.listaProyectos = listaProyectos;
     }
-
-    
-
-    
-    
-    
 }

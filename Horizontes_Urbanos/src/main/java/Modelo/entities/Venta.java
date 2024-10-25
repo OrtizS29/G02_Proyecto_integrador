@@ -6,7 +6,7 @@ import Modelo.entities.Cliente;
 import Modelo.entities.Asesor;
 import Modelo.entities.Apartamento;
 import java.io.Serializable;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,10 +40,10 @@ public class Venta implements Serializable {
     private int numero_apartamentos_comprados;
     
     @OneToMany(mappedBy = "venta")
-    private LinkedList<Apartamento> listaApartamentos;
+    private ArrayList<Apartamento> listaApartamentos;
     
     @OneToMany(mappedBy = "venta")
-    private LinkedList<Pago> listaPagos;
+    private ArrayList<Pago> listaPagos;
     
     @ManyToOne(optional=false)
     @JoinColumn(name = "Cedula_asesor", referencedColumnName = "Cedula")
@@ -56,7 +56,7 @@ public class Venta implements Serializable {
     public Venta() {
     }
 
-    public Venta(int id_venta, int precio_base, int numero_coutas, int precio_final, Integer intereses, int numero_apartamentos_comprados, LinkedList<Apartamento> listaApartamentos, LinkedList<Pago> listaPagos, Asesor asesor, Cliente cliente) {
+    public Venta(int id_venta, int precio_base, int numero_coutas, int precio_final, Integer intereses, int numero_apartamentos_comprados, ArrayList<Apartamento> listaApartamentos, ArrayList<Pago> listaPagos, Asesor asesor, Cliente cliente) {
         this.id_venta = id_venta;
         this.precio_base = precio_base;
         this.numero_coutas = numero_coutas;
@@ -117,19 +117,19 @@ public class Venta implements Serializable {
         this.numero_apartamentos_comprados = numero_apartamentos_comprados;
     }
 
-    public LinkedList<Apartamento> getListaApartamentos() {
+    public ArrayList<Apartamento> getListaApartamentos() {
         return listaApartamentos;
     }
 
-    public void setListaApartamentos(LinkedList<Apartamento> listaApartamentos) {
+    public void setListaApartamentos(ArrayList<Apartamento> listaApartamentos) {
         this.listaApartamentos = listaApartamentos;
     }
 
-    public LinkedList<Pago> getListaPagos() {
+    public ArrayList<Pago> getListaPagos() {
         return listaPagos;
     }
 
-    public void setListaPagos(LinkedList<Pago> listaPagos) {
+    public void setListaPagos(ArrayList<Pago> listaPagos) {
         this.listaPagos = listaPagos;
     }
 

@@ -2,7 +2,7 @@
 package CONTROLADOR;
 
 import Modelo.entities.Administrador;
-import Modelo.ControladoraPersistencia;
+//import Modelo.ControladoraPersistencia;
 import Modelo.entities.Proyecto;
 import java.util.LinkedList;
 
@@ -12,7 +12,7 @@ import java.util.LinkedList;
  */
 public class Controladora {
     
-    ControladoraPersistencia controlPer = new ControladoraPersistencia();   
+    //ControladoraPersistencia controlPer = new ControladoraPersistencia();   
     
     public void guardarAdministrador(int cedula,String nombre,String direccion,
             LinkedList<Proyecto> listaProyectos) throws Exception{
@@ -22,8 +22,8 @@ public class Controladora {
         administrador.setCedula(cedula);
         administrador.setNombre(nombre);
         administrador.setDireccion(direccion);
-        administrador.setListaProyectos(listaProyectos);
+        //administrador.setListaProyectos(listaProyectos);
         
-        controlPer.crearAdministrador(administrador);
+        //controlPer.crearAdministrador(administrador);
     } 
 }

@@ -1,24 +1,27 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Modelo.jpa_controllers;
 
-import Modelo.entities.Venta;
-import Modelo.entities.Pago;
-import Modelo.entities.Cliente;
-import Modelo.entities.Asesor;
-import Modelo.exceptions.NonexistentEntityException;
 import java.io.Serializable;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import Modelo.entities.Venta;
+import Modelo.entities.Asesor;
+import Modelo.entities.Cliente;
+import Modelo.entities.Pago;
+import Modelo.jpa_controllers.exceptions.NonexistentEntityException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 /**
  *
- * @author Santiago
+ * @author CLAUDIA
  */
 public class PagoJpaController implements Serializable {
 

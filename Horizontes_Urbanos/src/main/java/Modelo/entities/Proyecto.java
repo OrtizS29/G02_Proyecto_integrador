@@ -3,7 +3,7 @@ package Modelo.entities;
 
 import Modelo.entities.Administrador;
 import java.io.Serializable;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +32,7 @@ public class Proyecto implements Serializable {
     private int numero_torres;
     
     @OneToMany(mappedBy = "proyecto",cascade = CascadeType.ALL) 
-    private LinkedList<Torre> listaTorres;
+    private ArrayList<Torre> listaTorres;
     
     @ManyToOne(optional=false)
     @JoinColumn(name = "Cedula_administrador", referencedColumnName = "Cedula")
@@ -41,7 +41,7 @@ public class Proyecto implements Serializable {
     public Proyecto() {
     }
 
-    public Proyecto(int id_proyecto, String nombre_proyecto, int numero_torres, LinkedList<Torre> listaTorres, Administrador administrador) {
+    public Proyecto(int id_proyecto, String nombre_proyecto, int numero_torres, ArrayList<Torre> listaTorres, Administrador administrador) {
         this.id_proyecto = id_proyecto;
         this.nombre_proyecto = nombre_proyecto;
         this.numero_torres = numero_torres;
@@ -73,11 +73,11 @@ public class Proyecto implements Serializable {
         this.numero_torres = numero_torres;
     }
 
-    public LinkedList<Torre> getListaTorres() {
+    public ArrayList<Torre> getListaTorres() {
         return listaTorres;
     }
 
-    public void setListaTorres(LinkedList<Torre> listaTorres) {
+    public void setListaTorres(ArrayList<Torre> listaTorres) {
         this.listaTorres = listaTorres;
     }
 

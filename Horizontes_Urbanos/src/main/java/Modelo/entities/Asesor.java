@@ -2,7 +2,7 @@
 package Modelo.entities;
 
 import java.io.Serializable;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,21 +24,21 @@ public class Asesor implements Serializable {
     private String direccion;
     
     @OneToMany(mappedBy = "asesor")
-    private LinkedList<Venta> listaVentas;
+    private ArrayList<Venta> listaVentas;
     
     @OneToMany(mappedBy = "asesor")
-    private LinkedList<Pago> listaPagos;
+    private ArrayList<Pago> listaPagos;
     
     @OneToMany(mappedBy = "asesor",cascade = CascadeType.ALL) 
-    private LinkedList<Telefono_asesor> listaTelefonosCliente;
+    private ArrayList<Telefono_asesor> listaTelefonosCliente;
     
     @OneToMany(mappedBy = "asesor",cascade = CascadeType.ALL) 
-    private LinkedList<Correo_asesor> listaCorreoCliente;
+    private ArrayList<Correo_asesor> listaCorreoCliente;
 
     public Asesor() {
     }
 
-    public Asesor(int cedula, String nombre, String direccion, LinkedList<Venta> listaVentas, LinkedList<Pago> listaPagos, LinkedList<Telefono_asesor> listaTelefonosCliente, LinkedList<Correo_asesor> listaCorreoCliente) {
+    public Asesor(int cedula, String nombre, String direccion, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos, ArrayList<Telefono_asesor> listaTelefonosCliente, ArrayList<Correo_asesor> listaCorreoCliente) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -72,38 +72,37 @@ public class Asesor implements Serializable {
         this.direccion = direccion;
     }
 
-    public LinkedList<Venta> getListaVentas() {
+    public ArrayList<Venta> getListaVentas() {
         return listaVentas;
     }
 
-    public void setListaVentas(LinkedList<Venta> listaVentas) {
+    public void setListaVentas(ArrayList<Venta> listaVentas) {
         this.listaVentas = listaVentas;
     }
 
-    public LinkedList<Pago> getListaPagos() {
+    public ArrayList<Pago> getListaPagos() {
         return listaPagos;
     }
 
-    public void setListaPagos(LinkedList<Pago> listaPagos) {
+    public void setListaPagos(ArrayList<Pago> listaPagos) {
         this.listaPagos = listaPagos;
     }
 
-    public LinkedList<Telefono_asesor> getListaTelefonosCliente() {
+    public ArrayList<Telefono_asesor> getListaTelefonosCliente() {
         return listaTelefonosCliente;
     }
 
-    public void setListaTelefonosCliente(LinkedList<Telefono_asesor> listaTelefonosCliente) {
+    public void setListaTelefonosCliente(ArrayList<Telefono_asesor> listaTelefonosCliente) {
         this.listaTelefonosCliente = listaTelefonosCliente;
     }
 
-    public LinkedList<Correo_asesor> getListaCorreoCliente() {
+    public ArrayList<Correo_asesor> getListaCorreoCliente() {
         return listaCorreoCliente;
     }
 
-    public void setListaCorreoCliente(LinkedList<Correo_asesor> listaCorreoCliente) {
+    public void setListaCorreoCliente(ArrayList<Correo_asesor> listaCorreoCliente) {
         this.listaCorreoCliente = listaCorreoCliente;
     }
-    
     
     
     

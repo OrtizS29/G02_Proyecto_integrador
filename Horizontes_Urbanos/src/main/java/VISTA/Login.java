@@ -30,7 +30,7 @@ public class Login extends javax.swing.JFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         txtUsuario = new javax.swing.JTextField();
-        txtContraseña = new javax.swing.JPasswordField();
+        txtContrasena = new javax.swing.JPasswordField();
         btnEntrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -56,7 +56,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, 150, 30));
-        getContentPane().add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, 150, 30));
+        getContentPane().add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, 150, 30));
 
         btnEntrar.setBackground(new java.awt.Color(0, 102, 102));
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,8 +88,18 @@ public class Login extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         
         String usuario = txtUsuario.getText();
-        String contraseña = txtContraseña.getText();
-        //Usuario usr = valiUsuario(usuario,contraseña);
+        String contrasena = txtContrasena.getText();
+        Usuario usr = valiUsuario.validarUsuario(usuario,contrasena);
+        
+        if(usr != null) {
+            String rol = usr.getRol();
+            
+            if(rol.equals("admin")){
+                menuAdmin mAdmin = new menuAdmin();
+                mAdmin.setVisible(true);
+                this.dispose();
+            }
+        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
@@ -102,7 +112,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JPasswordField txtContraseña;
+    private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

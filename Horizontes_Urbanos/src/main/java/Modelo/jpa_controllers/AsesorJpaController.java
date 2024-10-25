@@ -1,21 +1,23 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Modelo.jpa_controllers;
 
-import Modelo.entities.Venta;
-import Modelo.entities.Telefono_asesor;
-import Modelo.entities.Pago;
-import Modelo.entities.Correo_asesor;
 import Modelo.entities.Asesor;
-import Modelo.exceptions.IllegalOrphanException;
-import Modelo.exceptions.NonexistentEntityException;
-import Modelo.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import Modelo.entities.Venta;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import Modelo.entities.Pago;
+import Modelo.entities.Telefono_asesor;
+import Modelo.entities.Correo_asesor;
+import Modelo.jpa_controllers.exceptions.IllegalOrphanException;
+import Modelo.jpa_controllers.exceptions.NonexistentEntityException;
+import Modelo.jpa_controllers.exceptions.PreexistingEntityException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -23,7 +25,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Santiago
+ * @author CLAUDIA
  */
 public class AsesorJpaController implements Serializable {
 
@@ -42,40 +44,40 @@ public class AsesorJpaController implements Serializable {
 
     public void create(Asesor asesor) throws PreexistingEntityException, Exception {
         if (asesor.getListaVentas() == null) {
-            asesor.setListaVentas(new LinkedList<Venta>());
+            asesor.setListaVentas(new ArrayList<Venta>());
         }
         if (asesor.getListaPagos() == null) {
-            asesor.setListaPagos(new LinkedList<Pago>());
+            asesor.setListaPagos(new ArrayList<Pago>());
         }
         if (asesor.getListaTelefonosCliente() == null) {
-            asesor.setListaTelefonosCliente(new LinkedList<Telefono_asesor>());
+            asesor.setListaTelefonosCliente(new ArrayList<Telefono_asesor>());
         }
         if (asesor.getListaCorreoCliente() == null) {
-            asesor.setListaCorreoCliente(new LinkedList<Correo_asesor>());
+            asesor.setListaCorreoCliente(new ArrayList<Correo_asesor>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            LinkedList<Venta> attachedListaVentas = new LinkedList<Venta>();
+            ArrayList<Venta> attachedListaVentas = new ArrayList<Venta>();
             for (Venta listaVentasVentaToAttach : asesor.getListaVentas()) {
                 listaVentasVentaToAttach = em.getReference(listaVentasVentaToAttach.getClass(), listaVentasVentaToAttach.getId_venta());
                 attachedListaVentas.add(listaVentasVentaToAttach);
             }
             asesor.setListaVentas(attachedListaVentas);
-            LinkedList<Pago> attachedListaPagos = new LinkedList<Pago>();
+            ArrayList<Pago> attachedListaPagos = new ArrayList<Pago>();
             for (Pago listaPagosPagoToAttach : asesor.getListaPagos()) {
                 listaPagosPagoToAttach = em.getReference(listaPagosPagoToAttach.getClass(), listaPagosPagoToAttach.getId_pago());
                 attachedListaPagos.add(listaPagosPagoToAttach);
             }
             asesor.setListaPagos(attachedListaPagos);
-            LinkedList<Telefono_asesor> attachedListaTelefonosCliente = new LinkedList<Telefono_asesor>();
+            ArrayList<Telefono_asesor> attachedListaTelefonosCliente = new ArrayList<Telefono_asesor>();
             for (Telefono_asesor listaTelefonosClienteTelefono_asesorToAttach : asesor.getListaTelefonosCliente()) {
                 listaTelefonosClienteTelefono_asesorToAttach = em.getReference(listaTelefonosClienteTelefono_asesorToAttach.getClass(), listaTelefonosClienteTelefono_asesorToAttach.getId());
                 attachedListaTelefonosCliente.add(listaTelefonosClienteTelefono_asesorToAttach);
             }
             asesor.setListaTelefonosCliente(attachedListaTelefonosCliente);
-            LinkedList<Correo_asesor> attachedListaCorreoCliente = new LinkedList<Correo_asesor>();
+            ArrayList<Correo_asesor> attachedListaCorreoCliente = new ArrayList<Correo_asesor>();
             for (Correo_asesor listaCorreoClienteCorreo_asesorToAttach : asesor.getListaCorreoCliente()) {
                 listaCorreoClienteCorreo_asesorToAttach = em.getReference(listaCorreoClienteCorreo_asesorToAttach.getClass(), listaCorreoClienteCorreo_asesorToAttach.getId());
                 attachedListaCorreoCliente.add(listaCorreoClienteCorreo_asesorToAttach);
@@ -137,14 +139,14 @@ public class AsesorJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Asesor persistentAsesor = em.find(Asesor.class, asesor.getCedula());
-            LinkedList<Venta> listaVentasOld = persistentAsesor.getListaVentas();
-            LinkedList<Venta> listaVentasNew = asesor.getListaVentas();
-            LinkedList<Pago> listaPagosOld = persistentAsesor.getListaPagos();
-            LinkedList<Pago> listaPagosNew = asesor.getListaPagos();
-            LinkedList<Telefono_asesor> listaTelefonosClienteOld = persistentAsesor.getListaTelefonosCliente();
-            LinkedList<Telefono_asesor> listaTelefonosClienteNew = asesor.getListaTelefonosCliente();
-            LinkedList<Correo_asesor> listaCorreoClienteOld = persistentAsesor.getListaCorreoCliente();
-            LinkedList<Correo_asesor> listaCorreoClienteNew = asesor.getListaCorreoCliente();
+            ArrayList<Venta> listaVentasOld = persistentAsesor.getListaVentas();
+            ArrayList<Venta> listaVentasNew = asesor.getListaVentas();
+            ArrayList<Pago> listaPagosOld = persistentAsesor.getListaPagos();
+            ArrayList<Pago> listaPagosNew = asesor.getListaPagos();
+            ArrayList<Telefono_asesor> listaTelefonosClienteOld = persistentAsesor.getListaTelefonosCliente();
+            ArrayList<Telefono_asesor> listaTelefonosClienteNew = asesor.getListaTelefonosCliente();
+            ArrayList<Correo_asesor> listaCorreoClienteOld = persistentAsesor.getListaCorreoCliente();
+            ArrayList<Correo_asesor> listaCorreoClienteNew = asesor.getListaCorreoCliente();
             List<String> illegalOrphanMessages = null;
             for (Venta listaVentasOldVenta : listaVentasOld) {
                 if (!listaVentasNew.contains(listaVentasOldVenta)) {
@@ -181,28 +183,28 @@ public class AsesorJpaController implements Serializable {
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            LinkedList<Venta> attachedListaVentasNew = new LinkedList<Venta>();
+            ArrayList<Venta> attachedListaVentasNew = new ArrayList<Venta>();
             for (Venta listaVentasNewVentaToAttach : listaVentasNew) {
                 listaVentasNewVentaToAttach = em.getReference(listaVentasNewVentaToAttach.getClass(), listaVentasNewVentaToAttach.getId_venta());
                 attachedListaVentasNew.add(listaVentasNewVentaToAttach);
             }
             listaVentasNew = attachedListaVentasNew;
             asesor.setListaVentas(listaVentasNew);
-            LinkedList<Pago> attachedListaPagosNew = new LinkedList<Pago>();
+            ArrayList<Pago> attachedListaPagosNew = new ArrayList<Pago>();
             for (Pago listaPagosNewPagoToAttach : listaPagosNew) {
                 listaPagosNewPagoToAttach = em.getReference(listaPagosNewPagoToAttach.getClass(), listaPagosNewPagoToAttach.getId_pago());
                 attachedListaPagosNew.add(listaPagosNewPagoToAttach);
             }
             listaPagosNew = attachedListaPagosNew;
             asesor.setListaPagos(listaPagosNew);
-            LinkedList<Telefono_asesor> attachedListaTelefonosClienteNew = new LinkedList<Telefono_asesor>();
+            ArrayList<Telefono_asesor> attachedListaTelefonosClienteNew = new ArrayList<Telefono_asesor>();
             for (Telefono_asesor listaTelefonosClienteNewTelefono_asesorToAttach : listaTelefonosClienteNew) {
                 listaTelefonosClienteNewTelefono_asesorToAttach = em.getReference(listaTelefonosClienteNewTelefono_asesorToAttach.getClass(), listaTelefonosClienteNewTelefono_asesorToAttach.getId());
                 attachedListaTelefonosClienteNew.add(listaTelefonosClienteNewTelefono_asesorToAttach);
             }
             listaTelefonosClienteNew = attachedListaTelefonosClienteNew;
             asesor.setListaTelefonosCliente(listaTelefonosClienteNew);
-            LinkedList<Correo_asesor> attachedListaCorreoClienteNew = new LinkedList<Correo_asesor>();
+            ArrayList<Correo_asesor> attachedListaCorreoClienteNew = new ArrayList<Correo_asesor>();
             for (Correo_asesor listaCorreoClienteNewCorreo_asesorToAttach : listaCorreoClienteNew) {
                 listaCorreoClienteNewCorreo_asesorToAttach = em.getReference(listaCorreoClienteNewCorreo_asesorToAttach.getClass(), listaCorreoClienteNewCorreo_asesorToAttach.getId());
                 attachedListaCorreoClienteNew.add(listaCorreoClienteNewCorreo_asesorToAttach);
@@ -284,28 +286,28 @@ public class AsesorJpaController implements Serializable {
                 throw new NonexistentEntityException("The asesor with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            LinkedList<Venta> listaVentasOrphanCheck = asesor.getListaVentas();
+            ArrayList<Venta> listaVentasOrphanCheck = asesor.getListaVentas();
             for (Venta listaVentasOrphanCheckVenta : listaVentasOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
                 illegalOrphanMessages.add("This Asesor (" + asesor + ") cannot be destroyed since the Venta " + listaVentasOrphanCheckVenta + " in its listaVentas field has a non-nullable asesor field.");
             }
-            LinkedList<Pago> listaPagosOrphanCheck = asesor.getListaPagos();
+            ArrayList<Pago> listaPagosOrphanCheck = asesor.getListaPagos();
             for (Pago listaPagosOrphanCheckPago : listaPagosOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
                 illegalOrphanMessages.add("This Asesor (" + asesor + ") cannot be destroyed since the Pago " + listaPagosOrphanCheckPago + " in its listaPagos field has a non-nullable asesor field.");
             }
-            LinkedList<Telefono_asesor> listaTelefonosClienteOrphanCheck = asesor.getListaTelefonosCliente();
+            ArrayList<Telefono_asesor> listaTelefonosClienteOrphanCheck = asesor.getListaTelefonosCliente();
             for (Telefono_asesor listaTelefonosClienteOrphanCheckTelefono_asesor : listaTelefonosClienteOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
                 illegalOrphanMessages.add("This Asesor (" + asesor + ") cannot be destroyed since the Telefono_asesor " + listaTelefonosClienteOrphanCheckTelefono_asesor + " in its listaTelefonosCliente field has a non-nullable asesor field.");
             }
-            LinkedList<Correo_asesor> listaCorreoClienteOrphanCheck = asesor.getListaCorreoCliente();
+            ArrayList<Correo_asesor> listaCorreoClienteOrphanCheck = asesor.getListaCorreoCliente();
             for (Correo_asesor listaCorreoClienteOrphanCheckCorreo_asesor : listaCorreoClienteOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();

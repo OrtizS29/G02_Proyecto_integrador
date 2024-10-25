@@ -4,7 +4,7 @@ package Modelo.entities;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Apartamento;
 import java.io.Serializable;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,23 +33,23 @@ public class Torre implements Serializable {
     private int numero_apartamento;
     
     @OneToMany(mappedBy = "torre",cascade = CascadeType.ALL)
-    private LinkedList<Apartamento> listaApartamentos;
+    private ArrayList<Apartamento> listaApartamentos;
     
     @ManyToOne(optional=false)
-    @JoinColumn(name = "Id_torre", referencedColumnName = "Id_torre")
+    @JoinColumn(name = "Id_proyecto", referencedColumnName = "Id_proyecto")
     private Proyecto proyecto;
 
     public Torre() {
     }
 
-    public Torre(int id_torre, String nombre_torre, int numero_apartamento, LinkedList<Apartamento> listaApartamentos, Proyecto proyecto) {
+    public Torre(int id_torre, String nombre_torre, int numero_apartamento, ArrayList<Apartamento> listaApartamentos, Proyecto proyecto) {
         this.id_torre = id_torre;
         this.nombre_torre = nombre_torre;
         this.numero_apartamento = numero_apartamento;
         this.listaApartamentos = listaApartamentos;
         this.proyecto = proyecto;
     }
-
+    
     public int getId_torre() {
         return id_torre;
     }
@@ -74,11 +74,11 @@ public class Torre implements Serializable {
         this.numero_apartamento = numero_apartamento;
     }
 
-    public LinkedList<Apartamento> getListaApartamentos() {
+    public ArrayList<Apartamento> getListaApartamentos() {
         return listaApartamentos;
     }
 
-    public void setListaApartamentos(LinkedList<Apartamento> listaApartamentos) {
+    public void setListaApartamentos(ArrayList<Apartamento> listaApartamentos) {
         this.listaApartamentos = listaApartamentos;
     }
 
