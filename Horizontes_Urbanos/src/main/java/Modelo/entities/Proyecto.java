@@ -1,7 +1,7 @@
 
-package Modelo;
+package Modelo.entities;
 
-import Modelo.Administrador;
+import Modelo.entities.Administrador;
 import java.io.Serializable;
 import java.util.LinkedList;
 import javax.persistence.CascadeType;

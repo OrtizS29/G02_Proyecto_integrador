@@ -1,8 +1,8 @@
 
-package Modelo;
+package Modelo.entities;
 
-import Modelo.Asesor;
-import Modelo.Administrador;
+import Modelo.entities.Asesor;
+import Modelo.entities.Administrador;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

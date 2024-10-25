@@ -1,6 +1,8 @@
 
-package Modelo;
+package Modelo.jpa_controllers;
 
+import Modelo.entities.Proyecto;
+import Modelo.entities.Administrador;
 import Modelo.exceptions.IllegalOrphanException;
 import Modelo.exceptions.NonexistentEntityException;
 import Modelo.exceptions.PreexistingEntityException;

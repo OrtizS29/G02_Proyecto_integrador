@@ -1,6 +1,11 @@
 
-package Modelo;
+package Modelo.jpa_controllers;
 
+import Modelo.entities.Venta;
+import Modelo.entities.Telefono_asesor;
+import Modelo.entities.Pago;
+import Modelo.entities.Correo_asesor;
+import Modelo.entities.Asesor;
 import Modelo.exceptions.IllegalOrphanException;
 import Modelo.exceptions.NonexistentEntityException;
 import Modelo.exceptions.PreexistingEntityException;

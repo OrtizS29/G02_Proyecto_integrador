@@ -1,8 +1,8 @@
 
-package Modelo;
+package Modelo.entities;
 
-import Modelo.Proyecto;
-import Modelo.Apartamento;
+import Modelo.entities.Proyecto;
+import Modelo.entities.Apartamento;
 import java.io.Serializable;
 import java.util.LinkedList;
 import javax.persistence.CascadeType;

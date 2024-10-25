@@ -1,6 +1,9 @@
 
-package Modelo;
+package Modelo.jpa_controllers;
 
+import Modelo.entities.Venta;
+import Modelo.entities.Torre;
+import Modelo.entities.Apartamento;
 import Modelo.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;

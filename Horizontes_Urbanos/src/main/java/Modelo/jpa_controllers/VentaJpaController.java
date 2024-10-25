@@ -1,6 +1,11 @@
 
-package Modelo;
+package Modelo.jpa_controllers;
 
+import Modelo.entities.Venta;
+import Modelo.entities.Pago;
+import Modelo.entities.Cliente;
+import Modelo.entities.Asesor;
+import Modelo.entities.Apartamento;
 import Modelo.exceptions.IllegalOrphanException;
 import Modelo.exceptions.NonexistentEntityException;
 import java.io.Serializable;

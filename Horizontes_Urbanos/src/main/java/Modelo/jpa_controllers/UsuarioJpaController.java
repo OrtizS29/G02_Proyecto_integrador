@@ -1,6 +1,7 @@
 
-package Modelo;
+package Modelo.jpa_controllers;
 
+import Modelo.entities.Usuario;
 import Modelo.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;

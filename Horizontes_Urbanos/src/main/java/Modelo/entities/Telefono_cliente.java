@@ -1,7 +1,7 @@
 
-package Modelo;
+package Modelo.entities;
 
-import Modelo.Cliente;
+import Modelo.entities.Cliente;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
