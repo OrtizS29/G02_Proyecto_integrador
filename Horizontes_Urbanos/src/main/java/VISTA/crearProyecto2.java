@@ -28,38 +28,38 @@ public class crearProyecto2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSiguienteCrearProyecto = new javax.swing.JButton();
-        txtNombreProyecto = new javax.swing.JTextField();
-        txtNumeroDeTorres = new javax.swing.JTextField();
+        btnSiguienteCrearTorre = new javax.swing.JButton();
+        txtNumeroTorre = new javax.swing.JTextField();
+        txtNumeroDeApartamentos = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSiguienteCrearProyecto.setBackground(new java.awt.Color(49, 134, 181));
-        btnSiguienteCrearProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnSiguienteCrearProyecto.setForeground(new java.awt.Color(255, 255, 255));
-        btnSiguienteCrearProyecto.setText("Siguiente");
-        btnSiguienteCrearProyecto.addActionListener(new java.awt.event.ActionListener() {
+        btnSiguienteCrearTorre.setBackground(new java.awt.Color(49, 134, 181));
+        btnSiguienteCrearTorre.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnSiguienteCrearTorre.setForeground(new java.awt.Color(255, 255, 255));
+        btnSiguienteCrearTorre.setText("Siguiente");
+        btnSiguienteCrearTorre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiguienteCrearProyectoActionPerformed(evt);
+                btnSiguienteCrearTorreActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSiguienteCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 110, 40));
+        getContentPane().add(btnSiguienteCrearTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 110, 40));
 
-        txtNombreProyecto.addActionListener(new java.awt.event.ActionListener() {
+        txtNumeroTorre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProyectoActionPerformed(evt);
+                txtNumeroTorreActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombreProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 290, 30));
+        getContentPane().add(txtNumeroTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 290, 30));
 
-        txtNumeroDeTorres.addActionListener(new java.awt.event.ActionListener() {
+        txtNumeroDeApartamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroDeTorresActionPerformed(evt);
+                txtNumeroDeApartamentosActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNumeroDeTorres, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 290, 30));
+        getContentPane().add(txtNumeroDeApartamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 290, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearProyecto2.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -67,26 +67,26 @@ public class crearProyecto2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyectoActionPerformed
+    private void txtNumeroTorreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroTorreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProyectoActionPerformed
+    }//GEN-LAST:event_txtNumeroTorreActionPerformed
 
-    private void txtNumeroDeTorresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDeTorresActionPerformed
+    private void txtNumeroDeApartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDeApartamentosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroDeTorresActionPerformed
+    }//GEN-LAST:event_txtNumeroDeApartamentosActionPerformed
 
-    private void btnSiguienteCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearProyectoActionPerformed
+    private void btnSiguienteCrearTorreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearTorreActionPerformed
 
-    }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
+    }//GEN-LAST:event_btnSiguienteCrearTorreActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSiguienteCrearProyecto;
+    private javax.swing.JButton btnSiguienteCrearTorre;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtNombreProyecto;
-    private javax.swing.JTextField txtNumeroDeTorres;
+    private javax.swing.JTextField txtNumeroDeApartamentos;
+    private javax.swing.JTextField txtNumeroTorre;
     // End of variables declaration//GEN-END:variables
 }

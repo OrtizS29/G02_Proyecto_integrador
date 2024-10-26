@@ -28,7 +28,6 @@ public class crearProyecto3 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtNombreProyecto = new javax.swing.JTextField();
         txtNumeroDeTorres = new javax.swing.JTextField();
         txtNombreProyecto1 = new javax.swing.JTextField();
         txtNumeroDeTorres1 = new javax.swing.JTextField();
@@ -40,13 +39,6 @@ public class crearProyecto3 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtNombreProyecto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProyectoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtNombreProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 290, 30));
 
         txtNumeroDeTorres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,10 +99,6 @@ public class crearProyecto3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyectoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProyectoActionPerformed
-
     private void txtNumeroDeTorresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDeTorresActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroDeTorresActionPerformed
@@ -147,7 +135,6 @@ public class crearProyecto3 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSiguienteCrearProyecto;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtNombreProyecto;
     private javax.swing.JTextField txtNombreProyecto1;
     private javax.swing.JTextField txtNombreProyecto2;
     private javax.swing.JTextField txtNumeroDeTorres;
