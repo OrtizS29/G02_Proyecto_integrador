@@ -124,7 +124,10 @@ public class administrarProyecto extends javax.swing.JFrame {
         
         gestiProyecto.guardar(nuevProyecto);
         
-        
+        crearProyecto2 crearProyectoTorre = new crearProyecto2();
+        crearProyectoTorre.setVisible(true);
+        crearProyectoTorre.setLocationRelativeTo(null);
+        this.dispose();
         
         btnSiguienteCrearProyecto.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
