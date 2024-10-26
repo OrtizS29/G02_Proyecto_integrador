@@ -17,6 +17,8 @@ public class administrarProyecto extends javax.swing.JFrame {
      */
     public administrarProyecto() {
         initComponents();
+        setSize(912, 510); 
+        setLocationRelativeTo(null);
     }
 
     /**
