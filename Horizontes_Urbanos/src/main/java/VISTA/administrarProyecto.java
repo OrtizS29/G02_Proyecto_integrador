@@ -26,16 +26,71 @@ public class administrarProyecto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        btnSiguienteCrearProyecto = new javax.swing.JButton();
+        txtNumeroDeTorres = new javax.swing.JTextField();
+        txtNombreProyecto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/administrarProyecto.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnSiguienteCrearProyecto.setBackground(new java.awt.Color(0, 102, 255));
+        btnSiguienteCrearProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnSiguienteCrearProyecto.setForeground(new java.awt.Color(255, 255, 255));
+        btnSiguienteCrearProyecto.setText("Siguiente");
+        btnSiguienteCrearProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteCrearProyectoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSiguienteCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 110, 40));
+
+        txtNumeroDeTorres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroDeTorresActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNumeroDeTorres, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 290, 30));
+
+        txtNombreProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProyectoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombreProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 290, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearProyecto.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 480));
+
+        jTabbedPane1.addTab("Crear Proyecto", jPanel1);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 480));
+
+        jTabbedPane1.addTab("Gestionar Proyecto", jPanel2);
+
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSiguienteCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearProyectoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
+
+    private void txtNombreProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyectoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreProyectoActionPerformed
+
+    private void txtNumeroDeTorresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDeTorresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroDeTorresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -43,6 +98,13 @@ public class administrarProyecto extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSiguienteCrearProyecto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField txtNombreProyecto;
+    private javax.swing.JTextField txtNumeroDeTorres;
     // End of variables declaration//GEN-END:variables
 }
