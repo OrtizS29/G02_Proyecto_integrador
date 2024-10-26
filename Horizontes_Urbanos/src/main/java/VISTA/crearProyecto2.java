@@ -15,6 +15,8 @@ public class crearProyecto2 extends javax.swing.JFrame {
      */
     public crearProyecto2() {
         initComponents();
+        setSize(912, 510); 
+        setLocationRelativeTo(null);
     }
 
     /**
