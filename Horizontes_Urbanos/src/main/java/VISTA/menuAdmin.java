@@ -16,7 +16,7 @@ public class menuAdmin extends javax.swing.JFrame {
      */
     public menuAdmin() {
         initComponents();
-        setSize(912, 510); // Ajusta el tamaño según tus necesidades
+        setSize(912, 510); 
         setLocationRelativeTo(null);
     }
 
@@ -29,46 +29,53 @@ public class menuAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnAdministrarProyecto = new javax.swing.JButton();
+        btnAdministrarAsesor = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setText("ADMINISTRAR PROYECTO");
-        jButton2.setBorder(null);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAdministrarProyecto.setBackground(new java.awt.Color(255, 255, 255));
+        btnAdministrarProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAdministrarProyecto.setForeground(new java.awt.Color(0, 0, 0));
+        btnAdministrarProyecto.setText("ADMINISTRAR PROYECTO");
+        btnAdministrarProyecto.setBorder(null);
+        btnAdministrarProyecto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAdministrarProyectoActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 230, 40));
+        getContentPane().add(btnAdministrarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 230, 40));
 
-        jButton3.setText("ADMINISTRAR ASESOR");
-        jButton3.setBorder(null);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnAdministrarAsesor.setBackground(new java.awt.Color(255, 255, 255));
+        btnAdministrarAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAdministrarAsesor.setForeground(new java.awt.Color(0, 0, 0));
+        btnAdministrarAsesor.setText("ADMINISTRAR ASESOR");
+        btnAdministrarAsesor.setBorder(null);
+        btnAdministrarAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnAdministrarAsesorActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 340, 210, 50));
+        getContentPane().add(btnAdministrarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 210, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menu.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 520));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 510));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnAdministrarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarProyectoActionPerformed
+        
+        
+    }//GEN-LAST:event_btnAdministrarProyectoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnAdministrarAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarAsesorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnAdministrarAsesorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnAdministrarAsesor;
+    private javax.swing.JButton btnAdministrarProyecto;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
