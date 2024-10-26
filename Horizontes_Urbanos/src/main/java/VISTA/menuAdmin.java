@@ -29,10 +29,10 @@ public class menuAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnAdministrarProyecto1 = new javax.swing.JButton();
-        btnAdministrarAsesor = new javax.swing.JButton();
-        btnAdministrarProyecto2 = new javax.swing.JButton();
         btnAdministrarProyecto = new javax.swing.JButton();
+        btnAdministrarAsesor = new javax.swing.JButton();
+        btnAdministrarApartamento = new javax.swing.JButton();
+        btnAdministrarTorre = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -40,15 +40,15 @@ public class menuAdmin extends javax.swing.JFrame {
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAdministrarProyecto1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnAdministrarProyecto1.setText("ADMINISTRAR PROYECTO");
-        btnAdministrarProyecto1.setBorder(null);
-        btnAdministrarProyecto1.addActionListener(new java.awt.event.ActionListener() {
+        btnAdministrarProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAdministrarProyecto.setText("ADMINISTRAR PROYECTO");
+        btnAdministrarProyecto.setBorder(null);
+        btnAdministrarProyecto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdministrarProyecto1ActionPerformed(evt);
+                btnAdministrarProyectoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdministrarProyecto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 230, 40));
+        getContentPane().add(btnAdministrarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 230, 40));
 
         btnAdministrarAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnAdministrarAsesor.setText("ADMINISTRAR ASESOR");
@@ -60,25 +60,25 @@ public class menuAdmin extends javax.swing.JFrame {
         });
         getContentPane().add(btnAdministrarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 210, 50));
 
-        btnAdministrarProyecto2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnAdministrarProyecto2.setText("ADMINISTRAR APARTAMENTO");
-        btnAdministrarProyecto2.setBorder(null);
-        btnAdministrarProyecto2.addActionListener(new java.awt.event.ActionListener() {
+        btnAdministrarApartamento.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAdministrarApartamento.setText("ADMINISTRAR APARTAMENTO");
+        btnAdministrarApartamento.setBorder(null);
+        btnAdministrarApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdministrarProyecto2ActionPerformed(evt);
+                btnAdministrarApartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdministrarProyecto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 230, 40));
+        getContentPane().add(btnAdministrarApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 230, 40));
 
-        btnAdministrarProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnAdministrarProyecto.setText("ADMINISTRAR TORRE");
-        btnAdministrarProyecto.setBorder(null);
-        btnAdministrarProyecto.addActionListener(new java.awt.event.ActionListener() {
+        btnAdministrarTorre.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAdministrarTorre.setText("ADMINISTRAR TORRE");
+        btnAdministrarTorre.setBorder(null);
+        btnAdministrarTorre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdministrarProyectoActionPerformed(evt);
+                btnAdministrarTorreActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdministrarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 230, 40));
+        getContentPane().add(btnAdministrarTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 230, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Sin título-5.png"))); // NOI18N
         jLabel3.setToolTipText("");
@@ -99,29 +99,34 @@ public class menuAdmin extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 510));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAdministrarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarProyectoActionPerformed
+    private void btnAdministrarTorreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarTorreActionPerformed
         
-        
-    }//GEN-LAST:event_btnAdministrarProyectoActionPerformed
+        torreSeleccionarProyecto torreSelectProyecto = new torreSeleccionarProyecto();
+        torreSelectProyecto.setVisible(true);
+        torreSelectProyecto.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnAdministrarTorreActionPerformed
 
     private void btnAdministrarAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarAsesorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdministrarAsesorActionPerformed
 
-    private void btnAdministrarProyecto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarProyecto1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdministrarProyecto1ActionPerformed
+    private void btnAdministrarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarProyectoActionPerformed
+    
+        administrarProyecto adminProyecto = new administrarProyecto();
+        adminProyecto.setVisible(true);
+        adminProyecto.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnAdministrarProyectoActionPerformed
 
-    private void btnAdministrarProyecto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarProyecto2ActionPerformed
+    private void btnAdministrarApartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarApartamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdministrarProyecto2ActionPerformed
+    }//GEN-LAST:event_btnAdministrarApartamentoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdministrarApartamento;
     private javax.swing.JButton btnAdministrarAsesor;
     private javax.swing.JButton btnAdministrarProyecto;
-    private javax.swing.JButton btnAdministrarProyecto1;
-    private javax.swing.JButton btnAdministrarProyecto2;
+    private javax.swing.JButton btnAdministrarTorre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
