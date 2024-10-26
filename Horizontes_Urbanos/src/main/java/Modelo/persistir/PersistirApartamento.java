@@ -1,7 +1,6 @@
 
 package Modelo.persistir;
 
-import Modelo.IPersistencia;
 import Modelo.entities.Apartamento;
 import Modelo.jpa_controllers.ApartamentoJpaController;
 

@@ -1,7 +1,6 @@
 
 package Modelo.persistir;
 
-import Modelo.IPersistencia;
 import Modelo.entities.Telefono_asesor;
 import Modelo.jpa_controllers.Telefono_asesorJpaController;
 

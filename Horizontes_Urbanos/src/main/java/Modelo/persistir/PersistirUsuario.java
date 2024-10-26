@@ -1,7 +1,6 @@
 
 package Modelo.persistir;
 
-import Modelo.IPersistencia;
 import Modelo.entities.Usuario;
 import Modelo.exceptions.PreexistingEntityException;
 import Modelo.jpa_controllers.UsuarioJpaController;

@@ -1,5 +1,5 @@
 
-package Modelo;
+package Modelo.persistir;
 
 /**
  * Interfaz generica que tiene los metodos para hacer el CRUD (crea,eliminar,editar,leer)
