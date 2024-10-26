@@ -10,10 +10,10 @@ import Modelo.jpa_controllers.ApartamentoJpaController;
  */
 public class PersistirApartamento implements IPersistencia<Apartamento> {
     
-    private ApartamentoJpaController proyectoJpa;
+    private ApartamentoJpaController aptoJpa;
 
     public PersistirApartamento() {
-        proyectoJpa = new ApartamentoJpaController();
+        aptoJpa = new ApartamentoJpaController();
     }
 
     @Override
