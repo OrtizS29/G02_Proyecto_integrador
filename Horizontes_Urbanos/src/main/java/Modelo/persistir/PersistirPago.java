@@ -1,7 +1,6 @@
 
 package Modelo.persistir;
 
-import Modelo.IPersistencia;
 import Modelo.entities.Pago;
 import Modelo.jpa_controllers.PagoJpaController;
 

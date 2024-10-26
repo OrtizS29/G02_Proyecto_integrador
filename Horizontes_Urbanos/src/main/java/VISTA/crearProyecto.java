@@ -1,20 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package VISTA;
 
 /**
  *
  * @author juanc
  */
-public class crearProyecto extends javax.swing.JPanel {
+public class crearProyecto extends javax.swing.JFrame {
 
     /**
      * Creates new form administrar
      */
     public crearProyecto() {
         initComponents();
+        setSize(909, 514); 
+        setLocationRelativeTo(null);
     }
 
     /**

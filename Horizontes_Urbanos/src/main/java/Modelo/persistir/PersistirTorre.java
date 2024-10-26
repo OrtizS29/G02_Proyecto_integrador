@@ -1,7 +1,6 @@
 
 package Modelo.persistir;
 
-import Modelo.IPersistencia;
 import Modelo.entities.Torre;
 import Modelo.jpa_controllers.TorreJpaController;
 

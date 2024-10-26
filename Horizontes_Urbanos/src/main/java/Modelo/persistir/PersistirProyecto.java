@@ -1,7 +1,6 @@
 
 package Modelo.persistir;
 
-import Modelo.IPersistencia;
 import Modelo.entities.Proyecto;
 import Modelo.jpa_controllers.ProyectoJpaController;
 
@@ -19,7 +18,7 @@ public class PersistirProyecto implements IPersistencia<Proyecto> {
 
     @Override
     public void crear(Proyecto entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        proyectoJpa.create(entidad);
     }
 
     @Override
