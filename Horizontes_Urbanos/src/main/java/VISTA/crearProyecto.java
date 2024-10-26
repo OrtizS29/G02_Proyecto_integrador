@@ -25,38 +25,27 @@ public class crearProyecto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 320, 40));
 
-        jButton1.setBackground(new java.awt.Color(206, 232, 239));
-        jButton1.setText("GESTIONAR PROYECTO");
-        jButton1.setBorder(null);
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 180, 30));
-
-        jButton2.setBackground(new java.awt.Color(206, 232, 239));
-        jButton2.setText("REGISTRAR PROYECTO");
-        jButton2.setBorder(null);
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 180, 30));
-
-        jTextField1.setBackground(new java.awt.Color(136, 146, 146));
-        jTextField1.setBorder(null);
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 271, 270, 30));
-
-        jTextField2.setBackground(new java.awt.Color(136, 146, 146));
-        jTextField2.setBorder(null);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 198, 270, 30));
+        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 320, 40));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/2.png"))); // NOI18N
+        jButton1.setBackground(new java.awt.Color(49, 134, 181));
+        jButton1.setText("Siguiente");
+        jButton1.setBorder(null);
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 364, 80, 20));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearProyecto.png"))); // NOI18N
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -67,7 +56,6 @@ public class crearProyecto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

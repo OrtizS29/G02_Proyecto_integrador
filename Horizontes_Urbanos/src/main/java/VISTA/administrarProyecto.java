@@ -26,11 +26,18 @@ public class administrarProyecto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+=======
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         btnSiguienteCrearProyecto = new javax.swing.JButton();
         txtNumeroDeTorres = new javax.swing.JTextField();
         txtNombreProyecto = new javax.swing.JTextField();
+>>>>>>> 1e04b5f09750d8b12ff9f15ea33bca3fd5088015
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -38,6 +45,22 @@ public class administrarProyecto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+<<<<<<< HEAD
+        jButton2.setText("jButton1");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 180, -1));
+
+        jButton1.setText("jButton1");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 150, -1));
+
+        jButton3.setText("jButton1");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 220, -1));
+
+        jButton4.setText("jButton1");
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 150, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/administrarProyecto.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+=======
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSiguienteCrearProyecto.setBackground(new java.awt.Color(0, 102, 255));
@@ -76,6 +99,7 @@ public class administrarProyecto extends javax.swing.JFrame {
         jTabbedPane1.addTab("Gestionar Proyecto", jPanel2);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 510));
+>>>>>>> 1e04b5f09750d8b12ff9f15ea33bca3fd5088015
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -98,7 +122,14 @@ public class administrarProyecto extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+=======
     private javax.swing.JButton btnSiguienteCrearProyecto;
+>>>>>>> 1e04b5f09750d8b12ff9f15ea33bca3fd5088015
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
