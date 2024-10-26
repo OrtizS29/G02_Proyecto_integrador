@@ -4,6 +4,8 @@
  */
 package VISTA;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author juanc
@@ -81,7 +83,15 @@ public class administrarProyecto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSiguienteCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearProyectoActionPerformed
-        // TODO add your handling code here:
+        
+        btnSiguienteCrearProyecto.setEnabled(false);
+        
+        String nombreProyecto = txtNombreProyecto.getText();
+        int numeroTorres = Integer.parseInt(txtNumeroDeTorres.getText());
+        
+        
+        
+        btnSiguienteCrearProyecto.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
 
     private void txtNombreProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyectoActionPerformed
