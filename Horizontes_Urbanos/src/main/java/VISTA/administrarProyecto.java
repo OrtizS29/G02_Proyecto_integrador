@@ -44,7 +44,7 @@ public class administrarProyecto extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSiguienteCrearProyecto.setBackground(new java.awt.Color(0, 102, 255));
+        btnSiguienteCrearProyecto.setBackground(new java.awt.Color(49, 134, 181));
         btnSiguienteCrearProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnSiguienteCrearProyecto.setForeground(new java.awt.Color(255, 255, 255));
         btnSiguienteCrearProyecto.setText("Siguiente");
@@ -84,18 +84,6 @@ public class administrarProyecto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSiguienteCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearProyectoActionPerformed
-        
-        btnSiguienteCrearProyecto.setEnabled(false);
-        
-        String nombreProyecto = txtNombreProyecto.getText();
-        int numeroTorres = Integer.parseInt(txtNumeroDeTorres.getText());
-        
-        
-        
-        btnSiguienteCrearProyecto.setEnabled(true);
-    }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
-
     private void txtNombreProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyectoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreProyectoActionPerformed
@@ -103,6 +91,16 @@ public class administrarProyecto extends javax.swing.JFrame {
     private void txtNumeroDeTorresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDeTorresActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroDeTorresActionPerformed
+
+    private void btnSiguienteCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearProyectoActionPerformed
+
+        btnSiguienteCrearProyecto.setEnabled(false);
+
+        String nombreProyecto = txtNombreProyecto.getText();
+        int numeroTorres = Integer.parseInt(txtNumeroDeTorres.getText());
+
+        btnSiguienteCrearProyecto.setEnabled(true);
+    }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
 
     /**
      * @param args the command line arguments
