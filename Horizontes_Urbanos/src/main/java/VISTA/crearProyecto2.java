@@ -76,7 +76,15 @@ public class crearProyecto2 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNumeroDeApartamentosActionPerformed
 
     private void btnSiguienteCrearTorreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearTorreActionPerformed
-
+        
+        btnSiguienteCrearTorre.setEnabled(false);
+        
+        int numeroTorre = Integer.parseInt(txtNumeroTorre.getText());
+        int numeroApartamentos = Integer.parseInt(txtNumeroDeApartamentos.getText());
+        
+        
+        
+        btnSiguienteCrearTorre.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteCrearTorreActionPerformed
 
     /**
