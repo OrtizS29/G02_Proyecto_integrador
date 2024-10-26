@@ -18,6 +18,7 @@ public class validarUsuarios {
     }
     
     /**
+     * Metodo para el login que valida que la contraseña y usuario sean correctas segun se el caso
      * 
      * @param usuario
      * @param contrasena
