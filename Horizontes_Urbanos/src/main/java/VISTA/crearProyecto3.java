@@ -28,59 +28,59 @@ public class crearProyecto3 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtNumeroDeTorres = new javax.swing.JTextField();
-        txtNombreProyecto1 = new javax.swing.JTextField();
-        txtNumeroDeTorres1 = new javax.swing.JTextField();
-        txtNombreProyecto2 = new javax.swing.JTextField();
-        txtNumeroDeTorres2 = new javax.swing.JTextField();
-        txtNumeroDeTorres3 = new javax.swing.JTextField();
+        txtNumeroApartamento = new javax.swing.JTextField();
+        txtValorApartamento = new javax.swing.JTextField();
+        txtTipoUnidad = new javax.swing.JTextField();
+        txtArea = new javax.swing.JTextField();
+        txtFechaEscritura = new javax.swing.JTextField();
+        txtMatricula = new javax.swing.JTextField();
         btnSiguienteCrearProyecto = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtNumeroDeTorres.addActionListener(new java.awt.event.ActionListener() {
+        txtNumeroApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroDeTorresActionPerformed(evt);
+                txtNumeroApartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNumeroDeTorres, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 290, 30));
+        getContentPane().add(txtNumeroApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 290, 30));
 
-        txtNombreProyecto1.addActionListener(new java.awt.event.ActionListener() {
+        txtValorApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProyecto1ActionPerformed(evt);
+                txtValorApartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombreProyecto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 290, 30));
+        getContentPane().add(txtValorApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 290, 30));
 
-        txtNumeroDeTorres1.addActionListener(new java.awt.event.ActionListener() {
+        txtTipoUnidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroDeTorres1ActionPerformed(evt);
+                txtTipoUnidadActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNumeroDeTorres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 290, 30));
+        getContentPane().add(txtTipoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 290, 30));
 
-        txtNombreProyecto2.addActionListener(new java.awt.event.ActionListener() {
+        txtArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProyecto2ActionPerformed(evt);
+                txtAreaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombreProyecto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 290, 30));
+        getContentPane().add(txtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 290, 30));
 
-        txtNumeroDeTorres2.addActionListener(new java.awt.event.ActionListener() {
+        txtFechaEscritura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroDeTorres2ActionPerformed(evt);
+                txtFechaEscrituraActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNumeroDeTorres2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 240, 30));
+        getContentPane().add(txtFechaEscritura, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 240, 30));
 
-        txtNumeroDeTorres3.addActionListener(new java.awt.event.ActionListener() {
+        txtMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroDeTorres3ActionPerformed(evt);
+                txtMatriculaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNumeroDeTorres3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 290, 30));
+        getContentPane().add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 290, 30));
 
         btnSiguienteCrearProyecto.setBackground(new java.awt.Color(49, 134, 181));
         btnSiguienteCrearProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -99,33 +99,33 @@ public class crearProyecto3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNumeroDeTorresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDeTorresActionPerformed
+    private void txtNumeroApartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroApartamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroDeTorresActionPerformed
+    }//GEN-LAST:event_txtNumeroApartamentoActionPerformed
 
     private void btnSiguienteCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearProyectoActionPerformed
 
     }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
 
-    private void txtNombreProyecto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto1ActionPerformed
+    private void txtValorApartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorApartamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProyecto1ActionPerformed
+    }//GEN-LAST:event_txtValorApartamentoActionPerformed
 
-    private void txtNumeroDeTorres1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDeTorres1ActionPerformed
+    private void txtTipoUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoUnidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroDeTorres1ActionPerformed
+    }//GEN-LAST:event_txtTipoUnidadActionPerformed
 
-    private void txtNombreProyecto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto2ActionPerformed
+    private void txtAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAreaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProyecto2ActionPerformed
+    }//GEN-LAST:event_txtAreaActionPerformed
 
-    private void txtNumeroDeTorres2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDeTorres2ActionPerformed
+    private void txtFechaEscrituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaEscrituraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroDeTorres2ActionPerformed
+    }//GEN-LAST:event_txtFechaEscrituraActionPerformed
 
-    private void txtNumeroDeTorres3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDeTorres3ActionPerformed
+    private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroDeTorres3ActionPerformed
+    }//GEN-LAST:event_txtMatriculaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,11 +135,11 @@ public class crearProyecto3 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSiguienteCrearProyecto;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtNombreProyecto1;
-    private javax.swing.JTextField txtNombreProyecto2;
-    private javax.swing.JTextField txtNumeroDeTorres;
-    private javax.swing.JTextField txtNumeroDeTorres1;
-    private javax.swing.JTextField txtNumeroDeTorres2;
-    private javax.swing.JTextField txtNumeroDeTorres3;
+    private javax.swing.JTextField txtArea;
+    private javax.swing.JTextField txtFechaEscritura;
+    private javax.swing.JTextField txtMatricula;
+    private javax.swing.JTextField txtNumeroApartamento;
+    private javax.swing.JTextField txtTipoUnidad;
+    private javax.swing.JTextField txtValorApartamento;
     // End of variables declaration//GEN-END:variables
 }
