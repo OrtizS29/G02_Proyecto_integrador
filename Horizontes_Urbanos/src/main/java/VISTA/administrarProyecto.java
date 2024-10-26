@@ -4,19 +4,29 @@
  */
 package VISTA;
 
+import CONTROLADOR.GestionarProyecto;
+import Modelo.entities.Administrador;
+import Modelo.entities.Proyecto;
+import Modelo.persistir.PersistirAdministrador;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author juanc
  */
 public class administrarProyecto extends javax.swing.JFrame {
-
+    PersistirAdministrador persistirAdmin;
+    GestionarProyecto gestiProyecto;
     /**
      * Creates new form gestionarProyecto
      */
     public administrarProyecto() {
         initComponents();
+        persistirAdmin = new PersistirAdministrador();
+        gestiProyecto = new GestionarProyecto();
         setSize(912, 510); 
         setLocationRelativeTo(null);
     }
@@ -95,10 +105,27 @@ public class administrarProyecto extends javax.swing.JFrame {
     private void btnSiguienteCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearProyectoActionPerformed
 
         btnSiguienteCrearProyecto.setEnabled(false);
-
+        
+        Administrador administrador = null;
+        try {
+            administrador = persistirAdmin.obtener(1);
+        } catch (Exception ex) {
+            Logger.getLogger(administrarProyecto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         String nombreProyecto = txtNombreProyecto.getText();
         int numeroTorres = Integer.parseInt(txtNumeroDeTorres.getText());
 
+        Proyecto nuevProyecto = new Proyecto();
+        nuevProyecto.setNombre_proyecto(nombreProyecto);
+        nuevProyecto.setNumero_torres(numeroTorres);
+        nuevProyecto.setAdministrador(administrador);
+        nuevProyecto.setListaTorres(new ArrayList<>());
+        
+        gestiProyecto.guardar(nuevProyecto);
+        
+        
+        
         btnSiguienteCrearProyecto.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
 

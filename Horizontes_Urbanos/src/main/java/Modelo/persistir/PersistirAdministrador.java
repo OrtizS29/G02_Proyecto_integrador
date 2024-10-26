@@ -4,6 +4,7 @@ package Modelo.persistir;
 import Modelo.entities.Administrador;
 import Modelo.exceptions.PreexistingEntityException;
 import Modelo.jpa_controllers.AdministradorJpaController;
+import java.util.List;
 
 /**
  *
@@ -62,4 +63,8 @@ public class PersistirAdministrador implements IPersistencia<Administrador>{
         adminJpa.destroy(id);
     }
     
+    public List<Administrador> traerAdmin(){
+        List<Administrador> listaAdmin = adminJpa.findAdministradorEntities();
+        return listaAdmin;
+    }
 }
