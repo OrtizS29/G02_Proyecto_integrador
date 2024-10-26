@@ -25,7 +25,6 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-<<<<<<< HEAD
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
@@ -72,9 +71,6 @@
           <Image iconType="3" name="/Images/administrarProyecto.png"/>
         </Property>
       </Properties>
-=======
-    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
->>>>>>> 1e04b5f09750d8b12ff9f15ea33bca3fd5088015
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="0" width="910" height="510"/>
