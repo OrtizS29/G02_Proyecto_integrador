@@ -28,6 +28,9 @@ public class administrarTorre extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        btnSiguienteCrearProyecto = new javax.swing.JButton();
+        txtNombreProyecto4 = new javax.swing.JTextField();
+        txtNombreProyecto5 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -35,6 +38,31 @@ public class administrarTorre extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnSiguienteCrearProyecto.setBackground(new java.awt.Color(49, 134, 181));
+        btnSiguienteCrearProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnSiguienteCrearProyecto.setForeground(new java.awt.Color(255, 255, 255));
+        btnSiguienteCrearProyecto.setText("Siguiente");
+        btnSiguienteCrearProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteCrearProyectoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSiguienteCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 100, 40));
+
+        txtNombreProyecto4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProyecto4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombreProyecto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 280, 30));
+
+        txtNombreProyecto5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProyecto5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombreProyecto5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 280, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearTorre.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 440));
@@ -56,20 +84,35 @@ public class administrarTorre extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSiguienteCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearProyectoActionPerformed
+
+    }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
+
+    private void txtNombreProyecto4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreProyecto4ActionPerformed
+
+    private void txtNombreProyecto5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreProyecto5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSiguienteCrearProyecto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField txtNombreProyecto4;
+    private javax.swing.JTextField txtNombreProyecto5;
     // End of variables declaration//GEN-END:variables
 }

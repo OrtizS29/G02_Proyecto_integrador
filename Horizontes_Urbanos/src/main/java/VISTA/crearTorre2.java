@@ -26,14 +26,104 @@ public class crearTorre2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtNombreProyecto = new javax.swing.JTextField();
+        btnSiguienteCrearProyecto = new javax.swing.JButton();
+        txtNombreProyecto1 = new javax.swing.JTextField();
+        txtNombreProyecto2 = new javax.swing.JTextField();
+        txtNombreProyecto3 = new javax.swing.JTextField();
+        txtNombreProyecto4 = new javax.swing.JTextField();
+        txtNombreProyecto5 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
+
+        txtNombreProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProyectoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtNombreProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 280, 20));
+
+        btnSiguienteCrearProyecto.setBackground(new java.awt.Color(49, 134, 181));
+        btnSiguienteCrearProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnSiguienteCrearProyecto.setForeground(new java.awt.Color(255, 255, 255));
+        btnSiguienteCrearProyecto.setText("Guardar");
+        btnSiguienteCrearProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteCrearProyectoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSiguienteCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 100, 40));
+
+        txtNombreProyecto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProyecto1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtNombreProyecto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 280, 20));
+
+        txtNombreProyecto2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProyecto2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtNombreProyecto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 280, 20));
+
+        txtNombreProyecto3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProyecto3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtNombreProyecto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 210, 20));
+
+        txtNombreProyecto4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProyecto4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtNombreProyecto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 280, 20));
+
+        txtNombreProyecto5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProyecto5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtNombreProyecto5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 280, 20));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorre2.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNombreProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyectoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreProyectoActionPerformed
+
+    private void btnSiguienteCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearProyectoActionPerformed
+
+    }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
+
+    private void txtNombreProyecto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreProyecto1ActionPerformed
+
+    private void txtNombreProyecto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreProyecto2ActionPerformed
+
+    private void txtNombreProyecto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreProyecto3ActionPerformed
+
+    private void txtNombreProyecto4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreProyecto4ActionPerformed
+
+    private void txtNombreProyecto5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreProyecto5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -71,6 +161,13 @@ public class crearTorre2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSiguienteCrearProyecto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField txtNombreProyecto;
+    private javax.swing.JTextField txtNombreProyecto1;
+    private javax.swing.JTextField txtNombreProyecto2;
+    private javax.swing.JTextField txtNombreProyecto3;
+    private javax.swing.JTextField txtNombreProyecto4;
+    private javax.swing.JTextField txtNombreProyecto5;
     // End of variables declaration//GEN-END:variables
 }
