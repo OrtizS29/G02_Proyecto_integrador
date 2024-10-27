@@ -51,6 +51,8 @@ public class administrarProyecto extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMostrarProyecto = new javax.swing.JTable();
+        btnEliminarProyecto = new javax.swing.JButton();
+        btnEditarProyecto = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,8 +110,32 @@ public class administrarProyecto extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarProyecto);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 500, 320));
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 480));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 490, 270));
+
+        btnEliminarProyecto.setBackground(new java.awt.Color(49, 134, 181));
+        btnEliminarProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnEliminarProyecto.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarProyecto.setText("Eliminar");
+        btnEliminarProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarProyectoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnEliminarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 110, 40));
+
+        btnEditarProyecto.setBackground(new java.awt.Color(49, 134, 181));
+        btnEditarProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnEditarProyecto.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarProyecto.setText("Editar");
+        btnEditarProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarProyectoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnEditarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 110, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarProyecto.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 490));
 
         jTabbedPane1.addTab("Gestionar Proyecto", jPanel2);
 
@@ -165,6 +191,14 @@ public class administrarProyecto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnEliminarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProyectoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarProyectoActionPerformed
+
+    private void btnEditarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProyectoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarProyectoActionPerformed
+
     private void cargarTabla() throws Exception {
 
         DefaultTableModel modeloTabla  = new DefaultTableModel(){
@@ -199,6 +233,8 @@ public class administrarProyecto extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditarProyecto;
+    private javax.swing.JButton btnEliminarProyecto;
     private javax.swing.JButton btnSiguienteCrearProyecto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
