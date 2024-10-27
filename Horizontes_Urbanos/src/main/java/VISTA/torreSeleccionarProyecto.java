@@ -80,6 +80,10 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
         btnSiguienteSeleccionarProyecto.setEnabled(false);
 
         
+        administrarTorre adminTorre = new administrarTorre();
+        adminTorre.setVisible(true);
+        adminTorre.setLocationRelativeTo(null);
+        this.dispose();
 
         btnSiguienteSeleccionarProyecto.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteSeleccionarProyectoActionPerformed
