@@ -30,7 +30,7 @@ public class Torre implements Serializable {
     @SequenceGenerator(name = "seq_idTorre", sequenceName = "seq_idTorre", allocationSize = 1)
     private int id_torre;
     private int numero_torre;
-    private int numero_apartamento;
+    private int numero_apartamentos;
     
     @OneToMany(mappedBy = "torre",cascade = CascadeType.ALL)
     private ArrayList<Apartamento> listaApartamentos;
@@ -45,7 +45,7 @@ public class Torre implements Serializable {
     public Torre(int id_torre, int numero_torre, int numero_apartamento, ArrayList<Apartamento> listaApartamentos, Proyecto proyecto) {
         this.id_torre = id_torre;
         this.numero_torre = numero_torre;
-        this.numero_apartamento = numero_apartamento;
+        this.numero_apartamentos = numero_apartamento;
         this.listaApartamentos = listaApartamentos;
         this.proyecto = proyecto;
     }
@@ -66,12 +66,12 @@ public class Torre implements Serializable {
         this.numero_torre = numero_torre;
     }
 
-    public int getNumero_apartamento() {
-        return numero_apartamento;
+    public int getNumero_apartamentos() {
+        return numero_apartamentos;
     }
 
-    public void setNumero_apartamento(int numero_apartamento) {
-        this.numero_apartamento = numero_apartamento;
+    public void setNumero_apartamentos(int numero_apartamentos) {
+        this.numero_apartamentos = numero_apartamentos;
     }
 
     public ArrayList<Apartamento> getListaApartamentos() {

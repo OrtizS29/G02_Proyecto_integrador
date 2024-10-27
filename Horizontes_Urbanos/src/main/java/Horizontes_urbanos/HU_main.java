@@ -20,5 +20,6 @@ public class HU_main {
         Login log = new Login();
         log.setVisible(true);
         log.setLocationRelativeTo(null);
+        
     }
 }

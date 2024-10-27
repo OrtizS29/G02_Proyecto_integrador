@@ -25,7 +25,7 @@ public class GestionarTorre implements Gestionar<Torre>{
             ArrayList<Apartamento> listaApartamentos,Proyecto proyecto) throws Exception{
         Torre torre = new Torre();
         torre.setNumero_torre(numero_apartamento);
-        torre.setNumero_apartamento(numero_apartamento);
+        torre.setNumero_apartamentos(numero_apartamento);
         torre.setListaApartamentos(listaApartamentos);
         torre.setProyecto(proyecto);
         persisTorre.crear(torre);

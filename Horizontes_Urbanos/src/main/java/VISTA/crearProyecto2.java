@@ -97,16 +97,17 @@ public class crearProyecto2 extends javax.swing.JFrame {
         
         Torre torre = new Torre();
         torre.setNumero_torre(numeroTorre);
-        torre.setNumero_apartamento(numeroApartamentos);
+        torre.setNumero_apartamentos(numeroApartamentos);
         torre.setProyecto(proyectoActual);
         torre.setListaApartamentos(new ArrayList<Apartamento>());
         
         //añade la torre a la lista torre del proyecto que cree anteriormente
         proyectoActual.getListaTorres().add(torre);
-        
         Torre torreActual = gestiTorre.guardar(torre);
         
         crearProyecto3 crearProyectoApt = new crearProyecto3(gestiTorre,torreActual);
+        crearProyectoApt.setVisible(true);
+        crearProyectoApt.setLocationRelativeTo(null);
         
         btnSiguienteCrearTorre.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteCrearTorreActionPerformed
