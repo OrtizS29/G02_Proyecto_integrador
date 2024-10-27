@@ -4,8 +4,10 @@ package CONTROLADOR;
 import Modelo.entities.Administrador;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
+import Modelo.persistir.PersistirAdministrador;
 import Modelo.persistir.PersistirProyecto;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,9 +18,11 @@ import java.util.logging.Logger;
 public class GestionarProyecto implements Gestionar<Proyecto> {
     
     private PersistirProyecto persisProyecto;
+    private PersistirAdministrador persisAdmin;
 
     public GestionarProyecto() {
         persisProyecto = new PersistirProyecto();
+        persisAdmin = new PersistirAdministrador();
     }
 
     public void guardarProyecto(String nombre_proyecto,int numero_torres,
@@ -58,6 +62,9 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    
+    public List<Proyecto> obtenerProyectosAdmin() throws Exception{
+        Administrador administrador = persisAdmin.obtener(68293849);
+        return administrador.getListaProyectos();
+    }
     
 }

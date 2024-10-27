@@ -1,16 +1,23 @@
 
 package VISTA;
 
+import CONTROLADOR.GestionarProyecto;
+import Modelo.entities.Proyecto;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author juanc,Santiago
  */
 public class torreSeleccionarProyecto extends javax.swing.JFrame {
 
-    /**
-     * Creates new form torreSeleccionarProyecto
-     */
+    GestionarProyecto gestiProyecto;
+    
     public torreSeleccionarProyecto() {
+        this.gestiProyecto = new GestionarProyecto();
         initComponents();
     }
 
@@ -25,10 +32,15 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
 
         btnSiguienteSeleccionarProyecto = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaSeleccionarProyecto = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSiguienteSeleccionarProyecto.setBackground(new java.awt.Color(49, 134, 181));
@@ -42,18 +54,18 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
         });
         getContentPane().add(btnSiguienteSeleccionarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 370, 110, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaSeleccionarProyecto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaSeleccionarProyecto);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 440, 190));
 
@@ -72,15 +84,44 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
         btnSiguienteSeleccionarProyecto.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteSeleccionarProyectoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        try {
+            cargarTabla();
+        } catch (Exception ex) {
+            Logger.getLogger(torreSeleccionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSiguienteSeleccionarProyecto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaSeleccionarProyecto;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarTabla() throws Exception {
+
+        DefaultTableModel modeloTabla  = new DefaultTableModel(){
+            
+            @Override
+            public boolean isCellEditable (int row,int column){
+                return false;
+            }
+        };
+        
+        String titulos[] = {"Nombre Proyecto"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        List<Proyecto> listaProyectos = gestiProyecto.obtenerProyectosAdmin();
+        
+        if(listaProyectos != null){
+            for(Proyecto proyect: listaProyectos){
+                Object[] objeto ={proyect.getNombre_proyecto()};
+                modeloTabla.addRow(objeto);
+            }
+        }
+        tablaSeleccionarProyecto.setModel(modeloTabla);
+    }
 }
