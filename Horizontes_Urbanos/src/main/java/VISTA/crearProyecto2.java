@@ -4,17 +4,30 @@
  */
 package VISTA;
 
+import CONTROLADOR.GestionarProyecto;
+import CONTROLADOR.GestionarTorre;
+import Modelo.entities.Apartamento;
+import Modelo.entities.Proyecto;
+import Modelo.entities.Torre;
+import java.util.ArrayList;
+
 /**
  *
  * @author juanc
  */
 public class crearProyecto2 extends javax.swing.JFrame {
-
+    
+    GestionarTorre gestiTorre;
+    GestionarProyecto gestiProyecto;
+    Proyecto proyectoActual;
     /**
      * Creates new form crearProyecto2
      */
-    public crearProyecto2() {
+    public crearProyecto2(GestionarProyecto gestiProyecto,Proyecto proyectoActual) {
         initComponents();
+        this.gestiTorre = new GestionarTorre();
+        this.gestiProyecto = gestiProyecto;
+        this.proyectoActual = proyectoActual;
         setSize(912, 510); 
         setLocationRelativeTo(null);
     }
@@ -82,7 +95,18 @@ public class crearProyecto2 extends javax.swing.JFrame {
         int numeroTorre = Integer.parseInt(txtNumeroTorre.getText());
         int numeroApartamentos = Integer.parseInt(txtNumeroDeApartamentos.getText());
         
+        Torre torre = new Torre();
+        torre.setNumero_torre(numeroTorre);
+        torre.setNumero_apartamento(numeroApartamentos);
+        torre.setProyecto(proyectoActual);
+        torre.setListaApartamentos(new ArrayList<Apartamento>());
         
+        //añade la torre a la lista torre del proyecto que cree anteriormente
+        proyectoActual.getListaTorres().add(torre);
+        
+        Torre torreActual = gestiTorre.guardar(torre);
+        
+        crearProyecto3 crearProyectoApt = new crearProyecto3(gestiTorre,torreActual);
         
         btnSiguienteCrearTorre.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteCrearTorreActionPerformed

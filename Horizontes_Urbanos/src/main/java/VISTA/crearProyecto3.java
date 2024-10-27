@@ -4,16 +4,29 @@
  */
 package VISTA;
 
+import CONTROLADOR.GestionarTorre;
+import Modelo.entities.Apartamento;
+import Modelo.entities.Torre;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author juanc
  */
 public class crearProyecto3 extends javax.swing.JFrame {
 
+    GestionarTorre gestiTorre;
+    Torre torreActual;
     /**
      * Creates new form crearProyecto3
      */
-    public crearProyecto3() {
+    public crearProyecto3(GestionarTorre gestiTorre,Torre torreActual) {
+        this.gestiTorre = gestiTorre;
+        this.torreActual = torreActual;
         initComponents();
         setSize(912, 510); 
         setLocationRelativeTo(null);
@@ -34,7 +47,7 @@ public class crearProyecto3 extends javax.swing.JFrame {
         txtArea = new javax.swing.JTextField();
         txtFechaEscritura = new javax.swing.JTextField();
         txtMatricula = new javax.swing.JTextField();
-        btnSiguienteCrearProyecto = new javax.swing.JButton();
+        btnGuardarApartamento = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,16 +95,16 @@ public class crearProyecto3 extends javax.swing.JFrame {
         });
         getContentPane().add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 290, 30));
 
-        btnSiguienteCrearProyecto.setBackground(new java.awt.Color(49, 134, 181));
-        btnSiguienteCrearProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnSiguienteCrearProyecto.setForeground(new java.awt.Color(255, 255, 255));
-        btnSiguienteCrearProyecto.setText("Guardar");
-        btnSiguienteCrearProyecto.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarApartamento.setBackground(new java.awt.Color(49, 134, 181));
+        btnGuardarApartamento.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnGuardarApartamento.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardarApartamento.setText("Guardar");
+        btnGuardarApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiguienteCrearProyectoActionPerformed(evt);
+                btnGuardarApartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSiguienteCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 110, 40));
+        getContentPane().add(btnGuardarApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 110, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearProyecto3.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -103,9 +116,38 @@ public class crearProyecto3 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroApartamentoActionPerformed
 
-    private void btnSiguienteCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearProyectoActionPerformed
+    private void btnGuardarApartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarApartamentoActionPerformed
 
-    }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
+        btnGuardarApartamento.setEnabled(false);
+        
+        int numeroApartamento = Integer.parseInt(txtNumeroApartamento.getText());
+        int valorApartamento = Integer.parseInt(txtValorApartamento.getText());
+        String tipoUnidad = txtTipoUnidad.getText();
+        double area = Double.parseDouble(txtArea.getText());
+        String matricula = txtMatricula.getText();
+        Date fechaEscritura = getFechaDesdeTextField();
+        
+        Apartamento apartamento = new Apartamento();
+        apartamento.setNum_apartemento(numeroApartamento);
+        apartamento.setValor_apartamento(valorApartamento);
+        apartamento.setTipo_unidad(tipoUnidad);
+        apartamento.setArea(area);
+        apartamento.setMatricula(matricula);
+        apartamento.setFecha_escritura(fechaEscritura);
+        apartamento.setTorre(torreActual);
+        apartamento.setVenta(null);
+        
+        torreActual.getListaApartamentos().add(apartamento);
+        
+        JOptionPane optionPane = new JOptionPane("Se guardo");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Guardado Exitoso");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+        
+        
+        btnGuardarApartamento.setEnabled(true);
+    }//GEN-LAST:event_btnGuardarApartamentoActionPerformed
 
     private void txtValorApartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorApartamentoActionPerformed
         // TODO add your handling code here:
@@ -128,12 +170,23 @@ public class crearProyecto3 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMatriculaActionPerformed
 
     /**
-     * @param args the command line arguments
+     * Metodo que convierte string en Date para guardarlo bien en la base de datos
+     * @return Date
      */
+    public Date getFechaDesdeTextField() {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            java.util.Date utilDate = formato.parse(txtFechaEscritura.getText());
+            return new Date(utilDate.getTime());
+        } catch (ParseException e) {
+        JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto. Debe ser yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
+        return null; // Retorna null si ocurre un error
+    }
+}
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSiguienteCrearProyecto;
+    private javax.swing.JButton btnGuardarApartamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtArea;
     private javax.swing.JTextField txtFechaEscritura;

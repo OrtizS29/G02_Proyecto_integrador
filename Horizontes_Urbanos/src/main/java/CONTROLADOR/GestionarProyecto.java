@@ -22,22 +22,25 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
     }
 
     public void guardarProyecto(String nombre_proyecto,int numero_torres,
-            ArrayList<Torre> listaTorres,Administrador administrador) throws Exception{
+            Administrador administrador) throws Exception{
         Proyecto proyecto = new Proyecto();
         proyecto.setNombre_proyecto(nombre_proyecto);
         proyecto.setNumero_torres(numero_torres);
-        proyecto.setListaTorres(listaTorres);
+        proyecto.setListaTorres(new ArrayList<>());
         proyecto.setAdministrador(administrador);
         persisProyecto.crear(proyecto);
     }
     
     @Override
-    public void guardar(Proyecto entidad) {
+    public Proyecto guardar(Proyecto entidad) {
         try {
             persisProyecto.crear(entidad);
         } catch (Exception ex) {
             Logger.getLogger(GestionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return entidad;
+            
+        
     }
 
     @Override

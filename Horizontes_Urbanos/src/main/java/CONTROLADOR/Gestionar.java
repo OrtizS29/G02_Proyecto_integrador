@@ -11,7 +11,7 @@ public interface Gestionar<T> {
      * 
      * @param entidad 
      */
-    public void guardar(T entidad);
+    public T guardar(T entidad);
     
     /**
      * 

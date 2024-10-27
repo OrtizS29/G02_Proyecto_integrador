@@ -36,12 +36,13 @@ public class GestionarApartamento implements Gestionar<Apartamento>{
     }
     
     @Override
-    public void guardar(Apartamento entidad) {
+    public Apartamento guardar(Apartamento entidad) {
         try {
             persisApto.crear(entidad);
         } catch (Exception ex) {
             Logger.getLogger(GestionarApartamento.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return entidad;
     }
 
     @Override
