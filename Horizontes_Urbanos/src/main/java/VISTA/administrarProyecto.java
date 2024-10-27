@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package VISTA;
 
 import CONTROLADOR.GestionarProyecto;
@@ -16,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author juanc
+ * @author juanc,Santiago
  */
 public class administrarProyecto extends javax.swing.JFrame {
     PersistirAdministrador persistirAdmin;
