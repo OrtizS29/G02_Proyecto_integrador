@@ -150,6 +150,10 @@ public class crearProyecto3 extends javax.swing.JFrame {
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
         
+        menuAdmin menuAdmin = new menuAdmin();
+        menuAdmin.setVisible(true);
+        menuAdmin.setLocationRelativeTo(null);
+        this.dispose();
         
         btnGuardarApartamento.setEnabled(true);
     }//GEN-LAST:event_btnGuardarApartamentoActionPerformed

@@ -104,6 +104,7 @@ public class menuAdmin extends javax.swing.JFrame {
         torreSeleccionarProyecto torreSelectProyecto = new torreSeleccionarProyecto();
         torreSelectProyecto.setVisible(true);
         torreSelectProyecto.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnAdministrarTorreActionPerformed
 
     private void btnAdministrarAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarAsesorActionPerformed
@@ -115,10 +116,15 @@ public class menuAdmin extends javax.swing.JFrame {
         administrarProyecto adminProyecto = new administrarProyecto();
         adminProyecto.setVisible(true);
         adminProyecto.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnAdministrarProyectoActionPerformed
 
     private void btnAdministrarApartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarApartamentoActionPerformed
-        // TODO add your handling code here:
+        
+        apartamentoSeleccionarProyecto aptoProyecto = new apartamentoSeleccionarProyecto();
+        aptoProyecto.setVisible(true);
+        aptoProyecto.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnAdministrarApartamentoActionPerformed
 
 

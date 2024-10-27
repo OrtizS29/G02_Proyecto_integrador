@@ -108,6 +108,7 @@ public class crearProyecto2 extends javax.swing.JFrame {
         crearProyecto3 crearProyectoApt = new crearProyecto3(gestiTorre,torreActual);
         crearProyectoApt.setVisible(true);
         crearProyectoApt.setLocationRelativeTo(null);
+        this.dispose();
         
         btnSiguienteCrearTorre.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteCrearTorreActionPerformed
