@@ -24,7 +24,7 @@ public class GestionarApartamento implements Gestionar<Apartamento>{
     public void guardarApartamento(int num_apartemento,int valor_apartamento,String tipo_unidad,
             double area,String matricula,Date fecha_escritura,Torre torre,Venta venta) throws Exception{
         Apartamento apartamento = new Apartamento();
-        apartamento.setNum_apartemento(num_apartemento);
+        apartamento.setNum_apartamento(num_apartemento);
         apartamento.setValor_apartamento(valor_apartamento);
         apartamento.setTipo_unidad(tipo_unidad);
         apartamento.setArea(area);

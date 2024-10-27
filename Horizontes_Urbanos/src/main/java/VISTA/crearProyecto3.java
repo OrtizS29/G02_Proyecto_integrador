@@ -4,6 +4,7 @@
  */
 package VISTA;
 
+import CONTROLADOR.GestionarApartamento;
 import CONTROLADOR.GestionarTorre;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Torre;
@@ -19,12 +20,14 @@ import javax.swing.JOptionPane;
  */
 public class crearProyecto3 extends javax.swing.JFrame {
 
+    GestionarApartamento gestiApto;
     GestionarTorre gestiTorre;
     Torre torreActual;
     /**
      * Creates new form crearProyecto3
      */
     public crearProyecto3(GestionarTorre gestiTorre,Torre torreActual) {
+        this.gestiApto = new GestionarApartamento();
         this.gestiTorre = gestiTorre;
         this.torreActual = torreActual;
         initComponents();
@@ -128,7 +131,7 @@ public class crearProyecto3 extends javax.swing.JFrame {
         Date fechaEscritura = getFechaDesdeTextField();
         
         Apartamento apartamento = new Apartamento();
-        apartamento.setNum_apartemento(numeroApartamento);
+        apartamento.setNum_apartamento(numeroApartamento);
         apartamento.setValor_apartamento(valorApartamento);
         apartamento.setTipo_unidad(tipoUnidad);
         apartamento.setArea(area);
@@ -138,6 +141,8 @@ public class crearProyecto3 extends javax.swing.JFrame {
         apartamento.setVenta(null);
         
         torreActual.getListaApartamentos().add(apartamento);
+        
+        gestiApto.guardar(apartamento);
         
         JOptionPane optionPane = new JOptionPane("Se guardo");
         optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
@@ -175,12 +180,17 @@ public class crearProyecto3 extends javax.swing.JFrame {
      */
     public Date getFechaDesdeTextField() {
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            java.util.Date utilDate = formato.parse(txtFechaEscritura.getText());
-            return new Date(utilDate.getTime());
-        } catch (ParseException e) {
-        JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto. Debe ser yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
-        return null; // Retorna null si ocurre un error
+        String a =txtFechaEscritura.getText();
+        if(a==null){
+            return null;
+        }
+            try {
+                java.util.Date utilDate = formato.parse(a);
+                return new Date(utilDate.getTime());
+            } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto. Debe ser yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
+            return null; // Retorna null si ocurre un error
+        
     }
 }
  

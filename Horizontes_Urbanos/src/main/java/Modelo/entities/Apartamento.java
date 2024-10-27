@@ -26,7 +26,7 @@ public class Apartamento implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idApartamento")
     @SequenceGenerator(name = "seq_idApartamento", sequenceName = "seq_idApartamento", allocationSize = 1)
     private int id_apartamento;
-    private int num_apartemento;
+    private int num_apartamento;
     private int valor_apartamento;
     private String tipo_unidad;
     private double area;
@@ -47,7 +47,7 @@ public class Apartamento implements Serializable {
 
     public Apartamento(int id_apartamento, int num_apartemento, int valor_apartamento, String tipo_unidad, double area, String matricula, Date fecha_escritura, Torre torre, Venta venta) {
         this.id_apartamento = id_apartamento;
-        this.num_apartemento = num_apartemento;
+        this.num_apartamento = num_apartemento;
         this.valor_apartamento = valor_apartamento;
         this.tipo_unidad = tipo_unidad;
         this.area = area;
@@ -65,12 +65,12 @@ public class Apartamento implements Serializable {
         this.id_apartamento = id_apartamento;
     }
 
-    public int getNum_apartemento() {
-        return num_apartemento;
+    public int getNum_apartamento() {
+        return num_apartamento;
     }
 
-    public void setNum_apartemento(int num_apartemento) {
-        this.num_apartemento = num_apartemento;
+    public void setNum_apartamento(int num_apartamento) {
+        this.num_apartamento = num_apartamento;
     }
 
     public int getValor_apartamento() {
