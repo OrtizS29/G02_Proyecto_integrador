@@ -63,10 +63,7 @@ public class PersistirAdministrador implements IPersistencia<Administrador>{
         adminJpa.destroy(id);
     }
     
-    public List<Administrador> traerAdmin(){
-        List<Administrador> listaAdmin = adminJpa.findAdministradorEntities();
-        return listaAdmin;
-    }
+    
     
     
 }

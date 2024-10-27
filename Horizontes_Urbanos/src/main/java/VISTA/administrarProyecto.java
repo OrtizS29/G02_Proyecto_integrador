@@ -130,9 +130,7 @@ public class administrarProyecto extends javax.swing.JFrame {
         btnSiguienteCrearProyecto.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
