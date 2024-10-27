@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package VISTA;
 
 /**
  *
- * @author juanc
+ * @author juanc,Santiago
  */
 public class torreSeleccionarProyecto extends javax.swing.JFrame {
 
@@ -26,10 +23,39 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnSiguienteSeleccionarProyecto = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnSiguienteSeleccionarProyecto.setBackground(new java.awt.Color(49, 134, 181));
+        btnSiguienteSeleccionarProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnSiguienteSeleccionarProyecto.setForeground(new java.awt.Color(255, 255, 255));
+        btnSiguienteSeleccionarProyecto.setText("Siguiente");
+        btnSiguienteSeleccionarProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteSeleccionarProyectoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSiguienteSeleccionarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 370, 110, 40));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 440, 190));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorre.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -37,12 +63,24 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSiguienteSeleccionarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteSeleccionarProyectoActionPerformed
+
+        btnSiguienteSeleccionarProyecto.setEnabled(false);
+
+        
+
+        btnSiguienteSeleccionarProyecto.setEnabled(true);
+    }//GEN-LAST:event_btnSiguienteSeleccionarProyectoActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSiguienteSeleccionarProyecto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
