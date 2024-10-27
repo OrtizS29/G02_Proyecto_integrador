@@ -8,8 +8,12 @@ import Modelo.entities.Torre;
 import Modelo.persistir.PersistirAdministrador;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -45,9 +49,16 @@ public class administrarProyecto extends javax.swing.JFrame {
         txtNombreProyecto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaMostrarProyecto = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -83,6 +94,21 @@ public class administrarProyecto extends javax.swing.JFrame {
         jTabbedPane1.addTab("Crear Proyecto", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tablaMostrarProyecto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tablaMostrarProyecto);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 500, 320));
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 480));
 
         jTabbedPane1.addTab("Gestionar Proyecto", jPanel2);
@@ -130,7 +156,46 @@ public class administrarProyecto extends javax.swing.JFrame {
         btnSiguienteCrearProyecto.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
 
-    
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        try {
+            cargarTabla();
+        } catch (Exception ex) {
+            Logger.getLogger(administrarProyecto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void cargarTabla() throws Exception {
+
+        DefaultTableModel modeloTabla  = new DefaultTableModel(){
+            
+            @Override
+            public boolean isCellEditable (int row,int column){
+                return false;
+            }
+        };
+        
+        String titulos[] = {"Numero Proyecto","Nombre Proyecto","Numero Torres"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        List<Proyecto> listaProyectos = gestiProyecto.obtenerProyectosAdmin();
+        
+        if(listaProyectos != null){
+            
+            Collections.sort(listaProyectos, new Comparator<Proyecto>(){
+                @Override
+                public int compare(Proyecto p1, Proyecto p2) {
+                    return Integer.compare(p1.getId_proyecto(), p2.getId_proyecto());
+                }
+            });
+            
+            for(Proyecto proyect: listaProyectos){
+                Object[] objeto ={proyect.getId_proyecto(),proyect.getNombre_proyecto(),proyect.getNumero_torres()};
+                modeloTabla.addRow(objeto);
+            }
+        }
+        tablaMostrarProyecto.setModel(modeloTabla);
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -139,7 +204,9 @@ public class administrarProyecto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable tablaMostrarProyecto;
     private javax.swing.JTextField txtNombreProyecto;
     private javax.swing.JTextField txtNumeroDeTorres;
     // End of variables declaration//GEN-END:variables
