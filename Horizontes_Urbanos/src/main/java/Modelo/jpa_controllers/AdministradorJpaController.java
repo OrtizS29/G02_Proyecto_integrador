@@ -188,10 +188,10 @@ public class AdministradorJpaController implements Serializable {
         }
     }
 
-    public Administrador findAdministrador(int id) {
+    public Administrador findAdministrador(int cedula) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Administrador.class, id);
+            return em.find(Administrador.class, cedula);
         } finally {
             em.close();
         }

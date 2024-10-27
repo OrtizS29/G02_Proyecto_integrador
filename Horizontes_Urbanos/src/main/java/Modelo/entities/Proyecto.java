@@ -1,7 +1,6 @@
 
 package Modelo.entities;
 
-import Modelo.entities.Administrador;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.CascadeType;
@@ -87,9 +86,5 @@ public class Proyecto implements Serializable {
 
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
-    }
-
-    
-    
-    
+    }    
 }

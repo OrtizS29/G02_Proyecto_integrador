@@ -21,10 +21,10 @@ public class GestionarTorre implements Gestionar<Torre>{
         persisTorre = new PersistirTorre();
     }
 
-    public void guardarTorre(String nombre_torre,int numero_apartamento,
+    public void guardarTorre(String numero_torre,int numero_apartamento,
             ArrayList<Apartamento> listaApartamentos,Proyecto proyecto) throws Exception{
         Torre torre = new Torre();
-        torre.setNumero_torre(nombre_torre);
+        torre.setNumero_torre(numero_apartamento);
         torre.setNumero_apartamento(numero_apartamento);
         torre.setListaApartamentos(listaApartamentos);
         torre.setProyecto(proyecto);
@@ -32,12 +32,13 @@ public class GestionarTorre implements Gestionar<Torre>{
     }
     
     @Override
-    public void guardar(Torre entidad) {
+    public Torre guardar(Torre entidad) {
         try {
             persisTorre.crear(entidad);
         } catch (Exception ex) {
             Logger.getLogger(GestionarTorre.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return entidad;
     }
 
     @Override

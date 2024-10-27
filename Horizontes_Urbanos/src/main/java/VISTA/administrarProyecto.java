@@ -7,6 +7,7 @@ package VISTA;
 import CONTROLADOR.GestionarProyecto;
 import Modelo.entities.Administrador;
 import Modelo.entities.Proyecto;
+import Modelo.entities.Torre;
 import Modelo.persistir.PersistirAdministrador;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -108,7 +109,7 @@ public class administrarProyecto extends javax.swing.JFrame {
         
         Administrador administrador = null;
         try {
-            administrador = persistirAdmin.obtener(1);
+            administrador = persistirAdmin.obtener(68293849);
         } catch (Exception ex) {
             Logger.getLogger(administrarProyecto.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -120,11 +121,11 @@ public class administrarProyecto extends javax.swing.JFrame {
         nuevProyecto.setNombre_proyecto(nombreProyecto);
         nuevProyecto.setNumero_torres(numeroTorres);
         nuevProyecto.setAdministrador(administrador);
-        nuevProyecto.setListaTorres(new ArrayList<>());
+        nuevProyecto.setListaTorres(new ArrayList<Torre>());
         
-        gestiProyecto.guardar(nuevProyecto);
+        Proyecto proyectoActual = gestiProyecto.guardar(nuevProyecto);
         
-        crearProyecto2 crearProyectoTorre = new crearProyecto2();
+        crearProyecto2 crearProyectoTorre = new crearProyecto2(gestiProyecto,proyectoActual);
         crearProyectoTorre.setVisible(true);
         crearProyectoTorre.setLocationRelativeTo(null);
         this.dispose();
