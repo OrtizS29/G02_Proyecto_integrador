@@ -4,16 +4,28 @@
  */
 package VISTA;
 
+import CONTROLADOR.GestionarApartamento;
+import Modelo.entities.Apartamento;
+import Modelo.entities.Torre;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author juanc
+ * @author juanc,Santiago
  */
 public class crearTorre2 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form crearTorre2
-     */
-    public crearTorre2() {
+    
+    Torre torreActual;
+    GestionarApartamento gestiApto;
+    
+    public crearTorre2(Torre torreActual) {
+        this.torreActual = torreActual;
+        this.gestiApto = new GestionarApartamento();
         initComponents();
     }
 
@@ -26,70 +38,70 @@ public class crearTorre2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtNombreProyecto = new javax.swing.JTextField();
-        btnSiguienteCrearProyecto = new javax.swing.JButton();
-        txtNombreProyecto1 = new javax.swing.JTextField();
-        txtNombreProyecto2 = new javax.swing.JTextField();
-        txtNombreProyecto3 = new javax.swing.JTextField();
-        txtNombreProyecto4 = new javax.swing.JTextField();
-        txtNombreProyecto5 = new javax.swing.JTextField();
+        btnGuardarApartamento = new javax.swing.JButton();
+        txtNumeroApartamento = new javax.swing.JTextField();
+        txtValorApartamento = new javax.swing.JTextField();
+        txtTipoUnidad = new javax.swing.JTextField();
+        txtArea = new javax.swing.JTextField();
+        txtMatricula = new javax.swing.JTextField();
+        txtFechaEscritura = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtNombreProyecto.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarApartamento.setBackground(new java.awt.Color(49, 134, 181));
+        btnGuardarApartamento.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnGuardarApartamento.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardarApartamento.setText("Guardar");
+        btnGuardarApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProyectoActionPerformed(evt);
+                btnGuardarApartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombreProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 280, 20));
+        getContentPane().add(btnGuardarApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 100, 40));
 
-        btnSiguienteCrearProyecto.setBackground(new java.awt.Color(49, 134, 181));
-        btnSiguienteCrearProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnSiguienteCrearProyecto.setForeground(new java.awt.Color(255, 255, 255));
-        btnSiguienteCrearProyecto.setText("Guardar");
-        btnSiguienteCrearProyecto.addActionListener(new java.awt.event.ActionListener() {
+        txtNumeroApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiguienteCrearProyectoActionPerformed(evt);
+                txtNumeroApartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSiguienteCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 100, 40));
+        getContentPane().add(txtNumeroApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 290, 20));
 
-        txtNombreProyecto1.addActionListener(new java.awt.event.ActionListener() {
+        txtValorApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProyecto1ActionPerformed(evt);
+                txtValorApartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombreProyecto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 280, 20));
+        getContentPane().add(txtValorApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 290, 20));
 
-        txtNombreProyecto2.addActionListener(new java.awt.event.ActionListener() {
+        txtTipoUnidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProyecto2ActionPerformed(evt);
+                txtTipoUnidadActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombreProyecto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 280, 20));
+        getContentPane().add(txtTipoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 290, 20));
 
-        txtNombreProyecto3.addActionListener(new java.awt.event.ActionListener() {
+        txtArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProyecto3ActionPerformed(evt);
+                txtAreaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombreProyecto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 210, 20));
+        getContentPane().add(txtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 290, -1));
 
-        txtNombreProyecto4.addActionListener(new java.awt.event.ActionListener() {
+        txtMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProyecto4ActionPerformed(evt);
+                txtMatriculaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombreProyecto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 280, 20));
+        getContentPane().add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 290, 20));
 
-        txtNombreProyecto5.addActionListener(new java.awt.event.ActionListener() {
+        txtFechaEscritura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProyecto5ActionPerformed(evt);
+                txtFechaEscrituraActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombreProyecto5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 280, 20));
+        getContentPane().add(txtFechaEscritura, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 210, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorre2.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -97,77 +109,95 @@ public class crearTorre2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyectoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProyectoActionPerformed
+    private void btnGuardarApartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarApartamentoActionPerformed
+        
+        btnGuardarApartamento.setEnabled(false);
+        
+        int numeroApartamento = Integer.parseInt(txtNumeroApartamento.getText());
+        int valorApartamento = Integer.parseInt(txtValorApartamento.getText());
+        String tipoUnidad = txtTipoUnidad.getText();
+        double area = Double.parseDouble(txtArea.getText());
+        String matricula = txtMatricula.getText();
+        Date fechaEscritura = getFechaDesdeTextField();
+        
+        Apartamento apartamento = new Apartamento();
+        apartamento.setNum_apartamento(numeroApartamento);
+        apartamento.setValor_apartamento(valorApartamento);
+        apartamento.setTipo_unidad(tipoUnidad);
+        apartamento.setArea(area);
+        apartamento.setMatricula(matricula);
+        apartamento.setFecha_escritura(fechaEscritura);
+        apartamento.setTorre(torreActual);
+        apartamento.setVenta(null);
+        
+        torreActual.getListaApartamentos().add(apartamento);
+        
+        gestiApto.guardar(apartamento);
+        
+        JOptionPane optionPane = new JOptionPane("Se guardo");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Guardado Exitoso");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+        
+        menuAdmin menuAdmin = new menuAdmin();
+        menuAdmin.setVisible(true);
+        menuAdmin.setLocationRelativeTo(null);
+        this.dispose();
 
-    private void btnSiguienteCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearProyectoActionPerformed
+        btnGuardarApartamento.setEnabled(true);
+    }//GEN-LAST:event_btnGuardarApartamentoActionPerformed
 
-    }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
-
-    private void txtNombreProyecto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProyecto1ActionPerformed
-
-    private void txtNombreProyecto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProyecto2ActionPerformed
-
-    private void txtNombreProyecto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProyecto3ActionPerformed
-
-    private void txtNombreProyecto4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProyecto4ActionPerformed
-
-    private void txtNombreProyecto5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProyecto5ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(crearTorre2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(crearTorre2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(crearTorre2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(crearTorre2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    public Date getFechaDesdeTextField() {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String a =txtFechaEscritura.getText();
+        if(a==null){
+            return null;
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new crearTorre2().setVisible(true);
+            try {
+                java.util.Date utilDate = formato.parse(a);
+                return new Date(utilDate.getTime());
+            } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto. Debe ser yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
+            return null; // Retorna null si ocurre un error
             }
-        });
     }
+    
+    
+    private void txtNumeroApartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroApartamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroApartamentoActionPerformed
+
+    private void txtValorApartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorApartamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorApartamentoActionPerformed
+
+    private void txtTipoUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoUnidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoUnidadActionPerformed
+
+    private void txtAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAreaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAreaActionPerformed
+
+    private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMatriculaActionPerformed
+
+    private void txtFechaEscrituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaEscrituraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaEscrituraActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSiguienteCrearProyecto;
+    private javax.swing.JButton btnGuardarApartamento;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtNombreProyecto;
-    private javax.swing.JTextField txtNombreProyecto1;
-    private javax.swing.JTextField txtNombreProyecto2;
-    private javax.swing.JTextField txtNombreProyecto3;
-    private javax.swing.JTextField txtNombreProyecto4;
-    private javax.swing.JTextField txtNombreProyecto5;
+    private javax.swing.JTextField txtArea;
+    private javax.swing.JTextField txtFechaEscritura;
+    private javax.swing.JTextField txtMatricula;
+    private javax.swing.JTextField txtNumeroApartamento;
+    private javax.swing.JTextField txtTipoUnidad;
+    private javax.swing.JTextField txtValorApartamento;
     // End of variables declaration//GEN-END:variables
 }

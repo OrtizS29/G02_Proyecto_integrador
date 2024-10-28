@@ -30,7 +30,7 @@ public class Proyecto implements Serializable {
     private String nombre_proyecto; 
     private int numero_torres;
     
-    @OneToMany(mappedBy = "proyecto",cascade = CascadeType.ALL) 
+    @OneToMany(mappedBy = "proyecto",cascade = CascadeType.ALL, orphanRemoval = true) 
     private ArrayList<Torre> listaTorres;
     
     @ManyToOne(optional=false)

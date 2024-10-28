@@ -23,7 +23,7 @@ public class PersistirProyecto implements IPersistencia<Proyecto> {
 
     @Override
     public Proyecto obtener(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return proyectoJpa.findProyecto(id);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class PersistirProyecto implements IPersistencia<Proyecto> {
 
     @Override
     public void eliminar(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        proyectoJpa.destroy(id);
     }
     
     

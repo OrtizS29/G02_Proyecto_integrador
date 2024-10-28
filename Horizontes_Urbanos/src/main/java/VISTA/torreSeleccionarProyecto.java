@@ -33,6 +33,7 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
         btnSiguienteSeleccionarProyecto = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaSeleccionarProyecto = new javax.swing.JTable();
+        btnMenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,6 +70,17 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 440, 190));
 
+        btnMenu.setBackground(new java.awt.Color(49, 134, 181));
+        btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
+        btnMenu.setText("Menu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 100, 40));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorre.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -79,11 +91,19 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
 
         btnSiguienteSeleccionarProyecto.setEnabled(false);
 
-        
-        administrarTorre adminTorre = new administrarTorre();
-        adminTorre.setVisible(true);
-        adminTorre.setLocationRelativeTo(null);
-        this.dispose();
+        if(tablaSeleccionarProyecto.getRowCount() > 0){
+            if(tablaSeleccionarProyecto.getSelectedRow() != -1){
+                
+                int id_proyecto = Integer.parseInt(String.valueOf(tablaSeleccionarProyecto.getValueAt(tablaSeleccionarProyecto.getSelectedRow(), 0)));
+
+                Proyecto proyectoSeleccionado = gestiProyecto.buscarPorId(id_proyecto);
+                administrarTorre adminTorre = new administrarTorre(proyectoSeleccionado);
+                adminTorre.setVisible(true);
+                adminTorre.setLocationRelativeTo(null);
+                this.dispose();
+                
+            }
+        }
 
         btnSiguienteSeleccionarProyecto.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteSeleccionarProyectoActionPerformed
@@ -97,8 +117,20 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+
+        btnMenu.setEnabled(false);
+
+        menuAdmin mAdmin = new menuAdmin();
+        mAdmin.setVisible(true);
+        this.dispose();
+
+        btnMenu.setEnabled(true);
+    }//GEN-LAST:event_btnMenuActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSiguienteSeleccionarProyecto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -115,14 +147,14 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
             }
         };
         
-        String titulos[] = {"Nombre Proyecto"};
+        String titulos[] = {"Numero Proyecto","Nombre Proyecto"};
         modeloTabla.setColumnIdentifiers(titulos);
         
         List<Proyecto> listaProyectos = gestiProyecto.obtenerProyectosAdmin();
         
         if(listaProyectos != null){
             for(Proyecto proyect: listaProyectos){
-                Object[] objeto ={proyect.getNombre_proyecto()};
+                Object[] objeto ={proyect.getId_proyecto(),proyect.getNombre_proyecto()};
                 modeloTabla.addRow(objeto);
             }
         }
