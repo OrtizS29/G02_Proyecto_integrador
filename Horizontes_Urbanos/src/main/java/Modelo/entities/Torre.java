@@ -32,11 +32,11 @@ public class Torre implements Serializable {
     private int numero_torre;
     private int numero_apartamentos;
     
-    @OneToMany(mappedBy = "torre",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "torre",cascade = CascadeType.ALL,orphanRemoval = true)
     private ArrayList<Apartamento> listaApartamentos;
     
     @ManyToOne(optional=false)
-    @JoinColumn(name = "Id_proyecto", referencedColumnName = "Id_proyecto")
+    @JoinColumn(name = "Id_proyecto", referencedColumnName = "Id_proyecto",nullable = false)
     private Proyecto proyecto;
 
     public Torre() {

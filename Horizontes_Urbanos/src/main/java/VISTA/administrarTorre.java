@@ -4,16 +4,32 @@
  */
 package VISTA;
 
+import CONTROLADOR.GestionarTorre;
+import Modelo.entities.Apartamento;
+import Modelo.entities.Proyecto;
+import Modelo.entities.Torre;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author juanc
+ * @author juanc,Santiago
  */
 public class administrarTorre extends javax.swing.JFrame {
 
-    /**
-     * Creates new form gestionarTorre
-     */
-    public administrarTorre() {
+    Proyecto proyectoSeleccionado;
+    GestionarTorre gestiTorre;
+    
+    public administrarTorre(Proyecto proyectoSeleccionado) {
+        this.gestiTorre = new GestionarTorre();
+        this.proyectoSeleccionado = proyectoSeleccionado;
         initComponents();
     }
 
@@ -29,13 +45,24 @@ public class administrarTorre extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         btnSiguienteCrearProyecto = new javax.swing.JButton();
-        txtNombreProyecto4 = new javax.swing.JTextField();
-        txtNombreProyecto5 = new javax.swing.JTextField();
+        txtNumeroDeApartamentos = new javax.swing.JTextField();
+        txtNumeroTorre = new javax.swing.JTextField();
+        txtProyectoActual = new javax.swing.JTextField();
+        btnMenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        btnEliminarProyecto = new javax.swing.JButton();
+        btnEditarProyecto = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaMostrarProyecto = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -50,19 +77,34 @@ public class administrarTorre extends javax.swing.JFrame {
         });
         jPanel1.add(btnSiguienteCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 100, 40));
 
-        txtNombreProyecto4.addActionListener(new java.awt.event.ActionListener() {
+        txtNumeroDeApartamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProyecto4ActionPerformed(evt);
+                txtNumeroDeApartamentosActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombreProyecto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 280, 30));
+        jPanel1.add(txtNumeroDeApartamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 280, 30));
 
-        txtNombreProyecto5.addActionListener(new java.awt.event.ActionListener() {
+        txtNumeroTorre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProyecto5ActionPerformed(evt);
+                txtNumeroTorreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombreProyecto5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 280, 30));
+        jPanel1.add(txtNumeroTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 280, 30));
+
+        txtProyectoActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        txtProyectoActual.setText("jTextField1");
+        jPanel1.add(txtProyectoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 180, 40));
+
+        btnMenu.setBackground(new java.awt.Color(49, 134, 181));
+        btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
+        btnMenu.setText("Menu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 100, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearTorre.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 440));
@@ -71,8 +113,45 @@ public class administrarTorre extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnEliminarProyecto.setBackground(new java.awt.Color(49, 134, 181));
+        btnEliminarProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnEliminarProyecto.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarProyecto.setText("Eliminar");
+        btnEliminarProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarProyectoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnEliminarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 110, 40));
+
+        btnEditarProyecto.setBackground(new java.awt.Color(49, 134, 181));
+        btnEditarProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnEditarProyecto.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarProyecto.setText("Editar");
+        btnEditarProyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarProyectoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnEditarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 110, 40));
+
+        tablaMostrarProyecto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tablaMostrarProyecto);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 490, 280));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorree.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 460));
 
         jTabbedPane1.addTab("gestionarTorre", jPanel2);
 
@@ -80,39 +159,150 @@ public class administrarTorre extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSiguienteCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearProyectoActionPerformed
-
+        btnSiguienteCrearProyecto.setEnabled(false);
+        
+        int numeroTorre = Integer.parseInt(txtNumeroTorre.getText());
+        int numeroApartamentos = Integer.parseInt(txtNumeroDeApartamentos.getText());
+        
+        Torre torre = new Torre();
+        torre.setNumero_torre(numeroTorre);
+        torre.setNumero_apartamentos(numeroApartamentos);
+        torre.setProyecto(proyectoSeleccionado);
+        torre.setListaApartamentos(new ArrayList<Apartamento>());
+        
+        //añade la torre a la lista torre del proyecto que cree anteriormente
+        proyectoSeleccionado.getListaTorres().add(torre);
+        Torre torreActual = gestiTorre.guardar(torre);
+        
+        crearTorre2 crearTorreSelect = new crearTorre2(torreActual);
+        crearTorreSelect.setVisible(true);
+        crearTorreSelect.setLocationRelativeTo(null);
+        this.dispose();
+        
+        btnSiguienteCrearProyecto.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
 
-    private void txtNombreProyecto4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto4ActionPerformed
+    private void txtNumeroDeApartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDeApartamentosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProyecto4ActionPerformed
+    }//GEN-LAST:event_txtNumeroDeApartamentosActionPerformed
 
-    private void txtNombreProyecto5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProyecto5ActionPerformed
+    private void txtNumeroTorreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroTorreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProyecto5ActionPerformed
+    }//GEN-LAST:event_txtNumeroTorreActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        this.txtProyectoActual.setText(proyectoSeleccionado.getNombre_proyecto());
+        try {
+            cargarTabla();
+        } catch (Exception ex) {
+            Logger.getLogger(administrarTorre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnEliminarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProyectoActionPerformed
+
+        if(tablaMostrarProyecto.getRowCount() > 0){
+            if(tablaMostrarProyecto.getSelectedRow() != -1){
+
+                int id_proyecto = Integer.parseInt(String.valueOf(tablaMostrarProyecto.getValueAt(tablaMostrarProyecto.getSelectedRow(), 0)));
+
+                //gestiProyecto.borrar(id_proyecto);
+
+                JOptionPane optionPane = new JOptionPane("Torre Eliminada Correctamente");
+                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                JDialog dialog = optionPane.createDialog("Borrado Exitoso");
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+            }
+        }
+
+    }//GEN-LAST:event_btnEliminarProyectoActionPerformed
+
+    private void cargarTabla() throws Exception {
+
+        DefaultTableModel modeloTabla  = new DefaultTableModel(){
+            
+            @Override
+            public boolean isCellEditable (int row,int column){
+                return false;
+            }
+        };
+        
+        String titulos[] = {"Identificador Torre","Numero Torre","Numero Apartamentos","Nombre Proyecto","Numero Torres Proyecto"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        int id = proyectoSeleccionado.getId_proyecto();
+        List<Torre> listaTorres = gestiTorre.obtenerTorresProyecto(id);
+        
+        if(listaTorres != null){
+            
+            Collections.sort(listaTorres, new Comparator<Torre>(){
+                @Override
+                public int compare(Torre t1, Torre t2) {
+                    return Integer.compare(t1.getId_torre(), t2.getId_torre());
+                }
+            });
+            
+            for(Torre torre: listaTorres){
+                Object[] objeto ={torre.getId_torre(),torre.getNumero_torre(),torre.getNumero_apartamentos()
+                ,torre.getProyecto().getNombre_proyecto(),torre.getProyecto().getNumero_torres()};
+                modeloTabla.addRow(objeto);
+            }
+        }
+        tablaMostrarProyecto.setModel(modeloTabla);
+    }
+    
+    
+    
+    
+    private void btnEditarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProyectoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarProyectoActionPerformed
+
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        
+        btnMenu.setEnabled(false);
+        
+        menuAdmin mAdmin = new menuAdmin();
+        mAdmin.setVisible(true);
+        this.dispose();
+        
+        btnMenu.setEnabled(true);
+    }//GEN-LAST:event_btnMenuActionPerformed
 
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditarProyecto;
+    private javax.swing.JButton btnEliminarProyecto;
+    private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSiguienteCrearProyecto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField txtNombreProyecto4;
-    private javax.swing.JTextField txtNombreProyecto5;
+    private javax.swing.JTable tablaMostrarProyecto;
+    private javax.swing.JTextField txtNumeroDeApartamentos;
+    private javax.swing.JTextField txtNumeroTorre;
+    private javax.swing.JTextField txtProyectoActual;
     // End of variables declaration//GEN-END:variables
 }
