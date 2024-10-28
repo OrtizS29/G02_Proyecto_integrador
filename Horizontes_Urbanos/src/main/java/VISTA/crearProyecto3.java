@@ -86,7 +86,7 @@ public class crearProyecto3 extends javax.swing.JFrame {
                 txtFechaEscrituraActionPerformed(evt);
             }
         });
-        getContentPane().add(txtFechaEscritura, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 240, 30));
+        getContentPane().add(txtFechaEscritura, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 240, 30));
 
         txtMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
