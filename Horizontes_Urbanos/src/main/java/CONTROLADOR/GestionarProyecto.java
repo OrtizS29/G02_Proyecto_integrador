@@ -2,10 +2,13 @@
 package CONTROLADOR;
 
 import Modelo.entities.Administrador;
+import Modelo.entities.Apartamento;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
 import Modelo.persistir.PersistirAdministrador;
+import Modelo.persistir.PersistirApartamento;
 import Modelo.persistir.PersistirProyecto;
+import Modelo.persistir.PersistirTorre;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,12 +20,16 @@ import java.util.logging.Logger;
  */
 public class GestionarProyecto implements Gestionar<Proyecto> {
     
-    private PersistirProyecto persisProyecto;
     private PersistirAdministrador persisAdmin;
+    private PersistirProyecto persisProyecto;
+    private PersistirTorre  persisTorre;
+    private PersistirApartamento persisApartamento;
 
     public GestionarProyecto() {
         persisProyecto = new PersistirProyecto();
         persisAdmin = new PersistirAdministrador();
+        persisTorre = new PersistirTorre();
+        persisApartamento = new PersistirApartamento();
     }
 
     public void guardarProyecto(String nombre_proyecto,int numero_torres,
@@ -49,7 +56,13 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
 
     @Override
     public Proyecto buscarPorId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Proyecto proyecto = null;
+        try {
+            proyecto = persisProyecto.obtener(id);
+        } catch (Exception ex) {
+            Logger.getLogger(GestionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return proyecto;
     }
 
     @Override
@@ -59,8 +72,34 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
 
     @Override
     public void borrar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            Proyecto proyecto = persisProyecto.obtener(id);
+        
+            if(proyecto != null){
+               
+                for (Torre torre : proyecto.getListaTorres()) {
+                   
+                    for (Apartamento apartamento : new ArrayList<>(torre.getListaApartamentos())) { // Crear una copia para evitar ConcurrentModificationException
+                        persisApartamento.eliminar(apartamento.getId_apartamento());
+                    }
+                    
+                    persisTorre.eliminar(torre.getId_torre());    
+                }
+
+                Administrador administrador = proyecto.getAdministrador();
+                if (administrador != null) {
+                    administrador.getListaProyectos().remove(proyecto);
+                    
+                }
+
+                persisProyecto.eliminar(id);
+            }
+        
+        } catch (Exception ex) {
+        Logger.getLogger(GestionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+
     
     public List<Proyecto> obtenerProyectosAdmin() throws Exception{
         Administrador administrador = persisAdmin.obtener(68293849);

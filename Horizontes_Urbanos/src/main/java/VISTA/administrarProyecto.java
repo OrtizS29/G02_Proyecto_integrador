@@ -13,6 +13,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -47,6 +49,7 @@ public class administrarProyecto extends javax.swing.JFrame {
         btnSiguienteCrearProyecto = new javax.swing.JButton();
         txtNumeroDeTorres = new javax.swing.JTextField();
         txtNombreProyecto = new javax.swing.JTextField();
+        btnMenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -89,6 +92,17 @@ public class administrarProyecto extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtNombreProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 290, 30));
+
+        btnMenu.setBackground(new java.awt.Color(49, 134, 181));
+        btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
+        btnMenu.setText("Menu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 100, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearProyecto.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 480));
@@ -192,12 +206,45 @@ public class administrarProyecto extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnEliminarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProyectoActionPerformed
-        // TODO add your handling code here:
+        
+        
+        
+        if(tablaMostrarProyecto.getRowCount() > 0){
+            if(tablaMostrarProyecto.getSelectedRow() != -1){
+                
+                int id_proyecto = Integer.parseInt(String.valueOf(tablaMostrarProyecto.getValueAt(tablaMostrarProyecto.getSelectedRow(), 0)));
+               
+                gestiProyecto.borrar(id_proyecto);
+                
+                JOptionPane optionPane = new JOptionPane("Proyecto Eliminado Correctamente");
+                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                JDialog dialog = optionPane.createDialog("Borrado Exitoso");
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+            }
+        }
+        
+        try {
+            cargarTabla();
+        } catch (Exception ex) {
+            Logger.getLogger(administrarProyecto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnEliminarProyectoActionPerformed
 
     private void btnEditarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProyectoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarProyectoActionPerformed
+
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+
+        btnMenu.setEnabled(false);
+
+        menuAdmin mAdmin = new menuAdmin();
+        mAdmin.setVisible(true);
+        this.dispose();
+
+        btnMenu.setEnabled(true);
+    }//GEN-LAST:event_btnMenuActionPerformed
 
     private void cargarTabla() throws Exception {
 
@@ -235,6 +282,7 @@ public class administrarProyecto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditarProyecto;
     private javax.swing.JButton btnEliminarProyecto;
+    private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSiguienteCrearProyecto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
