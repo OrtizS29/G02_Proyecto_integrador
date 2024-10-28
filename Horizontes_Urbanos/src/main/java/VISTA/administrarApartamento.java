@@ -4,16 +4,27 @@
  */
 package VISTA;
 
+import CONTROLADOR.GestionarApartamento;
+import Modelo.entities.Apartamento;
+import Modelo.entities.Torre;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author juanc
  */
 public class administrarApartamento extends javax.swing.JFrame {
 
-    /**
-     * Creates new form administrarApartamento
-     */
-    public administrarApartamento() {
+    GestionarApartamento gestiApto;
+    Torre torreActual;
+    
+    public administrarApartamento(Torre torreActual) {
+        this.gestiApto = new GestionarApartamento();
+        this.torreActual = torreActual;
         initComponents();
     }
 
@@ -28,8 +39,8 @@ public class administrarApartamento extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        txtArea1 = new javax.swing.JTextField();
-        txtTipoUnidad1 = new javax.swing.JTextField();
+        txtFechaEscritura = new javax.swing.JTextField();
+        txtMatricula = new javax.swing.JTextField();
         txtTipoUnidad = new javax.swing.JTextField();
         txtNumeroApartamento = new javax.swing.JTextField();
         txtArea = new javax.swing.JTextField();
@@ -48,19 +59,19 @@ public class administrarApartamento extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtArea1.addActionListener(new java.awt.event.ActionListener() {
+        txtFechaEscritura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtArea1ActionPerformed(evt);
+                txtFechaEscrituraActionPerformed(evt);
             }
         });
-        jPanel1.add(txtArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 230, 30));
+        jPanel1.add(txtFechaEscritura, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 230, 30));
 
-        txtTipoUnidad1.addActionListener(new java.awt.event.ActionListener() {
+        txtMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTipoUnidad1ActionPerformed(evt);
+                txtMatriculaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTipoUnidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 290, 30));
+        jPanel1.add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 290, 30));
 
         txtTipoUnidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,6 +206,21 @@ public class administrarApartamento extends javax.swing.JFrame {
         btnGuardarApartamento.setEnabled(true);
     }//GEN-LAST:event_btnGuardarApartamentoActionPerformed
 
+    public Date getFechaDesdeTextField() {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String a =txtFechaEscritura.getText();
+        if(a==null){
+            return null;
+        }
+            try {
+                java.util.Date utilDate = formato.parse(a);
+                return new Date(utilDate.getTime());
+            } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto. Debe ser yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
+            return null; // Retorna null si ocurre un error
+        }
+    }
+    
     private void txtTipoUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoUnidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTipoUnidadActionPerformed
@@ -203,13 +229,13 @@ public class administrarApartamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValorApartamentoActionPerformed
 
-    private void txtArea1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtArea1ActionPerformed
+    private void txtFechaEscrituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaEscrituraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtArea1ActionPerformed
+    }//GEN-LAST:event_txtFechaEscrituraActionPerformed
 
-    private void txtTipoUnidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoUnidad1ActionPerformed
+    private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoUnidad1ActionPerformed
+    }//GEN-LAST:event_txtMatriculaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -231,10 +257,10 @@ public class administrarApartamento extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtArea;
-    private javax.swing.JTextField txtArea1;
+    private javax.swing.JTextField txtFechaEscritura;
+    private javax.swing.JTextField txtMatricula;
     private javax.swing.JTextField txtNumeroApartamento;
     private javax.swing.JTextField txtTipoUnidad;
-    private javax.swing.JTextField txtTipoUnidad1;
     private javax.swing.JTextField txtValorApartamento;
     // End of variables declaration//GEN-END:variables
 }
