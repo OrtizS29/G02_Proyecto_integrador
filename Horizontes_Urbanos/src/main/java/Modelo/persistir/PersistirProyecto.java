@@ -28,7 +28,7 @@ public class PersistirProyecto implements IPersistencia<Proyecto> {
 
     @Override
     public void editar(Proyecto entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        proyectoJpa.edit(entidad);
     }
 
     @Override
@@ -36,5 +36,7 @@ public class PersistirProyecto implements IPersistencia<Proyecto> {
         proyectoJpa.destroy(id);
     }
     
-    
+    public void editarNombreYProyecto(Proyecto proyecto) throws Exception {
+        proyectoJpa.editarNombreYProyecto(proyecto);
+    }
 }
