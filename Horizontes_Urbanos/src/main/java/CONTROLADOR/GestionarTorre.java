@@ -57,7 +57,7 @@ public class GestionarTorre implements Gestionar<Torre>{
 
     @Override
     public void borrar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
     
     public List<Torre> obtenerTorresProyecto(int id) throws Exception{
