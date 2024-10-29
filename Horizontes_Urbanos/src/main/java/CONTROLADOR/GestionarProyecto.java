@@ -112,7 +112,7 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
     }
 
     
-    public List<Proyecto> obtenerProyectosAdmin() throws Exception{
+    public List<Proyecto> obtenerProyectosAdmin(){
         Administrador administrador = persisAdmin.obtener(68293849);
         return administrador.getListaProyectos();
     }
