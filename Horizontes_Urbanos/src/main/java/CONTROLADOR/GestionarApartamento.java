@@ -7,6 +7,7 @@ import Modelo.entities.Venta;
 import Modelo.persistir.PersistirApartamento;
 import Modelo.persistir.PersistirTorre;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,14 +60,28 @@ public class GestionarApartamento implements Gestionar<Apartamento>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
-    public void borrar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void borrarA(int id,Torre torreSeleccionada) {
+        try {
+            
+            Apartamento apto = persisApto.obtener(id);
+            
+            torreSeleccionada.getListaApartamentos().remove(apto);
+             persisTorre.editar(torreSeleccionada);
+            persisApto.eliminar(id);
+        
+        } catch (Exception ex) {
+            Logger.getLogger(GestionarApartamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public List<Apartamento> obtenerApartamentoTorres(int id){
         Torre torre = persisTorre.obtener(id);
         return torre.getListaApartamentos();
+    }
+
+    @Override
+    public void borrar(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

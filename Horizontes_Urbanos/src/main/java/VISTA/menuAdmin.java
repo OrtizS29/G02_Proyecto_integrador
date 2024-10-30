@@ -30,6 +30,7 @@ public class menuAdmin extends javax.swing.JFrame {
         btnAdministrarAsesor = new javax.swing.JButton();
         btnAdministrarApartamento = new javax.swing.JButton();
         btnAdministrarTorre = new javax.swing.JButton();
+        btnSalirMenu = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -76,6 +77,15 @@ public class menuAdmin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdministrarTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 230, 40));
+
+        btnSalirMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnSalirMenu.setText("SALIR");
+        btnSalirMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalirMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 80, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Sin título-5.png"))); // NOI18N
         jLabel3.setToolTipText("");
@@ -124,12 +134,21 @@ public class menuAdmin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnAdministrarApartamentoActionPerformed
 
+    private void btnSalirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirMenuActionPerformed
+        
+        Login log = new Login();
+        log.setVisible(true);
+        log.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnSalirMenuActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdministrarApartamento;
     private javax.swing.JButton btnAdministrarAsesor;
     private javax.swing.JButton btnAdministrarProyecto;
     private javax.swing.JButton btnAdministrarTorre;
+    private javax.swing.JButton btnSalirMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

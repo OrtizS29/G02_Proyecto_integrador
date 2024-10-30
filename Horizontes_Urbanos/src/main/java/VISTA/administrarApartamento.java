@@ -50,8 +50,8 @@ public class administrarApartamento extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMostrarApartamentos = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEditarApto = new javax.swing.JButton();
+        btnEliminarApto = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -140,20 +140,25 @@ public class administrarApartamento extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 860, 310));
 
-        jButton1.setBackground(new java.awt.Color(49, 134, 181));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarApto.setBackground(new java.awt.Color(49, 134, 181));
+        btnEditarApto.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarApto.setText("Editar");
+        btnEditarApto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEditarAptoActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 100, 30));
+        jPanel2.add(btnEditarApto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 100, 40));
 
-        jButton2.setBackground(new java.awt.Color(49, 134, 181));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Eliminar");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 100, 30));
+        btnEliminarApto.setBackground(new java.awt.Color(49, 134, 181));
+        btnEliminarApto.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarApto.setText("Eliminar");
+        btnEliminarApto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarAptoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnEliminarApto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 100, 40));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -254,9 +259,9 @@ public class administrarApartamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMatriculaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnEditarAptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarAptoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnEditarAptoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
@@ -274,15 +279,39 @@ public class administrarApartamento extends javax.swing.JFrame {
         btnMenu.setEnabled(true);
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void btnEliminarAptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAptoActionPerformed
+        
+        btnEliminarApto.setEnabled(false);
+        
+        if(tablaMostrarApartamentos.getRowCount() > 0){
+            if(tablaMostrarApartamentos.getSelectedRow() != -1){
+                
+                int id_apto = Integer.parseInt(String.valueOf(tablaMostrarApartamentos.getValueAt(tablaMostrarApartamentos.getSelectedRow(), 0)));
+                
+                gestiApto.borrarA(id_apto,torreSeleccionada);
+                
+                JOptionPane optionPane = new JOptionPane("Apartamento Eliminado Correctamente");
+                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                JDialog dialog = optionPane.createDialog("Borrado Exitoso");
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+            }
+        }
+        
+        cargarTabla();
+        
+        btnEliminarApto.setEnabled(true);
+    }//GEN-LAST:event_btnEliminarAptoActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditarApto;
+    private javax.swing.JButton btnEliminarApto;
     private javax.swing.JButton btnGuardarApartamento;
     private javax.swing.JButton btnMenu;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -308,7 +337,7 @@ public class administrarApartamento extends javax.swing.JFrame {
             }
         };
         
-        String titulos[] = {"Num Apto","Valor Apto","Tipo Unidad","Area","Matricula",
+        String titulos[] = {"Id Apto","Num Apto","Valor Apto","Tipo Unidad","Area","Matricula",
             "Fecha Escritura","Num Torre","Num Aptos","Nombre Proyecto","Num Torres"};
         modeloTabla.setColumnIdentifiers(titulos);
         
@@ -317,10 +346,10 @@ public class administrarApartamento extends javax.swing.JFrame {
         
         if(listaApartamentos != null){
             for(Apartamento apartamento: listaApartamentos){
-                Object[] objeto ={apartamento.getNum_apartamento(),apartamento.getValor_apartamento(),
-                    apartamento.getTipo_unidad(),apartamento.getArea(),apartamento.getMatricula(),
-                    apartamento.getFecha_escritura(),apartamento.getTorre().getNumero_torre(),
-                    apartamento.getTorre().getNumero_apartamentos(),
+                Object[] objeto ={apartamento.getId_apartamento(),apartamento.getNum_apartamento(),
+                    apartamento.getValor_apartamento(),apartamento.getTipo_unidad(),apartamento.getArea(),
+                    apartamento.getMatricula(),apartamento.getFecha_escritura(),
+                    apartamento.getTorre().getNumero_torre(),apartamento.getTorre().getNumero_apartamentos(),
                     apartamento.getTorre().getProyecto().getNombre_proyecto(),
                     apartamento.getTorre().getProyecto().getNumero_torres()};
                 modeloTabla.addRow(objeto);
