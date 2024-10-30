@@ -57,11 +57,7 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
     @Override
     public Proyecto buscarPorId(int id) {
         Proyecto proyecto = null;
-        try {
-            proyecto = persisProyecto.obtener(id);
-        } catch (Exception ex) {
-            Logger.getLogger(GestionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        proyecto = persisProyecto.obtener(id);
         return proyecto;
     }
 
@@ -117,6 +113,4 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
         return administrador.getListaProyectos();
     }
 
-    
-    
 }

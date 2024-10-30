@@ -270,7 +270,7 @@ public class administrarProyecto extends javax.swing.JFrame {
             }
         };
         
-        String titulos[] = {"Numero Proyecto","Nombre Proyecto","Numero Torres"};
+        String titulos[] = {"Numero Proyecto","Nombre Proyecto","Num Torres"};
         modeloTabla.setColumnIdentifiers(titulos);
         
         List<Proyecto> listaProyectos = gestiProyecto.obtenerProyectosAdmin();
