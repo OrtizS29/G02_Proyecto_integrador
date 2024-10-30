@@ -22,7 +22,7 @@ public class PersistirProyecto implements IPersistencia<Proyecto> {
     }
 
     @Override
-    public Proyecto obtener(int id) throws Exception {
+    public Proyecto obtener(int id){
         return proyectoJpa.findProyecto(id);
     }
 

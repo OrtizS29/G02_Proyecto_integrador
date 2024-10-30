@@ -53,7 +53,7 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
                 btnSiguienteSeleccionarProyectoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSiguienteSeleccionarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 370, 110, 40));
+        getContentPane().add(btnSiguienteSeleccionarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 440, 110, 40));
 
         tablaSeleccionarProyecto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -68,7 +68,7 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaSeleccionarProyecto);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 440, 190));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 490, 290));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -79,7 +79,7 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 100, 40));
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 100, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorre.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

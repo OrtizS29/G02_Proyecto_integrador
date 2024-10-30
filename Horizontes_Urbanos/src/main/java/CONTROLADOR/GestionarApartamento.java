@@ -5,7 +5,9 @@ import Modelo.entities.Apartamento;
 import Modelo.entities.Torre;
 import Modelo.entities.Venta;
 import Modelo.persistir.PersistirApartamento;
+import Modelo.persistir.PersistirTorre;
 import java.sql.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,8 +18,10 @@ import java.util.logging.Logger;
 public class GestionarApartamento implements Gestionar<Apartamento>{
     
     private PersistirApartamento persisApto;
+    private PersistirTorre persisTorre;
 
     public GestionarApartamento() {
+        persisTorre = new PersistirTorre();
         persisApto = new PersistirApartamento();
     }
 
@@ -60,6 +64,9 @@ public class GestionarApartamento implements Gestionar<Apartamento>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    
+    public List<Apartamento> obtenerApartamentoTorres(int id){
+        Torre torre = persisTorre.obtener(id);
+        return torre.getListaApartamentos();
+    }
     
 }

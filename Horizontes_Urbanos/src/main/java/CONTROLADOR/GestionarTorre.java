@@ -47,7 +47,9 @@ public class GestionarTorre implements Gestionar<Torre>{
 
     @Override
     public Torre buscarPorId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Torre torre = null;
+        torre = persisTorre.obtener(id);
+        return torre;
     }
 
     @Override
@@ -60,7 +62,7 @@ public class GestionarTorre implements Gestionar<Torre>{
         
     }
     
-    public List<Torre> obtenerTorresProyecto(int id) throws Exception{
+    public List<Torre> obtenerTorresProyecto(int id){
         Proyecto proyecto = persisProyecto.obtener(id);
         return proyecto.getListaTorres();
     }
