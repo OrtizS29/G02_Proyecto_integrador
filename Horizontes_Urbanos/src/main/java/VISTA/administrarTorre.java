@@ -47,7 +47,7 @@ public class administrarTorre extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnEliminarProyecto = new javax.swing.JButton();
-        btnEditarProyecto = new javax.swing.JButton();
+        btnEditarTorre = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMostrarTorre = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -119,16 +119,16 @@ public class administrarTorre extends javax.swing.JFrame {
         });
         jPanel2.add(btnEliminarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 110, 40));
 
-        btnEditarProyecto.setBackground(new java.awt.Color(49, 134, 181));
-        btnEditarProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnEditarProyecto.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditarProyecto.setText("Editar");
-        btnEditarProyecto.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarTorre.setBackground(new java.awt.Color(49, 134, 181));
+        btnEditarTorre.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnEditarTorre.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarTorre.setText("Editar");
+        btnEditarTorre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarProyectoActionPerformed(evt);
+                btnEditarTorreActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEditarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 110, 40));
+        jPanel2.add(btnEditarTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 110, 40));
 
         tablaMostrarTorre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -272,9 +272,31 @@ public class administrarTorre extends javax.swing.JFrame {
     
     
     
-    private void btnEditarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProyectoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarProyectoActionPerformed
+    private void btnEditarTorreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarTorreActionPerformed
+        
+         btnEditarTorre.setEnabled(false);
+        
+        if(tablaMostrarTorre.getRowCount() > 0){
+            if(tablaMostrarTorre.getSelectedRow() != -1){
+                
+                int id_torre = Integer.parseInt(String.valueOf(tablaMostrarTorre.getValueAt(tablaMostrarTorre.getSelectedRow(), 0)));
+                
+                EditarTorre editTorre = new EditarTorre(id_torre);
+                editTorre.setVisible(true);
+                editTorre.setLocationRelativeTo(null);
+                this.dispose();
+            }
+            else {
+                
+            }
+        }
+        else{
+        
+        }
+        
+        btnEditarTorre.setEnabled(true);
+        
+    }//GEN-LAST:event_btnEditarTorreActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         
@@ -291,7 +313,7 @@ public class administrarTorre extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditarProyecto;
+    private javax.swing.JButton btnEditarTorre;
     private javax.swing.JButton btnEliminarProyecto;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSiguienteCrearProyecto;

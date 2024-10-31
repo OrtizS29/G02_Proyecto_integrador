@@ -36,4 +36,8 @@ public class PersistirTorre implements IPersistencia<Torre> {
         torreJpa.destroy(id);
     }
     
+    public void editarNumeroYNumeroT(Torre torre) throws Exception {
+        torreJpa.editarNumeroYNumeroT(torre);
+    }
+    
 }
