@@ -39,7 +39,7 @@ public class PersistirAdministrador implements IPersistencia<Administrador>{
      * @throws Exception 
      */
     @Override
-    public Administrador obtener(int cedula) throws Exception {
+    public Administrador obtener(int cedula) {
         return adminJpa.findAdministrador(cedula);
     }
 

@@ -149,6 +149,29 @@ public class ProyectoJpaController implements Serializable {
             }
         }
     }
+    
+    public void editarNombreYProyecto(Proyecto proyecto) throws NonexistentEntityException, Exception {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            proyecto = em.merge(proyecto);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            String msg = ex.getLocalizedMessage();
+            if (msg == null || msg.length() == 0) {
+                int id = proyecto.getId_proyecto();
+                if (findProyecto(id) == null) {
+                    throw new NonexistentEntityException("El proyecto con id " + id + " no existe.");
+                }
+            }
+            throw ex;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
 
     public void destroy(int id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;

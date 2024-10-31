@@ -32,6 +32,7 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
         persisApartamento = new PersistirApartamento();
     }
 
+    //Guardar
     public void guardarProyecto(String nombre_proyecto,int numero_torres,
             Administrador administrador) throws Exception{
         Proyecto proyecto = new Proyecto();
@@ -40,6 +41,7 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
         proyecto.setListaTorres(new ArrayList<>());
         proyecto.setAdministrador(administrador);
         persisProyecto.crear(proyecto);
+        //guardar(proyecto);
     }
     
     @Override
@@ -49,25 +51,30 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
         } catch (Exception ex) {
             Logger.getLogger(GestionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return entidad;
-            
-        
+        return entidad;   
     }
 
     @Override
     public Proyecto buscarPorId(int id) {
         Proyecto proyecto = null;
-        try {
-            proyecto = persisProyecto.obtener(id);
-        } catch (Exception ex) {
-            Logger.getLogger(GestionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        proyecto = persisProyecto.obtener(id);
         return proyecto;
     }
 
+    public void editarProyecto(Proyecto proyect, String nombreProyecto, int numeroTorres) throws Exception {
+        
+        proyect.setNombre_proyecto(nombreProyecto);
+        proyect.setNumero_torres(numeroTorres);
+        persisProyecto.editarNombreYProyecto(proyect);
+    }
+    
     @Override
     public void editar(Proyecto entidad) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            persisProyecto.editar(entidad);
+        } catch (Exception ex) {
+            Logger.getLogger(GestionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -79,7 +86,7 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
                
                 for (Torre torre : proyecto.getListaTorres()) {
                    
-                    for (Apartamento apartamento : new ArrayList<>(torre.getListaApartamentos())) { // Crear una copia para evitar ConcurrentModificationException
+                    for (Apartamento apartamento : new ArrayList<>(torre.getListaApartamentos())) { // Crear una copia
                         persisApartamento.eliminar(apartamento.getId_apartamento());
                     }
                     
@@ -101,9 +108,9 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
     }
 
     
-    public List<Proyecto> obtenerProyectosAdmin() throws Exception{
+    public List<Proyecto> obtenerProyectosAdmin(){
         Administrador administrador = persisAdmin.obtener(68293849);
         return administrador.getListaProyectos();
     }
-    
+
 }

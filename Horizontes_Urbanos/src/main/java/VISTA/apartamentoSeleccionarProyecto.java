@@ -4,16 +4,31 @@
  */
 package VISTA;
 
+import CONTROLADOR.GestionarProyecto;
+import CONTROLADOR.GestionarTorre;
+import Modelo.entities.Proyecto;
+import Modelo.entities.Torre;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author juanc
  */
 public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
 
-    /**
-     * Creates new form apartamentoSeleccionarProyecto
-     */
+    GestionarProyecto gestiProyecto;
+    GestionarTorre gestiTorre;
+    private int idProyectoSeleccionado = 0;
+    private int idTorreSeleccionada = 0;
+    
     public apartamentoSeleccionarProyecto() {
+        this.gestiProyecto = new GestionarProyecto();
+        this.gestiTorre = new GestionarTorre();
         initComponents();
     }
 
@@ -26,57 +41,72 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSiguienteCrearProyecto = new javax.swing.JButton();
+        btnSiguienteSeleccionarPyT = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tablaMostrarProyectos = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tablaMostrarTorres = new javax.swing.JTable();
         btnMenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnSiguienteCrearProyecto.setBackground(new java.awt.Color(49, 134, 181));
-        btnSiguienteCrearProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnSiguienteCrearProyecto.setForeground(new java.awt.Color(255, 255, 255));
-        btnSiguienteCrearProyecto.setText("Siguiente");
-        btnSiguienteCrearProyecto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiguienteCrearProyectoActionPerformed(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
-        getContentPane().add(btnSiguienteCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, -1, 40));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        btnSiguienteSeleccionarPyT.setBackground(new java.awt.Color(49, 134, 181));
+        btnSiguienteSeleccionarPyT.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnSiguienteSeleccionarPyT.setForeground(new java.awt.Color(255, 255, 255));
+        btnSiguienteSeleccionarPyT.setText("Siguiente");
+        btnSiguienteSeleccionarPyT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteSeleccionarPyTActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSiguienteSeleccionarPyT, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, -1, 40));
+
+        tablaMostrarProyectos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        tablaMostrarProyectos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMostrarProyectosMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tablaMostrarProyectos);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 80, 480, 160));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMostrarTorres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        tablaMostrarTorres.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMostrarTorresMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tablaMostrarTorres);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 480, 150));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 480, 160));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -95,9 +125,29 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSiguienteCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearProyectoActionPerformed
-
-    }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
+    private void btnSiguienteSeleccionarPyTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteSeleccionarPyTActionPerformed
+        
+        btnSiguienteSeleccionarPyT.setEnabled(false);
+        
+        //int id_proyecto = capturarIdProyecto(id_proyecto);
+        
+        Proyecto proyectoSeleccionado = gestiProyecto.buscarPorId(idProyectoSeleccionado);
+        Torre torreSeleccionada = gestiTorre.buscarPorId(idTorreSeleccionada);
+        
+        if(torreSeleccionada == null){
+            System.out.println("Error: Torre no encontrado");
+            return;
+        }
+        
+            
+        administrarApartamento adminApto = new administrarApartamento(proyectoSeleccionado,torreSeleccionada);
+        adminApto.setVisible(true);
+        adminApto.setLocationRelativeTo(null);
+        this.dispose();
+        
+        btnSiguienteSeleccionarPyT.setEnabled(true);
+        
+    }//GEN-LAST:event_btnSiguienteSeleccionarPyTActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
 
@@ -110,13 +160,110 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
         btnMenu.setEnabled(true);
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void tablaMostrarProyectosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMostrarProyectosMouseClicked
+        
+        if(tablaMostrarProyectos.getRowCount() > 0){
+            if(tablaMostrarProyectos.getSelectedRow() != -1){
+                
+                this.idProyectoSeleccionado = Integer.parseInt(String.valueOf(tablaMostrarProyectos.getValueAt(tablaMostrarProyectos.getSelectedRow(), 0)));
+                
+                try {
+                    ActualizarTorre(idProyectoSeleccionado);
+                } catch (Exception ex) {
+                    Logger.getLogger(apartamentoSeleccionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        }
+        
+    }//GEN-LAST:event_tablaMostrarProyectosMouseClicked
+
+    public void cargarTablaProyecto(){
+    
+        DefaultTableModel modeloTabla  = new DefaultTableModel(){
+            
+            @Override
+            public boolean isCellEditable (int row,int column){
+                return false;
+            }
+        };
+        
+        String titulos[] = {"Numero Proyecto","Nombre Proyecto"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        List<Proyecto> listaProyectos = gestiProyecto.obtenerProyectosAdmin();
+        
+        if(listaProyectos != null){
+            for(Proyecto proyect: listaProyectos){
+                Object[] objeto ={proyect.getId_proyecto(),proyect.getNombre_proyecto()};
+                modeloTabla.addRow(objeto);
+            }
+        }
+        tablaMostrarProyectos.setModel(modeloTabla);
+    }
+    
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        cargarTablaProyecto();
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void tablaMostrarTorresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMostrarTorresMouseClicked
+        
+        if (tablaMostrarTorres.getRowCount() > 0 && tablaMostrarTorres.getSelectedRow() != -1) {
+                //Proceso obtencion Id
+                this.idTorreSeleccionada = Integer.parseInt(String.valueOf(tablaMostrarTorres.getValueAt(tablaMostrarTorres.getSelectedRow(), 0)));  
+            }
+    }//GEN-LAST:event_tablaMostrarTorresMouseClicked
+    
+    private void ActualizarTorre(int idProyecto) throws Exception  {
+
+        DefaultTableModel modeloTabla  = new DefaultTableModel(){
+            
+            @Override
+            public boolean isCellEditable (int row,int column){
+                return false;
+            }
+        };
+        
+        String titulos[] = {"Identificador Torre","Numero Torre"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        List<Torre> listaTorres = gestiTorre.obtenerTorresProyecto(idProyectoSeleccionado);
+        
+        if(listaTorres != null){
+            
+            Collections.sort(listaTorres, new Comparator<Torre>(){
+                @Override
+                public int compare(Torre t1, Torre t2) {
+                    return Integer.compare(t1.getId_torre(), t2.getId_torre());
+                }
+            });
+            
+            for(Torre torre: listaTorres){
+                Object[] objeto ={torre.getId_torre(),torre.getNumero_torre(),torre.getNumero_apartamentos()
+                ,torre.getProyecto().getNombre_proyecto(),torre.getProyecto().getNumero_torres()};
+                modeloTabla.addRow(objeto);
+            }
+            
+            
+            
+        }
+        tablaMostrarTorres.setModel(modeloTabla);
+    }
+    
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMenu;
-    private javax.swing.JButton btnSiguienteCrearProyecto;
+    private javax.swing.JButton btnSiguienteSeleccionarPyT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
+    private javax.swing.JTable tablaMostrarProyectos;
+    private javax.swing.JTable tablaMostrarTorres;
     // End of variables declaration//GEN-END:variables
+
+
+    
 }

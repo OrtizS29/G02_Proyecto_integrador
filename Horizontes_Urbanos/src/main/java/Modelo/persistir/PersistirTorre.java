@@ -22,8 +22,8 @@ public class PersistirTorre implements IPersistencia<Torre> {
     }
 
     @Override
-    public Torre obtener(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Torre obtener(int id) {
+        return torreJpa.findTorre(id);
     }
 
     @Override
@@ -34,6 +34,10 @@ public class PersistirTorre implements IPersistencia<Torre> {
     @Override
     public void eliminar(int id) throws Exception {
         torreJpa.destroy(id);
+    }
+    
+    public void editarNumeroYNumeroT(Torre torre) throws Exception {
+        torreJpa.editarNumeroYNumeroT(torre);
     }
     
 }

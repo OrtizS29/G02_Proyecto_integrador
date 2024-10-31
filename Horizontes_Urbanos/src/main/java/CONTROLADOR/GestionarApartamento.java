@@ -5,7 +5,10 @@ import Modelo.entities.Apartamento;
 import Modelo.entities.Torre;
 import Modelo.entities.Venta;
 import Modelo.persistir.PersistirApartamento;
+import Modelo.persistir.PersistirTorre;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,8 +19,10 @@ import java.util.logging.Logger;
 public class GestionarApartamento implements Gestionar<Apartamento>{
     
     private PersistirApartamento persisApto;
+    private PersistirTorre persisTorre;
 
     public GestionarApartamento() {
+        persisTorre = new PersistirTorre();
         persisApto = new PersistirApartamento();
     }
 
@@ -47,7 +52,20 @@ public class GestionarApartamento implements Gestionar<Apartamento>{
 
     @Override
     public Apartamento buscarPorId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Apartamento apto = null;
+        apto = persisApto.obtener(id);
+        return apto;
+    }
+
+    public void editarApto(Apartamento apto, int numeroApartamento, int valorApartamento, String tipoUnidad, double area, String matricula, Date fechaEscritura) throws Exception {
+        
+        apto.setNum_apartamento(numeroApartamento);
+        apto.setValor_apartamento(valorApartamento);
+        apto.setTipo_unidad(tipoUnidad);
+        apto.setArea(area);
+        apto.setMatricula(matricula);
+        apto.setFecha_escritura(fechaEscritura);
+        persisApto.editar(apto);
     }
 
     @Override
@@ -55,11 +73,30 @@ public class GestionarApartamento implements Gestionar<Apartamento>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public void borrarA(int id,Torre torreSeleccionada) {
+        try {
+            
+            Apartamento apto = persisApto.obtener(id);
+            
+            torreSeleccionada.getListaApartamentos().remove(apto);
+             persisTorre.editar(torreSeleccionada);
+            persisApto.eliminar(id);
+        
+        } catch (Exception ex) {
+            Logger.getLogger(GestionarApartamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public List<Apartamento> obtenerApartamentoTorres(int id){
+        Torre torre = persisTorre.obtener(id);
+        return torre.getListaApartamentos();
+    }
+
     @Override
     public void borrar(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     
     
 }
