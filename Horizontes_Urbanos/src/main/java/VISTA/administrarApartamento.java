@@ -39,7 +39,6 @@ public class administrarApartamento extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        txtFechaEscritura = new javax.swing.JTextField();
         txtMatricula = new javax.swing.JTextField();
         txtTipoUnidad = new javax.swing.JTextField();
         txtNumeroApartamento = new javax.swing.JTextField();
@@ -64,13 +63,6 @@ public class administrarApartamento extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtFechaEscritura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaEscrituraActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtFechaEscritura, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 230, 30));
 
         txtMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,7 +190,7 @@ public class administrarApartamento extends javax.swing.JFrame {
         String tipoUnidad = txtTipoUnidad.getText();
         double area = Double.parseDouble(txtArea.getText());
         String matricula = txtMatricula.getText();
-        Date fechaEscritura = getFechaDesdeTextField();
+        
 
         Apartamento apartamento = new Apartamento();
         apartamento.setNum_apartamento(numeroApartamento);
@@ -206,7 +198,6 @@ public class administrarApartamento extends javax.swing.JFrame {
         apartamento.setTipo_unidad(tipoUnidad);
         apartamento.setArea(area);
         apartamento.setMatricula(matricula);
-        apartamento.setFecha_escritura(fechaEscritura);
         apartamento.setTorre(torreSeleccionada);
         apartamento.setVenta(null);
 
@@ -228,20 +219,6 @@ public class administrarApartamento extends javax.swing.JFrame {
         btnGuardarApartamento.setEnabled(true);
     }//GEN-LAST:event_btnGuardarApartamentoActionPerformed
 
-    public Date getFechaDesdeTextField() {
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        String a =txtFechaEscritura.getText();
-        if(a==null){
-            return null;
-        }
-            try {
-                java.util.Date utilDate = formato.parse(a);
-                return new Date(utilDate.getTime());
-            } catch (ParseException e) {
-            JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto. Debe ser yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
-            return null; // Retorna null si ocurre un error
-        }
-    }
     
     private void txtTipoUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoUnidadActionPerformed
         // TODO add your handling code here:
@@ -251,16 +228,33 @@ public class administrarApartamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValorApartamentoActionPerformed
 
-    private void txtFechaEscrituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaEscrituraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaEscrituraActionPerformed
-
     private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMatriculaActionPerformed
 
     private void btnEditarAptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarAptoActionPerformed
-        // TODO add your handling code here:
+        
+        btnEditarApto.setEnabled(false);
+        
+        if(tablaMostrarApartamentos.getRowCount() > 0){
+            if(tablaMostrarApartamentos.getSelectedRow() != -1){
+                
+                int id_apto = Integer.parseInt(String.valueOf(tablaMostrarApartamentos.getValueAt(tablaMostrarApartamentos.getSelectedRow(), 0)));
+                
+                EditarApartamento editApto = new EditarApartamento(id_apto);
+                editApto.setVisible(true);
+                editApto.setLocationRelativeTo(null);
+                this.dispose();
+            }
+            else {
+                
+            }
+        }
+        else{
+        
+        }
+        
+        btnEditarApto.setEnabled(true);
     }//GEN-LAST:event_btnEditarAptoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -320,7 +314,6 @@ public class administrarApartamento extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tablaMostrarApartamentos;
     private javax.swing.JTextField txtArea;
-    private javax.swing.JTextField txtFechaEscritura;
     private javax.swing.JTextField txtMatricula;
     private javax.swing.JTextField txtNumeroApartamento;
     private javax.swing.JTextField txtTipoUnidad;
