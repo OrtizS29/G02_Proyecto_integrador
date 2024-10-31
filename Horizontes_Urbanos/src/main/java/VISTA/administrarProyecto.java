@@ -226,7 +226,7 @@ public class administrarProyecto extends javax.swing.JFrame {
 
     private void btnEditarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProyectoActionPerformed
         
-        btnMenu.setEnabled(false);
+        btnEditarProyecto.setEnabled(false);
         
         if(tablaMostrarProyecto.getRowCount() > 0){
             if(tablaMostrarProyecto.getSelectedRow() != -1){
@@ -246,7 +246,7 @@ public class administrarProyecto extends javax.swing.JFrame {
         
         }
         
-        btnMenu.setEnabled(true);
+        btnEditarProyecto.setEnabled(true);
     }//GEN-LAST:event_btnEditarProyectoActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed

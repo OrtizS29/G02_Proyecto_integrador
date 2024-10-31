@@ -45,7 +45,6 @@ public class crearProyecto3 extends javax.swing.JFrame {
         txtValorApartamento = new javax.swing.JTextField();
         txtTipoUnidad = new javax.swing.JTextField();
         txtArea = new javax.swing.JTextField();
-        txtFechaEscritura = new javax.swing.JTextField();
         txtMatricula = new javax.swing.JTextField();
         btnGuardarApartamento = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -80,13 +79,6 @@ public class crearProyecto3 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 290, 30));
-
-        txtFechaEscritura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaEscrituraActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtFechaEscritura, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 240, 30));
 
         txtMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,7 +117,6 @@ public class crearProyecto3 extends javax.swing.JFrame {
         String tipoUnidad = txtTipoUnidad.getText();
         double area = Double.parseDouble(txtArea.getText());
         String matricula = txtMatricula.getText();
-        Date fechaEscritura = getFechaDesdeTextField();
         
         Apartamento apartamento = new Apartamento();
         apartamento.setNum_apartamento(numeroApartamento);
@@ -133,7 +124,6 @@ public class crearProyecto3 extends javax.swing.JFrame {
         apartamento.setTipo_unidad(tipoUnidad);
         apartamento.setArea(area);
         apartamento.setMatricula(matricula);
-        apartamento.setFecha_escritura(fechaEscritura);
         apartamento.setTorre(torreActual);
         apartamento.setVenta(null);
         
@@ -167,10 +157,6 @@ public class crearProyecto3 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAreaActionPerformed
 
-    private void txtFechaEscrituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaEscrituraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaEscrituraActionPerformed
-
     private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMatriculaActionPerformed
@@ -179,28 +165,13 @@ public class crearProyecto3 extends javax.swing.JFrame {
      * Metodo que convierte string en Date para guardarlo bien en la base de datos
      * @return Date
      */
-    public Date getFechaDesdeTextField() {
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        String a =txtFechaEscritura.getText();
-        if(a==null){
-            return null;
-        }
-            try {
-                java.util.Date utilDate = formato.parse(a);
-                return new Date(utilDate.getTime());
-            } catch (ParseException e) {
-            JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto. Debe ser yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
-            return null; // Retorna null si ocurre un error
-        
-    }
-}
+    
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardarApartamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtArea;
-    private javax.swing.JTextField txtFechaEscritura;
     private javax.swing.JTextField txtMatricula;
     private javax.swing.JTextField txtNumeroApartamento;
     private javax.swing.JTextField txtTipoUnidad;

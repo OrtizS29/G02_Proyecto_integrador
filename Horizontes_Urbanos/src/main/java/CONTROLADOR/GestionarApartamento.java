@@ -52,7 +52,20 @@ public class GestionarApartamento implements Gestionar<Apartamento>{
 
     @Override
     public Apartamento buscarPorId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Apartamento apto = null;
+        apto = persisApto.obtener(id);
+        return apto;
+    }
+
+    public void editarApto(Apartamento apto, int numeroApartamento, int valorApartamento, String tipoUnidad, double area, String matricula, Date fechaEscritura) throws Exception {
+        
+        apto.setNum_apartamento(numeroApartamento);
+        apto.setValor_apartamento(valorApartamento);
+        apto.setTipo_unidad(tipoUnidad);
+        apto.setArea(area);
+        apto.setMatricula(matricula);
+        apto.setFecha_escritura(fechaEscritura);
+        persisApto.editar(apto);
     }
 
     @Override
@@ -83,5 +96,7 @@ public class GestionarApartamento implements Gestionar<Apartamento>{
     public void borrar(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    
     
 }
