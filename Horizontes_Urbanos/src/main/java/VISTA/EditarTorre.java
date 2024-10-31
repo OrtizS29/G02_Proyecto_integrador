@@ -4,17 +4,24 @@
  */
 package VISTA;
 
+import CONTROLADOR.GestionarTorre;
+import Modelo.entities.Torre;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author CLAUDIA
  */
 public class EditarTorre extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EditarTorre
-     */
-    public EditarTorre() {
+    private GestionarTorre gestiApto;
+    private Torre torre;
+    
+    public EditarTorre(int id_torre) {
+        this.gestiApto = new GestionarTorre();
         initComponents();
+        cargarDatos(id_torre);
     }
 
     /**
@@ -28,6 +35,7 @@ public class EditarTorre extends javax.swing.JFrame {
 
         txtNumeroTorre = new javax.swing.JTextField();
         txtNumeroDeApartamentos = new javax.swing.JTextField();
+        btnGuardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,6 +55,17 @@ public class EditarTorre extends javax.swing.JFrame {
         });
         getContentPane().add(txtNumeroDeApartamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 290, 30));
 
+        btnGuardar.setBackground(new java.awt.Color(49, 134, 181));
+        btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 100, 40));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearProyecto2.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -61,11 +80,42 @@ public class EditarTorre extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroDeApartamentosActionPerformed
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+
+        btnGuardar.setEnabled(false);
+
+        int numeroTorre = Integer.parseInt(txtNumeroTorre.getText());
+        int numeroAptos = Integer.parseInt(txtNumeroDeApartamentos.getText());
+
+        try {
+            gestiApto.editarTorre(torre,numeroTorre,numeroAptos);
+        } catch (Exception ex) {
+            Logger.getLogger(EditarTorre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        //poner mensaje de que salio bien
+
+        menuAdmin mAdmin = new menuAdmin();
+        mAdmin.setVisible(true);
+        this.dispose();
+
+        btnGuardar.setEnabled(true);
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtNumeroDeApartamentos;
     private javax.swing.JTextField txtNumeroTorre;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDatos(int id_torre) {
+        
+        this.torre = gestiApto.buscarPorId(id_torre);
+        
+        txtNumeroTorre.setText(String.valueOf(torre.getNumero_torre()));
+        txtNumeroDeApartamentos.setText(String.valueOf(torre.getNumero_apartamentos()));
+    }
 }

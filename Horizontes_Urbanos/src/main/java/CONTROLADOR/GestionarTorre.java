@@ -66,5 +66,12 @@ public class GestionarTorre implements Gestionar<Torre>{
         Proyecto proyecto = persisProyecto.obtener(id);
         return proyecto.getListaTorres();
     }
+
+    public void editarTorre(Torre torre, int numeroTorre, int numeroAptos) throws Exception {
+        
+        torre.setNumero_torre(numeroTorre);
+        torre.setNumero_apartamentos(numeroAptos);
+        persisTorre.editarNumeroYNumeroT(torre);
+    }
     
 }

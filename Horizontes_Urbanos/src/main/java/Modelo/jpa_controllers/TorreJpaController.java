@@ -150,6 +150,30 @@ public class TorreJpaController implements Serializable {
         }
     }
 
+    public void editarNumeroYNumeroT(Torre torre) throws NonexistentEntityException, Exception {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            torre = em.merge(torre);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            String msg = ex.getLocalizedMessage();
+            if (msg == null || msg.length() == 0) {
+                int id = torre.getId_torre();
+                if (findTorre(id) == null) {
+                    throw new NonexistentEntityException("La torre con id " + id + " no existe.");
+                }
+            }
+            throw ex;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+    
+    
     public void destroy(int id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
