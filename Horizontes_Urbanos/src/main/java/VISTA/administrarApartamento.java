@@ -144,17 +144,6 @@ public class administrarApartamento extends javax.swing.JFrame {
         });
         jPanel2.add(btnEditarApto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 100, 40));
 
-<<<<<<< HEAD
-        jButton2.setBackground(new java.awt.Color(49, 134, 181));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Eliminar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 100, 30));
-=======
         btnEliminarApto.setBackground(new java.awt.Color(49, 134, 181));
         btnEliminarApto.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarApto.setText("Eliminar");
@@ -175,7 +164,6 @@ public class administrarApartamento extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 100, 40));
->>>>>>> 666781f21d08e2abec0e3afbf0ed1c45555a566e
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarApartamento.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 940, 450));
