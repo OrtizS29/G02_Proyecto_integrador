@@ -12,6 +12,8 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -294,13 +296,27 @@ public class administrarApartamento extends javax.swing.JFrame {
                 
                 int id_apto = Integer.parseInt(String.valueOf(tablaMostrarApartamentos.getValueAt(tablaMostrarApartamentos.getSelectedRow(), 0)));
                 
-                gestiApto.borrarA(id_apto,torreSeleccionada);
-                
-                JOptionPane optionPane = new JOptionPane("Apartamento Eliminado Correctamente");
-                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-                JDialog dialog = optionPane.createDialog("Borrado Exitoso");
-                dialog.setAlwaysOnTop(true);
-                dialog.setVisible(true);
+                try {
+                    boolean op = gestiApto.borrarA(id_apto,torreSeleccionada);
+                    
+                    if(op == true){
+                        JOptionPane optionPane = new JOptionPane("Apartamento Eliminado Correctamente");
+                        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                        JDialog dialog = optionPane.createDialog("Borrado Exitoso");
+                        dialog.setAlwaysOnTop(true);
+                        dialog.setVisible(true);
+                    }
+                    else{
+                        JOptionPane optionPane = new JOptionPane("No se puede eliminar el unico Apto de la torre");
+                        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                        JDialog dialog = optionPane.createDialog("Restriccion del sistema");
+                        dialog.setAlwaysOnTop(true);
+                        dialog.setVisible(true);
+                    }
+                    
+                } catch (Exception ex) {
+                    Logger.getLogger(administrarApartamento.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
         

@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author Santiago
  */
-public class GestionarProyecto implements Gestionar<Proyecto> {
+public class GestionarProyecto {
     
     private PersistirAdministrador persisAdmin;
     private PersistirProyecto persisProyecto;
@@ -44,17 +44,15 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
         //guardar(proyecto);
     }
     
-    @Override
-    public Proyecto guardar(Proyecto entidad) {
+    public Proyecto guardar(Proyecto proyecto) {
         try {
-            persisProyecto.crear(entidad);
+            persisProyecto.crear(proyecto);
         } catch (Exception ex) {
             Logger.getLogger(GestionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return entidad;   
+        return proyecto;   
     }
 
-    @Override
     public Proyecto buscarPorId(int id) {
         Proyecto proyecto = null;
         proyecto = persisProyecto.obtener(id);
@@ -68,16 +66,14 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
         persisProyecto.editarNombreYProyecto(proyect);
     }
     
-    @Override
-    public void editar(Proyecto entidad) {
+    public void editar(Proyecto proyecto) {
         try {
-            persisProyecto.editar(entidad);
+            persisProyecto.editar(proyecto);
         } catch (Exception ex) {
             Logger.getLogger(GestionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    @Override
     public void borrar(int id) {
         try {
             Proyecto proyecto = persisProyecto.obtener(id);
@@ -107,7 +103,6 @@ public class GestionarProyecto implements Gestionar<Proyecto> {
         }
     }
 
-    
     public List<Proyecto> obtenerProyectosAdmin(){
         Administrador administrador = persisAdmin.obtener(68293849);
         return administrador.getListaProyectos();
