@@ -229,6 +229,7 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
         String titulos[] = {"Identificador Torre","Numero Torre"};
         modeloTabla.setColumnIdentifiers(titulos);
         
+        
         List<Torre> listaTorres = gestiTorre.obtenerTorresProyecto(idProyectoSeleccionado);
         
         if(listaTorres != null){
@@ -241,8 +242,7 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
             });
             
             for(Torre torre: listaTorres){
-                Object[] objeto ={torre.getId_torre(),torre.getNumero_torre(),torre.getNumero_apartamentos()
-                ,torre.getProyecto().getNombre_proyecto(),torre.getProyecto().getNumero_torres()};
+                Object[] objeto ={torre.getId_torre(),torre.getNumero_torre()};
                 modeloTabla.addRow(objeto);
             }
             

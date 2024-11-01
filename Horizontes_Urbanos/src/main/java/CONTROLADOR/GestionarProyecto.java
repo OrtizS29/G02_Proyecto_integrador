@@ -33,11 +33,10 @@ public class GestionarProyecto {
     }
 
     //Guardar
-    public void guardarProyecto(String nombre_proyecto,int numero_torres,
+    public void guardarProyecto(String nombre_proyecto,
             Administrador administrador) throws Exception{
         Proyecto proyecto = new Proyecto();
         proyecto.setNombre_proyecto(nombre_proyecto);
-        proyecto.setNumero_torres(numero_torres);
         proyecto.setListaTorres(new ArrayList<>());
         proyecto.setAdministrador(administrador);
         persisProyecto.crear(proyecto);
@@ -59,10 +58,9 @@ public class GestionarProyecto {
         return proyecto;
     }
 
-    public void editarProyecto(Proyecto proyect, String nombreProyecto, int numeroTorres) throws Exception {
+    public void editarProyecto(Proyecto proyect, String nombreProyecto) throws Exception {
         
         proyect.setNombre_proyecto(nombreProyecto);
-        proyect.setNumero_torres(numeroTorres);
         persisProyecto.editarNombreYProyecto(proyect);
     }
     
@@ -106,6 +104,10 @@ public class GestionarProyecto {
     public List<Proyecto> obtenerProyectosAdmin(){
         Administrador administrador = persisAdmin.obtener(68293849);
         return administrador.getListaProyectos();
+    }
+
+    public int contarNTorres(String nombre_proyecto) {
+        return persisProyecto.contarNTorres(nombre_proyecto);
     }
 
 }

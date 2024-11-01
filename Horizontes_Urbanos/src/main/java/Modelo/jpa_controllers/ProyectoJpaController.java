@@ -256,4 +256,17 @@ public class ProyectoJpaController implements Serializable {
         }
     }
     
+    public List<Object[]> contarNTorres(){
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT p.nombre_proyecto, COUNT(t) AS numTorres " +
+                                          "FROM Proyecto p JOIN p.listaTorres t " +
+                                          "GROUP BY p.id_proyecto, p.nombre_proyecto"
+            );
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
 }

@@ -5,6 +5,7 @@
 package VISTA;
 
 import CONTROLADOR.GestionarApartamento;
+import CONTROLADOR.GestionarProyecto;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
@@ -24,11 +25,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class administrarApartamento extends javax.swing.JFrame {
 
+    GestionarProyecto gestiProyecto;
     GestionarApartamento gestiApto;
     Proyecto proyectoSeleccionado;
     Torre torreSeleccionada;
     
     public administrarApartamento(Proyecto proyectoSeleccionado,Torre torreSeleccionada) {
+        this.gestiProyecto = new GestionarProyecto();
         this.gestiApto = new GestionarApartamento();
         this.proyectoSeleccionado = proyectoSeleccionado;
         this.torreSeleccionada = torreSeleccionada;
@@ -146,7 +149,7 @@ public class administrarApartamento extends javax.swing.JFrame {
 
         btnEliminarApto.setBackground(new java.awt.Color(49, 134, 181));
         btnEliminarApto.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarApto.setText("Eliminarl");
+        btnEliminarApto.setText("Eliminar");
         btnEliminarApto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarAptoActionPerformed(evt);
@@ -357,14 +360,16 @@ public class administrarApartamento extends javax.swing.JFrame {
         int id = torreSeleccionada.getId_torre();
         List<Apartamento> listaApartamentos = gestiApto.obtenerApartamentoTorres(id);
         
+        
         if(listaApartamentos != null){
             for(Apartamento apartamento: listaApartamentos){
+                int numero_torres = gestiProyecto.contarNTorres(proyectoSeleccionado.getNombre_proyecto());
                 Object[] objeto ={apartamento.getId_apartamento(),apartamento.getNum_apartamento(),
                     apartamento.getValor_apartamento(),apartamento.getTipo_unidad(),apartamento.getArea(),
                     apartamento.getMatricula(),apartamento.getFecha_escritura(),
                     apartamento.getTorre().getNumero_torre(),apartamento.getTorre().getNumero_apartamentos(),
                     apartamento.getTorre().getProyecto().getNombre_proyecto(),
-                    apartamento.getTorre().getProyecto().getNumero_torres()};
+                    apartamento.getTorre().getProyecto(),numero_torres};
                 modeloTabla.addRow(objeto);
             }
         }
