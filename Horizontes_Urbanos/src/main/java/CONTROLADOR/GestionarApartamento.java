@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author Santiago
  */
-public class GestionarApartamento implements Gestionar<Apartamento>{
+public class GestionarApartamento {
     
     private PersistirApartamento persisApto;
     private PersistirTorre persisTorre;
@@ -40,17 +40,16 @@ public class GestionarApartamento implements Gestionar<Apartamento>{
         persisApto.crear(apartamento);
     }
     
-    @Override
-    public Apartamento guardar(Apartamento entidad) {
+    
+    public Apartamento guardar(Apartamento apto) {
         try {
-            persisApto.crear(entidad);
+            persisApto.crear(apto);
         } catch (Exception ex) {
             Logger.getLogger(GestionarApartamento.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return entidad;
+        return apto;
     }
 
-    @Override
     public Apartamento buscarPorId(int id) {
         Apartamento apto = null;
         apto = persisApto.obtener(id);
@@ -68,23 +67,18 @@ public class GestionarApartamento implements Gestionar<Apartamento>{
         persisApto.editar(apto);
     }
 
-    @Override
-    public void editar(Apartamento entidad) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void borrarA(int id,Torre torreSeleccionada) {
-        try {
+    public boolean borrarA(int id,Torre torreSeleccionada) throws Exception {
+            if (torreSeleccionada.getListaApartamentos().size()==1) {
+                return false;
+            }
+            else{
+                Apartamento apto = persisApto.obtener(id);
             
-            Apartamento apto = persisApto.obtener(id);
-            
-            torreSeleccionada.getListaApartamentos().remove(apto);
-             persisTorre.editar(torreSeleccionada);
-            persisApto.eliminar(id);
-        
-        } catch (Exception ex) {
-            Logger.getLogger(GestionarApartamento.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                torreSeleccionada.getListaApartamentos().remove(apto);
+                persisTorre.editar(torreSeleccionada);
+                persisApto.eliminar(apto.getId_apartamento());
+                return true;
+            }
     }
     
     public List<Apartamento> obtenerApartamentoTorres(int id){
@@ -92,10 +86,6 @@ public class GestionarApartamento implements Gestionar<Apartamento>{
         return torre.getListaApartamentos();
     }
 
-    @Override
-    public void borrar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     
     

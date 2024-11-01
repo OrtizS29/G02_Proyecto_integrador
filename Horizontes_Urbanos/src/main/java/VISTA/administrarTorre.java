@@ -217,13 +217,27 @@ public class administrarTorre extends javax.swing.JFrame {
 
                 int id_torre = Integer.parseInt(String.valueOf(tablaMostrarTorre.getValueAt(tablaMostrarTorre.getSelectedRow(), 0)));
 
-                gestiTorre.borrar(id_torre);
-
-                JOptionPane optionPane = new JOptionPane("Torre Eliminada Correctamente");
-                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-                JDialog dialog = optionPane.createDialog("Borrado Exitoso");
-                dialog.setAlwaysOnTop(true);
-                dialog.setVisible(true);
+                try {
+                    boolean op = gestiTorre.borrarT(proyectoSeleccionado,id_torre);
+                    
+                    if(op == true){
+                        JOptionPane optionPane = new JOptionPane("Torre Eliminada Correctamente");
+                        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                        JDialog dialog = optionPane.createDialog("Borrado Exitoso");
+                        dialog.setAlwaysOnTop(true);
+                        dialog.setVisible(true);
+                    }
+                    else{
+                        JOptionPane optionPane = new JOptionPane("No se puede eliminar la unica torre del proyecto");
+                        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                        JDialog dialog = optionPane.createDialog("Restriccion del sistema");
+                        dialog.setAlwaysOnTop(true);
+                        dialog.setVisible(true);
+                    }
+                    
+                } catch (Exception ex) {
+                    Logger.getLogger(administrarTorre.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
         
