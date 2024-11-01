@@ -4,6 +4,7 @@
  */
 package VISTA;
 
+import CONTROLADOR.GestionarProyecto;
 import CONTROLADOR.GestionarTorre;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Proyecto;
@@ -25,9 +26,11 @@ import javax.swing.table.DefaultTableModel;
 public class administrarTorre extends javax.swing.JFrame {
 
     Proyecto proyectoSeleccionado;
+    GestionarProyecto gestiProyecto;
     GestionarTorre gestiTorre;
     
     public administrarTorre(Proyecto proyectoSeleccionado) {
+        this.gestiProyecto = new GestionarProyecto();
         this.gestiTorre = new GestionarTorre();
         this.proyectoSeleccionado = proyectoSeleccionado;
         initComponents();
@@ -275,8 +278,9 @@ public class administrarTorre extends javax.swing.JFrame {
             });
             
             for(Torre torre: listaTorres){
+                int numero_torres = gestiProyecto.contarNTorres(torre.getProyecto().getNombre_proyecto());
                 Object[] objeto ={torre.getId_torre(),torre.getNumero_torre(),torre.getNumero_apartamentos()
-                ,torre.getProyecto().getNombre_proyecto(),torre.getProyecto().getNumero_torres()};
+                ,torre.getProyecto().getNombre_proyecto(),numero_torres};
                 modeloTabla.addRow(objeto);
             }
         }

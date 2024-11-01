@@ -27,8 +27,7 @@ public class Proyecto implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idProyecto")
     @SequenceGenerator(name = "seq_idProyecto", sequenceName = "seq_idProyecto", allocationSize = 1)
     private int id_proyecto;
-    private String nombre_proyecto; 
-    private int numero_torres;
+    private String nombre_proyecto;
     
     @OneToMany(mappedBy = "proyecto",cascade = CascadeType.ALL, orphanRemoval = true) 
     private ArrayList<Torre> listaTorres;
@@ -40,10 +39,9 @@ public class Proyecto implements Serializable {
     public Proyecto() {
     }
 
-    public Proyecto(int id_proyecto, String nombre_proyecto, int numero_torres, ArrayList<Torre> listaTorres, Administrador administrador) {
+    public Proyecto(int id_proyecto, String nombre_proyecto, ArrayList<Torre> listaTorres, Administrador administrador) {
         this.id_proyecto = id_proyecto;
         this.nombre_proyecto = nombre_proyecto;
-        this.numero_torres = numero_torres;
         this.listaTorres = listaTorres;
         this.administrador = administrador;
     }
@@ -62,14 +60,6 @@ public class Proyecto implements Serializable {
 
     public void setNombre_proyecto(String nombre_proyecto) {
         this.nombre_proyecto = nombre_proyecto;
-    }
-
-    public int getNumero_torres() {
-        return numero_torres;
-    }
-
-    public void setNumero_torres(int numero_torres) {
-        this.numero_torres = numero_torres;
     }
 
     public ArrayList<Torre> getListaTorres() {

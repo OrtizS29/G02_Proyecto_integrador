@@ -3,6 +3,7 @@ package Modelo.persistir;
 
 import Modelo.entities.Proyecto;
 import Modelo.jpa_controllers.ProyectoJpaController;
+import java.util.List;
 
 /**
  *
@@ -38,5 +39,20 @@ public class PersistirProyecto implements IPersistencia<Proyecto> {
     
     public void editarNombreYProyecto(Proyecto proyecto) throws Exception {
         proyectoJpa.editarNombreYProyecto(proyecto);
+    }
+
+    public int contarNTorres(String nombre_proyecto) {
+        List<Object[]> Qresultado = proyectoJpa.contarNTorres();
+        
+        for (Object[] objects : Qresultado) {
+            
+            String nombreP = (String) objects[0];
+            Long CanTorres = (Long) objects[1];
+            
+            if (nombreP.equals(nombre_proyecto)) {
+                return CanTorres.intValue();
+            }
+        }
+        return 0;
     }
 }
