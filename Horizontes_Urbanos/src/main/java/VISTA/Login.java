@@ -3,6 +3,8 @@ package VISTA;
 
 import CONTROLADOR.validarUsuarios;
 import Modelo.entities.Usuario;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -98,8 +100,18 @@ public class Login extends javax.swing.JFrame {
                 menuAdmin mAdmin = new menuAdmin();
                 mAdmin.setVisible(true);
                 this.dispose();
+            }else if(rol.equals("asesor")){
+                
             }
         }
+        else{
+            JOptionPane optionPane = new JOptionPane("No se encontro el usuario");
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Error login");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+        }
+        
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
