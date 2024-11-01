@@ -146,7 +146,7 @@ public class administrarApartamento extends javax.swing.JFrame {
 
         btnEliminarApto.setBackground(new java.awt.Color(49, 134, 181));
         btnEliminarApto.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarApto.setText("Eliminar");
+        btnEliminarApto.setText("Eliminarl");
         btnEliminarApto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarAptoActionPerformed(evt);
