@@ -146,7 +146,7 @@ public class administrarApartamento extends javax.swing.JFrame {
 
         btnEliminarApto.setBackground(new java.awt.Color(49, 134, 181));
         btnEliminarApto.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarApto.setText("Eliminar");
+        btnEliminarApto.setText("Eliminarl");
         btnEliminarApto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarAptoActionPerformed(evt);
@@ -312,6 +312,10 @@ public class administrarApartamento extends javax.swing.JFrame {
         
         btnEliminarApto.setEnabled(true);
     }//GEN-LAST:event_btnEliminarAptoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
