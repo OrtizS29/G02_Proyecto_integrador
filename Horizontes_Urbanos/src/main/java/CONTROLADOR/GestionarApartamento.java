@@ -68,17 +68,26 @@ public class GestionarApartamento {
     }
 
     public boolean borrarA(int id,Torre torreSeleccionada) throws Exception {
-            if (torreSeleccionada.getListaApartamentos().size()==1) {
-                return false;
-            }
-            else{
-                Apartamento apto = persisApto.obtener(id);
-            
-                torreSeleccionada.getListaApartamentos().remove(apto);
-                persisTorre.editar(torreSeleccionada);
-                persisApto.eliminar(apto.getId_apartamento());
+        if (torreSeleccionada.getListaApartamentos().size()==1) {
+            return false;
+        }
+        else{
+            Apartamento apto = persisApto.obtener(id);
+            //elimino el apartamento en la BD
+            persisApto.eliminar(apto.getId_apartamento());
+            //para actualizar la torre
+            Torre torreRecargada = persisTorre.obtener(torreSeleccionada.getId_torre());
+                
+            if (!torreRecargada.getListaApartamentos().contains(apto)) {
+                //se actualiza la lista de apartamentos
+                torreSeleccionada.setListaApartamentos(torreRecargada.getListaApartamentos());
                 return true;
-            }
+            } 
+            else {
+                // Si algo salio mal sale esta excepcion
+                throw new Exception("El apartamento no se eliminó correctamente de la torre.");
+            } 
+        }
     }
     
     public List<Apartamento> obtenerApartamentoTorres(int id){

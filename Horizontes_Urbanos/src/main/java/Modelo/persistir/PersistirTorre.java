@@ -3,6 +3,7 @@ package Modelo.persistir;
 
 import Modelo.entities.Torre;
 import Modelo.jpa_controllers.TorreJpaController;
+import java.util.List;
 
 /**
  *
@@ -38,6 +39,22 @@ public class PersistirTorre implements IPersistencia<Torre> {
     
     public void editarNumeroYNumeroT(Torre torre) throws Exception {
         torreJpa.editarNumeroYNumeroT(torre);
+    }
+
+    public int contarNAptos(int numero_torre) {
+        List<Object[]> Qresultado = torreJpa.contarNAptos();
+        
+        for (Object[] objects : Qresultado) {
+           
+            Number numeroT = (Number) objects[0];
+            Number canApto = (Number) objects[1];
+            
+            if (numeroT.intValue() == numero_torre) {
+                return canApto.intValue();
+            }
+        }
+        return 0;
+        
     }
     
 }

@@ -40,7 +40,6 @@ public class crearProyecto2 extends javax.swing.JFrame {
 
         btnSiguienteCrearTorre = new javax.swing.JButton();
         txtNumeroTorre = new javax.swing.JTextField();
-        txtNumeroDeApartamentos = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,13 +63,6 @@ public class crearProyecto2 extends javax.swing.JFrame {
         });
         getContentPane().add(txtNumeroTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 290, 30));
 
-        txtNumeroDeApartamentos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroDeApartamentosActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtNumeroDeApartamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 290, 30));
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearProyecto2.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -81,20 +73,14 @@ public class crearProyecto2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroTorreActionPerformed
 
-    private void txtNumeroDeApartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDeApartamentosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroDeApartamentosActionPerformed
-
     private void btnSiguienteCrearTorreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCrearTorreActionPerformed
         
         btnSiguienteCrearTorre.setEnabled(false);
         
         int numeroTorre = Integer.parseInt(txtNumeroTorre.getText());
-        int numeroApartamentos = Integer.parseInt(txtNumeroDeApartamentos.getText());
         
         Torre torre = new Torre();
         torre.setNumero_torre(numeroTorre);
-        torre.setNumero_apartamentos(numeroApartamentos);
         torre.setProyecto(proyectoActual);
         torre.setListaApartamentos(new ArrayList<Apartamento>());
         
@@ -117,7 +103,6 @@ public class crearProyecto2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSiguienteCrearTorre;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtNumeroDeApartamentos;
     private javax.swing.JTextField txtNumeroTorre;
     // End of variables declaration//GEN-END:variables
 }

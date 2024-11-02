@@ -43,7 +43,6 @@ public class administrarTorre extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         btnSiguienteCrearProyecto = new javax.swing.JButton();
-        txtNumeroDeApartamentos = new javax.swing.JTextField();
         txtNumeroTorre = new javax.swing.JTextField();
         txtProyectoActual = new javax.swing.JTextField();
         btnMenu = new javax.swing.JButton();
@@ -74,13 +73,6 @@ public class administrarTorre extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnSiguienteCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 100, 40));
-
-        txtNumeroDeApartamentos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroDeApartamentosActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtNumeroDeApartamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 280, 30));
 
         txtNumeroTorre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +138,7 @@ public class administrarTorre extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarTorre);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 490, 280));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 620, 280));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorree.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 460));
@@ -174,11 +166,9 @@ public class administrarTorre extends javax.swing.JFrame {
         btnSiguienteCrearProyecto.setEnabled(false);
         
         int numeroTorre = Integer.parseInt(txtNumeroTorre.getText());
-        int numeroApartamentos = Integer.parseInt(txtNumeroDeApartamentos.getText());
         
         Torre torre = new Torre();
         torre.setNumero_torre(numeroTorre);
-        torre.setNumero_apartamentos(numeroApartamentos);
         torre.setProyecto(proyectoSeleccionado);
         torre.setListaApartamentos(new ArrayList<Apartamento>());
         
@@ -193,10 +183,6 @@ public class administrarTorre extends javax.swing.JFrame {
         
         btnSiguienteCrearProyecto.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteCrearProyectoActionPerformed
-
-    private void txtNumeroDeApartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDeApartamentosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroDeApartamentosActionPerformed
 
     private void txtNumeroTorreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroTorreActionPerformed
         // TODO add your handling code here:
@@ -262,7 +248,8 @@ public class administrarTorre extends javax.swing.JFrame {
             }
         };
         
-        String titulos[] = {"Identificador Torre","Numero Torre","Numero Apartamentos","Nombre Proyecto","Numero Torres Proyecto"};
+        String titulos[] = {"Identificador Torre","Numero Torre","Numero Apartamentos","Nombre Proyecto",
+            "Numero Torres Proyecto"};
         modeloTabla.setColumnIdentifiers(titulos);
         
         int id = proyectoSeleccionado.getId_proyecto();
@@ -279,7 +266,8 @@ public class administrarTorre extends javax.swing.JFrame {
             
             for(Torre torre: listaTorres){
                 int numero_torres = gestiProyecto.contarNTorres(torre.getProyecto().getNombre_proyecto());
-                Object[] objeto ={torre.getId_torre(),torre.getNumero_torre(),torre.getNumero_apartamentos()
+                int numero_apto = gestiTorre.contarNAptos(torre.getNumero_torre());
+                Object[] objeto ={torre.getId_torre(),torre.getNumero_torre(),numero_apto
                 ,torre.getProyecto().getNombre_proyecto(),numero_torres};
                 modeloTabla.addRow(objeto);
             }
@@ -342,7 +330,6 @@ public class administrarTorre extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tablaMostrarTorre;
-    private javax.swing.JTextField txtNumeroDeApartamentos;
     private javax.swing.JTextField txtNumeroTorre;
     private javax.swing.JTextField txtProyectoActual;
     // End of variables declaration//GEN-END:variables
