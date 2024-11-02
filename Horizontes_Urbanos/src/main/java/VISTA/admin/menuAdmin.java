@@ -1,5 +1,10 @@
 
-package VISTA;
+package VISTA.admin;
+
+import VISTA.Login;
+import VISTA.admin.apartamentoSeleccionarProyecto;
+import VISTA.admin.administrarProyecto;
+import VISTA.admin.torreSeleccionarProyecto;
 
 /**
  *

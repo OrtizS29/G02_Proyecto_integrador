@@ -1,5 +1,5 @@
 
-package VISTA;
+package VISTA.admin;
 
 import CONTROLADOR.GestionarProyecto;
 import CONTROLADOR.GestionarTorre;
