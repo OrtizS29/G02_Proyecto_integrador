@@ -256,5 +256,18 @@ public class TorreJpaController implements Serializable {
             em.close();
         }
     }
+
+    public List<Object[]> contarNAptos() {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT t.numero_torre, COUNT(a) AS numAptos " +
+                                          "FROM Torre t JOIN t.listaApartamentos a " +
+                                          "GROUP BY t.id_torre, t.numero_torre"
+            );
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
     
 }

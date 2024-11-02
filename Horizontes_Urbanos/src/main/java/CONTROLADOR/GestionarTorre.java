@@ -28,11 +28,10 @@ public class GestionarTorre {
         persisApartamento = new PersistirApartamento();
     }
 
-    public void guardarTorre(String numero_torre,int numero_apartamento,
+    public void guardarTorre(int numero_torre,int numero_apartamento,
             ArrayList<Apartamento> listaApartamentos,Proyecto proyecto) throws Exception{
         Torre torre = new Torre();
-        torre.setNumero_torre(numero_apartamento);
-        torre.setNumero_apartamentos(numero_apartamento);
+        torre.setNumero_torre(numero_torre);
         torre.setListaApartamentos(listaApartamentos);
         torre.setProyecto(proyecto);
         persisTorre.crear(torre);
@@ -53,11 +52,6 @@ public class GestionarTorre {
         Torre torre = null;
         torre = persisTorre.obtener(id);
         return torre;
-    }
-
-    
-    public void editar(Torre torre) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public boolean borrarT(Proyecto proyectoSeleccionado, int id_torre) throws Exception {
@@ -81,20 +75,19 @@ public class GestionarTorre {
     }
 
     
-    public void borrar(int id) {
-        
-    }
-    
     public List<Torre> obtenerTorresProyecto(int id){
         Proyecto proyecto = persisProyecto.obtener(id);
         return proyecto.getListaTorres();
     }
 
-    public void editarTorre(Torre torre, int numeroTorre, int numeroAptos) throws Exception {
+    public void editarTorre(Torre torre, int numeroTorre) throws Exception {
         
         torre.setNumero_torre(numeroTorre);
-        torre.setNumero_apartamentos(numeroAptos);
         persisTorre.editarNumeroYNumeroT(torre);
+    }
+
+    public int contarNAptos(int numero_torre) {
+        return persisTorre.contarNAptos(numero_torre);
     }
 
     

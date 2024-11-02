@@ -6,6 +6,7 @@ package VISTA;
 
 import CONTROLADOR.GestionarApartamento;
 import CONTROLADOR.GestionarProyecto;
+import CONTROLADOR.GestionarTorre;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
@@ -26,12 +27,14 @@ import javax.swing.table.DefaultTableModel;
 public class administrarApartamento extends javax.swing.JFrame {
 
     GestionarProyecto gestiProyecto;
+    GestionarTorre gestiTorre;
     GestionarApartamento gestiApto;
     Proyecto proyectoSeleccionado;
     Torre torreSeleccionada;
     
     public administrarApartamento(Proyecto proyectoSeleccionado,Torre torreSeleccionada) {
         this.gestiProyecto = new GestionarProyecto();
+        this.gestiTorre = new GestionarTorre();
         this.gestiApto = new GestionarApartamento();
         this.proyectoSeleccionado = proyectoSeleccionado;
         this.torreSeleccionada = torreSeleccionada;
@@ -364,12 +367,12 @@ public class administrarApartamento extends javax.swing.JFrame {
         if(listaApartamentos != null){
             for(Apartamento apartamento: listaApartamentos){
                 int numero_torres = gestiProyecto.contarNTorres(proyectoSeleccionado.getNombre_proyecto());
+                int numero_apto = gestiTorre.contarNAptos(apartamento.getTorre().getNumero_torre());
                 Object[] objeto ={apartamento.getId_apartamento(),apartamento.getNum_apartamento(),
                     apartamento.getValor_apartamento(),apartamento.getTipo_unidad(),apartamento.getArea(),
                     apartamento.getMatricula(),apartamento.getFecha_escritura(),
-                    apartamento.getTorre().getNumero_torre(),apartamento.getTorre().getNumero_apartamentos(),
-                    apartamento.getTorre().getProyecto().getNombre_proyecto(),
-                    apartamento.getTorre().getProyecto(),numero_torres};
+                    apartamento.getTorre().getNumero_torre(),numero_apto,
+                    apartamento.getTorre().getProyecto().getNombre_proyecto(),numero_torres};
                 modeloTabla.addRow(objeto);
             }
         }

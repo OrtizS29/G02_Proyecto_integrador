@@ -34,7 +34,6 @@ public class EditarTorre extends javax.swing.JFrame {
     private void initComponents() {
 
         txtNumeroTorre = new javax.swing.JTextField();
-        txtNumeroDeApartamentos = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -47,13 +46,6 @@ public class EditarTorre extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNumeroTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 290, 30));
-
-        txtNumeroDeApartamentos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroDeApartamentosActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtNumeroDeApartamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 290, 30));
 
         btnGuardar.setBackground(new java.awt.Color(49, 134, 181));
         btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -76,19 +68,14 @@ public class EditarTorre extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroTorreActionPerformed
 
-    private void txtNumeroDeApartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDeApartamentosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroDeApartamentosActionPerformed
-
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         btnGuardar.setEnabled(false);
 
         int numeroTorre = Integer.parseInt(txtNumeroTorre.getText());
-        int numeroAptos = Integer.parseInt(txtNumeroDeApartamentos.getText());
 
         try {
-            gestiApto.editarTorre(torre,numeroTorre,numeroAptos);
+            gestiApto.editarTorre(torre,numeroTorre);
         } catch (Exception ex) {
             Logger.getLogger(EditarTorre.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -107,7 +94,6 @@ public class EditarTorre extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtNumeroDeApartamentos;
     private javax.swing.JTextField txtNumeroTorre;
     // End of variables declaration//GEN-END:variables
 
@@ -116,6 +102,5 @@ public class EditarTorre extends javax.swing.JFrame {
         this.torre = gestiApto.buscarPorId(id_torre);
         
         txtNumeroTorre.setText(String.valueOf(torre.getNumero_torre()));
-        txtNumeroDeApartamentos.setText(String.valueOf(torre.getNumero_apartamentos()));
     }
 }
