@@ -1,6 +1,7 @@
 
-package VISTA;
+package VISTA.admin;
 
+import VISTA.admin.EditarProyecto;
 import CONTROLADOR.GestionarProyecto;
 import Modelo.entities.Administrador;
 import Modelo.entities.Proyecto;

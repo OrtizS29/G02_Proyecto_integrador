@@ -1,5 +1,5 @@
 
-package VISTA;
+package VISTA.admin;
 
 import CONTROLADOR.GestionarApartamento;
 import Modelo.entities.Apartamento;

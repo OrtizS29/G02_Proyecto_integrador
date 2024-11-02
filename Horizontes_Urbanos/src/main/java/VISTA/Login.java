@@ -1,6 +1,7 @@
 
 package VISTA;
 
+import VISTA.admin.menuAdmin;
 import CONTROLADOR.validarUsuarios;
 import Modelo.entities.Usuario;
 import javax.swing.JDialog;

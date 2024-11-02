@@ -1,6 +1,8 @@
 
-package VISTA;
+package VISTA.admin;
 
+import VISTA.admin.menuAdmin;
+import VISTA.admin.administrarTorre;
 import CONTROLADOR.GestionarProyecto;
 import Modelo.entities.Proyecto;
 import java.util.List;

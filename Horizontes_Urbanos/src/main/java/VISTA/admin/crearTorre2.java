@@ -2,11 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package VISTA;
+package VISTA.admin;
 
 import CONTROLADOR.GestionarApartamento;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Torre;
+import VISTA.admin.menuAdmin;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
