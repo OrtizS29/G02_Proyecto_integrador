@@ -11,6 +11,8 @@ import CONTROLADOR.GestionarTorre;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -32,7 +34,8 @@ public class administrarTorre extends javax.swing.JFrame {
     GestionarTorre gestiTorre;
     
     public administrarTorre(Proyecto proyectoSeleccionado) {
-        this.gestiProyecto = new GestionarProyecto();
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiProyecto = new GestionarProyecto(factory);
         this.gestiTorre = new GestionarTorre();
         this.proyectoSeleccionado = proyectoSeleccionado;
         initComponents();

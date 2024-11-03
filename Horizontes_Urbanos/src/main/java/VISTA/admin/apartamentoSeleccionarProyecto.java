@@ -9,6 +9,8 @@ import CONTROLADOR.GestionarProyecto;
 import CONTROLADOR.GestionarTorre;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -28,7 +30,8 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
     private int idTorreSeleccionada = 0;
     
     public apartamentoSeleccionarProyecto() {
-        this.gestiProyecto = new GestionarProyecto();
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiProyecto = new GestionarProyecto(factory);
         this.gestiTorre = new GestionarTorre();
         initComponents();
     }
@@ -132,7 +135,12 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
         
         //int id_proyecto = capturarIdProyecto(id_proyecto);
         
-        Proyecto proyectoSeleccionado = gestiProyecto.buscarPorId(idProyectoSeleccionado);
+        Proyecto proyectoSeleccionado = null;
+        try {
+            proyectoSeleccionado = gestiProyecto.buscarPorId(idProyectoSeleccionado);
+        } catch (Exception ex) {
+            Logger.getLogger(apartamentoSeleccionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Torre torreSeleccionada = gestiTorre.buscarPorId(idTorreSeleccionada);
         
         if(torreSeleccionada == null){
@@ -179,7 +187,7 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tablaMostrarProyectosMouseClicked
 
-    public void cargarTablaProyecto(){
+    public void cargarTablaProyecto() throws Exception{
     
         DefaultTableModel modeloTabla  = new DefaultTableModel(){
             
@@ -205,7 +213,11 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
-        cargarTablaProyecto();
+        try {
+            cargarTablaProyecto();
+        } catch (Exception ex) {
+            Logger.getLogger(apartamentoSeleccionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_formWindowOpened
 

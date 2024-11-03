@@ -11,6 +11,8 @@ import CONTROLADOR.GestionarTorre;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,7 +36,8 @@ public class administrarApartamento extends javax.swing.JFrame {
     Torre torreSeleccionada;
     
     public administrarApartamento(Proyecto proyectoSeleccionado,Torre torreSeleccionada) {
-        this.gestiProyecto = new GestionarProyecto();
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiProyecto = new GestionarProyecto(factory);
         this.gestiTorre = new GestionarTorre();
         this.gestiApto = new GestionarApartamento();
         this.proyectoSeleccionado = proyectoSeleccionado;

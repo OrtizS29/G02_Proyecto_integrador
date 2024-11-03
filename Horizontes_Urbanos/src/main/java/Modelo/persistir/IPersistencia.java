@@ -1,6 +1,8 @@
 
 package Modelo.persistir;
 
+import Modelo.entities.Proyecto;
+
 /**
  * Interfaz generica que tiene los metodos para hacer el CRUD (crea,eliminar,editar,leer)
  * 

@@ -5,6 +5,9 @@ import Modelo.entities.Administrador;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.persistir.IPersistencia;
+import Modelo.persistir.IPersistenciaProyecto;
 import Modelo.persistir.PersistirAdministrador;
 import Modelo.persistir.PersistirApartamento;
 import Modelo.persistir.PersistirProyecto;
@@ -20,16 +23,16 @@ import java.util.logging.Logger;
  */
 public class GestionarProyecto {
     
-    private PersistirAdministrador persisAdmin;
-    private PersistirProyecto persisProyecto;
-    private PersistirTorre  persisTorre;
-    private PersistirApartamento persisApartamento;
+    private IPersistencia<Administrador> persisAdmin;
+    private IPersistenciaProyecto persisProyecto;
+    private IPersistencia<Torre>  persisTorre;
+    private IPersistencia<Apartamento> persisApartamento;
 
-    public GestionarProyecto() {
-        persisProyecto = new PersistirProyecto();
-        persisAdmin = new PersistirAdministrador();
-        persisTorre = new PersistirTorre();
-        persisApartamento = new PersistirApartamento();
+    public GestionarProyecto(I_PersistenciaFactory fa) {
+        persisProyecto = fa.crearPersistirProyecto();
+        persisAdmin = fa.crearPersistirAdministrador();
+        persisTorre = fa.crearPersistirTorre();
+        persisApartamento = fa.crearPersistirApartamento();
     }
 
     //Guardar
@@ -52,7 +55,7 @@ public class GestionarProyecto {
         return proyecto;   
     }
 
-    public Proyecto buscarPorId(int id) {
+    public Proyecto buscarPorId(int id) throws Exception {
         Proyecto proyecto = null;
         proyecto = persisProyecto.obtener(id);
         return proyecto;
@@ -101,7 +104,7 @@ public class GestionarProyecto {
         }
     }
 
-    public List<Proyecto> obtenerProyectosAdmin(){
+    public List<Proyecto> obtenerProyectosAdmin() throws Exception{
         Administrador administrador = persisAdmin.obtener(68293849);
         return administrador.getListaProyectos();
     }
