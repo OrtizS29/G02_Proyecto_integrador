@@ -31,21 +31,21 @@ public class PersistirProyecto implements IPersistenciaProyecto {
 
     @Override
     public void editar(Proyecto entidad) throws Exception {
-        proyectoJpa.edit(entidad);
+        proyectoJpa.editarNombreYProyecto(entidad);
     }
 
     @Override
     public void eliminar(int id) throws Exception {
         proyectoJpa.destroy(id);
     }
-    
+    /*
     public void editarNombreYProyecto(Proyecto proyecto) {
         try {
             proyectoJpa.editarNombreYProyecto(proyecto);
         } catch (Exception ex) {
             Logger.getLogger(PersistirProyecto.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }*/
 
     public int contarNTorres(String nombre_proyecto) {
         List<Object[]> Qresultado = proyectoJpa.contarNTorres();
@@ -61,4 +61,5 @@ public class PersistirProyecto implements IPersistenciaProyecto {
         }
         return 0;
     }
+
 }

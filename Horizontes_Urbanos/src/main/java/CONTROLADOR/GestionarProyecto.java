@@ -57,10 +57,10 @@ public class GestionarProyecto {
         return proyecto;
     }
 
-    public void editarProyecto(Proyecto proyect, String nombreProyecto) throws Exception {
+    public void editar(Proyecto proyect, String nombreProyecto) throws Exception {
         
         proyect.setNombre_proyecto(nombreProyecto);
-        persisProyecto.editarNombreYProyecto(proyect);
+        persisProyecto.editar(proyect);
     }
     
     public void editar(Proyecto proyecto) {
