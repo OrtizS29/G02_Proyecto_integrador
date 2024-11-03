@@ -72,7 +72,7 @@ public class EditarProyecto extends javax.swing.JFrame {
         String nombreProyecto = txtNombreProyecto.getText();
         
         try {
-            gestiProyecto.editarProyecto(proyect,nombreProyecto);
+            gestiProyecto.editar(proyect,nombreProyecto);
         } catch (Exception ex) {
             Logger.getLogger(EditarProyecto.class.getName()).log(Level.SEVERE, null, ex);
         }
