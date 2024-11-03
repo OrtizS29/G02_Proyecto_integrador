@@ -122,7 +122,7 @@ public class administrarApartamento extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearApartamento.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 910, 510));
 
-        jTabbedPane1.addTab("crearApartamento", jPanel1);
+        jTabbedPane1.addTab("Crear Apartamento", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -175,7 +175,7 @@ public class administrarApartamento extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarApartamento.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 940, 450));
 
-        jTabbedPane1.addTab("gestionarApartamento", jPanel2);
+        jTabbedPane1.addTab("Gestionar Apartamento", jPanel2);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 460));
 
