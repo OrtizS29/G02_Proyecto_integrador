@@ -3,6 +3,8 @@ package VISTA.admin;
 
 import CONTROLADOR.GestionarProyecto;
 import Modelo.entities.Proyecto;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,8 +18,9 @@ public class EditarProyecto extends javax.swing.JFrame {
     private GestionarProyecto gestiProyecto;
     private Proyecto proyect;
     
-    public EditarProyecto(int id_proyecto) {
-        this.gestiProyecto = new GestionarProyecto();
+    public EditarProyecto(int id_proyecto) throws Exception {
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiProyecto = new GestionarProyecto(factory);
         initComponents();
         cargarDatos(id_proyecto);
     }
@@ -91,7 +94,7 @@ public class EditarProyecto extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombreProyecto;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarDatos(int id_proyecto) {
+    private void cargarDatos(int id_proyecto) throws Exception {
         
         this.proyect = gestiProyecto.buscarPorId(id_proyecto);
         

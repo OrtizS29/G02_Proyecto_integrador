@@ -4,12 +4,14 @@ package Modelo.persistir;
 import Modelo.entities.Proyecto;
 import Modelo.jpa_controllers.ProyectoJpaController;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Santiago
  */
-public class PersistirProyecto implements IPersistencia<Proyecto> {
+public class PersistirProyecto implements IPersistenciaProyecto {
     
     private ProyectoJpaController proyectoJpa;
 
@@ -37,8 +39,12 @@ public class PersistirProyecto implements IPersistencia<Proyecto> {
         proyectoJpa.destroy(id);
     }
     
-    public void editarNombreYProyecto(Proyecto proyecto) throws Exception {
-        proyectoJpa.editarNombreYProyecto(proyecto);
+    public void editarNombreYProyecto(Proyecto proyecto) {
+        try {
+            proyectoJpa.editarNombreYProyecto(proyecto);
+        } catch (Exception ex) {
+            Logger.getLogger(PersistirProyecto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public int contarNTorres(String nombre_proyecto) {

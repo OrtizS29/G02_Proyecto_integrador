@@ -6,6 +6,8 @@ import CONTROLADOR.GestionarProyecto;
 import Modelo.entities.Administrador;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
 import Modelo.persistir.PersistirAdministrador;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -29,9 +31,10 @@ public class administrarProyecto extends javax.swing.JFrame {
      * Creates new form gestionarProyecto
      */
     public administrarProyecto() {
-        initComponents();
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
         persistirAdmin = new PersistirAdministrador();
-        gestiProyecto = new GestionarProyecto();
+        this.gestiProyecto = new GestionarProyecto(factory);
+        initComponents();
         setSize(912, 510); 
         setLocationRelativeTo(null);
     }
@@ -220,7 +223,12 @@ public class administrarProyecto extends javax.swing.JFrame {
                 
                 int id_proyecto = Integer.parseInt(String.valueOf(tablaMostrarProyecto.getValueAt(tablaMostrarProyecto.getSelectedRow(), 0)));
                 
-                EditarProyecto editProyecto = new EditarProyecto(id_proyecto);
+                EditarProyecto editProyecto = null;
+                try {
+                    editProyecto = new EditarProyecto(id_proyecto);
+                } catch (Exception ex) {
+                    Logger.getLogger(administrarProyecto.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 editProyecto.setVisible(true);
                 editProyecto.setLocationRelativeTo(null);
                 this.dispose();

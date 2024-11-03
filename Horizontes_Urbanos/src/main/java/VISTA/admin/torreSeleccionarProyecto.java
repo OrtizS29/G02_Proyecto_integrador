@@ -5,6 +5,8 @@ import VISTA.admin.menuAdmin;
 import VISTA.admin.administrarTorre;
 import CONTROLADOR.GestionarProyecto;
 import Modelo.entities.Proyecto;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +21,8 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
     GestionarProyecto gestiProyecto;
     
     public torreSeleccionarProyecto() {
-        this.gestiProyecto = new GestionarProyecto();
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiProyecto = new GestionarProyecto(factory);
         initComponents();
     }
 
@@ -98,7 +101,12 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
                 
                 int id_proyecto = Integer.parseInt(String.valueOf(tablaSeleccionarProyecto.getValueAt(tablaSeleccionarProyecto.getSelectedRow(), 0)));
 
-                Proyecto proyectoSeleccionado = gestiProyecto.buscarPorId(id_proyecto);
+                Proyecto proyectoSeleccionado = null;
+                try {
+                    proyectoSeleccionado = gestiProyecto.buscarPorId(id_proyecto);
+                } catch (Exception ex) {
+                    Logger.getLogger(torreSeleccionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 administrarTorre adminTorre = new administrarTorre(proyectoSeleccionado);
                 adminTorre.setVisible(true);
                 adminTorre.setLocationRelativeTo(null);
