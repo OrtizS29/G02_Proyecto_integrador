@@ -101,7 +101,7 @@ public class administrarTorre extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearTorre.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 440));
 
-        jTabbedPane1.addTab("crearTorre", jPanel1);
+        jTabbedPane1.addTab("Crear Torre", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -145,7 +145,7 @@ public class administrarTorre extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorree.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 460));
 
-        jTabbedPane1.addTab("gestionarTorre", jPanel2);
+        jTabbedPane1.addTab("Gestionar Torre", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
