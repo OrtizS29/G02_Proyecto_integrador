@@ -7,14 +7,12 @@ import VISTA.Login;
 
 /**
  *
- * @author SAlA-9
+ * @author Santiago
  */
 public class HU_main {
 
     public static void main(String[] args) {
-        /**
-         * Se
-         */
+
         ConexionORACLE conn = new ConexionORACLE();
         
         Login log = new Login();
