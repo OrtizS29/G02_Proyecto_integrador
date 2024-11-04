@@ -6,6 +6,8 @@ import CONTROLADOR.GestionarTorre;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
 import java.util.ArrayList;
 
 /**
@@ -21,10 +23,11 @@ public class crearProyecto2 extends javax.swing.JFrame {
      * Creates new form crearProyecto2
      */
     public crearProyecto2(GestionarProyecto gestiProyecto,Proyecto proyectoActual) {
-        initComponents();
-        this.gestiTorre = new GestionarTorre();
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiTorre = new GestionarTorre(factory);
         this.gestiProyecto = gestiProyecto;
         this.proyectoActual = proyectoActual;
+        initComponents();
         setSize(912, 510); 
         setLocationRelativeTo(null);
     }

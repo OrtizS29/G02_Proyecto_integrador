@@ -22,7 +22,7 @@ public class PersistirAsesor implements IPersistencia<Asesor> {
     }
 
     @Override
-    public Asesor obtener(int id) throws Exception {
+    public Asesor obtener(int id){
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

@@ -1,17 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package VISTA.admin;
 
 import CONTROLADOR.GestionarTorre;
 import Modelo.entities.Torre;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  *
- * @author CLAUDIA
+ * @author Santiago
  */
 public class EditarTorre extends javax.swing.JFrame {
 
@@ -19,7 +18,8 @@ public class EditarTorre extends javax.swing.JFrame {
     private Torre torre;
     
     public EditarTorre(int id_torre) {
-        this.gestiApto = new GestionarTorre();
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiApto = new GestionarTorre(factory);
         initComponents();
         cargarDatos(id_torre);
     }
@@ -75,7 +75,7 @@ public class EditarTorre extends javax.swing.JFrame {
         int numeroTorre = Integer.parseInt(txtNumeroTorre.getText());
 
         try {
-            gestiApto.editarTorre(torre,numeroTorre);
+            gestiApto.editar(torre,numeroTorre);
         } catch (Exception ex) {
             Logger.getLogger(EditarTorre.class.getName()).log(Level.SEVERE, null, ex);
         }

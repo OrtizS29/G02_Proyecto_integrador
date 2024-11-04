@@ -4,9 +4,10 @@ package CONTROLADOR;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
-import Modelo.persistir.PersistirApartamento;
-import Modelo.persistir.PersistirTorre;
-import Modelo.persistir.PersistirProyecto;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.persistir.IPersistencia;
+import Modelo.persistir.IPersistenciaProyecto;
+import Modelo.persistir.IPersistenciaTorre;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -18,14 +19,14 @@ import java.util.logging.Logger;
  */
 public class GestionarTorre {
 
-    private PersistirTorre persisTorre;
-    private PersistirProyecto persisProyecto;
-    private PersistirApartamento persisApartamento;
+    private IPersistenciaTorre persisTorre;
+    private IPersistenciaProyecto persisProyecto;
+    private IPersistencia<Apartamento> persisApartamento;
     
-    public GestionarTorre() {
-        persisTorre = new PersistirTorre();
-        persisProyecto = new PersistirProyecto();
-        persisApartamento = new PersistirApartamento();
+    public GestionarTorre(I_PersistenciaFactory fa) {
+        persisTorre = fa.crearPersistirTorre();
+        persisProyecto = fa.crearPersistirProyecto();
+        persisApartamento = fa.crearPersistirApartamento();
     }
 
     public void guardarTorre(int numero_torre,int numero_apartamento,
@@ -80,10 +81,10 @@ public class GestionarTorre {
         return proyecto.getListaTorres();
     }
 
-    public void editarTorre(Torre torre, int numeroTorre) throws Exception {
+    public void editar(Torre torre, int numeroTorre) throws Exception {
         
         torre.setNumero_torre(numeroTorre);
-        persisTorre.editarNumeroYNumeroT(torre);
+        persisTorre.editar(torre);
     }
 
     public int contarNAptos(int numero_torre) {

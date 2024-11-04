@@ -11,7 +11,4 @@ public interface IPersistenciaProyecto extends IPersistencia<Proyecto>{
 
     int contarNTorres(String nombre_proyecto);
 
-    
-    
-    
 }

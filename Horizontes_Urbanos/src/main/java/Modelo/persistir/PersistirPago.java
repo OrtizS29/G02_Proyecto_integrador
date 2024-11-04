@@ -22,7 +22,7 @@ public class PersistirPago implements IPersistencia<Pago> {
     }
 
     @Override
-    public Pago obtener(int id) throws Exception {
+    public Pago obtener(int id){
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
