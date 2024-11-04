@@ -120,7 +120,11 @@ public class menuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdministrarTorreActionPerformed
 
     private void btnAdministrarAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarAsesorActionPerformed
-        // TODO add your handling code here:
+        
+        AdministrarAsesor adminAsesor = new AdministrarAsesor();
+        adminAsesor.setVisible(true);
+        adminAsesor.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnAdministrarAsesorActionPerformed
 
     private void btnAdministrarProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarProyectoActionPerformed

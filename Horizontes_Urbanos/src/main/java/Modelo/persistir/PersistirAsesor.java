@@ -18,22 +18,22 @@ public class PersistirAsesor implements IPersistencia<Asesor> {
 
     @Override
     public void crear(Asesor entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        asesorJpa.create(entidad);
     }
 
     @Override
     public Asesor obtener(int id){
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return asesorJpa.findAsesor(id);
     }
 
     @Override
     public void editar(Asesor entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        asesorJpa.edit(entidad);
     }
 
     @Override
     public void eliminar(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        asesorJpa.destroy(id);
     }
     
 }

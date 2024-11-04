@@ -32,6 +32,7 @@ public class Venta implements Serializable {
     @SequenceGenerator(name = "seq_idVenta", sequenceName = "seq_idVenta", allocationSize = 1)
     private int id_venta;
     private int precio_base;
+    @Column(name = "Numero_cuotas")
     private int numero_coutas;
     private int precio_final;
     
