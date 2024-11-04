@@ -3,6 +3,8 @@ package VISTA.admin;
 
 import CONTROLADOR.GestionarApartamento;
 import Modelo.entities.Apartamento;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,7 +22,8 @@ public class EditarApartamento extends javax.swing.JFrame {
     private Apartamento apto;
     
     public EditarApartamento(int id_apto) {
-        this.gestiApto = new GestionarApartamento();
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiApto = new GestionarApartamento(factory);
         initComponents();
         cargarDatos(id_apto);
     }

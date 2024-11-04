@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package VISTA.admin;
 
 import VISTA.admin.EditarApartamento;
@@ -36,7 +33,7 @@ public class administrarApartamento extends javax.swing.JFrame {
         I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
         this.gestiProyecto = new GestionarProyecto(factory);
         this.gestiTorre = new GestionarTorre(factory);
-        this.gestiApto = new GestionarApartamento();
+        this.gestiApto = new GestionarApartamento(factory);
         this.proyectoSeleccionado = proyectoSeleccionado;
         this.torreSeleccionada = torreSeleccionada;
         initComponents();

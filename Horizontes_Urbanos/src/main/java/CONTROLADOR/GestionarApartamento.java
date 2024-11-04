@@ -4,10 +4,10 @@ package CONTROLADOR;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Torre;
 import Modelo.entities.Venta;
-import Modelo.persistir.PersistirApartamento;
-import Modelo.persistir.PersistirTorre;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.persistir.IPersistencia;
+import Modelo.persistir.IPersistenciaTorre;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,12 +18,12 @@ import java.util.logging.Logger;
  */
 public class GestionarApartamento {
     
-    private PersistirApartamento persisApto;
-    private PersistirTorre persisTorre;
+    private IPersistencia<Apartamento> persisApto;
+    private IPersistenciaTorre persisTorre;
 
-    public GestionarApartamento() {
-        persisTorre = new PersistirTorre();
-        persisApto = new PersistirApartamento();
+    public GestionarApartamento(I_PersistenciaFactory fa) {
+        persisTorre = fa.crearPersistirTorre();
+        persisApto = fa.crearPersistirApartamento();
     }
 
     public void guardarApartamento(int num_apartemento,int valor_apartamento,String tipo_unidad,
