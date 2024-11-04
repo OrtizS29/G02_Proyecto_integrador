@@ -7,6 +7,8 @@ package VISTA.admin;
 import CONTROLADOR.GestionarApartamento;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Torre;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
 import VISTA.admin.menuAdmin;
 import java.sql.Date;
 import java.text.ParseException;
@@ -25,8 +27,9 @@ public class crearTorre2 extends javax.swing.JFrame {
     GestionarApartamento gestiApto;
     
     public crearTorre2(Torre torreActual) {
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
         this.torreActual = torreActual;
-        this.gestiApto = new GestionarApartamento();
+        this.gestiApto = new GestionarApartamento(factory);
         initComponents();
     }
 

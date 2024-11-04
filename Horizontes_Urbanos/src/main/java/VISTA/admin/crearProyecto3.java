@@ -5,6 +5,8 @@ import CONTROLADOR.GestionarApartamento;
 import CONTROLADOR.GestionarTorre;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Torre;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,7 +26,8 @@ public class crearProyecto3 extends javax.swing.JFrame {
      * Creates new form crearProyecto3
      */
     public crearProyecto3(GestionarTorre gestiTorre,Torre torreActual) {
-        this.gestiApto = new GestionarApartamento();
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiApto = new GestionarApartamento(factory);
         this.gestiTorre = gestiTorre;
         this.torreActual = torreActual;
         initComponents();
