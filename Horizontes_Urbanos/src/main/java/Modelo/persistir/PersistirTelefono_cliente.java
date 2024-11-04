@@ -22,7 +22,7 @@ public class PersistirTelefono_cliente implements IPersistencia<Telefono_cliente
     }
 
     @Override
-    public Telefono_cliente obtener(int id) throws Exception {
+    public Telefono_cliente obtener(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

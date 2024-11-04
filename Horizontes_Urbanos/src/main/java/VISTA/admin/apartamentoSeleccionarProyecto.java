@@ -32,7 +32,7 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
     public apartamentoSeleccionarProyecto() {
         I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
         this.gestiProyecto = new GestionarProyecto(factory);
-        this.gestiTorre = new GestionarTorre();
+        this.gestiTorre = new GestionarTorre(factory);
         initComponents();
     }
 

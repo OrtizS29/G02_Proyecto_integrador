@@ -24,7 +24,7 @@ public class PersistirUsuario implements IPersistencia<Usuario> {
     }
 
     @Override
-    public Usuario obtener(int id) throws Exception {
+    public Usuario obtener(int id) {
         return usuarioJpa.findUsuario(id);
     }
 

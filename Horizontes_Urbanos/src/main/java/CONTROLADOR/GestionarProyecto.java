@@ -8,6 +8,7 @@ import Modelo.entities.Torre;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.persistir.IPersistencia;
 import Modelo.persistir.IPersistenciaProyecto;
+import Modelo.persistir.IPersistenciaTorre;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,7 +22,7 @@ public class GestionarProyecto {
     
     private IPersistencia<Administrador> persisAdmin;
     private IPersistenciaProyecto persisProyecto;
-    private IPersistencia<Torre>  persisTorre;
+    private IPersistenciaTorre  persisTorre;
     private IPersistencia<Apartamento> persisApartamento;
 
     public GestionarProyecto(I_PersistenciaFactory fa) {

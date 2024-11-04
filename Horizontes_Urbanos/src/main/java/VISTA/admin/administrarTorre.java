@@ -36,7 +36,7 @@ public class administrarTorre extends javax.swing.JFrame {
     public administrarTorre(Proyecto proyectoSeleccionado) {
         I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
         this.gestiProyecto = new GestionarProyecto(factory);
-        this.gestiTorre = new GestionarTorre();
+        this.gestiTorre = new GestionarTorre(factory);
         this.proyectoSeleccionado = proyectoSeleccionado;
         initComponents();
     }

@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Santiago
  */
-public class PersistirTorre implements IPersistencia<Torre> {
+public class PersistirTorre implements IPersistenciaTorre {
     
     private TorreJpaController torreJpa;
 
@@ -29,17 +29,17 @@ public class PersistirTorre implements IPersistencia<Torre> {
 
     @Override
     public void editar(Torre entidad) throws Exception {
-        torreJpa.edit(entidad);
+        torreJpa.editarNumeroYNumeroT(entidad);
     }
 
     @Override
     public void eliminar(int id) throws Exception {
         torreJpa.destroy(id);
     }
-    
+    /**
     public void editarNumeroYNumeroT(Torre torre) throws Exception {
         torreJpa.editarNumeroYNumeroT(torre);
-    }
+    }*/
 
     public int contarNAptos(int numero_torre) {
         List<Object[]> Qresultado = torreJpa.contarNAptos();

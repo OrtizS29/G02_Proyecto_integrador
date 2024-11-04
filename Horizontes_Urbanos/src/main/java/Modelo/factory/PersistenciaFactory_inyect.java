@@ -10,11 +10,11 @@ import Modelo.entities.Correo_cliente;
 import Modelo.entities.Pago;
 import Modelo.entities.Telefono_asesor;
 import Modelo.entities.Telefono_cliente;
-import Modelo.entities.Torre;
 import Modelo.entities.Usuario;
 import Modelo.entities.Venta;
 import Modelo.persistir.IPersistencia;
 import Modelo.persistir.IPersistenciaProyecto;
+import Modelo.persistir.IPersistenciaTorre;
 import Modelo.persistir.PersistirAdministrador;
 import Modelo.persistir.PersistirApartamento;
 import Modelo.persistir.PersistirAsesor;
@@ -86,7 +86,7 @@ public class PersistenciaFactory_inyect implements I_PersistenciaFactory{
     }
 
     @Override
-    public IPersistencia<Torre> crearPersistirTorre() {
+    public IPersistenciaTorre crearPersistirTorre() {
         return new PersistirTorre();
     }
 

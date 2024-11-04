@@ -25,7 +25,7 @@ public interface IPersistencia<T> {
      * @return
      * @throws Exception 
      */
-    public T obtener(int id) throws Exception;
+    public T obtener(int id);
     
     /**
      * Metodo para editar o modificar obtener una entidad en la BD

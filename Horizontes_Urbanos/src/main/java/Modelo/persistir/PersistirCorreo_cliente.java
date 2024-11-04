@@ -22,7 +22,7 @@ public class PersistirCorreo_cliente implements IPersistencia<Correo_cliente> {
     }
 
     @Override
-    public Correo_cliente obtener(int id) throws Exception {
+    public Correo_cliente obtener(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

@@ -22,7 +22,7 @@ public class PersistirVenta implements IPersistencia<Venta> {
     }
 
     @Override
-    public Venta obtener(int id) throws Exception {
+    public Venta obtener(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
