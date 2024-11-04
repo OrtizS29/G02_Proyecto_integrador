@@ -18,22 +18,22 @@ public class PersistirTelefono_asesor implements IPersistencia<Telefono_asesor> 
 
     @Override
     public void crear(Telefono_asesor entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        telAseJpa.create(entidad);
     }
 
     @Override
     public Telefono_asesor obtener(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return telAseJpa.findTelefono_asesor(id);
     }
 
     @Override
     public void editar(Telefono_asesor entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        telAseJpa.edit(entidad);
     }
 
     @Override
     public void eliminar(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        telAseJpa.destroy(id);
     }
     
     

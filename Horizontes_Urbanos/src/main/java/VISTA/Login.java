@@ -4,6 +4,7 @@ package VISTA;
 import VISTA.admin.menuAdmin;
 import CONTROLADOR.validarUsuarios;
 import Modelo.entities.Usuario;
+import VISTA.asesor.menuAsesor;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -102,7 +103,9 @@ public class Login extends javax.swing.JFrame {
                 mAdmin.setVisible(true);
                 this.dispose();
             }else if(rol.equals("asesor")){
-                
+                menuAsesor meAsesor = new menuAsesor();
+                meAsesor.setVisible(true);
+                this.dispose();
             }
         }
         else{

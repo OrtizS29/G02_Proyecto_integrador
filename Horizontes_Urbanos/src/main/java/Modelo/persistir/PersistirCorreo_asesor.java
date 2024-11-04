@@ -18,22 +18,22 @@ public class PersistirCorreo_asesor implements IPersistencia<Correo_asesor> {
 
     @Override
     public void crear(Correo_asesor entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        correoAseJpa.create(entidad);
     }
 
     @Override
     public Correo_asesor obtener(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return correoAseJpa.findCorreo_asesor(id);
     }
 
     @Override
     public void editar(Correo_asesor entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        correoAseJpa.edit(entidad);
     }
 
     @Override
     public void eliminar(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        correoAseJpa.destroy(id);
     }
    
    

@@ -1,16 +1,25 @@
 
 package VISTA.admin;
 
+import Modelo.entities.Asesor;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
+import CONTROLADOR.GestionarUsuario;
+import Modelo.entities.Usuario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author CLAUDIA
  */
 public class UsuarioAsesor extends javax.swing.JFrame {
 
-    /**
-     * Creates new form UsuarioAsesor
-     */
-    public UsuarioAsesor() {
+    Asesor asesorSelect;
+    GestionarUsuario gestiUsuario;
+    public UsuarioAsesor(Asesor asesorSelect) {
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiUsuario = new GestionarUsuario(factory);
+        this.asesorSelect = asesorSelect;
         initComponents();
     }
 
@@ -62,6 +71,28 @@ public class UsuarioAsesor extends javax.swing.JFrame {
 
         btnGuardarAsesor.setEnabled(false);
 
+        String usuario = txtUsuarioAsesor.getText();
+        String contraseña = txtContraseñaAsesor.getText();
+        String rol = "asesor";
+        
+        Usuario usu = new Usuario();
+        usu.setUsuario(usuario);
+        usu.setContraseña(contraseña);
+        usu.setRol(rol);
+        usu.setAsesor(asesorSelect);
+        usu.setAdministrador(null);
+        
+        try {
+            gestiUsuario.guardar(usu);
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioAsesor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        menuAdmin menuAdmin = new menuAdmin();
+        menuAdmin.setVisible(true);
+        menuAdmin.setLocationRelativeTo(null);
+        this.dispose();
+        
         btnGuardarAsesor.setEnabled(true);
     }//GEN-LAST:event_btnGuardarAsesorActionPerformed
 
