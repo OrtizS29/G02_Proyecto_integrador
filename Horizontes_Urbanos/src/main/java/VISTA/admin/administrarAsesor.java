@@ -45,12 +45,14 @@ public class administrarAsesor extends javax.swing.JFrame {
         txtCorreoAsesorReg = new javax.swing.JTextField();
         btnSiguienteAsesor = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnGuardarAsesor = new javax.swing.JButton();
         btnGuardarAsesor1 = new javax.swing.JButton();
         btnGuardarAsesor2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -101,7 +103,7 @@ public class administrarAsesor extends javax.swing.JFrame {
                 btnSiguienteAsesorActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSiguienteAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 110, 40));
+        jPanel1.add(btnSiguienteAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 110, 40));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -113,6 +115,9 @@ public class administrarAsesor extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 100, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarAsesor.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 430));
 
         jTabbedPane1.addTab("Registrar Asesor", jPanel1);
 
@@ -142,7 +147,7 @@ public class administrarAsesor extends javax.swing.JFrame {
                 btnGuardarAsesorActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 110, 40));
+        jPanel2.add(btnGuardarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 110, 40));
 
         btnGuardarAsesor1.setBackground(new java.awt.Color(49, 134, 181));
         btnGuardarAsesor1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -153,7 +158,7 @@ public class administrarAsesor extends javax.swing.JFrame {
                 btnGuardarAsesor1ActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardarAsesor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 110, 40));
+        jPanel2.add(btnGuardarAsesor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 110, 40));
 
         btnGuardarAsesor2.setBackground(new java.awt.Color(49, 134, 181));
         btnGuardarAsesor2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -164,11 +169,14 @@ public class administrarAsesor extends javax.swing.JFrame {
                 btnGuardarAsesor2ActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardarAsesor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 110, 40));
+        jPanel2.add(btnGuardarAsesor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 110, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarAsesor.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jTabbedPane1.addTab("Gestionar Asesor", jPanel2);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 490));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -285,6 +293,8 @@ public class administrarAsesor extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardarAsesor2;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSiguienteAsesor;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
