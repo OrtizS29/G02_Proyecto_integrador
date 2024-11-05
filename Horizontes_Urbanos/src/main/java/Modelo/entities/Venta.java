@@ -6,6 +6,7 @@ import Modelo.entities.Cliente;
 import Modelo.entities.Asesor;
 import Modelo.entities.Apartamento;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,7 +36,7 @@ public class Venta implements Serializable {
     @Column(name = "Numero_cuotas")
     private int numero_coutas;
     private int precio_final;
-    
+    private Date fecha;
     @Column(nullable = false)
     private Integer intereses;
     private int numero_apartamentos_comprados;
@@ -45,6 +46,9 @@ public class Venta implements Serializable {
     
     @OneToMany(mappedBy = "venta")
     private ArrayList<Pago> listaPagos;
+    
+    @OneToMany(mappedBy = "venta")
+    private ArrayList<Deuda> listaDeuda;
     
     @ManyToOne(optional=false)
     @JoinColumn(name = "Cedula_asesor", referencedColumnName = "Cedula")
@@ -57,15 +61,17 @@ public class Venta implements Serializable {
     public Venta() {
     }
 
-    public Venta(int id_venta, int precio_base, int numero_coutas, int precio_final, Integer intereses, int numero_apartamentos_comprados, ArrayList<Apartamento> listaApartamentos, ArrayList<Pago> listaPagos, Asesor asesor, Cliente cliente) {
+    public Venta(int id_venta, int precio_base, int numero_coutas, int precio_final, Date fecha, Integer intereses, int numero_apartamentos_comprados, ArrayList<Apartamento> listaApartamentos, ArrayList<Pago> listaPagos, ArrayList<Deuda> listaDeuda, Asesor asesor, Cliente cliente) {
         this.id_venta = id_venta;
         this.precio_base = precio_base;
         this.numero_coutas = numero_coutas;
         this.precio_final = precio_final;
+        this.fecha = fecha;
         this.intereses = intereses;
         this.numero_apartamentos_comprados = numero_apartamentos_comprados;
         this.listaApartamentos = listaApartamentos;
         this.listaPagos = listaPagos;
+        this.listaDeuda = listaDeuda;
         this.asesor = asesor;
         this.cliente = cliente;
     }
@@ -102,6 +108,14 @@ public class Venta implements Serializable {
         this.precio_final = precio_final;
     }
 
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
     public Integer getIntereses() {
         return intereses;
     }
@@ -134,6 +148,14 @@ public class Venta implements Serializable {
         this.listaPagos = listaPagos;
     }
 
+    public ArrayList<Deuda> getListaDeuda() {
+        return listaDeuda;
+    }
+
+    public void setListaDeuda(ArrayList<Deuda> listaDeuda) {
+        this.listaDeuda = listaDeuda;
+    }
+
     public Asesor getAsesor() {
         return asesor;
     }
@@ -149,8 +171,4 @@ public class Venta implements Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
-    
-    
-    
 }

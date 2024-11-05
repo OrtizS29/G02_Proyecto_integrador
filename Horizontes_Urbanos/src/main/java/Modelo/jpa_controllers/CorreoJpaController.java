@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo.jpa_controllers;
 
 import java.io.Serializable;
@@ -10,7 +7,8 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Modelo.entities.Asesor;
-import Modelo.entities.Correo_asesor;
+import Modelo.entities.Cliente;
+import Modelo.entities.Correo;
 import Modelo.jpa_controllers.exceptions.NonexistentEntityException;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -19,16 +17,16 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author CLAUDIA
+ * @author Santiago
  */
-public class Correo_asesorJpaController implements Serializable {
+public class CorreoJpaController implements Serializable {
 
-    public Correo_asesorJpaController(EntityManagerFactory emf) {
+    public CorreoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
     
-    public Correo_asesorJpaController() {
+    public CorreoJpaController() {
 	emf = Persistence.createEntityManagerFactory("HU_constructora");
     }
 
@@ -36,20 +34,29 @@ public class Correo_asesorJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Correo_asesor correo_asesor) {
+    public void create(Correo correo) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Asesor asesor = correo_asesor.getAsesor();
+            Asesor asesor = correo.getAsesor();
             if (asesor != null) {
                 asesor = em.getReference(asesor.getClass(), asesor.getCedula());
-                correo_asesor.setAsesor(asesor);
+                correo.setAsesor(asesor);
             }
-            em.persist(correo_asesor);
+            Cliente cliente = correo.getCliente();
+            if (cliente != null) {
+                cliente = em.getReference(cliente.getClass(), cliente.getCedula());
+                correo.setCliente(cliente);
+            }
+            em.persist(correo);
             if (asesor != null) {
-                asesor.getListaCorreoCliente().add(correo_asesor);
+                asesor.getListaCorreoCliente().add(correo);
                 asesor = em.merge(asesor);
+            }
+            if (cliente != null) {
+                cliente.getListaCorreosCliente().add(correo);
+                cliente = em.merge(cliente);
             }
             em.getTransaction().commit();
         } finally {
@@ -59,34 +66,48 @@ public class Correo_asesorJpaController implements Serializable {
         }
     }
 
-    public void edit(Correo_asesor correo_asesor) throws NonexistentEntityException, Exception {
+    public void edit(Correo correo) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Correo_asesor persistentCorreo_asesor = em.find(Correo_asesor.class, correo_asesor.getId());
-            Asesor asesorOld = persistentCorreo_asesor.getAsesor();
-            Asesor asesorNew = correo_asesor.getAsesor();
+            Correo persistentCorreo = em.find(Correo.class, correo.getId());
+            Asesor asesorOld = persistentCorreo.getAsesor();
+            Asesor asesorNew = correo.getAsesor();
+            Cliente clienteOld = persistentCorreo.getCliente();
+            Cliente clienteNew = correo.getCliente();
             if (asesorNew != null) {
                 asesorNew = em.getReference(asesorNew.getClass(), asesorNew.getCedula());
-                correo_asesor.setAsesor(asesorNew);
+                correo.setAsesor(asesorNew);
             }
-            correo_asesor = em.merge(correo_asesor);
+            if (clienteNew != null) {
+                clienteNew = em.getReference(clienteNew.getClass(), clienteNew.getCedula());
+                correo.setCliente(clienteNew);
+            }
+            correo = em.merge(correo);
             if (asesorOld != null && !asesorOld.equals(asesorNew)) {
-                asesorOld.getListaCorreoCliente().remove(correo_asesor);
+                asesorOld.getListaCorreoCliente().remove(correo);
                 asesorOld = em.merge(asesorOld);
             }
             if (asesorNew != null && !asesorNew.equals(asesorOld)) {
-                asesorNew.getListaCorreoCliente().add(correo_asesor);
+                asesorNew.getListaCorreoCliente().add(correo);
                 asesorNew = em.merge(asesorNew);
+            }
+            if (clienteOld != null && !clienteOld.equals(clienteNew)) {
+                clienteOld.getListaCorreosCliente().remove(correo);
+                clienteOld = em.merge(clienteOld);
+            }
+            if (clienteNew != null && !clienteNew.equals(clienteOld)) {
+                clienteNew.getListaCorreosCliente().add(correo);
+                clienteNew = em.merge(clienteNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = correo_asesor.getId();
-                if (findCorreo_asesor(id) == null) {
-                    throw new NonexistentEntityException("The correo_asesor with id " + id + " no longer exists.");
+                int id = correo.getId();
+                if (findCorreo(id) == null) {
+                    throw new NonexistentEntityException("The correo with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -102,19 +123,24 @@ public class Correo_asesorJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Correo_asesor correo_asesor;
+            Correo correo;
             try {
-                correo_asesor = em.getReference(Correo_asesor.class, id);
-                correo_asesor.getId();
+                correo = em.getReference(Correo.class, id);
+                correo.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The correo_asesor with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The correo with id " + id + " no longer exists.", enfe);
             }
-            Asesor asesor = correo_asesor.getAsesor();
+            Asesor asesor = correo.getAsesor();
             if (asesor != null) {
-                asesor.getListaCorreoCliente().remove(correo_asesor);
+                asesor.getListaCorreoCliente().remove(correo);
                 asesor = em.merge(asesor);
             }
-            em.remove(correo_asesor);
+            Cliente cliente = correo.getCliente();
+            if (cliente != null) {
+                cliente.getListaCorreosCliente().remove(correo);
+                cliente = em.merge(cliente);
+            }
+            em.remove(correo);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -123,19 +149,19 @@ public class Correo_asesorJpaController implements Serializable {
         }
     }
 
-    public List<Correo_asesor> findCorreo_asesorEntities() {
-        return findCorreo_asesorEntities(true, -1, -1);
+    public List<Correo> findCorreoEntities() {
+        return findCorreoEntities(true, -1, -1);
     }
 
-    public List<Correo_asesor> findCorreo_asesorEntities(int maxResults, int firstResult) {
-        return findCorreo_asesorEntities(false, maxResults, firstResult);
+    public List<Correo> findCorreoEntities(int maxResults, int firstResult) {
+        return findCorreoEntities(false, maxResults, firstResult);
     }
 
-    private List<Correo_asesor> findCorreo_asesorEntities(boolean all, int maxResults, int firstResult) {
+    private List<Correo> findCorreoEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Correo_asesor.class));
+            cq.select(cq.from(Correo.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -147,20 +173,20 @@ public class Correo_asesorJpaController implements Serializable {
         }
     }
 
-    public Correo_asesor findCorreo_asesor(int id) {
+    public Correo findCorreo(int id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Correo_asesor.class, id);
+            return em.find(Correo.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getCorreo_asesorCount() {
+    public int getCorreoCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Correo_asesor> rt = cq.from(Correo_asesor.class);
+            Root<Correo> rt = cq.from(Correo.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

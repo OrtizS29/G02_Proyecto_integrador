@@ -2,8 +2,8 @@
 package CONTROLADOR;
 
 import Modelo.entities.Asesor;
-import Modelo.entities.Correo_asesor;
-import Modelo.entities.Telefono_asesor;
+import Modelo.entities.Correo;
+import Modelo.entities.Telefono;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.persistir.IPersistencia;
 
@@ -14,14 +14,14 @@ import Modelo.persistir.IPersistencia;
 public class GestionarAsesor {
     
      private IPersistencia<Asesor> persisAsesor;
-     private IPersistencia<Telefono_asesor> persisTelAsesor;
-     private IPersistencia<Correo_asesor> persisCorrAsesor;
+     private IPersistencia<Telefono> persisTelefono;
+     private IPersistencia<Correo> persisCorreo;
 
     public GestionarAsesor(I_PersistenciaFactory fa) {
         
         persisAsesor = fa.crearPersistirAsesor();
-        persisTelAsesor = fa.crearPersistirTelefono_asesor();
-        persisCorrAsesor = fa.crearPersistirCorreo_asesor();
+        persisTelefono = fa.crearPersistirTelefono();
+        persisCorreo = fa.crearPersistirCorreo();
     }
 
     public Asesor guardar(Asesor asesor) throws Exception {
@@ -29,13 +29,13 @@ public class GestionarAsesor {
         return asesor;
     }
     
-    public Telefono_asesor guardarTel(Telefono_asesor telAsesor) throws Exception {
-        persisTelAsesor.crear(telAsesor);
-        return telAsesor;
+    public Telefono guardarTel(Telefono telefono) throws Exception {
+        persisTelefono.crear(telefono);
+        return telefono;
     }
      
-    public Correo_asesor guardarCorr(Correo_asesor corrAsesor) throws Exception {
-        persisCorrAsesor.crear(corrAsesor);
-        return corrAsesor;
+    public Correo guardarCorr(Correo correo) throws Exception {
+        persisCorreo.crear(correo);
+        return correo;
     }
 }

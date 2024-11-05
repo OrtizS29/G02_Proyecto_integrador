@@ -30,15 +30,15 @@ public class Asesor implements Serializable {
     private ArrayList<Pago> listaPagos;
     
     @OneToMany(mappedBy = "asesor",cascade = CascadeType.ALL) 
-    private ArrayList<Telefono_asesor> listaTelefonosCliente;
+    private ArrayList<Telefono> listaTelefonosCliente;
     
     @OneToMany(mappedBy = "asesor",cascade = CascadeType.ALL) 
-    private ArrayList<Correo_asesor> listaCorreoCliente;
+    private ArrayList<Correo> listaCorreoCliente;
 
     public Asesor() {
     }
 
-    public Asesor(int cedula, String nombre, String direccion, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos, ArrayList<Telefono_asesor> listaTelefonosCliente, ArrayList<Correo_asesor> listaCorreoCliente) {
+    public Asesor(int cedula, String nombre, String direccion, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos, ArrayList<Telefono> listaTelefonosCliente, ArrayList<Correo> listaCorreoCliente) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -88,22 +88,19 @@ public class Asesor implements Serializable {
         this.listaPagos = listaPagos;
     }
 
-    public ArrayList<Telefono_asesor> getListaTelefonosCliente() {
+    public ArrayList<Telefono> getListaTelefonosCliente() {
         return listaTelefonosCliente;
     }
 
-    public void setListaTelefonosCliente(ArrayList<Telefono_asesor> listaTelefonosCliente) {
+    public void setListaTelefonosCliente(ArrayList<Telefono> listaTelefonosCliente) {
         this.listaTelefonosCliente = listaTelefonosCliente;
     }
 
-    public ArrayList<Correo_asesor> getListaCorreoCliente() {
+    public ArrayList<Correo> getListaCorreoCliente() {
         return listaCorreoCliente;
     }
 
-    public void setListaCorreoCliente(ArrayList<Correo_asesor> listaCorreoCliente) {
+    public void setListaCorreoCliente(ArrayList<Correo> listaCorreoCliente) {
         this.listaCorreoCliente = listaCorreoCliente;
     }
-    
-    
-    
 }

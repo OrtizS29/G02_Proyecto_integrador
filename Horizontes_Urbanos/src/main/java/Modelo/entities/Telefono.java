@@ -1,7 +1,6 @@
 
 package Modelo.entities;
 
-import Modelo.entities.Asesor;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,33 +13,42 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
- * Clase que determina la entidad Telefono Asesor
+ * Clase que determina la entidad Telefono
  * 
  * @author Santiago
  */
 @Entity
-@Table(name = "Telefono_asesor")
-public class Telefono_asesor implements Serializable {
+@Table(name = "Telefono")
+public class Telefono implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idTelAse")
-    @SequenceGenerator(name = "seq_idTelAse", sequenceName = "seq_idTelAse", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idTelefono")
+    @SequenceGenerator(name = "seq_idTelefono", sequenceName = "seq_idTelefono", allocationSize = 1)
     private int id;
     
     @Column(nullable = true)
-    private Integer telefono;
+    private int telefono;
     
     @ManyToOne(optional=false)
     @JoinColumn(name = "Cedula_asesor", referencedColumnName = "Cedula")
     private Asesor asesor;
+    
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "Cedula_cliente", referencedColumnName = "Cedula")
+    private Cliente cliente;
+    /*
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "Cedula_administrador", referencedColumnName = "Cedula")
+    private Administrador admin;*/
 
-    public Telefono_asesor() {
+    public Telefono() {
     }
 
-    public Telefono_asesor(int id, Integer telefono, Asesor asesor) {
+    public Telefono(int id, int telefono, Asesor asesor, Cliente cliente) {
         this.id = id;
         this.telefono = telefono;
         this.asesor = asesor;
+        this.cliente = cliente;
     }
 
     public int getId() {
@@ -51,11 +59,11 @@ public class Telefono_asesor implements Serializable {
         this.id = id;
     }
 
-    public Integer getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
@@ -66,6 +74,12 @@ public class Telefono_asesor implements Serializable {
     public void setAsesor(Asesor asesor) {
         this.asesor = asesor;
     }
-    
-    
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }

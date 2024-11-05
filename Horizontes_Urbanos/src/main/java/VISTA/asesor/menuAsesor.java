@@ -15,6 +15,8 @@ public class menuAsesor extends javax.swing.JFrame {
      */
     public menuAsesor() {
         initComponents();
+        setSize(912, 510);
+        setLocationRelativeTo(null);
     }
 
     /**

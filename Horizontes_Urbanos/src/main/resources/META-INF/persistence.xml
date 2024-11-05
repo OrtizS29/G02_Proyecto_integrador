@@ -6,16 +6,15 @@
     <class>Modelo.entities.Apartamento</class>
     <class>Modelo.entities.Asesor</class>
     <class>Modelo.entities.Cliente</class>
-    <class>Modelo.entities.Correo_asesor</class>
-    <class>Modelo.entities.Correo_cliente</class>
     <class>Modelo.entities.Pago</class>
     <class>Modelo.entities.Proyecto</class>
-    <class>Modelo.entities.Telefono_asesor</class>
-    <class>Modelo.entities.Telefono_cliente</class>
     <class>Modelo.entities.Torre</class>
     <class>Modelo.entities.Usuario</class>
     <class>Modelo.entities.Venta</class>
-    <properties>  
+    <class>Modelo.entities.Correo</class>
+    <class>Modelo.entities.Deuda</class>
+    <class>Modelo.entities.Telefono</class>
+    <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
       <property name="javax.persistence.jdbc.user" value="Constructora"/>
       <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
