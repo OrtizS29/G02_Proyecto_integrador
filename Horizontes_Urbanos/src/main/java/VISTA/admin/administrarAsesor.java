@@ -3,9 +3,9 @@ package VISTA.admin;
 
 import CONTROLADOR.GestionarAsesor;
 import Modelo.entities.Asesor;
-import Modelo.entities.Correo_asesor;
+import Modelo.entities.Correo;
 import Modelo.entities.Pago;
-import Modelo.entities.Telefono_asesor;
+import Modelo.entities.Telefono;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
@@ -203,15 +203,15 @@ public class AdministrarAsesor extends javax.swing.JFrame {
         String correoAsesor = txtCorreoAsesorReg.getText();
         int telefonoAsesor = Integer.parseInt(txtTelefonoAsesorReg.getText());
         
-        Asesor asesor = new Asesor();Correo_asesor corrAsesor = new Correo_asesor();
-        Telefono_asesor telAsesor = new Telefono_asesor();
+        Asesor asesor = new Asesor();Correo correo = new Correo();
+        Telefono telefono = new Telefono();
         asesor.setNombre(nombreAsesor);
         asesor.setCedula(cedulaAsesor);
         asesor.setDireccion(direccionAsesor);
         asesor.setListaVentas(new ArrayList<Venta>());
         asesor.setListaPagos(new ArrayList<Pago>());
-        asesor.setListaTelefonosCliente(new ArrayList<Telefono_asesor>());
-        asesor.setListaCorreoCliente(new ArrayList<Correo_asesor>());
+        asesor.setListaTelefonosCliente(new ArrayList<Telefono>());
+        asesor.setListaCorreoCliente(new ArrayList<Correo>());
         
         Asesor asesorSelect = null;
         try {
@@ -220,26 +220,26 @@ public class AdministrarAsesor extends javax.swing.JFrame {
             Logger.getLogger(AdministrarAsesor.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        corrAsesor.setCorreo(correoAsesor);
-        corrAsesor.setAsesor(asesor);
+        correo.setCorreo(correoAsesor);
+        correo.setAsesor(asesor);
         
         try {
-            gestiAsesor.guardarCorr(corrAsesor);
+            gestiAsesor.guardarCorr(correo);
         } catch (Exception ex) {
             Logger.getLogger(AdministrarAsesor.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        telAsesor.setTelefono(telefonoAsesor);
-        telAsesor.setAsesor(asesor);
+        telefono.setTelefono(telefonoAsesor);
+        telefono.setAsesor(asesor);
         
         try {
-            gestiAsesor.guardarTel(telAsesor);
+            gestiAsesor.guardarTel(telefono);
         } catch (Exception ex) {
             Logger.getLogger(AdministrarAsesor.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        asesor.getListaCorreoCliente().add(corrAsesor);
-        asesor.getListaTelefonosCliente().add(telAsesor);
+        asesor.getListaCorreoCliente().add(correo);
+        asesor.getListaTelefonosCliente().add(telefono);
         
         UsuarioAsesor usuAsesor = new UsuarioAsesor(asesorSelect);
         usuAsesor.setVisible(true);

@@ -14,6 +14,7 @@ import Modelo.entities.Cliente;
 import Modelo.entities.Apartamento;
 import java.util.ArrayList;
 import Modelo.entities.Pago;
+import Modelo.entities.Deuda;
 import Modelo.entities.Venta;
 import Modelo.jpa_controllers.exceptions.IllegalOrphanException;
 import Modelo.jpa_controllers.exceptions.NonexistentEntityException;
@@ -48,6 +49,9 @@ public class VentaJpaController implements Serializable {
         if (venta.getListaPagos() == null) {
             venta.setListaPagos(new ArrayList<Pago>());
         }
+        if (venta.getListaDeuda() == null) {
+            venta.setListaDeuda(new ArrayList<Deuda>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -74,6 +78,12 @@ public class VentaJpaController implements Serializable {
                 attachedListaPagos.add(listaPagosPagoToAttach);
             }
             venta.setListaPagos(attachedListaPagos);
+            ArrayList<Deuda> attachedListaDeuda = new ArrayList<Deuda>();
+            for (Deuda listaDeudaDeudaToAttach : venta.getListaDeuda()) {
+                listaDeudaDeudaToAttach = em.getReference(listaDeudaDeudaToAttach.getClass(), listaDeudaDeudaToAttach.getId_deuda());
+                attachedListaDeuda.add(listaDeudaDeudaToAttach);
+            }
+            venta.setListaDeuda(attachedListaDeuda);
             em.persist(venta);
             if (asesor != null) {
                 asesor.getListaVentas().add(venta);
@@ -101,6 +111,15 @@ public class VentaJpaController implements Serializable {
                     oldVentaOfListaPagosPago = em.merge(oldVentaOfListaPagosPago);
                 }
             }
+            for (Deuda listaDeudaDeuda : venta.getListaDeuda()) {
+                Venta oldVentaOfListaDeudaDeuda = listaDeudaDeuda.getVenta();
+                listaDeudaDeuda.setVenta(venta);
+                listaDeudaDeuda = em.merge(listaDeudaDeuda);
+                if (oldVentaOfListaDeudaDeuda != null) {
+                    oldVentaOfListaDeudaDeuda.getListaDeuda().remove(listaDeudaDeuda);
+                    oldVentaOfListaDeudaDeuda = em.merge(oldVentaOfListaDeudaDeuda);
+                }
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -123,6 +142,8 @@ public class VentaJpaController implements Serializable {
             ArrayList<Apartamento> listaApartamentosNew = venta.getListaApartamentos();
             ArrayList<Pago> listaPagosOld = persistentVenta.getListaPagos();
             ArrayList<Pago> listaPagosNew = venta.getListaPagos();
+            ArrayList<Deuda> listaDeudaOld = persistentVenta.getListaDeuda();
+            ArrayList<Deuda> listaDeudaNew = venta.getListaDeuda();
             List<String> illegalOrphanMessages = null;
             for (Pago listaPagosOldPago : listaPagosOld) {
                 if (!listaPagosNew.contains(listaPagosOldPago)) {
@@ -157,6 +178,13 @@ public class VentaJpaController implements Serializable {
             }
             listaPagosNew = attachedListaPagosNew;
             venta.setListaPagos(listaPagosNew);
+            ArrayList<Deuda> attachedListaDeudaNew = new ArrayList<Deuda>();
+            for (Deuda listaDeudaNewDeudaToAttach : listaDeudaNew) {
+                listaDeudaNewDeudaToAttach = em.getReference(listaDeudaNewDeudaToAttach.getClass(), listaDeudaNewDeudaToAttach.getId_deuda());
+                attachedListaDeudaNew.add(listaDeudaNewDeudaToAttach);
+            }
+            listaDeudaNew = attachedListaDeudaNew;
+            venta.setListaDeuda(listaDeudaNew);
             venta = em.merge(venta);
             if (asesorOld != null && !asesorOld.equals(asesorNew)) {
                 asesorOld.getListaVentas().remove(venta);
@@ -199,6 +227,23 @@ public class VentaJpaController implements Serializable {
                     if (oldVentaOfListaPagosNewPago != null && !oldVentaOfListaPagosNewPago.equals(venta)) {
                         oldVentaOfListaPagosNewPago.getListaPagos().remove(listaPagosNewPago);
                         oldVentaOfListaPagosNewPago = em.merge(oldVentaOfListaPagosNewPago);
+                    }
+                }
+            }
+            for (Deuda listaDeudaOldDeuda : listaDeudaOld) {
+                if (!listaDeudaNew.contains(listaDeudaOldDeuda)) {
+                    listaDeudaOldDeuda.setVenta(null);
+                    listaDeudaOldDeuda = em.merge(listaDeudaOldDeuda);
+                }
+            }
+            for (Deuda listaDeudaNewDeuda : listaDeudaNew) {
+                if (!listaDeudaOld.contains(listaDeudaNewDeuda)) {
+                    Venta oldVentaOfListaDeudaNewDeuda = listaDeudaNewDeuda.getVenta();
+                    listaDeudaNewDeuda.setVenta(venta);
+                    listaDeudaNewDeuda = em.merge(listaDeudaNewDeuda);
+                    if (oldVentaOfListaDeudaNewDeuda != null && !oldVentaOfListaDeudaNewDeuda.equals(venta)) {
+                        oldVentaOfListaDeudaNewDeuda.getListaDeuda().remove(listaDeudaNewDeuda);
+                        oldVentaOfListaDeudaNewDeuda = em.merge(oldVentaOfListaDeudaNewDeuda);
                     }
                 }
             }
@@ -256,6 +301,11 @@ public class VentaJpaController implements Serializable {
             for (Apartamento listaApartamentosApartamento : listaApartamentos) {
                 listaApartamentosApartamento.setVenta(null);
                 listaApartamentosApartamento = em.merge(listaApartamentosApartamento);
+            }
+            ArrayList<Deuda> listaDeuda = venta.getListaDeuda();
+            for (Deuda listaDeudaDeuda : listaDeuda) {
+                listaDeudaDeuda.setVenta(null);
+                listaDeudaDeuda = em.merge(listaDeudaDeuda);
             }
             em.remove(venta);
             em.getTransaction().commit();

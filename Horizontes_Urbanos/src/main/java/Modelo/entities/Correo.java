@@ -1,7 +1,6 @@
 
 package Modelo.entities;
 
-import Modelo.entities.Asesor;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,17 +13,17 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
- * Clase que determina la entidad Correo Asesor
+ * Clase que determina la entidad Correo 
  * 
  * @author Santiago
  */
 @Entity
-@Table(name = "Correo_asesor")
-public class Correo_asesor implements Serializable {
+@Table(name = "Correo")
+public class Correo implements Serializable{
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idcoase")
-    @SequenceGenerator(name = "seq_idcoase", sequenceName = "seq_idcoase", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idCorreo")
+    @SequenceGenerator(name = "seq_idCorreo", sequenceName = "seq_idCorreo", allocationSize = 1)
     private int id;
     
     @Column(nullable = true)
@@ -33,14 +32,23 @@ public class Correo_asesor implements Serializable {
     @ManyToOne(optional=false)
     @JoinColumn(name = "Cedula_asesor", referencedColumnName = "Cedula")
     private Asesor asesor;
+    
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "Cedula_cliente", referencedColumnName = "Cedula")
+    private Cliente cliente;
+    /*
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "Cedula_administrador", referencedColumnName = "Cedula")
+    private Administrador admin;*/
 
-    public Correo_asesor() {
-    } 
+    public Correo() {
+    }
 
-    public Correo_asesor(int id, String correo, Asesor asesor) {
+    public Correo(int id, String correo, Asesor asesor, Cliente cliente) {
         this.id = id;
         this.correo = correo;
         this.asesor = asesor;
+        this.cliente = cliente;
     }
 
     public int getId() {
@@ -66,6 +74,12 @@ public class Correo_asesor implements Serializable {
     public void setAsesor(Asesor asesor) {
         this.asesor = asesor;
     }
-    
-    
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    } 
 }

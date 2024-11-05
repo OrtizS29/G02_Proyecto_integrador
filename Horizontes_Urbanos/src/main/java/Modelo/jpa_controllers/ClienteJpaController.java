@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo.jpa_controllers;
 
 import Modelo.entities.Cliente;
@@ -10,9 +7,9 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Modelo.entities.Telefono_cliente;
+import Modelo.entities.Telefono;
 import java.util.ArrayList;
-import Modelo.entities.Correo_cliente;
+import Modelo.entities.Correo;
 import Modelo.entities.Venta;
 import Modelo.entities.Pago;
 import Modelo.jpa_controllers.exceptions.IllegalOrphanException;
@@ -44,10 +41,10 @@ public class ClienteJpaController implements Serializable {
 
     public void create(Cliente cliente) throws PreexistingEntityException, Exception {
         if (cliente.getListaTelefonosCliente() == null) {
-            cliente.setListaTelefonosCliente(new ArrayList<Telefono_cliente>());
+            cliente.setListaTelefonosCliente(new ArrayList<Telefono>());
         }
         if (cliente.getListaCorreosCliente() == null) {
-            cliente.setListaCorreosCliente(new ArrayList<Correo_cliente>());
+            cliente.setListaCorreosCliente(new ArrayList<Correo>());
         }
         if (cliente.getListaVentas() == null) {
             cliente.setListaVentas(new ArrayList<Venta>());
@@ -59,16 +56,16 @@ public class ClienteJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            ArrayList<Telefono_cliente> attachedListaTelefonosCliente = new ArrayList<Telefono_cliente>();
-            for (Telefono_cliente listaTelefonosClienteTelefono_clienteToAttach : cliente.getListaTelefonosCliente()) {
-                listaTelefonosClienteTelefono_clienteToAttach = em.getReference(listaTelefonosClienteTelefono_clienteToAttach.getClass(), listaTelefonosClienteTelefono_clienteToAttach.getId());
-                attachedListaTelefonosCliente.add(listaTelefonosClienteTelefono_clienteToAttach);
+            ArrayList<Telefono> attachedListaTelefonosCliente = new ArrayList<Telefono>();
+            for (Telefono listaTelefonosClienteTelefonoToAttach : cliente.getListaTelefonosCliente()) {
+                listaTelefonosClienteTelefonoToAttach = em.getReference(listaTelefonosClienteTelefonoToAttach.getClass(), listaTelefonosClienteTelefonoToAttach.getId());
+                attachedListaTelefonosCliente.add(listaTelefonosClienteTelefonoToAttach);
             }
             cliente.setListaTelefonosCliente(attachedListaTelefonosCliente);
-            ArrayList<Correo_cliente> attachedListaCorreosCliente = new ArrayList<Correo_cliente>();
-            for (Correo_cliente listaCorreosClienteCorreo_clienteToAttach : cliente.getListaCorreosCliente()) {
-                listaCorreosClienteCorreo_clienteToAttach = em.getReference(listaCorreosClienteCorreo_clienteToAttach.getClass(), listaCorreosClienteCorreo_clienteToAttach.getId());
-                attachedListaCorreosCliente.add(listaCorreosClienteCorreo_clienteToAttach);
+            ArrayList<Correo> attachedListaCorreosCliente = new ArrayList<Correo>();
+            for (Correo listaCorreosClienteCorreoToAttach : cliente.getListaCorreosCliente()) {
+                listaCorreosClienteCorreoToAttach = em.getReference(listaCorreosClienteCorreoToAttach.getClass(), listaCorreosClienteCorreoToAttach.getId());
+                attachedListaCorreosCliente.add(listaCorreosClienteCorreoToAttach);
             }
             cliente.setListaCorreosCliente(attachedListaCorreosCliente);
             ArrayList<Venta> attachedListaVentas = new ArrayList<Venta>();
@@ -84,22 +81,22 @@ public class ClienteJpaController implements Serializable {
             }
             cliente.setListaPagos(attachedListaPagos);
             em.persist(cliente);
-            for (Telefono_cliente listaTelefonosClienteTelefono_cliente : cliente.getListaTelefonosCliente()) {
-                Cliente oldClienteOfListaTelefonosClienteTelefono_cliente = listaTelefonosClienteTelefono_cliente.getCliente();
-                listaTelefonosClienteTelefono_cliente.setCliente(cliente);
-                listaTelefonosClienteTelefono_cliente = em.merge(listaTelefonosClienteTelefono_cliente);
-                if (oldClienteOfListaTelefonosClienteTelefono_cliente != null) {
-                    oldClienteOfListaTelefonosClienteTelefono_cliente.getListaTelefonosCliente().remove(listaTelefonosClienteTelefono_cliente);
-                    oldClienteOfListaTelefonosClienteTelefono_cliente = em.merge(oldClienteOfListaTelefonosClienteTelefono_cliente);
+            for (Telefono listaTelefonosClienteTelefono : cliente.getListaTelefonosCliente()) {
+                Cliente oldClienteOfListaTelefonosClienteTelefono = listaTelefonosClienteTelefono.getCliente();
+                listaTelefonosClienteTelefono.setCliente(cliente);
+                listaTelefonosClienteTelefono = em.merge(listaTelefonosClienteTelefono);
+                if (oldClienteOfListaTelefonosClienteTelefono != null) {
+                    oldClienteOfListaTelefonosClienteTelefono.getListaTelefonosCliente().remove(listaTelefonosClienteTelefono);
+                    oldClienteOfListaTelefonosClienteTelefono = em.merge(oldClienteOfListaTelefonosClienteTelefono);
                 }
             }
-            for (Correo_cliente listaCorreosClienteCorreo_cliente : cliente.getListaCorreosCliente()) {
-                Cliente oldClienteOfListaCorreosClienteCorreo_cliente = listaCorreosClienteCorreo_cliente.getCliente();
-                listaCorreosClienteCorreo_cliente.setCliente(cliente);
-                listaCorreosClienteCorreo_cliente = em.merge(listaCorreosClienteCorreo_cliente);
-                if (oldClienteOfListaCorreosClienteCorreo_cliente != null) {
-                    oldClienteOfListaCorreosClienteCorreo_cliente.getListaCorreosCliente().remove(listaCorreosClienteCorreo_cliente);
-                    oldClienteOfListaCorreosClienteCorreo_cliente = em.merge(oldClienteOfListaCorreosClienteCorreo_cliente);
+            for (Correo listaCorreosClienteCorreo : cliente.getListaCorreosCliente()) {
+                Cliente oldClienteOfListaCorreosClienteCorreo = listaCorreosClienteCorreo.getCliente();
+                listaCorreosClienteCorreo.setCliente(cliente);
+                listaCorreosClienteCorreo = em.merge(listaCorreosClienteCorreo);
+                if (oldClienteOfListaCorreosClienteCorreo != null) {
+                    oldClienteOfListaCorreosClienteCorreo.getListaCorreosCliente().remove(listaCorreosClienteCorreo);
+                    oldClienteOfListaCorreosClienteCorreo = em.merge(oldClienteOfListaCorreosClienteCorreo);
                 }
             }
             for (Venta listaVentasVenta : cliente.getListaVentas()) {
@@ -139,29 +136,29 @@ public class ClienteJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Cliente persistentCliente = em.find(Cliente.class, cliente.getCedula());
-            ArrayList<Telefono_cliente> listaTelefonosClienteOld = persistentCliente.getListaTelefonosCliente();
-            ArrayList<Telefono_cliente> listaTelefonosClienteNew = cliente.getListaTelefonosCliente();
-            ArrayList<Correo_cliente> listaCorreosClienteOld = persistentCliente.getListaCorreosCliente();
-            ArrayList<Correo_cliente> listaCorreosClienteNew = cliente.getListaCorreosCliente();
+            ArrayList<Telefono> listaTelefonosClienteOld = persistentCliente.getListaTelefonosCliente();
+            ArrayList<Telefono> listaTelefonosClienteNew = cliente.getListaTelefonosCliente();
+            ArrayList<Correo> listaCorreosClienteOld = persistentCliente.getListaCorreosCliente();
+            ArrayList<Correo> listaCorreosClienteNew = cliente.getListaCorreosCliente();
             ArrayList<Venta> listaVentasOld = persistentCliente.getListaVentas();
             ArrayList<Venta> listaVentasNew = cliente.getListaVentas();
             ArrayList<Pago> listaPagosOld = persistentCliente.getListaPagos();
             ArrayList<Pago> listaPagosNew = cliente.getListaPagos();
             List<String> illegalOrphanMessages = null;
-            for (Telefono_cliente listaTelefonosClienteOldTelefono_cliente : listaTelefonosClienteOld) {
-                if (!listaTelefonosClienteNew.contains(listaTelefonosClienteOldTelefono_cliente)) {
+            for (Telefono listaTelefonosClienteOldTelefono : listaTelefonosClienteOld) {
+                if (!listaTelefonosClienteNew.contains(listaTelefonosClienteOldTelefono)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Telefono_cliente " + listaTelefonosClienteOldTelefono_cliente + " since its cliente field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Telefono " + listaTelefonosClienteOldTelefono + " since its cliente field is not nullable.");
                 }
             }
-            for (Correo_cliente listaCorreosClienteOldCorreo_cliente : listaCorreosClienteOld) {
-                if (!listaCorreosClienteNew.contains(listaCorreosClienteOldCorreo_cliente)) {
+            for (Correo listaCorreosClienteOldCorreo : listaCorreosClienteOld) {
+                if (!listaCorreosClienteNew.contains(listaCorreosClienteOldCorreo)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Correo_cliente " + listaCorreosClienteOldCorreo_cliente + " since its cliente field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Correo " + listaCorreosClienteOldCorreo + " since its cliente field is not nullable.");
                 }
             }
             for (Venta listaVentasOldVenta : listaVentasOld) {
@@ -183,17 +180,17 @@ public class ClienteJpaController implements Serializable {
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            ArrayList<Telefono_cliente> attachedListaTelefonosClienteNew = new ArrayList<Telefono_cliente>();
-            for (Telefono_cliente listaTelefonosClienteNewTelefono_clienteToAttach : listaTelefonosClienteNew) {
-                listaTelefonosClienteNewTelefono_clienteToAttach = em.getReference(listaTelefonosClienteNewTelefono_clienteToAttach.getClass(), listaTelefonosClienteNewTelefono_clienteToAttach.getId());
-                attachedListaTelefonosClienteNew.add(listaTelefonosClienteNewTelefono_clienteToAttach);
+            ArrayList<Telefono> attachedListaTelefonosClienteNew = new ArrayList<Telefono>();
+            for (Telefono listaTelefonosClienteNewTelefonoToAttach : listaTelefonosClienteNew) {
+                listaTelefonosClienteNewTelefonoToAttach = em.getReference(listaTelefonosClienteNewTelefonoToAttach.getClass(), listaTelefonosClienteNewTelefonoToAttach.getId());
+                attachedListaTelefonosClienteNew.add(listaTelefonosClienteNewTelefonoToAttach);
             }
             listaTelefonosClienteNew = attachedListaTelefonosClienteNew;
             cliente.setListaTelefonosCliente(listaTelefonosClienteNew);
-            ArrayList<Correo_cliente> attachedListaCorreosClienteNew = new ArrayList<Correo_cliente>();
-            for (Correo_cliente listaCorreosClienteNewCorreo_clienteToAttach : listaCorreosClienteNew) {
-                listaCorreosClienteNewCorreo_clienteToAttach = em.getReference(listaCorreosClienteNewCorreo_clienteToAttach.getClass(), listaCorreosClienteNewCorreo_clienteToAttach.getId());
-                attachedListaCorreosClienteNew.add(listaCorreosClienteNewCorreo_clienteToAttach);
+            ArrayList<Correo> attachedListaCorreosClienteNew = new ArrayList<Correo>();
+            for (Correo listaCorreosClienteNewCorreoToAttach : listaCorreosClienteNew) {
+                listaCorreosClienteNewCorreoToAttach = em.getReference(listaCorreosClienteNewCorreoToAttach.getClass(), listaCorreosClienteNewCorreoToAttach.getId());
+                attachedListaCorreosClienteNew.add(listaCorreosClienteNewCorreoToAttach);
             }
             listaCorreosClienteNew = attachedListaCorreosClienteNew;
             cliente.setListaCorreosCliente(listaCorreosClienteNew);
@@ -212,25 +209,25 @@ public class ClienteJpaController implements Serializable {
             listaPagosNew = attachedListaPagosNew;
             cliente.setListaPagos(listaPagosNew);
             cliente = em.merge(cliente);
-            for (Telefono_cliente listaTelefonosClienteNewTelefono_cliente : listaTelefonosClienteNew) {
-                if (!listaTelefonosClienteOld.contains(listaTelefonosClienteNewTelefono_cliente)) {
-                    Cliente oldClienteOfListaTelefonosClienteNewTelefono_cliente = listaTelefonosClienteNewTelefono_cliente.getCliente();
-                    listaTelefonosClienteNewTelefono_cliente.setCliente(cliente);
-                    listaTelefonosClienteNewTelefono_cliente = em.merge(listaTelefonosClienteNewTelefono_cliente);
-                    if (oldClienteOfListaTelefonosClienteNewTelefono_cliente != null && !oldClienteOfListaTelefonosClienteNewTelefono_cliente.equals(cliente)) {
-                        oldClienteOfListaTelefonosClienteNewTelefono_cliente.getListaTelefonosCliente().remove(listaTelefonosClienteNewTelefono_cliente);
-                        oldClienteOfListaTelefonosClienteNewTelefono_cliente = em.merge(oldClienteOfListaTelefonosClienteNewTelefono_cliente);
+            for (Telefono listaTelefonosClienteNewTelefono : listaTelefonosClienteNew) {
+                if (!listaTelefonosClienteOld.contains(listaTelefonosClienteNewTelefono)) {
+                    Cliente oldClienteOfListaTelefonosClienteNewTelefono = listaTelefonosClienteNewTelefono.getCliente();
+                    listaTelefonosClienteNewTelefono.setCliente(cliente);
+                    listaTelefonosClienteNewTelefono = em.merge(listaTelefonosClienteNewTelefono);
+                    if (oldClienteOfListaTelefonosClienteNewTelefono != null && !oldClienteOfListaTelefonosClienteNewTelefono.equals(cliente)) {
+                        oldClienteOfListaTelefonosClienteNewTelefono.getListaTelefonosCliente().remove(listaTelefonosClienteNewTelefono);
+                        oldClienteOfListaTelefonosClienteNewTelefono = em.merge(oldClienteOfListaTelefonosClienteNewTelefono);
                     }
                 }
             }
-            for (Correo_cliente listaCorreosClienteNewCorreo_cliente : listaCorreosClienteNew) {
-                if (!listaCorreosClienteOld.contains(listaCorreosClienteNewCorreo_cliente)) {
-                    Cliente oldClienteOfListaCorreosClienteNewCorreo_cliente = listaCorreosClienteNewCorreo_cliente.getCliente();
-                    listaCorreosClienteNewCorreo_cliente.setCliente(cliente);
-                    listaCorreosClienteNewCorreo_cliente = em.merge(listaCorreosClienteNewCorreo_cliente);
-                    if (oldClienteOfListaCorreosClienteNewCorreo_cliente != null && !oldClienteOfListaCorreosClienteNewCorreo_cliente.equals(cliente)) {
-                        oldClienteOfListaCorreosClienteNewCorreo_cliente.getListaCorreosCliente().remove(listaCorreosClienteNewCorreo_cliente);
-                        oldClienteOfListaCorreosClienteNewCorreo_cliente = em.merge(oldClienteOfListaCorreosClienteNewCorreo_cliente);
+            for (Correo listaCorreosClienteNewCorreo : listaCorreosClienteNew) {
+                if (!listaCorreosClienteOld.contains(listaCorreosClienteNewCorreo)) {
+                    Cliente oldClienteOfListaCorreosClienteNewCorreo = listaCorreosClienteNewCorreo.getCliente();
+                    listaCorreosClienteNewCorreo.setCliente(cliente);
+                    listaCorreosClienteNewCorreo = em.merge(listaCorreosClienteNewCorreo);
+                    if (oldClienteOfListaCorreosClienteNewCorreo != null && !oldClienteOfListaCorreosClienteNewCorreo.equals(cliente)) {
+                        oldClienteOfListaCorreosClienteNewCorreo.getListaCorreosCliente().remove(listaCorreosClienteNewCorreo);
+                        oldClienteOfListaCorreosClienteNewCorreo = em.merge(oldClienteOfListaCorreosClienteNewCorreo);
                     }
                 }
             }
@@ -286,19 +283,19 @@ public class ClienteJpaController implements Serializable {
                 throw new NonexistentEntityException("The cliente with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            ArrayList<Telefono_cliente> listaTelefonosClienteOrphanCheck = cliente.getListaTelefonosCliente();
-            for (Telefono_cliente listaTelefonosClienteOrphanCheckTelefono_cliente : listaTelefonosClienteOrphanCheck) {
+            ArrayList<Telefono> listaTelefonosClienteOrphanCheck = cliente.getListaTelefonosCliente();
+            for (Telefono listaTelefonosClienteOrphanCheckTelefono : listaTelefonosClienteOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Cliente (" + cliente + ") cannot be destroyed since the Telefono_cliente " + listaTelefonosClienteOrphanCheckTelefono_cliente + " in its listaTelefonosCliente field has a non-nullable cliente field.");
+                illegalOrphanMessages.add("This Cliente (" + cliente + ") cannot be destroyed since the Telefono " + listaTelefonosClienteOrphanCheckTelefono + " in its listaTelefonosCliente field has a non-nullable cliente field.");
             }
-            ArrayList<Correo_cliente> listaCorreosClienteOrphanCheck = cliente.getListaCorreosCliente();
-            for (Correo_cliente listaCorreosClienteOrphanCheckCorreo_cliente : listaCorreosClienteOrphanCheck) {
+            ArrayList<Correo> listaCorreosClienteOrphanCheck = cliente.getListaCorreosCliente();
+            for (Correo listaCorreosClienteOrphanCheckCorreo : listaCorreosClienteOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Cliente (" + cliente + ") cannot be destroyed since the Correo_cliente " + listaCorreosClienteOrphanCheckCorreo_cliente + " in its listaCorreosCliente field has a non-nullable cliente field.");
+                illegalOrphanMessages.add("This Cliente (" + cliente + ") cannot be destroyed since the Correo " + listaCorreosClienteOrphanCheckCorreo + " in its listaCorreosCliente field has a non-nullable cliente field.");
             }
             ArrayList<Venta> listaVentasOrphanCheck = cliente.getListaVentas();
             for (Venta listaVentasOrphanCheckVenta : listaVentasOrphanCheck) {
