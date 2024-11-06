@@ -46,11 +46,11 @@ public class AsesorJpaController implements Serializable {
         if (asesor.getListaPagos() == null) {
             asesor.setListaPagos(new ArrayList<Pago>());
         }
-        if (asesor.getListaTelefonosCliente() == null) {
-            asesor.setListaTelefonosCliente(new ArrayList<Telefono>());
+        if (asesor.getListaTelefonos() == null) {
+            asesor.setListaTelefonos(new ArrayList<Telefono>());
         }
-        if (asesor.getListaCorreoCliente() == null) {
-            asesor.setListaCorreoCliente(new ArrayList<Correo>());
+        if (asesor.getListaCorreos() == null) {
+            asesor.setListaCorreos(new ArrayList<Correo>());
         }
         EntityManager em = null;
         try {
@@ -69,17 +69,17 @@ public class AsesorJpaController implements Serializable {
             }
             asesor.setListaPagos(attachedListaPagos);
             ArrayList<Telefono> attachedListaTelefonosCliente = new ArrayList<Telefono>();
-            for (Telefono listaTelefonosClienteTelefonoToAttach : asesor.getListaTelefonosCliente()) {
+            for (Telefono listaTelefonosClienteTelefonoToAttach : asesor.getListaTelefonos()) {
                 listaTelefonosClienteTelefonoToAttach = em.getReference(listaTelefonosClienteTelefonoToAttach.getClass(), listaTelefonosClienteTelefonoToAttach.getId());
                 attachedListaTelefonosCliente.add(listaTelefonosClienteTelefonoToAttach);
             }
-            asesor.setListaTelefonosCliente(attachedListaTelefonosCliente);
+            asesor.setListaTelefonos(attachedListaTelefonosCliente);
             ArrayList<Correo> attachedListaCorreoCliente = new ArrayList<Correo>();
-            for (Correo listaCorreoClienteCorreoToAttach : asesor.getListaCorreoCliente()) {
+            for (Correo listaCorreoClienteCorreoToAttach : asesor.getListaCorreos()) {
                 listaCorreoClienteCorreoToAttach = em.getReference(listaCorreoClienteCorreoToAttach.getClass(), listaCorreoClienteCorreoToAttach.getId());
                 attachedListaCorreoCliente.add(listaCorreoClienteCorreoToAttach);
             }
-            asesor.setListaCorreoCliente(attachedListaCorreoCliente);
+            asesor.setListaCorreos(attachedListaCorreoCliente);
             em.persist(asesor);
             for (Venta listaVentasVenta : asesor.getListaVentas()) {
                 Asesor oldAsesorOfListaVentasVenta = listaVentasVenta.getAsesor();
@@ -99,21 +99,21 @@ public class AsesorJpaController implements Serializable {
                     oldAsesorOfListaPagosPago = em.merge(oldAsesorOfListaPagosPago);
                 }
             }
-            for (Telefono listaTelefonosClienteTelefono : asesor.getListaTelefonosCliente()) {
+            for (Telefono listaTelefonosClienteTelefono : asesor.getListaTelefonos()) {
                 Asesor oldAsesorOfListaTelefonosClienteTelefono = listaTelefonosClienteTelefono.getAsesor();
                 listaTelefonosClienteTelefono.setAsesor(asesor);
                 listaTelefonosClienteTelefono = em.merge(listaTelefonosClienteTelefono);
                 if (oldAsesorOfListaTelefonosClienteTelefono != null) {
-                    oldAsesorOfListaTelefonosClienteTelefono.getListaTelefonosCliente().remove(listaTelefonosClienteTelefono);
+                    oldAsesorOfListaTelefonosClienteTelefono.getListaTelefonos().remove(listaTelefonosClienteTelefono);
                     oldAsesorOfListaTelefonosClienteTelefono = em.merge(oldAsesorOfListaTelefonosClienteTelefono);
                 }
             }
-            for (Correo listaCorreoClienteCorreo : asesor.getListaCorreoCliente()) {
+            for (Correo listaCorreoClienteCorreo : asesor.getListaCorreos()) {
                 Asesor oldAsesorOfListaCorreoClienteCorreo = listaCorreoClienteCorreo.getAsesor();
                 listaCorreoClienteCorreo.setAsesor(asesor);
                 listaCorreoClienteCorreo = em.merge(listaCorreoClienteCorreo);
                 if (oldAsesorOfListaCorreoClienteCorreo != null) {
-                    oldAsesorOfListaCorreoClienteCorreo.getListaCorreoCliente().remove(listaCorreoClienteCorreo);
+                    oldAsesorOfListaCorreoClienteCorreo.getListaCorreos().remove(listaCorreoClienteCorreo);
                     oldAsesorOfListaCorreoClienteCorreo = em.merge(oldAsesorOfListaCorreoClienteCorreo);
                 }
             }
@@ -140,10 +140,10 @@ public class AsesorJpaController implements Serializable {
             ArrayList<Venta> listaVentasNew = asesor.getListaVentas();
             ArrayList<Pago> listaPagosOld = persistentAsesor.getListaPagos();
             ArrayList<Pago> listaPagosNew = asesor.getListaPagos();
-            ArrayList<Telefono> listaTelefonosClienteOld = persistentAsesor.getListaTelefonosCliente();
-            ArrayList<Telefono> listaTelefonosClienteNew = asesor.getListaTelefonosCliente();
-            ArrayList<Correo> listaCorreoClienteOld = persistentAsesor.getListaCorreoCliente();
-            ArrayList<Correo> listaCorreoClienteNew = asesor.getListaCorreoCliente();
+            ArrayList<Telefono> listaTelefonosClienteOld = persistentAsesor.getListaTelefonos();
+            ArrayList<Telefono> listaTelefonosClienteNew = asesor.getListaTelefonos();
+            ArrayList<Correo> listaCorreoClienteOld = persistentAsesor.getListaCorreos();
+            ArrayList<Correo> listaCorreoClienteNew = asesor.getListaCorreos();
             List<String> illegalOrphanMessages = null;
             for (Venta listaVentasOldVenta : listaVentasOld) {
                 if (!listaVentasNew.contains(listaVentasOldVenta)) {
@@ -200,14 +200,14 @@ public class AsesorJpaController implements Serializable {
                 attachedListaTelefonosClienteNew.add(listaTelefonosClienteNewTelefonoToAttach);
             }
             listaTelefonosClienteNew = attachedListaTelefonosClienteNew;
-            asesor.setListaTelefonosCliente(listaTelefonosClienteNew);
+            asesor.setListaTelefonos(listaTelefonosClienteNew);
             ArrayList<Correo> attachedListaCorreoClienteNew = new ArrayList<Correo>();
             for (Correo listaCorreoClienteNewCorreoToAttach : listaCorreoClienteNew) {
                 listaCorreoClienteNewCorreoToAttach = em.getReference(listaCorreoClienteNewCorreoToAttach.getClass(), listaCorreoClienteNewCorreoToAttach.getId());
                 attachedListaCorreoClienteNew.add(listaCorreoClienteNewCorreoToAttach);
             }
             listaCorreoClienteNew = attachedListaCorreoClienteNew;
-            asesor.setListaCorreoCliente(listaCorreoClienteNew);
+            asesor.setListaCorreos(listaCorreoClienteNew);
             asesor = em.merge(asesor);
             for (Venta listaVentasNewVenta : listaVentasNew) {
                 if (!listaVentasOld.contains(listaVentasNewVenta)) {
@@ -237,7 +237,7 @@ public class AsesorJpaController implements Serializable {
                     listaTelefonosClienteNewTelefono.setAsesor(asesor);
                     listaTelefonosClienteNewTelefono = em.merge(listaTelefonosClienteNewTelefono);
                     if (oldAsesorOfListaTelefonosClienteNewTelefono != null && !oldAsesorOfListaTelefonosClienteNewTelefono.equals(asesor)) {
-                        oldAsesorOfListaTelefonosClienteNewTelefono.getListaTelefonosCliente().remove(listaTelefonosClienteNewTelefono);
+                        oldAsesorOfListaTelefonosClienteNewTelefono.getListaTelefonos().remove(listaTelefonosClienteNewTelefono);
                         oldAsesorOfListaTelefonosClienteNewTelefono = em.merge(oldAsesorOfListaTelefonosClienteNewTelefono);
                     }
                 }
@@ -248,7 +248,7 @@ public class AsesorJpaController implements Serializable {
                     listaCorreoClienteNewCorreo.setAsesor(asesor);
                     listaCorreoClienteNewCorreo = em.merge(listaCorreoClienteNewCorreo);
                     if (oldAsesorOfListaCorreoClienteNewCorreo != null && !oldAsesorOfListaCorreoClienteNewCorreo.equals(asesor)) {
-                        oldAsesorOfListaCorreoClienteNewCorreo.getListaCorreoCliente().remove(listaCorreoClienteNewCorreo);
+                        oldAsesorOfListaCorreoClienteNewCorreo.getListaCorreos().remove(listaCorreoClienteNewCorreo);
                         oldAsesorOfListaCorreoClienteNewCorreo = em.merge(oldAsesorOfListaCorreoClienteNewCorreo);
                     }
                 }
@@ -297,14 +297,14 @@ public class AsesorJpaController implements Serializable {
                 }
                 illegalOrphanMessages.add("This Asesor (" + asesor + ") cannot be destroyed since the Pago " + listaPagosOrphanCheckPago + " in its listaPagos field has a non-nullable asesor field.");
             }
-            ArrayList<Telefono> listaTelefonosClienteOrphanCheck = asesor.getListaTelefonosCliente();
+            ArrayList<Telefono> listaTelefonosClienteOrphanCheck = asesor.getListaTelefonos();
             for (Telefono listaTelefonosClienteOrphanCheckTelefono : listaTelefonosClienteOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
                 illegalOrphanMessages.add("This Asesor (" + asesor + ") cannot be destroyed since the Telefono " + listaTelefonosClienteOrphanCheckTelefono + " in its listaTelefonosCliente field has a non-nullable asesor field.");
             }
-            ArrayList<Correo> listaCorreoClienteOrphanCheck = asesor.getListaCorreoCliente();
+            ArrayList<Correo> listaCorreoClienteOrphanCheck = asesor.getListaCorreos();
             for (Correo listaCorreoClienteOrphanCheckCorreo : listaCorreoClienteOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();

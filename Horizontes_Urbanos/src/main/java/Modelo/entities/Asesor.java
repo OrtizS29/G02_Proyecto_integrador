@@ -30,22 +30,22 @@ public class Asesor implements Serializable {
     private ArrayList<Pago> listaPagos;
     
     @OneToMany(mappedBy = "asesor",cascade = CascadeType.ALL) 
-    private ArrayList<Telefono> listaTelefonosCliente;
+    private ArrayList<Telefono> listaTelefonos;
     
     @OneToMany(mappedBy = "asesor",cascade = CascadeType.ALL) 
-    private ArrayList<Correo> listaCorreoCliente;
+    private ArrayList<Correo> listaCorreos;
 
     public Asesor() {
     }
 
-    public Asesor(int cedula, String nombre, String direccion, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos, ArrayList<Telefono> listaTelefonosCliente, ArrayList<Correo> listaCorreoCliente) {
+    public Asesor(int cedula, String nombre, String direccion, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos, ArrayList<Telefono> listaTelefonos, ArrayList<Correo> listaCorreos) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.direccion = direccion;
         this.listaVentas = listaVentas;
         this.listaPagos = listaPagos;
-        this.listaTelefonosCliente = listaTelefonosCliente;
-        this.listaCorreoCliente = listaCorreoCliente;
+        this.listaTelefonos = listaTelefonos;
+        this.listaCorreos = listaCorreos;
     }
 
     public int getCedula() {
@@ -88,19 +88,19 @@ public class Asesor implements Serializable {
         this.listaPagos = listaPagos;
     }
 
-    public ArrayList<Telefono> getListaTelefonosCliente() {
-        return listaTelefonosCliente;
+    public ArrayList<Telefono> getListaTelefonos() {
+        return listaTelefonos;
     }
 
-    public void setListaTelefonosCliente(ArrayList<Telefono> listaTelefonosCliente) {
-        this.listaTelefonosCliente = listaTelefonosCliente;
+    public void setListaTelefonos(ArrayList<Telefono> listaTelefonos) {
+        this.listaTelefonos = listaTelefonos;
     }
 
-    public ArrayList<Correo> getListaCorreoCliente() {
-        return listaCorreoCliente;
+    public ArrayList<Correo> getListaCorreos() {
+        return listaCorreos;
     }
 
-    public void setListaCorreoCliente(ArrayList<Correo> listaCorreoCliente) {
-        this.listaCorreoCliente = listaCorreoCliente;
+    public void setListaCorreos(ArrayList<Correo> listaCorreo) {
+        this.listaCorreos = listaCorreo;
     }
 }

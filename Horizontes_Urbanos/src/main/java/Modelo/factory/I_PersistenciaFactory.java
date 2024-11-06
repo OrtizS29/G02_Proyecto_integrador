@@ -12,6 +12,7 @@ import Modelo.entities.Telefono;
 import Modelo.entities.Usuario;
 import Modelo.entities.Venta;
 import Modelo.persistir.IPersistencia;
+import Modelo.persistir.IPersistenciaAsesor;
 import Modelo.persistir.IPersistenciaProyecto;
 import Modelo.persistir.IPersistenciaTorre;
 
@@ -22,7 +23,7 @@ import Modelo.persistir.IPersistenciaTorre;
 public interface I_PersistenciaFactory {
     IPersistencia<Administrador> crearPersistirAdministrador();
     IPersistencia<Apartamento> crearPersistirApartamento();
-    IPersistencia<Asesor> crearPersistirAsesor();
+    IPersistenciaAsesor crearPersistirAsesor();
     IPersistencia<Cliente> crearPersistirCliente();
     IPersistencia<Correo> crearPersistirCorreo();
     IPersistencia<Deuda> crearPersistirDeuda();

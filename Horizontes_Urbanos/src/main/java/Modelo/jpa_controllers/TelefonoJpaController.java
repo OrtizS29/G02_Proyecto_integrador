@@ -51,7 +51,7 @@ public class TelefonoJpaController implements Serializable {
             }
             em.persist(telefono);
             if (asesor != null) {
-                asesor.getListaTelefonosCliente().add(telefono);
+                asesor.getListaTelefonos().add(telefono);
                 asesor = em.merge(asesor);
             }
             if (cliente != null) {
@@ -86,11 +86,11 @@ public class TelefonoJpaController implements Serializable {
             }
             telefono = em.merge(telefono);
             if (asesorOld != null && !asesorOld.equals(asesorNew)) {
-                asesorOld.getListaTelefonosCliente().remove(telefono);
+                asesorOld.getListaTelefonos().remove(telefono);
                 asesorOld = em.merge(asesorOld);
             }
             if (asesorNew != null && !asesorNew.equals(asesorOld)) {
-                asesorNew.getListaTelefonosCliente().add(telefono);
+                asesorNew.getListaTelefonos().add(telefono);
                 asesorNew = em.merge(asesorNew);
             }
             if (clienteOld != null && !clienteOld.equals(clienteNew)) {
@@ -132,7 +132,7 @@ public class TelefonoJpaController implements Serializable {
             }
             Asesor asesor = telefono.getAsesor();
             if (asesor != null) {
-                asesor.getListaTelefonosCliente().remove(telefono);
+                asesor.getListaTelefonos().remove(telefono);
                 asesor = em.merge(asesor);
             }
             Cliente cliente = telefono.getCliente();

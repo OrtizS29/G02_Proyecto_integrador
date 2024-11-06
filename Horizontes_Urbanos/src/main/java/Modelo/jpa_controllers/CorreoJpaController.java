@@ -51,7 +51,7 @@ public class CorreoJpaController implements Serializable {
             }
             em.persist(correo);
             if (asesor != null) {
-                asesor.getListaCorreoCliente().add(correo);
+                asesor.getListaCorreos().add(correo);
                 asesor = em.merge(asesor);
             }
             if (cliente != null) {
@@ -86,11 +86,11 @@ public class CorreoJpaController implements Serializable {
             }
             correo = em.merge(correo);
             if (asesorOld != null && !asesorOld.equals(asesorNew)) {
-                asesorOld.getListaCorreoCliente().remove(correo);
+                asesorOld.getListaCorreos().remove(correo);
                 asesorOld = em.merge(asesorOld);
             }
             if (asesorNew != null && !asesorNew.equals(asesorOld)) {
-                asesorNew.getListaCorreoCliente().add(correo);
+                asesorNew.getListaCorreos().add(correo);
                 asesorNew = em.merge(asesorNew);
             }
             if (clienteOld != null && !clienteOld.equals(clienteNew)) {
@@ -132,7 +132,7 @@ public class CorreoJpaController implements Serializable {
             }
             Asesor asesor = correo.getAsesor();
             if (asesor != null) {
-                asesor.getListaCorreoCliente().remove(correo);
+                asesor.getListaCorreos().remove(correo);
                 asesor = em.merge(asesor);
             }
             Cliente cliente = correo.getCliente();
