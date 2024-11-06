@@ -6,6 +6,8 @@ import Modelo.entities.Correo;
 import Modelo.entities.Telefono;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.persistir.IPersistencia;
+import Modelo.persistir.IPersistenciaAsesor;
+import java.util.List;
 
 /**
  *
@@ -13,7 +15,7 @@ import Modelo.persistir.IPersistencia;
  */
 public class GestionarAsesor {
     
-     private IPersistencia<Asesor> persisAsesor;
+     private IPersistenciaAsesor persisAsesor;
      private IPersistencia<Telefono> persisTelefono;
      private IPersistencia<Correo> persisCorreo;
 
@@ -37,5 +39,28 @@ public class GestionarAsesor {
     public Correo guardarCorr(Correo correo) throws Exception {
         persisCorreo.crear(correo);
         return correo;
+    }
+    
+    public Asesor buscarPorId(int id) {
+        Asesor asesor = null;
+        asesor = persisAsesor.obtener(id);
+        return asesor;
+    }
+    
+    public void editar(Asesor asesor, int cedula,String nombre,String direccion) throws Exception {
+        
+        asesor.setCedula(cedula);
+        asesor.setNombre(nombre);
+        asesor.setDireccion(direccion);
+        persisAsesor.editar(asesor);
+    }
+    
+    public void borrar(int id){
+        System.out.println("Falta ver la logica");
+    }
+    
+    public List<Asesor> traerAsesores(){
+        List<Asesor> listaAsesores = persisAsesor.traerAsesores();
+        return listaAsesores;
     }
 }

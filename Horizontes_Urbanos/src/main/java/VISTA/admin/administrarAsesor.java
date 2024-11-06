@@ -10,8 +10,10 @@ import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -48,13 +50,18 @@ public class administrarAsesor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnGuardarAsesor = new javax.swing.JButton();
-        btnGuardarAsesor1 = new javax.swing.JButton();
-        btnGuardarAsesor2 = new javax.swing.JButton();
+        tablaMostrarAsesor = new javax.swing.JTable();
+        btnEliminarAsesor = new javax.swing.JButton();
+        btnAgregarAsesor = new javax.swing.JButton();
+        btnEditarAsesor = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -123,7 +130,7 @@ public class administrarAsesor extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMostrarAsesor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -134,42 +141,42 @@ public class administrarAsesor extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaMostrarAsesor);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 620, 310));
 
-        btnGuardarAsesor.setBackground(new java.awt.Color(49, 134, 181));
-        btnGuardarAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnGuardarAsesor.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardarAsesor.setText("Eliminar");
-        btnGuardarAsesor.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarAsesor.setBackground(new java.awt.Color(49, 134, 181));
+        btnEliminarAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnEliminarAsesor.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarAsesor.setText("Eliminar");
+        btnEliminarAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarAsesorActionPerformed(evt);
+                btnEliminarAsesorActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 110, 40));
+        jPanel2.add(btnEliminarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 110, 40));
 
-        btnGuardarAsesor1.setBackground(new java.awt.Color(49, 134, 181));
-        btnGuardarAsesor1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnGuardarAsesor1.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardarAsesor1.setText("Agregar");
-        btnGuardarAsesor1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarAsesor.setBackground(new java.awt.Color(49, 134, 181));
+        btnAgregarAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAgregarAsesor.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarAsesor.setText("Agregar");
+        btnAgregarAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarAsesor1ActionPerformed(evt);
+                btnAgregarAsesorActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardarAsesor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 110, 40));
+        jPanel2.add(btnAgregarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 110, 40));
 
-        btnGuardarAsesor2.setBackground(new java.awt.Color(49, 134, 181));
-        btnGuardarAsesor2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnGuardarAsesor2.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardarAsesor2.setText("Editar");
-        btnGuardarAsesor2.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarAsesor.setBackground(new java.awt.Color(49, 134, 181));
+        btnEditarAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnEditarAsesor.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarAsesor.setText("Editar");
+        btnEditarAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarAsesor2ActionPerformed(evt);
+                btnEditarAsesorActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardarAsesor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 110, 40));
+        jPanel2.add(btnEditarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 110, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarAsesor.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -218,8 +225,8 @@ public class administrarAsesor extends javax.swing.JFrame {
         asesor.setDireccion(direccionAsesor);
         asesor.setListaVentas(new ArrayList<Venta>());
         asesor.setListaPagos(new ArrayList<Pago>());
-        asesor.setListaTelefonosCliente(new ArrayList<Telefono>());
-        asesor.setListaCorreoCliente(new ArrayList<Correo>());
+        asesor.setListaTelefonos(new ArrayList<Telefono>());
+        asesor.setListaCorreos(new ArrayList<Correo>());
         
         Asesor asesorSelect = null;
         try {
@@ -246,8 +253,8 @@ public class administrarAsesor extends javax.swing.JFrame {
             Logger.getLogger(administrarAsesor.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        asesor.getListaCorreoCliente().add(correo);
-        asesor.getListaTelefonosCliente().add(telefono);
+        asesor.getListaCorreos().add(correo);
+        asesor.getListaTelefonos().add(telefono);
         
         UsuarioAsesor usuAsesor = new UsuarioAsesor(asesorSelect);
         usuAsesor.setVisible(true);
@@ -257,23 +264,23 @@ public class administrarAsesor extends javax.swing.JFrame {
         btnSiguienteAsesor.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteAsesorActionPerformed
 
-    private void btnGuardarAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAsesorActionPerformed
+    private void btnEliminarAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAsesorActionPerformed
 
-        btnGuardarAsesor.setEnabled(false);
+        btnEliminarAsesor.setEnabled(false);
 
-        btnGuardarAsesor.setEnabled(true);
-    }//GEN-LAST:event_btnGuardarAsesorActionPerformed
+        btnEliminarAsesor.setEnabled(true);
+    }//GEN-LAST:event_btnEliminarAsesorActionPerformed
 
-    private void btnGuardarAsesor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAsesor1ActionPerformed
+    private void btnAgregarAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAsesorActionPerformed
 
-        btnGuardarAsesor.setEnabled(false);
+        btnEliminarAsesor.setEnabled(false);
 
-        btnGuardarAsesor.setEnabled(true);
-    }//GEN-LAST:event_btnGuardarAsesor1ActionPerformed
+        btnEliminarAsesor.setEnabled(true);
+    }//GEN-LAST:event_btnAgregarAsesorActionPerformed
 
-    private void btnGuardarAsesor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAsesor2ActionPerformed
+    private void btnEditarAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarAsesorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardarAsesor2ActionPerformed
+    }//GEN-LAST:event_btnEditarAsesorActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
 
@@ -286,11 +293,19 @@ public class administrarAsesor extends javax.swing.JFrame {
         btnMenu.setEnabled(true);
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        
+        cargarTabla();
+        
+            
+    }//GEN-LAST:event_formWindowOpened
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardarAsesor;
-    private javax.swing.JButton btnGuardarAsesor1;
-    private javax.swing.JButton btnGuardarAsesor2;
+    private javax.swing.JButton btnAgregarAsesor;
+    private javax.swing.JButton btnEditarAsesor;
+    private javax.swing.JButton btnEliminarAsesor;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSiguienteAsesor;
     private javax.swing.JLabel jLabel1;
@@ -299,11 +314,44 @@ public class administrarAsesor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaMostrarAsesor;
     private javax.swing.JTextField txtCedulaAsesor;
     private javax.swing.JTextField txtCorreoAsesorReg;
     private javax.swing.JTextField txtDireccionAsesor;
     private javax.swing.JTextField txtNombreAsesor;
     private javax.swing.JTextField txtTelefonoAsesorReg;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarTabla() {
+        DefaultTableModel modeloTabla  = new DefaultTableModel(){
+            
+            @Override
+            public boolean isCellEditable (int row,int column){
+                return false;
+            }
+        };
+        
+        String titulos[] = {"Cedula","Nombre Asesor","Direccion","Correo","Telefono"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        List<Asesor> listaAsesores = gestiAsesor.traerAsesores();
+        
+        //Opcion 1
+        //Object[] objeto ={asesor.getCedula(),asesor.getNombre(),asesor.getDireccion()};
+        //modeloTabla.addRow(objeto);
+        
+        //Opcion 2
+        for(Asesor asesor:listaAsesores){
+            for (Correo correo : asesor.getListaCorreos()) {
+                for (Telefono telefono : asesor.getListaTelefonos()) {
+                    Object[] objeto = {asesor.getCedula(), asesor.getNombre(), asesor.getDireccion(), correo.getCorreo(), telefono.getTelefono()};
+                    modeloTabla.addRow(objeto);
+                }
+            }
+        }
+        
+        tablaMostrarAsesor.setModel(modeloTabla);
+    }
 }
+
+    
