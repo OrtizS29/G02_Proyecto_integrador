@@ -35,6 +35,7 @@ public class UsuarioAsesor extends javax.swing.JFrame {
         btnGuardarAsesor = new javax.swing.JButton();
         txtContraseñaAsesor = new javax.swing.JTextField();
         txtUsuarioAsesor = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -48,21 +49,24 @@ public class UsuarioAsesor extends javax.swing.JFrame {
                 btnGuardarAsesorActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, 110, 40));
+        getContentPane().add(btnGuardarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, 110, 40));
 
         txtContraseñaAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContraseñaAsesorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtContraseñaAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 290, 30));
+        getContentPane().add(txtContraseñaAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 290, 30));
 
         txtUsuarioAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioAsesorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtUsuarioAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 290, 30));
+        getContentPane().add(txtUsuarioAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 290, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarAsesor2.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -108,6 +112,7 @@ public class UsuarioAsesor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardarAsesor;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtContraseñaAsesor;
     private javax.swing.JTextField txtUsuarioAsesor;
     // End of variables declaration//GEN-END:variables
