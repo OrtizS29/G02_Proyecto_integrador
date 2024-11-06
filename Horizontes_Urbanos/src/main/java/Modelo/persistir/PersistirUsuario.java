@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Santiago
  */
-public class PersistirUsuario implements IPersistencia<Usuario> {
+public class PersistirUsuario implements IPersistenciaUsuario {
     
     private UsuarioJpaController usuarioJpa;
 
@@ -39,8 +39,12 @@ public class PersistirUsuario implements IPersistencia<Usuario> {
     }
     
     public List<Usuario> traerUsuarios() {
-       
         List<Usuario> listaUsuario = usuarioJpa.findUsuarioEntities();
         return listaUsuario;  
     }
+    
+    public Usuario obtenerAsesorCed(int id){
+        return usuarioJpa.obtenerPorCedulaAsesor(id);
+    }
+    
 }

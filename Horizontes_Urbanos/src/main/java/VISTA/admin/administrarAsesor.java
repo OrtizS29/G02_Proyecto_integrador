@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -52,7 +55,7 @@ public class administrarAsesor extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMostrarAsesor = new javax.swing.JTable();
         btnEliminarAsesor = new javax.swing.JButton();
-        btnAgregarAsesor = new javax.swing.JButton();
+        btnAgregarCorreoYTelefono = new javax.swing.JButton();
         btnEditarAsesor = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -143,7 +146,7 @@ public class administrarAsesor extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarAsesor);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 620, 310));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 680, 310));
 
         btnEliminarAsesor.setBackground(new java.awt.Color(49, 134, 181));
         btnEliminarAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -156,16 +159,16 @@ public class administrarAsesor extends javax.swing.JFrame {
         });
         jPanel2.add(btnEliminarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 110, 40));
 
-        btnAgregarAsesor.setBackground(new java.awt.Color(49, 134, 181));
-        btnAgregarAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnAgregarAsesor.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarAsesor.setText("Agregar");
-        btnAgregarAsesor.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarCorreoYTelefono.setBackground(new java.awt.Color(49, 134, 181));
+        btnAgregarCorreoYTelefono.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAgregarCorreoYTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarCorreoYTelefono.setText("Agregar");
+        btnAgregarCorreoYTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarAsesorActionPerformed(evt);
+                btnAgregarCorreoYTelefonoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAgregarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 110, 40));
+        jPanel2.add(btnAgregarCorreoYTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 110, 40));
 
         btnEditarAsesor.setBackground(new java.awt.Color(49, 134, 181));
         btnEditarAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -268,15 +271,32 @@ public class administrarAsesor extends javax.swing.JFrame {
 
         btnEliminarAsesor.setEnabled(false);
 
+        if(tablaMostrarAsesor.getRowCount() > 0){
+            if(tablaMostrarAsesor.getSelectedRow() != -1){
+                
+                int ced_asesor = Integer.parseInt(String.valueOf(tablaMostrarAsesor.getValueAt(tablaMostrarAsesor.getSelectedRow(), 0)));
+               
+                gestiAsesor.borrar(ced_asesor);
+                
+                JOptionPane optionPane = new JOptionPane("Asesor Eliminado Correctamente");
+                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                JDialog dialog = optionPane.createDialog("Borrado Exitoso");
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+            }
+        }
+        
+        cargarTabla();
+        
         btnEliminarAsesor.setEnabled(true);
     }//GEN-LAST:event_btnEliminarAsesorActionPerformed
 
-    private void btnAgregarAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAsesorActionPerformed
+    private void btnAgregarCorreoYTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCorreoYTelefonoActionPerformed
 
         btnEliminarAsesor.setEnabled(false);
 
         btnEliminarAsesor.setEnabled(true);
-    }//GEN-LAST:event_btnAgregarAsesorActionPerformed
+    }//GEN-LAST:event_btnAgregarCorreoYTelefonoActionPerformed
 
     private void btnEditarAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarAsesorActionPerformed
         // TODO add your handling code here:
@@ -303,7 +323,7 @@ public class administrarAsesor extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarAsesor;
+    private javax.swing.JButton btnAgregarCorreoYTelefono;
     private javax.swing.JButton btnEditarAsesor;
     private javax.swing.JButton btnEliminarAsesor;
     private javax.swing.JButton btnMenu;
@@ -337,18 +357,25 @@ public class administrarAsesor extends javax.swing.JFrame {
         List<Asesor> listaAsesores = gestiAsesor.traerAsesores();
         
         //Opcion 1
-        //Object[] objeto ={asesor.getCedula(),asesor.getNombre(),asesor.getDireccion()};
-        //modeloTabla.addRow(objeto);
-        
-        //Opcion 2
-        for(Asesor asesor:listaAsesores){
-            for (Correo correo : asesor.getListaCorreos()) {
-                for (Telefono telefono : asesor.getListaTelefonos()) {
-                    Object[] objeto = {asesor.getCedula(), asesor.getNombre(), asesor.getDireccion(), correo.getCorreo(), telefono.getTelefono()};
-                    modeloTabla.addRow(objeto);
-                }
-            }
+        for (Asesor asesor : listaAsesores) {
+            String correos = asesor.getListaCorreos().stream()
+                .map(Correo::getCorreo)
+                .collect(Collectors.joining(", "));
+            String telefonos = asesor.getListaTelefonos().stream()
+                .map(t -> String.valueOf(t.getTelefono()))
+                .collect(Collectors.joining(", "));
+            Object[] objeto = {asesor.getCedula(), asesor.getNombre(), asesor.getDireccion(), correos, telefonos};
+            modeloTabla.addRow(objeto);
         }
+        
+        /*Opcion 2
+        for (Asesor asesor : listaAsesores) {
+            String correo = asesor.getListaCorreos().isEmpty() ? "" : asesor.getListaCorreos().get(0).getCorreo();
+            String telefono = asesor.getListaTelefonos().isEmpty() ? "" : String.valueOf(asesor.getListaTelefonos().get(0).getTelefono());
+            Object[] objeto = {asesor.getCedula(), asesor.getNombre(), asesor.getDireccion(), correo, telefono};
+            modeloTabla.addRow(objeto);
+        }
+        }*/
         
         tablaMostrarAsesor.setModel(modeloTabla);
     }

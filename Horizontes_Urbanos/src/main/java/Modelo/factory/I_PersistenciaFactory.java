@@ -3,18 +3,17 @@ package Modelo.factory;
 
 import Modelo.entities.Administrador;
 import Modelo.entities.Apartamento;
-import Modelo.entities.Asesor;
 import Modelo.entities.Cliente;
 import Modelo.entities.Correo;
 import Modelo.entities.Deuda;
 import Modelo.entities.Pago;
 import Modelo.entities.Telefono;
-import Modelo.entities.Usuario;
 import Modelo.entities.Venta;
 import Modelo.persistir.IPersistencia;
 import Modelo.persistir.IPersistenciaAsesor;
 import Modelo.persistir.IPersistenciaProyecto;
 import Modelo.persistir.IPersistenciaTorre;
+import Modelo.persistir.IPersistenciaUsuario;
 
 /**
  *
@@ -31,6 +30,6 @@ public interface I_PersistenciaFactory {
     IPersistenciaProyecto crearPersistirProyecto();
     IPersistencia<Telefono> crearPersistirTelefono();
     IPersistenciaTorre crearPersistirTorre();
-    IPersistencia<Usuario> crearPersistirUsuario();
+    IPersistenciaUsuario crearPersistirUsuario();
     IPersistencia<Venta> crearPersistirVenta();
 }

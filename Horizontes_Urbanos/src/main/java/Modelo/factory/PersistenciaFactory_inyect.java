@@ -3,18 +3,17 @@ package Modelo.factory;
 
 import Modelo.entities.Administrador;
 import Modelo.entities.Apartamento;
-import Modelo.entities.Asesor;
 import Modelo.entities.Cliente;
 import Modelo.entities.Correo;
 import Modelo.entities.Deuda;
 import Modelo.entities.Pago;
 import Modelo.entities.Telefono;
-import Modelo.entities.Usuario;
 import Modelo.entities.Venta;
 import Modelo.persistir.IPersistencia;
 import Modelo.persistir.IPersistenciaAsesor;
 import Modelo.persistir.IPersistenciaProyecto;
 import Modelo.persistir.IPersistenciaTorre;
+import Modelo.persistir.IPersistenciaUsuario;
 import Modelo.persistir.PersistirAdministrador;
 import Modelo.persistir.PersistirApartamento;
 import Modelo.persistir.PersistirAsesor;
@@ -70,7 +69,7 @@ public class PersistenciaFactory_inyect implements I_PersistenciaFactory{
     }
 
     @Override
-    public IPersistencia<Usuario> crearPersistirUsuario() {
+    public IPersistenciaUsuario crearPersistirUsuario() {
         return new PersistirUsuario();
     }
 
