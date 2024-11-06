@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -139,4 +140,14 @@ public class UsuarioJpaController implements Serializable {
         }
     }
     
+    public Usuario obtenerPorCedulaAsesor(int cedulaAsesor) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT u FROM Usuario u WHERE u.asesor.cedula = :cedulaAsesor");
+            query.setParameter("cedulaAsesor", cedulaAsesor);
+            return (Usuario) query.getSingleResult();
+        }catch (NoResultException e) {
+            return null;
+        }
+    }
 }

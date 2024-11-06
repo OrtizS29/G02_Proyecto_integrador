@@ -39,7 +39,6 @@ public class Venta implements Serializable {
     private Date fecha;
     @Column(nullable = false)
     private Integer intereses;
-    private int numero_apartamentos_comprados;
     
     @OneToMany(mappedBy = "venta")
     private ArrayList<Apartamento> listaApartamentos;
@@ -61,14 +60,13 @@ public class Venta implements Serializable {
     public Venta() {
     }
 
-    public Venta(int id_venta, int precio_base, int numero_coutas, int precio_final, Date fecha, Integer intereses, int numero_apartamentos_comprados, ArrayList<Apartamento> listaApartamentos, ArrayList<Pago> listaPagos, ArrayList<Deuda> listaDeuda, Asesor asesor, Cliente cliente) {
+    public Venta(int id_venta, int precio_base, int numero_coutas, int precio_final, Date fecha, Integer intereses, ArrayList<Apartamento> listaApartamentos, ArrayList<Pago> listaPagos, ArrayList<Deuda> listaDeuda, Asesor asesor, Cliente cliente) {
         this.id_venta = id_venta;
         this.precio_base = precio_base;
         this.numero_coutas = numero_coutas;
         this.precio_final = precio_final;
         this.fecha = fecha;
         this.intereses = intereses;
-        this.numero_apartamentos_comprados = numero_apartamentos_comprados;
         this.listaApartamentos = listaApartamentos;
         this.listaPagos = listaPagos;
         this.listaDeuda = listaDeuda;
@@ -122,14 +120,6 @@ public class Venta implements Serializable {
 
     public void setIntereses(Integer intereses) {
         this.intereses = intereses;
-    }
-
-    public int getNumero_apartamentos_comprados() {
-        return numero_apartamentos_comprados;
-    }
-
-    public void setNumero_apartamentos_comprados(int numero_apartamentos_comprados) {
-        this.numero_apartamentos_comprados = numero_apartamentos_comprados;
     }
 
     public ArrayList<Apartamento> getListaApartamentos() {
