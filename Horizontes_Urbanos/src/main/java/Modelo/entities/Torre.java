@@ -1,8 +1,6 @@
 
 package Modelo.entities;
 
-import Modelo.entities.Proyecto;
-import Modelo.entities.Apartamento;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.CascadeType;
@@ -79,7 +77,4 @@ public class Torre implements Serializable {
     public void setProyecto(Proyecto proyecto) {
         this.proyecto = proyecto;
     }
-
-    
-    
 }

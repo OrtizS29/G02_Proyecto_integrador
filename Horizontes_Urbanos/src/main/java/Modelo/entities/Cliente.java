@@ -28,12 +28,12 @@ public class Cliente implements Serializable {
     
     @Column(nullable = true)
     private Integer sisben;
+
+    @Column(nullable = true)
+    private String correo;
     
-    @OneToMany(mappedBy = "cliente")
-    private ArrayList<Telefono> listaTelefonosCliente;
-    
-    @OneToMany(mappedBy = "cliente")
-    private ArrayList<Correo> listaCorreosCliente;
+    @Column(nullable = true)
+    private int telefono;
     
     @OneToMany(mappedBy = "cliente")
     private ArrayList<Venta> listaVentas;
@@ -44,14 +44,14 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(int cedula, String nombre, String direccion, Integer subsidio_ministerio, Integer sisben, ArrayList<Telefono> listaTelefonosCliente, ArrayList<Correo> listaCorreosCliente, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos) {
+    public Cliente(int cedula, String nombre, String direccion, Integer subsidio_ministerio, Integer sisben, String correo, int telefono, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.direccion = direccion;
         this.subsidio_ministerio = subsidio_ministerio;
         this.sisben = sisben;
-        this.listaTelefonosCliente = listaTelefonosCliente;
-        this.listaCorreosCliente = listaCorreosCliente;
+        this.correo = correo;
+        this.telefono = telefono;
         this.listaVentas = listaVentas;
         this.listaPagos = listaPagos;
     }
@@ -96,20 +96,20 @@ public class Cliente implements Serializable {
         this.sisben = sisben;
     }
 
-    public ArrayList<Telefono> getListaTelefonosCliente() {
-        return listaTelefonosCliente;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setListaTelefonosCliente(ArrayList<Telefono> listaTelefonosCliente) {
-        this.listaTelefonosCliente = listaTelefonosCliente;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public ArrayList<Correo> getListaCorreosCliente() {
-        return listaCorreosCliente;
+    public int getTelefono() {
+        return telefono;
     }
 
-    public void setListaCorreosCliente(ArrayList<Correo> listaCorreosCliente) {
-        this.listaCorreosCliente = listaCorreosCliente;
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
 
     public ArrayList<Venta> getListaVentas() {
@@ -127,6 +127,4 @@ public class Cliente implements Serializable {
     public void setListaPagos(ArrayList<Pago> listaPagos) {
         this.listaPagos = listaPagos;
     }
-
-    
 }
