@@ -53,7 +53,6 @@ public class administrarAsesor extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMostrarAsesor = new javax.swing.JTable();
         btnEliminarAsesor = new javax.swing.JButton();
-        btnAgregarCorreoYTelefono = new javax.swing.JButton();
         btnEditarAsesor = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -157,17 +156,6 @@ public class administrarAsesor extends javax.swing.JFrame {
         });
         jPanel2.add(btnEliminarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 110, 40));
 
-        btnAgregarCorreoYTelefono.setBackground(new java.awt.Color(49, 134, 181));
-        btnAgregarCorreoYTelefono.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnAgregarCorreoYTelefono.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarCorreoYTelefono.setText("Agregar");
-        btnAgregarCorreoYTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarCorreoYTelefonoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnAgregarCorreoYTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 110, 40));
-
         btnEditarAsesor.setBackground(new java.awt.Color(49, 134, 181));
         btnEditarAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnEditarAsesor.setForeground(new java.awt.Color(255, 255, 255));
@@ -267,13 +255,6 @@ public class administrarAsesor extends javax.swing.JFrame {
         btnEliminarAsesor.setEnabled(true);
     }//GEN-LAST:event_btnEliminarAsesorActionPerformed
 
-    private void btnAgregarCorreoYTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCorreoYTelefonoActionPerformed
-
-        btnEliminarAsesor.setEnabled(false);
-
-        btnEliminarAsesor.setEnabled(true);
-    }//GEN-LAST:event_btnAgregarCorreoYTelefonoActionPerformed
-
     private void btnEditarAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarAsesorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarAsesorActionPerformed
@@ -299,7 +280,6 @@ public class administrarAsesor extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarCorreoYTelefono;
     private javax.swing.JButton btnEditarAsesor;
     private javax.swing.JButton btnEliminarAsesor;
     private javax.swing.JButton btnMenu;
