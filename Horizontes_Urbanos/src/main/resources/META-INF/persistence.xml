@@ -8,12 +8,12 @@
     <class>Modelo.entities.Cliente</class>
     <class>Modelo.entities.Pago</class>
     <class>Modelo.entities.Proyecto</class>
-    <class>Modelo.entities.Torre</class>
     <class>Modelo.entities.Usuario</class>
     <class>Modelo.entities.Venta</class>
     <class>Modelo.entities.Correo</class>
     <class>Modelo.entities.Deuda</class>
     <class>Modelo.entities.Telefono</class>
+    <class>Modelo.entities.Torre</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
       <property name="javax.persistence.jdbc.user" value="Constructora"/>

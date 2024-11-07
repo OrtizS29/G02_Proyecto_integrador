@@ -3,9 +3,7 @@ package VISTA.admin;
 
 import CONTROLADOR.GestionarAsesor;
 import Modelo.entities.Asesor;
-import Modelo.entities.Correo;
 import Modelo.entities.Pago;
-import Modelo.entities.Telefono;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
@@ -74,35 +72,35 @@ public class administrarAsesor extends javax.swing.JFrame {
                 txtTelefonoAsesorRegActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTelefonoAsesorReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 290, 30));
+        jPanel1.add(txtTelefonoAsesorReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 290, 20));
 
         txtNombreAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreAsesorActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombreAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 290, 30));
+        jPanel1.add(txtNombreAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 290, 20));
 
         txtCedulaAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCedulaAsesorActionPerformed(evt);
             }
         });
-        jPanel1.add(txtCedulaAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 290, 30));
+        jPanel1.add(txtCedulaAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 290, 20));
 
         txtDireccionAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDireccionAsesorActionPerformed(evt);
             }
         });
-        jPanel1.add(txtDireccionAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 290, 30));
+        jPanel1.add(txtDireccionAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 290, 20));
 
         txtCorreoAsesorReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCorreoAsesorRegActionPerformed(evt);
             }
         });
-        jPanel1.add(txtCorreoAsesorReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 290, 30));
+        jPanel1.add(txtCorreoAsesorReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 290, 20));
 
         btnSiguienteAsesor.setBackground(new java.awt.Color(49, 134, 181));
         btnSiguienteAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -221,15 +219,14 @@ public class administrarAsesor extends javax.swing.JFrame {
         String correoAsesor = txtCorreoAsesorReg.getText();
         int telefonoAsesor = Integer.parseInt(txtTelefonoAsesorReg.getText());
         
-        Asesor asesor = new Asesor();Correo correo = new Correo();
-        Telefono telefono = new Telefono();
+        Asesor asesor = new Asesor();
         asesor.setNombre(nombreAsesor);
         asesor.setCedula(cedulaAsesor);
         asesor.setDireccion(direccionAsesor);
+        asesor.setCorreo(correoAsesor);
+        asesor.setTelefono(telefonoAsesor);
         asesor.setListaVentas(new ArrayList<Venta>());
         asesor.setListaPagos(new ArrayList<Pago>());
-        asesor.setListaTelefonos(new ArrayList<Telefono>());
-        asesor.setListaCorreos(new ArrayList<Correo>());
         
         Asesor asesorSelect = null;
         try {
@@ -237,28 +234,7 @@ public class administrarAsesor extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(administrarAsesor.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        correo.setCorreo(correoAsesor);
-        correo.setAsesor(asesor);
-        
-        try {
-            gestiAsesor.guardarCorr(correo);
-        } catch (Exception ex) {
-            Logger.getLogger(administrarAsesor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        telefono.setTelefono(telefonoAsesor);
-        telefono.setAsesor(asesor);
-        
-        try {
-            gestiAsesor.guardarTel(telefono);
-        } catch (Exception ex) {
-            Logger.getLogger(administrarAsesor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        asesor.getListaCorreos().add(correo);
-        asesor.getListaTelefonos().add(telefono);
-        
+
         UsuarioAsesor usuAsesor = new UsuarioAsesor(asesorSelect);
         usuAsesor.setVisible(true);
         usuAsesor.setLocationRelativeTo(null);
@@ -355,28 +331,13 @@ public class administrarAsesor extends javax.swing.JFrame {
         modeloTabla.setColumnIdentifiers(titulos);
         
         List<Asesor> listaAsesores = gestiAsesor.traerAsesores();
-        
-        //Opcion 1
+
         for (Asesor asesor : listaAsesores) {
-            String correos = asesor.getListaCorreos().stream()
-                .map(Correo::getCorreo)
-                .collect(Collectors.joining(", "));
-            String telefonos = asesor.getListaTelefonos().stream()
-                .map(t -> String.valueOf(t.getTelefono()))
-                .collect(Collectors.joining(", "));
-            Object[] objeto = {asesor.getCedula(), asesor.getNombre(), asesor.getDireccion(), correos, telefonos};
+            Object[] objeto = {asesor.getCedula(), asesor.getNombre(), asesor.getDireccion(), 
+                asesor.getCorreo(), asesor.getTelefono()};
             modeloTabla.addRow(objeto);
         }
-        
-        /*Opcion 2
-        for (Asesor asesor : listaAsesores) {
-            String correo = asesor.getListaCorreos().isEmpty() ? "" : asesor.getListaCorreos().get(0).getCorreo();
-            String telefono = asesor.getListaTelefonos().isEmpty() ? "" : String.valueOf(asesor.getListaTelefonos().get(0).getTelefono());
-            Object[] objeto = {asesor.getCedula(), asesor.getNombre(), asesor.getDireccion(), correo, telefono};
-            modeloTabla.addRow(objeto);
-        }
-        }*/
-        
+
         tablaMostrarAsesor.setModel(modeloTabla);
     }
 }

@@ -3,7 +3,7 @@ package Modelo.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -23,29 +23,29 @@ public class Asesor implements Serializable {
     private String nombre;
     private String direccion;
     
+    @Column(nullable = true)
+    private String correo;
+    
+    @Column(nullable = true)
+    private int telefono;
+    
     @OneToMany(mappedBy = "asesor")
     private ArrayList<Venta> listaVentas;
     
     @OneToMany(mappedBy = "asesor")
     private ArrayList<Pago> listaPagos;
-    
-    @OneToMany(mappedBy = "asesor",cascade = CascadeType.ALL) 
-    private ArrayList<Telefono> listaTelefonos;
-    
-    @OneToMany(mappedBy = "asesor",cascade = CascadeType.ALL) 
-    private ArrayList<Correo> listaCorreos;
 
     public Asesor() {
     }
 
-    public Asesor(int cedula, String nombre, String direccion, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos, ArrayList<Telefono> listaTelefonos, ArrayList<Correo> listaCorreos) {
+    public Asesor(int cedula, String nombre, String direccion, String correo, int telefono, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.direccion = direccion;
+        this.correo = correo;
+        this.telefono = telefono;
         this.listaVentas = listaVentas;
         this.listaPagos = listaPagos;
-        this.listaTelefonos = listaTelefonos;
-        this.listaCorreos = listaCorreos;
     }
 
     public int getCedula() {
@@ -72,6 +72,22 @@ public class Asesor implements Serializable {
         this.direccion = direccion;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
     public ArrayList<Venta> getListaVentas() {
         return listaVentas;
     }
@@ -86,21 +102,5 @@ public class Asesor implements Serializable {
 
     public void setListaPagos(ArrayList<Pago> listaPagos) {
         this.listaPagos = listaPagos;
-    }
-
-    public ArrayList<Telefono> getListaTelefonos() {
-        return listaTelefonos;
-    }
-
-    public void setListaTelefonos(ArrayList<Telefono> listaTelefonos) {
-        this.listaTelefonos = listaTelefonos;
-    }
-
-    public ArrayList<Correo> getListaCorreos() {
-        return listaCorreos;
-    }
-
-    public void setListaCorreos(ArrayList<Correo> listaCorreo) {
-        this.listaCorreos = listaCorreo;
     }
 }
