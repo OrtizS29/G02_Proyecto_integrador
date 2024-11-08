@@ -256,7 +256,34 @@ public class administrarAsesor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarAsesorActionPerformed
 
     private void btnEditarAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarAsesorActionPerformed
-        // TODO add your handling code here:
+        
+        btnEditarAsesor.setEnabled(true);
+        
+        if(tablaMostrarAsesor.getRowCount() > 0){
+            if(tablaMostrarAsesor.getSelectedRow() != -1){
+                
+                int ced_asesor = Integer.parseInt(String.valueOf(tablaMostrarAsesor.getValueAt(tablaMostrarAsesor.getSelectedRow(), 0)));
+                
+                
+                EditarAsesor editAsesor = new EditarAsesor(ced_asesor);
+                editAsesor.setVisible(true);
+                editAsesor.setLocationRelativeTo(null);
+                this.dispose();
+            }
+            else {
+                JOptionPane optionPane = new JOptionPane("No seleccino ningun registro");optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+                JDialog dialog = optionPane.createDialog("Error al editar");dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+            }
+        }
+        else{
+            JOptionPane optionPane = new JOptionPane("La tabla esta vacia");optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Error al editar");dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+        }
+        
+        
+        btnEditarAsesor.setEnabled(true);
     }//GEN-LAST:event_btnEditarAsesorActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
