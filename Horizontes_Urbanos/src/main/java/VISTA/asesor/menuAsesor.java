@@ -27,10 +27,28 @@ public class menuAsesor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(910, 510));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(49, 134, 181));
+        jButton1.setText("Salir");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 90, 40));
+
+        jButton2.setText("Venta");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 250, 70));
+
+        jButton3.setText("Pago");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 250, 70));
+
+        jButton4.setText("Cliente");
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 250, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menuAsesorA.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -41,6 +59,10 @@ public class menuAsesor extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
