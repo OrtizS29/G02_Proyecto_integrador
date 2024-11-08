@@ -3,6 +3,7 @@ package VISTA;
 
 import VISTA.admin.menuAdmin;
 import CONTROLADOR.validarUsuarios;
+import Modelo.ConexionORACLE;
 import Modelo.entities.Usuario;
 import VISTA.asesor.menuAsesor;
 import javax.swing.JDialog;
@@ -98,14 +99,30 @@ public class Login extends javax.swing.JFrame {
         if(usr != null) {
             String rol = usr.getRol();
             
+            String dbUsuario = null;
+            String dbContrasena = null;
+            
             if(rol.equals("admin")){
-                menuAdmin mAdmin = new menuAdmin();
-                mAdmin.setVisible(true);
-                this.dispose();
-            }else if(rol.equals("asesor")){
-                menuAsesor meAsesor = new menuAsesor();
-                meAsesor.setVisible(true);
-                this.dispose();
+                dbUsuario = "usuario_admin";
+                dbContrasena = "usuADMIN";
+            }
+            else if(rol.equals("asesor")){
+                dbUsuario = "usuario_asesor";
+                dbContrasena = "usuASESOR";
+            }
+            
+            ConexionORACLE conn = new ConexionORACLE(dbUsuario,dbContrasena);
+            
+            if (conn.isConectado()) {
+                if(rol.equals("admin")){
+                    menuAdmin mAdmin = new menuAdmin();
+                    mAdmin.setVisible(true);
+                    this.dispose();
+                }else if(rol.equals("asesor")){
+                    menuAsesor meAsesor = new menuAsesor();
+                    meAsesor.setVisible(true);
+                    this.dispose();
+                }
             }
         }
         else{

@@ -1,6 +1,7 @@
 
 package VISTA.admin;
 
+import Modelo.ConexionORACLE;
 import VISTA.Login;
 import VISTA.admin.apartamentoSeleccionarProyecto;
 import VISTA.admin.administrarProyecto;
@@ -11,11 +12,7 @@ import VISTA.admin.torreSeleccionarProyecto;
  * @author juanc,Santiago
  */
 public class menuAdmin extends javax.swing.JFrame {
-
-
-    /**
-     * Creates new form adminProyecto
-     */
+     
     public menuAdmin() {
         initComponents();
         setSize(912, 510); 

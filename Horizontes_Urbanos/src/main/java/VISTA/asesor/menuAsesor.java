@@ -4,15 +4,14 @@
  */
 package VISTA.asesor;
 
+import Modelo.ConexionORACLE;
+
 /**
  *
  * @author CLAUDIA
  */
 public class menuAsesor extends javax.swing.JFrame {
-
-    /**
-     * Creates new form menuAsesor
-     */
+    
     public menuAsesor() {
         initComponents();
         setSize(912, 510);
