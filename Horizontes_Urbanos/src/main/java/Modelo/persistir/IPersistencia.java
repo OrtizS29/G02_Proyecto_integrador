@@ -2,6 +2,7 @@
 package Modelo.persistir;
 
 import Modelo.entities.Proyecto;
+import Modelo.entities.Usuario;
 
 /**
  * Interfaz generica que tiene los metodos para hacer el CRUD (crea,eliminar,editar,leer)
@@ -42,5 +43,5 @@ public interface IPersistencia<T> {
      * @throws Exception 
      */
     public void eliminar(int id) throws Exception;
-    
+ 
 }

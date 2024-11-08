@@ -36,11 +36,14 @@ public class GestionarAsesor {
         return asesor;
     }
     
-    public void editar(Asesor asesor, int cedula,String nombre,String direccion) throws Exception {
+    public void editar(Asesor asesor, int cedula,String nombre,String direccion,String correo,
+            int telefono) throws Exception {
         
         asesor.setCedula(cedula);
         asesor.setNombre(nombre);
         asesor.setDireccion(direccion);
+        asesor.setCorreo(correo);
+        asesor.setTelefono(telefono);
         persisAsesor.editar(asesor);
     }
     
