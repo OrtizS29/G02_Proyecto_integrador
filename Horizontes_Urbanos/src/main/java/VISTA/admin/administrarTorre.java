@@ -209,7 +209,7 @@ public class administrarTorre extends javax.swing.JFrame {
         if(tablaMostrarTorre.getRowCount() > 0){
             if(tablaMostrarTorre.getSelectedRow() != -1){
 
-                int id_torre = Integer.parseInt(String.valueOf(tablaMostrarTorre.getValueAt(tablaMostrarTorre.getSelectedRow(), 0)));
+                Long id_torre = Long.parseLong(String.valueOf(tablaMostrarTorre.getValueAt(tablaMostrarTorre.getSelectedRow(), 0)));
 
                 try {
                     boolean op = gestiTorre.borrarT(proyectoSeleccionado,id_torre);
@@ -257,7 +257,7 @@ public class administrarTorre extends javax.swing.JFrame {
             "Numero Torres Proyecto"};
         modeloTabla.setColumnIdentifiers(titulos);
         
-        int id = proyectoSeleccionado.getId_proyecto();
+        Long id = proyectoSeleccionado.getId_proyecto();
         List<Torre> listaTorres = gestiTorre.obtenerTorresProyecto(id);
         
         if(listaTorres != null){
@@ -265,7 +265,7 @@ public class administrarTorre extends javax.swing.JFrame {
             Collections.sort(listaTorres, new Comparator<Torre>(){
                 @Override
                 public int compare(Torre t1, Torre t2) {
-                    return Integer.compare(t1.getId_torre(), t2.getId_torre());
+                    return Long.compare(t1.getId_torre(), t2.getId_torre());
                 }
             });
             
@@ -290,7 +290,7 @@ public class administrarTorre extends javax.swing.JFrame {
         if(tablaMostrarTorre.getRowCount() > 0){
             if(tablaMostrarTorre.getSelectedRow() != -1){
                 
-                int id_torre = Integer.parseInt(String.valueOf(tablaMostrarTorre.getValueAt(tablaMostrarTorre.getSelectedRow(), 0)));
+                Long id_torre = Long.parseLong(String.valueOf(tablaMostrarTorre.getValueAt(tablaMostrarTorre.getSelectedRow(), 0)));
                 
                 EditarTorre editTorre = new EditarTorre(id_torre);
                 editTorre.setVisible(true);

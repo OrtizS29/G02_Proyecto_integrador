@@ -24,7 +24,7 @@ public class PersistirUsuario implements IPersistenciaUsuario {
     }
 
     @Override
-    public Usuario obtener(int id) {
+    public Usuario obtener(Long id) {
         return usuarioJpa.findUsuario(id);
     }
 
@@ -34,7 +34,7 @@ public class PersistirUsuario implements IPersistenciaUsuario {
     }
 
     @Override
-    public void eliminar(int id) throws Exception {
+    public void eliminar(Long id) throws Exception {
         usuarioJpa.destroy(id);
     }
     
@@ -43,8 +43,7 @@ public class PersistirUsuario implements IPersistenciaUsuario {
         return listaUsuario;  
     }
     
-    public Usuario obtenerAsesorCed(int id){
+    public Usuario obtenerAsesorCed(Long id){
         return usuarioJpa.obtenerPorCedulaAsesor(id);
     }
-    
 }

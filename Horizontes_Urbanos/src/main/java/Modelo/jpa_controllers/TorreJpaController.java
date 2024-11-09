@@ -134,7 +134,7 @@ public class TorreJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = torre.getId_torre();
+                Long id = torre.getId_torre();
                 if (findTorre(id) == null) {
                     throw new NonexistentEntityException("The torre with id " + id + " no longer exists.");
                 }
@@ -157,7 +157,7 @@ public class TorreJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = torre.getId_torre();
+                Long id = torre.getId_torre();
                 if (findTorre(id) == null) {
                     throw new NonexistentEntityException("La torre con id " + id + " no existe.");
                 }
@@ -171,7 +171,7 @@ public class TorreJpaController implements Serializable {
     }
     
     
-    public void destroy(int id) throws IllegalOrphanException, NonexistentEntityException {
+    public void destroy(Long id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -232,7 +232,7 @@ public class TorreJpaController implements Serializable {
         }
     }
 
-    public Torre findTorre(int id) {
+    public Torre findTorre(Long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Torre.class, id);
@@ -254,7 +254,7 @@ public class TorreJpaController implements Serializable {
         }
     }
 
-    public int contarNAptos(int numero_torre,int id_proyecto) {
+    public int contarNAptos(int numero_torre,Long id_proyecto) {
         EntityManager em = getEntityManager();
         try {
             Query query = em.createNativeQuery("SELECT contarNAptos(?,?) FROM dual");

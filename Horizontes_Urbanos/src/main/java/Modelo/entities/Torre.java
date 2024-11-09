@@ -26,7 +26,7 @@ public class Torre implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idTorre")
     @SequenceGenerator(name = "seq_idTorre", sequenceName = "seq_idTorre", allocationSize = 1)
-    private int id_torre;
+    private Long id_torre;
     private int numero_torre;
     
     @OneToMany(mappedBy = "torre",cascade = CascadeType.ALL,orphanRemoval = true)
@@ -39,18 +39,18 @@ public class Torre implements Serializable {
     public Torre() {
     }
 
-    public Torre(int id_torre, int numero_torre, ArrayList<Apartamento> listaApartamentos, Proyecto proyecto) {
+    public Torre(Long id_torre, int numero_torre, ArrayList<Apartamento> listaApartamentos, Proyecto proyecto) {
         this.id_torre = id_torre;
         this.numero_torre = numero_torre;
         this.listaApartamentos = listaApartamentos;
         this.proyecto = proyecto;
     }
 
-    public int getId_torre() {
+    public Long getId_torre() {
         return id_torre;
     }
 
-    public void setId_torre(int id_torre) {
+    public void setId_torre(Long id_torre) {
         this.id_torre = id_torre;
     }
 

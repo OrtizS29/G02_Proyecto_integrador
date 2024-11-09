@@ -108,7 +108,7 @@ public class ApartamentoJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = apartamento.getId_apartamento();
+                Long id = apartamento.getId_apartamento();
                 if (findApartamento(id) == null) {
                     throw new NonexistentEntityException("The apartamento with id " + id + " no longer exists.");
                 }
@@ -121,7 +121,7 @@ public class ApartamentoJpaController implements Serializable {
         }
     }
 
-    public void destroy(int id) throws NonexistentEntityException {
+    public void destroy(Long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -176,7 +176,7 @@ public class ApartamentoJpaController implements Serializable {
         }
     }
 
-    public Apartamento findApartamento(int id) {
+    public Apartamento findApartamento(Long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Apartamento.class, id);

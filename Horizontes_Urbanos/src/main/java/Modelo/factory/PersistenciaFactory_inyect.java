@@ -9,6 +9,7 @@ import Modelo.entities.Pago;
 import Modelo.entities.Venta;
 import Modelo.persistir.IPersistencia;
 import Modelo.persistir.IPersistenciaAsesor;
+import Modelo.persistir.IPersistenciaCliente;
 import Modelo.persistir.IPersistenciaProyecto;
 import Modelo.persistir.IPersistenciaTorre;
 import Modelo.persistir.IPersistenciaUsuario;
@@ -45,7 +46,7 @@ public class PersistenciaFactory_inyect implements I_PersistenciaFactory{
     }
 
     @Override
-    public IPersistencia<Cliente> crearPersistirCliente() {
+    public IPersistenciaCliente crearPersistirCliente() {
         return new PersistirCliente();
     }
 

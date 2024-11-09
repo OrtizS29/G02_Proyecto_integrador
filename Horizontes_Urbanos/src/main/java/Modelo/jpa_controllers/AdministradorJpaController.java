@@ -119,7 +119,7 @@ public class AdministradorJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = administrador.getCedula();
+                Long id = administrador.getCedula();
                 if (findAdministrador(id) == null) {
                     throw new NonexistentEntityException("The administrador with id " + id + " no longer exists.");
                 }
@@ -132,7 +132,7 @@ public class AdministradorJpaController implements Serializable {
         }
     }
 
-    public void destroy(int id) throws IllegalOrphanException, NonexistentEntityException {
+    public void destroy(Long id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -188,7 +188,7 @@ public class AdministradorJpaController implements Serializable {
         }
     }
 
-    public Administrador findAdministrador(int cedula) {
+    public Administrador findAdministrador(Long cedula) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Administrador.class, cedula);

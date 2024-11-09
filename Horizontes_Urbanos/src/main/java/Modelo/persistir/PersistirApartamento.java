@@ -22,7 +22,7 @@ public class PersistirApartamento implements IPersistencia<Apartamento> {
     }
 
     @Override
-    public Apartamento obtener(int id) {
+    public Apartamento obtener(Long id) {
         return aptoJpa.findApartamento(id);
     }
 
@@ -32,7 +32,7 @@ public class PersistirApartamento implements IPersistencia<Apartamento> {
     }
 
     @Override
-    public void eliminar(int id) throws Exception {
+    public void eliminar(Long id) throws Exception {
         aptoJpa.destroy(id);
     }
     

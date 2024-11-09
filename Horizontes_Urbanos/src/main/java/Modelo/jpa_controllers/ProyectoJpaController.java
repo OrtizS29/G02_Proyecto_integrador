@@ -134,7 +134,7 @@ public class ProyectoJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = proyecto.getId_proyecto();
+                Long id = proyecto.getId_proyecto();
                 if (findProyecto(id) == null) {
                     throw new NonexistentEntityException("The proyecto with id " + id + " no longer exists.");
                 }
@@ -157,7 +157,7 @@ public class ProyectoJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = proyecto.getId_proyecto();
+                Long id = proyecto.getId_proyecto();
                 if (findProyecto(id) == null) {
                     throw new NonexistentEntityException("El proyecto con id " + id + " no existe.");
                 }
@@ -170,7 +170,7 @@ public class ProyectoJpaController implements Serializable {
         }
     }
 
-    public void destroy(int id) throws IllegalOrphanException, NonexistentEntityException {
+    public void destroy(Long id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -231,7 +231,7 @@ public class ProyectoJpaController implements Serializable {
         }
     }
 
-    public Proyecto findProyecto(int id) {
+    public Proyecto findProyecto(Long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Proyecto.class, id);

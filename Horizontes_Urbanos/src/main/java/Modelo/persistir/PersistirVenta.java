@@ -22,7 +22,7 @@ public class PersistirVenta implements IPersistencia<Venta> {
     }
 
     @Override
-    public Venta obtener(int id) {
+    public Venta obtener(Long id) {
         return ventaJpa.findVenta(id);
     }
 
@@ -32,7 +32,7 @@ public class PersistirVenta implements IPersistencia<Venta> {
     }
 
     @Override
-    public void eliminar(int id) throws Exception {
+    public void eliminar(Long id) throws Exception {
         ventaJpa.destroy(id);
     }
     

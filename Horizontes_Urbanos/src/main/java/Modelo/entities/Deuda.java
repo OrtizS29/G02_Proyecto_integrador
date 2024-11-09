@@ -24,7 +24,7 @@ public class Deuda implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idDeuda")
     @SequenceGenerator(name = "seq_idDeuda", sequenceName = "seq_idDeuda", allocationSize = 1)
-    private int id_deuda;
+    private Long id_deuda;
     private Date fecha_inicia_deuda;
     private BigDecimal valor;
     
@@ -35,18 +35,18 @@ public class Deuda implements Serializable {
     public Deuda() {
     }
 
-    public Deuda(int id_deuda, Date fecha_inicia_deuda, BigDecimal valor, Venta venta) {
+    public Deuda(Long id_deuda, Date fecha_inicia_deuda, BigDecimal valor, Venta venta) {
         this.id_deuda = id_deuda;
         this.fecha_inicia_deuda = fecha_inicia_deuda;
         this.valor = valor;
         this.venta = venta;
     }
 
-    public int getId_deuda() {
+    public Long getId_deuda() {
         return id_deuda;
     }
 
-    public void setId_deuda(int id_deuda) {
+    public void setId_deuda(Long id_deuda) {
         this.id_deuda = id_deuda;
     }
 

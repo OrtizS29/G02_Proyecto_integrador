@@ -30,13 +30,13 @@ public class GestionarAsesor {
         return asesor;
     }
     
-    public Asesor buscarPorId(int id) {
+    public Asesor buscarPorId(Long id) {
         Asesor asesor = null;
         asesor = persisAsesor.obtener(id);
         return asesor;
     }
     
-    public void editar(Asesor asesor, int cedula,String nombre,String direccion,String correo,
+    public void editar(Asesor asesor, Long cedula,String nombre,String direccion,String correo,
             int telefono) throws Exception {
         
         asesor.setCedula(cedula);
@@ -47,7 +47,7 @@ public class GestionarAsesor {
         persisAsesor.editar(asesor);
     }
     
-    public void borrar(int id){
+    public void borrar(Long id){
         
         try {
             

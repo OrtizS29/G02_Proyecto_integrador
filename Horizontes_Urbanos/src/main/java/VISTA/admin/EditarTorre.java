@@ -17,7 +17,7 @@ public class EditarTorre extends javax.swing.JFrame {
     private GestionarTorre gestiApto;
     private Torre torre;
     
-    public EditarTorre(int id_torre) {
+    public EditarTorre(Long id_torre) {
         I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
         this.gestiApto = new GestionarTorre(factory);
         initComponents();
@@ -97,7 +97,7 @@ public class EditarTorre extends javax.swing.JFrame {
     private javax.swing.JTextField txtNumeroTorre;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarDatos(int id_torre) {
+    private void cargarDatos(Long id_torre) {
         
         this.torre = gestiApto.buscarPorId(id_torre);
         

@@ -23,7 +23,7 @@ public class PersistirTorre implements IPersistenciaTorre {
     }
 
     @Override
-    public Torre obtener(int id) {
+    public Torre obtener(Long id) {
         return torreJpa.findTorre(id);
     }
 
@@ -33,7 +33,7 @@ public class PersistirTorre implements IPersistenciaTorre {
     }
 
     @Override
-    public void eliminar(int id) throws Exception {
+    public void eliminar(Long id) throws Exception {
         torreJpa.destroy(id);
     }
     /**
@@ -41,7 +41,7 @@ public class PersistirTorre implements IPersistenciaTorre {
         torreJpa.editarNumeroYNumeroT(torre);
     }*/
 
-    public int contarNAptos(int numero_torre,int id_proyecto) {
+    public int contarNAptos(int numero_torre,Long id_proyecto) {
         return torreJpa.contarNAptos(numero_torre,id_proyecto);
     }
     

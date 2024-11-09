@@ -28,8 +28,8 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
 
     GestionarProyecto gestiProyecto;
     GestionarTorre gestiTorre;
-    private int idProyectoSeleccionado = 0;
-    private int idTorreSeleccionada = 0;
+    private Long idProyectoSeleccionado = 0L;
+    private Long idTorreSeleccionada = 0L;
     
     public apartamentoSeleccionarProyecto() {
         I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
@@ -180,7 +180,7 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
         if(tablaMostrarProyectos.getRowCount() > 0){
             if(tablaMostrarProyectos.getSelectedRow() != -1){
                 
-                this.idProyectoSeleccionado = Integer.parseInt(String.valueOf(tablaMostrarProyectos.getValueAt(tablaMostrarProyectos.getSelectedRow(), 0)));
+                this.idProyectoSeleccionado = Long.parseLong(String.valueOf(tablaMostrarProyectos.getValueAt(tablaMostrarProyectos.getSelectedRow(), 0)));
                 
                 try {
                     ActualizarTorre(idProyectoSeleccionado);
@@ -231,11 +231,11 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
         
         if (tablaMostrarTorres.getRowCount() > 0 && tablaMostrarTorres.getSelectedRow() != -1) {
                 //Proceso obtencion Id
-                this.idTorreSeleccionada = Integer.parseInt(String.valueOf(tablaMostrarTorres.getValueAt(tablaMostrarTorres.getSelectedRow(), 0)));  
+                this.idTorreSeleccionada = Long.parseLong(String.valueOf(tablaMostrarTorres.getValueAt(tablaMostrarTorres.getSelectedRow(), 0)));  
             }
     }//GEN-LAST:event_tablaMostrarTorresMouseClicked
     
-    private void ActualizarTorre(int idProyecto) throws Exception  {
+    private void ActualizarTorre(Long idProyecto) throws Exception  {
 
         DefaultTableModel modeloTabla  = new DefaultTableModel(){
             
@@ -256,7 +256,7 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
             Collections.sort(listaTorres, new Comparator<Torre>(){
                 @Override
                 public int compare(Torre t1, Torre t2) {
-                    return Integer.compare(t1.getId_torre(), t2.getId_torre());
+                    return Long.compare(t1.getId_torre(), t2.getId_torre());
                 }
             });
             

@@ -245,7 +245,7 @@ public class administrarApartamento extends javax.swing.JFrame {
         if(tablaMostrarApartamentos.getRowCount() > 0){
             if(tablaMostrarApartamentos.getSelectedRow() != -1){
                 
-                int id_apto = Integer.parseInt(String.valueOf(tablaMostrarApartamentos.getValueAt(tablaMostrarApartamentos.getSelectedRow(), 0)));
+                Long id_apto = Long.parseLong(String.valueOf(tablaMostrarApartamentos.getValueAt(tablaMostrarApartamentos.getSelectedRow(), 0)));
                 
                 EditarApartamento editApto = new EditarApartamento(id_apto);
                 editApto.setVisible(true);
@@ -286,7 +286,7 @@ public class administrarApartamento extends javax.swing.JFrame {
         if(tablaMostrarApartamentos.getRowCount() > 0){
             if(tablaMostrarApartamentos.getSelectedRow() != -1){
                 
-                int id_apto = Integer.parseInt(String.valueOf(tablaMostrarApartamentos.getValueAt(tablaMostrarApartamentos.getSelectedRow(), 0)));
+                Long id_apto = Long.parseLong(String.valueOf(tablaMostrarApartamentos.getValueAt(tablaMostrarApartamentos.getSelectedRow(), 0)));
                 
                 try {
                     boolean op = gestiApto.borrarA(id_apto,torreSeleccionada);
@@ -358,8 +358,8 @@ public class administrarApartamento extends javax.swing.JFrame {
             "Fecha Escritura","Num Torre","Num Aptos","Nombre Proyecto","Num Torres"};
         modeloTabla.setColumnIdentifiers(titulos);
         
-        int id_proyecto = proyectoSeleccionado.getId_proyecto();
-        int id = torreSeleccionada.getId_torre();
+        Long id_proyecto = proyectoSeleccionado.getId_proyecto();
+        Long id = torreSeleccionada.getId_torre();
         List<Apartamento> listaApartamentos = gestiApto.obtenerApartamentoTorres(id);
         
         

@@ -39,7 +39,7 @@ public class PersistirAdministrador implements IPersistencia<Administrador>{
      * @throws Exception 
      */
     @Override
-    public Administrador obtener(int cedula) {
+    public Administrador obtener(Long cedula) {
         return adminJpa.findAdministrador(cedula);
     }
 
@@ -59,7 +59,7 @@ public class PersistirAdministrador implements IPersistencia<Administrador>{
      * @throws Exception 
      */
     @Override
-    public void eliminar(int id) throws Exception {
+    public void eliminar(Long id) throws Exception {
         adminJpa.destroy(id);
     }
     

@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class Cliente implements Serializable {
     
     @Id
-    private int cedula;
+    private Long cedula;
     private String nombre;
     private String direccion;
     
@@ -33,7 +33,7 @@ public class Cliente implements Serializable {
     private String correo;
     
     @Column(nullable = true)
-    private int telefono;
+    private Long telefono;
     
     @OneToMany(mappedBy = "cliente")
     private ArrayList<Venta> listaVentas;
@@ -44,7 +44,7 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(int cedula, String nombre, String direccion, Integer subsidio_ministerio, String sisben, String correo, int telefono, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos) {
+    public Cliente(Long cedula, String nombre, String direccion, Integer subsidio_ministerio, String sisben, String correo, Long telefono, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -56,11 +56,11 @@ public class Cliente implements Serializable {
         this.listaPagos = listaPagos;
     }
 
-    public int getCedula() {
+    public Long getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(Long cedula) {
         this.cedula = cedula;
     }
 
@@ -104,11 +104,11 @@ public class Cliente implements Serializable {
         this.correo = correo;
     }
 
-    public int getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 
@@ -127,4 +127,6 @@ public class Cliente implements Serializable {
     public void setListaPagos(ArrayList<Pago> listaPagos) {
         this.listaPagos = listaPagos;
     }
+
+    
 }

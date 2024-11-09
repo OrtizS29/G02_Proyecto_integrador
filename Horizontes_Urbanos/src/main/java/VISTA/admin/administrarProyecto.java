@@ -158,7 +158,7 @@ public class administrarProyecto extends javax.swing.JFrame {
         
         Administrador administrador = null;
         try {
-            administrador = persistirAdmin.obtener(68293849);
+            administrador = persistirAdmin.obtener(68293849L);
         } catch (Exception ex) {
             Logger.getLogger(administrarProyecto.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -194,7 +194,7 @@ public class administrarProyecto extends javax.swing.JFrame {
         if(tablaMostrarProyecto.getRowCount() > 0){
             if(tablaMostrarProyecto.getSelectedRow() != -1){
                 
-                int id_proyecto = Integer.parseInt(String.valueOf(tablaMostrarProyecto.getValueAt(tablaMostrarProyecto.getSelectedRow(), 0)));
+                Long id_proyecto = Long .parseLong(String.valueOf(tablaMostrarProyecto.getValueAt(tablaMostrarProyecto.getSelectedRow(), 0)));
                
                 gestiProyecto.borrar(id_proyecto);
                 
@@ -220,7 +220,7 @@ public class administrarProyecto extends javax.swing.JFrame {
         if(tablaMostrarProyecto.getRowCount() > 0){
             if(tablaMostrarProyecto.getSelectedRow() != -1){
                 
-                int id_proyecto = Integer.parseInt(String.valueOf(tablaMostrarProyecto.getValueAt(tablaMostrarProyecto.getSelectedRow(), 0)));
+                Long id_proyecto = Long.parseLong(String.valueOf(tablaMostrarProyecto.getValueAt(tablaMostrarProyecto.getSelectedRow(), 0)));
                 
                 EditarProyecto editProyecto = null;
                 try {
@@ -274,7 +274,7 @@ public class administrarProyecto extends javax.swing.JFrame {
             Collections.sort(listaProyectos, new Comparator<Proyecto>(){
                 @Override
                 public int compare(Proyecto p1, Proyecto p2) {
-                    return Integer.compare(p1.getId_proyecto(), p2.getId_proyecto());
+                    return Long.compare(p1.getId_proyecto(), p2.getId_proyecto());
                 }
             });
             

@@ -31,7 +31,7 @@ public class Venta implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idVenta")
     @SequenceGenerator(name = "seq_idVenta", sequenceName = "seq_idVenta", allocationSize = 1)
-    private int id_venta;
+    private Long id_venta;
     private int precio_base;
     @Column(name = "Numero_cuotas")
     private int numero_coutas;
@@ -60,7 +60,7 @@ public class Venta implements Serializable {
     public Venta() {
     }
 
-    public Venta(int id_venta, int precio_base, int numero_coutas, int precio_final, Date fecha, Integer intereses, ArrayList<Apartamento> listaApartamentos, ArrayList<Pago> listaPagos, ArrayList<Deuda> listaDeuda, Asesor asesor, Cliente cliente) {
+    public Venta(Long id_venta, int precio_base, int numero_coutas, int precio_final, Date fecha, Integer intereses, ArrayList<Apartamento> listaApartamentos, ArrayList<Pago> listaPagos, ArrayList<Deuda> listaDeuda, Asesor asesor, Cliente cliente) {
         this.id_venta = id_venta;
         this.precio_base = precio_base;
         this.numero_coutas = numero_coutas;
@@ -74,11 +74,11 @@ public class Venta implements Serializable {
         this.cliente = cliente;
     }
 
-    public int getId_venta() {
+    public Long getId_venta() {
         return id_venta;
     }
 
-    public void setId_venta(int id_venta) {
+    public void setId_venta(Long id_venta) {
         this.id_venta = id_venta;
     }
 

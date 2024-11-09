@@ -99,7 +99,7 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
         if(tablaSeleccionarProyecto.getRowCount() > 0){
             if(tablaSeleccionarProyecto.getSelectedRow() != -1){
                 
-                int id_proyecto = Integer.parseInt(String.valueOf(tablaSeleccionarProyecto.getValueAt(tablaSeleccionarProyecto.getSelectedRow(), 0)));
+                Long id_proyecto = Long.parseLong(String.valueOf(tablaSeleccionarProyecto.getValueAt(tablaSeleccionarProyecto.getSelectedRow(), 0)));
 
                 Proyecto proyectoSeleccionado = null;
                 try {

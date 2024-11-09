@@ -30,7 +30,7 @@ public class GestionarUsuario {
         persisUsuario.editar(usu);
     }
     
-    public Usuario obtenerAsesorCed(int id){
+    public Usuario obtenerAsesorCed(Long id){
         return persisUsuario.obtenerAsesorCed(id);
     }
 }
