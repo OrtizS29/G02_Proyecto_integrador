@@ -87,8 +87,8 @@ public class GestionarTorre {
         persisTorre.editar(torre);
     }
 
-    public int contarNAptos(int numero_torre) {
-        return persisTorre.contarNAptos(numero_torre);
+    public int contarNAptos(int numero_torre,int id_proyecto) {
+        return persisTorre.contarNAptos(numero_torre,id_proyecto);
     }
 
     

@@ -16,6 +16,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -144,7 +146,11 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
         Torre torreSeleccionada = gestiTorre.buscarPorId(idTorreSeleccionada);
         
         if(torreSeleccionada == null){
-            System.out.println("Error: Torre no encontrado");
+            JOptionPane optionPane = new JOptionPane("Torre no encontrada");
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("EROR");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
             return;
         }
         

@@ -183,14 +183,20 @@ public class administrarCliente extends javax.swing.JFrame {
         int cedulaCliente = Integer.parseInt(txtCedulaCliente.getText());
         String nombreCliente = txtNombreCliente.getText();
         String direccionCliente = txtDireccionCliente.getText();
-        String subsidio = (String) cmbSubsidio.getSelectedItem();
+        String sisben = (String) cmbSubsidio.getSelectedItem();
+        
+        if (sisben.equals("SI") && !txtSubsidioMinisterio.getText().isEmpty()) {
+            int subsidioMinisterio = Integer.parseInt(txtSubsidioMinisterio.getText());
+        }
+        
         String correo = txtCorreoCliente.getText();
         int telefono = Integer.parseInt(txtTelefonoCliente.getText());
         
         
+        
         btnGuardarCliente.setEnabled(true);
     }//GEN-LAST:event_btnGuardarClienteActionPerformed
-
+    
     private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreClienteActionPerformed
@@ -231,7 +237,13 @@ public class administrarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTelefonoClienteActionPerformed
 
     private void cmbSubsidioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSubsidioActionPerformed
-        // TODO add your handling code here:
+        
+        String sisben = (String) cmbSubsidio.getSelectedItem();
+        if(sisben.equals("SI")){
+            txtSubsidioMinisterio.setVisible(true);
+        } else {
+            txtSubsidioMinisterio.setVisible(false);
+        }
     }//GEN-LAST:event_cmbSubsidioActionPerformed
 
     private void txtSubsidioMinisterioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubsidioMinisterioActionPerformed

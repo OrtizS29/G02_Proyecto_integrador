@@ -358,6 +358,7 @@ public class administrarApartamento extends javax.swing.JFrame {
             "Fecha Escritura","Num Torre","Num Aptos","Nombre Proyecto","Num Torres"};
         modeloTabla.setColumnIdentifiers(titulos);
         
+        int id_proyecto = proyectoSeleccionado.getId_proyecto();
         int id = torreSeleccionada.getId_torre();
         List<Apartamento> listaApartamentos = gestiApto.obtenerApartamentoTorres(id);
         
@@ -365,7 +366,7 @@ public class administrarApartamento extends javax.swing.JFrame {
         if(listaApartamentos != null){
             for(Apartamento apartamento: listaApartamentos){
                 int numero_torres = gestiProyecto.contarNTorres(proyectoSeleccionado.getNombre_proyecto());
-                int numero_apto = gestiTorre.contarNAptos(apartamento.getTorre().getNumero_torre());
+                int numero_apto = gestiTorre.contarNAptos(apartamento.getTorre().getNumero_torre(),id_proyecto);
                 Object[] objeto ={apartamento.getId_apartamento(),apartamento.getNum_apartamento(),
                     apartamento.getValor_apartamento(),apartamento.getTipo_unidad(),apartamento.getArea(),
                     apartamento.getMatricula(),apartamento.getFecha_escritura(),

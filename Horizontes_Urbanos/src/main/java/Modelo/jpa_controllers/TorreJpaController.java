@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo.jpa_controllers;
 
 import java.io.Serializable;
@@ -22,7 +19,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author CLAUDIA
+ * @author Santiago
  */
 public class TorreJpaController implements Serializable {
 
@@ -257,14 +254,15 @@ public class TorreJpaController implements Serializable {
         }
     }
 
-    public List<Object[]> contarNAptos() {
+    public int contarNAptos(int numero_torre,int id_proyecto) {
         EntityManager em = getEntityManager();
         try {
-            Query query = em.createQuery("SELECT t.numero_torre, COUNT(a) AS numAptos " +
-                                          "FROM Torre t JOIN t.listaApartamentos a " +
-                                          "GROUP BY t.id_torre, t.numero_torre"
-            );
-            return query.getResultList();
+            Query query = em.createNativeQuery("SELECT contarNAptos(?,?) FROM dual");
+            query.setParameter(1, numero_torre);
+            query.setParameter(2, id_proyecto);
+            
+            Number numAptos = (Number) query.getSingleResult();
+            return numAptos != null ? numAptos.intValue() : 0;
         } finally {
             em.close();
         }
