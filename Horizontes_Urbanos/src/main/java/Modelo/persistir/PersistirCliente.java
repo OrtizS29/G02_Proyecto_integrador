@@ -3,12 +3,13 @@ package Modelo.persistir;
 
 import Modelo.entities.Cliente;
 import Modelo.jpa_controllers.ClienteJpaController;
+import java.util.List;
 
 /**
  *
  * @author Santiago
  */
-public class PersistirCliente implements IPersistencia<Cliente> {
+public class PersistirCliente implements IPersistenciaCliente {
 
     private ClienteJpaController clienteJpa;
 
@@ -22,7 +23,7 @@ public class PersistirCliente implements IPersistencia<Cliente> {
     }
 
     @Override
-    public Cliente obtener(int id){
+    public Cliente obtener(Long id){
         return clienteJpa.findCliente(id);
     }
 
@@ -32,8 +33,14 @@ public class PersistirCliente implements IPersistencia<Cliente> {
     }
 
     @Override
-    public void eliminar(int id) throws Exception {
+    public void eliminar(Long id) throws Exception {
         clienteJpa.destroy(id);
+    }
+
+    @Override
+    public List<Cliente> traerClientes() {
+        List<Cliente> listaClientes = clienteJpa.findClienteEntities();
+        return listaClientes;
     }
     
 }

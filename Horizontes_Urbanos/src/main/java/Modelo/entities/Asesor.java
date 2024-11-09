@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class Asesor implements Serializable {
     
     @Id
-    private int cedula;
+    private Long cedula;
     private String nombre;
     private String direccion;
     
@@ -38,7 +38,7 @@ public class Asesor implements Serializable {
     public Asesor() {
     }
 
-    public Asesor(int cedula, String nombre, String direccion, String correo, int telefono, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos) {
+    public Asesor(Long cedula, String nombre, String direccion, String correo, int telefono, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -48,11 +48,11 @@ public class Asesor implements Serializable {
         this.listaPagos = listaPagos;
     }
 
-    public int getCedula() {
+    public Long getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(Long cedula) {
         this.cedula = cedula;
     }
 

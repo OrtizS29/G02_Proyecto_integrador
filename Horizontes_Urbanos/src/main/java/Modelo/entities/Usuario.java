@@ -25,7 +25,7 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idUsu")
     @SequenceGenerator(name = "seq_idUsu", sequenceName = "seq_idUsu", allocationSize = 1)
-    private int id;
+    private Long id;
     private String usuario;
     private String contraseña;
     private String rol;
@@ -41,7 +41,7 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(int id, String usuario, String contraseña, String rol, Asesor asesor, Administrador administrador) {
+    public Usuario(Long id, String usuario, String contraseña, String rol, Asesor asesor, Administrador administrador) {
         this.id = id;
         this.usuario = usuario;
         this.contraseña = contraseña;
@@ -50,11 +50,11 @@ public class Usuario implements Serializable {
         this.administrador = administrador;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

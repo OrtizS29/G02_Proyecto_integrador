@@ -26,7 +26,7 @@ public class Pago implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idPago")
     @SequenceGenerator(name = "seq_idPago", sequenceName = "seq_idPago", allocationSize = 1)
-    private int id_pago;
+    private Long id_pago;
     private Date fecha;
     private int valor_pago;
     
@@ -45,7 +45,7 @@ public class Pago implements Serializable {
     public Pago() {
     }
 
-    public Pago(int id_pago, Date fecha, int valor_pago, Venta venta, Asesor asesor, Cliente cliente) {
+    public Pago(Long id_pago, Date fecha, int valor_pago, Venta venta, Asesor asesor, Cliente cliente) {
         this.id_pago = id_pago;
         this.fecha = fecha;
         this.valor_pago = valor_pago;
@@ -54,11 +54,11 @@ public class Pago implements Serializable {
         this.cliente = cliente;
     }
 
-    public int getId_pago() {
+    public Long getId_pago() {
         return id_pago;
     }
 
-    public void setId_pago(int id_pago) {
+    public void setId_pago(Long id_pago) {
         this.id_pago = id_pago;
     }
 

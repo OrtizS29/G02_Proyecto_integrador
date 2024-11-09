@@ -23,7 +23,7 @@ public class PersistirProyecto implements IPersistenciaProyecto {
     }
 
     @Override
-    public Proyecto obtener(int id){
+    public Proyecto obtener(Long id){
         return proyectoJpa.findProyecto(id);
     }
 
@@ -33,7 +33,7 @@ public class PersistirProyecto implements IPersistenciaProyecto {
     }
 
     @Override
-    public void eliminar(int id) throws Exception {
+    public void eliminar(Long id) throws Exception {
         proyectoJpa.destroy(id);
     }
 

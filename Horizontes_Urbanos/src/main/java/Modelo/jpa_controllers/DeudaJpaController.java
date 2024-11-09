@@ -81,7 +81,7 @@ public class DeudaJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = deuda.getId_deuda();
+                Long id = deuda.getId_deuda();
                 if (findDeuda(id) == null) {
                     throw new NonexistentEntityException("The deuda with id " + id + " no longer exists.");
                 }
@@ -94,7 +94,7 @@ public class DeudaJpaController implements Serializable {
         }
     }
 
-    public void destroy(int id) throws NonexistentEntityException {
+    public void destroy(Long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -144,7 +144,7 @@ public class DeudaJpaController implements Serializable {
         }
     }
 
-    public Deuda findDeuda(int id) {
+    public Deuda findDeuda(Long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Deuda.class, id);

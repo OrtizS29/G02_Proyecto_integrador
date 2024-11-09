@@ -21,7 +21,7 @@ public class EditarAsesor extends javax.swing.JFrame {
     private Asesor asesor;
     private Usuario usuario;
     
-    public EditarAsesor(int ced_asesor) {
+    public EditarAsesor(Long ced_asesor) {
         I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
         this.gestiAsesor = new GestionarAsesor(factory);
         this.gestiUsuario = new GestionarUsuario(factory);
@@ -122,7 +122,7 @@ public class EditarAsesor extends javax.swing.JFrame {
         btnGuardarAsesor.setEnabled(false);
         
         String nombreAsesor = txtNombreAsesor.getText();
-        int cedulaAsesor = Integer.parseInt(txtCedulaAsesor.getText());
+        Long cedulaAsesor = Long.parseLong(txtCedulaAsesor.getText());
         String direccionAsesor = txtDireccionAsesor.getText();
         String correoAsesor = txtCorreoAsesorReg.getText();
         int telefonoAsesor = Integer.parseInt(txtTelefonoAsesorReg.getText());
@@ -188,7 +188,7 @@ public class EditarAsesor extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuarioAsesor;
     // End of variables declaration//GEN-END:variables
 
-    private void cargaDatos(int ced_asesor) {
+    private void cargaDatos(Long ced_asesor) {
         this.asesor = gestiAsesor.buscarPorId(ced_asesor);
         this.usuario = gestiUsuario.obtenerAsesorCed(ced_asesor);
         

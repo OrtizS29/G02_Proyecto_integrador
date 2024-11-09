@@ -202,7 +202,7 @@ public class administrarAsesor extends javax.swing.JFrame {
         btnSiguienteAsesor.setEnabled(false);
 
         String nombreAsesor = txtNombreAsesor.getText();
-        int cedulaAsesor = Integer.parseInt(txtCedulaAsesor.getText());
+        Long cedulaAsesor = Long.parseLong(txtCedulaAsesor.getText());
         String direccionAsesor = txtDireccionAsesor.getText();
         String correoAsesor = txtCorreoAsesorReg.getText();
         int telefonoAsesor = Integer.parseInt(txtTelefonoAsesorReg.getText());
@@ -238,7 +238,7 @@ public class administrarAsesor extends javax.swing.JFrame {
         if(tablaMostrarAsesor.getRowCount() > 0){
             if(tablaMostrarAsesor.getSelectedRow() != -1){
                 
-                int ced_asesor = Integer.parseInt(String.valueOf(tablaMostrarAsesor.getValueAt(tablaMostrarAsesor.getSelectedRow(), 0)));
+                Long ced_asesor = Long.parseLong(String.valueOf(tablaMostrarAsesor.getValueAt(tablaMostrarAsesor.getSelectedRow(), 0)));
                
                 gestiAsesor.borrar(ced_asesor);
                 
@@ -262,7 +262,7 @@ public class administrarAsesor extends javax.swing.JFrame {
         if(tablaMostrarAsesor.getRowCount() > 0){
             if(tablaMostrarAsesor.getSelectedRow() != -1){
                 
-                int ced_asesor = Integer.parseInt(String.valueOf(tablaMostrarAsesor.getValueAt(tablaMostrarAsesor.getSelectedRow(), 0)));
+                Long ced_asesor = Long.parseLong(String.valueOf(tablaMostrarAsesor.getValueAt(tablaMostrarAsesor.getSelectedRow(), 0)));
                 
                 
                 EditarAsesor editAsesor = new EditarAsesor(ced_asesor);

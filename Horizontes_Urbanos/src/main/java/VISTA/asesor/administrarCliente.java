@@ -1,16 +1,29 @@
 
 package VISTA.asesor;
 
+import CONTROLADOR.GestionarCliente;
+import Modelo.entities.Cliente;
+import Modelo.entities.Pago;
+import Modelo.entities.Venta;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author juanc,Santiago
  */
 public class administrarCliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form administrarCliente
-     */
+    GestionarCliente gestiCliente;
+    
     public administrarCliente() {
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiCliente = new GestionarCliente(factory);
         initComponents();
     }
 
@@ -43,6 +56,11 @@ public class administrarCliente extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -140,7 +158,7 @@ public class administrarCliente extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarCliente);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 600, 310));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 670, 310));
 
         btnEditarCliente.setBackground(new java.awt.Color(49, 134, 181));
         btnEditarCliente.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -180,20 +198,37 @@ public class administrarCliente extends javax.swing.JFrame {
         
         btnGuardarCliente.setEnabled(false);
         
-        int cedulaCliente = Integer.parseInt(txtCedulaCliente.getText());
+        Long cedulaCliente = Long.parseLong(txtCedulaCliente.getText());
         String nombreCliente = txtNombreCliente.getText();
         String direccionCliente = txtDireccionCliente.getText();
         String sisben = (String) cmbSubsidio.getSelectedItem();
+        String correo = txtCorreoCliente.getText();
+        Long telefono = Long.parseLong(txtTelefonoCliente.getText());
         
+        Cliente cliente  = new Cliente();
+        cliente.setCedula(cedulaCliente);
+        cliente.setNombre(nombreCliente);
+        cliente.setDireccion(direccionCliente);
+        cliente.setSisben(sisben);
         if (sisben.equals("SI") && !txtSubsidioMinisterio.getText().isEmpty()) {
             int subsidioMinisterio = Integer.parseInt(txtSubsidioMinisterio.getText());
+            cliente.setSubsidio_ministerio(subsidioMinisterio);
+        }
+        cliente.setCorreo(correo);
+        cliente.setTelefono(telefono);
+        cliente.setListaVentas(new ArrayList<Venta>());
+        cliente.setListaPagos(new ArrayList<Pago>());
+        
+        try {
+            gestiCliente.guardar(cliente);
+        } catch (Exception ex) {
+            Logger.getLogger(administrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        String correo = txtCorreoCliente.getText();
-        int telefono = Integer.parseInt(txtTelefonoCliente.getText());
-        
-        
-        
+        menuAsesor masesor = new menuAsesor();
+        masesor.setVisible(true);
+        this.dispose();
+
         btnGuardarCliente.setEnabled(true);
     }//GEN-LAST:event_btnGuardarClienteActionPerformed
     
@@ -250,6 +285,11 @@ public class administrarCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSubsidioMinisterioActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        cargarTabla();
+    }//GEN-LAST:event_formWindowOpened
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -272,4 +312,27 @@ public class administrarCliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtSubsidioMinisterio;
     private javax.swing.JTextField txtTelefonoCliente;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarTabla() {
+        DefaultTableModel modeloTabla  = new DefaultTableModel(){
+            
+            @Override
+            public boolean isCellEditable (int row,int column){
+                return false;
+            }
+        };
+        String titulos[] = {"Cedula","Nombre","Direccion","Sisben","Subsidio Ministerio","Correo","Telefono"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        List<Cliente> listaClientes = gestiCliente.traerClientes();
+        
+        for (Cliente cliente : listaClientes) {
+            Object[] objeto = {cliente.getCedula(),cliente.getNombre(),cliente.getDireccion(),
+                cliente.getSisben(),cliente.getSubsidio_ministerio(),cliente.getCorreo(),cliente.getTelefono()};
+            modeloTabla.addRow(objeto);
+        }
+        tablaMostrarCliente.setModel(modeloTabla);
+    }
+
 }
+

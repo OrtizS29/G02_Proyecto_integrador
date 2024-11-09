@@ -251,7 +251,7 @@ public class VentaJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = venta.getId_venta();
+                Long id = venta.getId_venta();
                 if (findVenta(id) == null) {
                     throw new NonexistentEntityException("The venta with id " + id + " no longer exists.");
                 }
@@ -264,7 +264,7 @@ public class VentaJpaController implements Serializable {
         }
     }
 
-    public void destroy(int id) throws IllegalOrphanException, NonexistentEntityException {
+    public void destroy(Long id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -340,7 +340,7 @@ public class VentaJpaController implements Serializable {
         }
     }
 
-    public Venta findVenta(int id) {
+    public Venta findVenta(Long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Venta.class, id);

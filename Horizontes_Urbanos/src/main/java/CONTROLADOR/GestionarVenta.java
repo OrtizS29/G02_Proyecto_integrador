@@ -23,7 +23,7 @@ public class GestionarVenta {
         return venta;
     }
     
-    public Venta buscarPorId(int id) {
+    public Venta buscarPorId(Long id) {
         Venta venta = null;
         venta = persisVenta.obtener(id);
         return venta;

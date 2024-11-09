@@ -9,5 +9,5 @@ import Modelo.entities.Usuario;
  */
 public interface IPersistenciaUsuario extends IPersistencia<Usuario>{
     
-    public Usuario obtenerAsesorCed(int id);
+    public Usuario obtenerAsesorCed(Long id);
 }

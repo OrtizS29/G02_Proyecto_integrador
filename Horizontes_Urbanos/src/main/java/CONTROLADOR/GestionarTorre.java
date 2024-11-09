@@ -49,13 +49,13 @@ public class GestionarTorre {
     }
 
     
-    public Torre buscarPorId(int id) {
+    public Torre buscarPorId(Long id) {
         Torre torre = null;
         torre = persisTorre.obtener(id);
         return torre;
     }
 
-    public boolean borrarT(Proyecto proyectoSeleccionado, int id_torre) throws Exception {
+    public boolean borrarT(Proyecto proyectoSeleccionado, Long id_torre) throws Exception {
         
         if (proyectoSeleccionado.getListaTorres().size()==1) {
             return false;
@@ -76,7 +76,7 @@ public class GestionarTorre {
     }
 
     
-    public List<Torre> obtenerTorresProyecto(int id){
+    public List<Torre> obtenerTorresProyecto(Long id){
         Proyecto proyecto = persisProyecto.obtener(id);
         return proyecto.getListaTorres();
     }
@@ -87,7 +87,7 @@ public class GestionarTorre {
         persisTorre.editar(torre);
     }
 
-    public int contarNAptos(int numero_torre,int id_proyecto) {
+    public int contarNAptos(int numero_torre,Long id_proyecto) {
         return persisTorre.contarNAptos(numero_torre,id_proyecto);
     }
 

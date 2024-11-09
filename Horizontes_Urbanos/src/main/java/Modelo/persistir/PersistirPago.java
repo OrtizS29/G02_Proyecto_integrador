@@ -22,7 +22,7 @@ public class PersistirPago implements IPersistencia<Pago> {
     }
 
     @Override
-    public Pago obtener(int id){
+    public Pago obtener(Long id){
         return pagoJpa.findPago(id);
     }
 
@@ -32,7 +32,7 @@ public class PersistirPago implements IPersistencia<Pago> {
     }
 
     @Override
-    public void eliminar(int id) throws Exception {
+    public void eliminar(Long id) throws Exception {
         pagoJpa.destroy(id);
     }
 }

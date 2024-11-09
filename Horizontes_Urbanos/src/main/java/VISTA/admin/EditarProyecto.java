@@ -14,11 +14,11 @@ import java.util.logging.Logger;
  */
 public class EditarProyecto extends javax.swing.JFrame {
 
-    private int id_proyecto;
+    private Long  id_proyecto;
     private GestionarProyecto gestiProyecto;
     private Proyecto proyect;
     
-    public EditarProyecto(int id_proyecto) throws Exception {
+    public EditarProyecto(Long id_proyecto) throws Exception {
         I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
         this.gestiProyecto = new GestionarProyecto(factory);
         initComponents();
@@ -94,7 +94,7 @@ public class EditarProyecto extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombreProyecto;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarDatos(int id_proyecto) throws Exception {
+    private void cargarDatos(Long id_proyecto) throws Exception {
         
         this.proyect = gestiProyecto.buscarPorId(id_proyecto);
         

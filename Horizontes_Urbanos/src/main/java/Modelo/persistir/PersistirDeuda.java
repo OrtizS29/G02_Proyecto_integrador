@@ -18,7 +18,7 @@ public class PersistirDeuda implements IPersistencia<Deuda> {
     }
 
     @Override
-    public Deuda obtener(int id) {
+    public Deuda obtener(Long id) {
         return deudaJpa.findDeuda(id);
     }
 
@@ -28,7 +28,7 @@ public class PersistirDeuda implements IPersistencia<Deuda> {
     }
 
     @Override
-    public void eliminar(int id) throws Exception {
+    public void eliminar(Long id) throws Exception {
         deudaJpa.destroy(id);
     }
     

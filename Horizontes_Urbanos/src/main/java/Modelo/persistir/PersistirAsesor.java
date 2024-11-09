@@ -24,7 +24,7 @@ public class PersistirAsesor implements IPersistenciaAsesor {
     }
 
     @Override
-    public Asesor obtener(int id){
+    public Asesor obtener(Long id){
         return asesorJpa.findAsesor(id);
     }
 
@@ -34,7 +34,7 @@ public class PersistirAsesor implements IPersistenciaAsesor {
     }
 
     @Override
-    public void eliminar(int id) throws Exception {
+    public void eliminar(Long id) throws Exception {
         asesorJpa.destroy(id);
     }
     

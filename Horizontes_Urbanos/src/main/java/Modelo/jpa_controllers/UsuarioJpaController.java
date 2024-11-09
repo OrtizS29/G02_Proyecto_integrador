@@ -60,7 +60,7 @@ public class UsuarioJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = usuario.getId();
+                Long id = usuario.getId();
                 if (findUsuario(id) == null) {
                     throw new NonexistentEntityException("The usuario with id " + id + " no longer exists.");
                 }
@@ -73,7 +73,7 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
-    public void destroy(int id) throws NonexistentEntityException {
+    public void destroy(Long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -118,7 +118,7 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
-    public Usuario findUsuario(int id) {
+    public Usuario findUsuario(Long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Usuario.class, id);
@@ -140,7 +140,7 @@ public class UsuarioJpaController implements Serializable {
         }
     }
     
-    public Usuario obtenerPorCedulaAsesor(int cedulaAsesor) {
+    public Usuario obtenerPorCedulaAsesor(Long cedulaAsesor) {
         EntityManager em = getEntityManager();
         try {
             Query query = em.createQuery("SELECT u FROM Usuario u WHERE u.asesor.cedula = :cedulaAsesor");

@@ -50,7 +50,7 @@ public class GestionarApartamento {
         return apto;
     }
 
-    public Apartamento buscarPorId(int id) {
+    public Apartamento buscarPorId(Long id) {
         Apartamento apto = null;
         apto = persisApto.obtener(id);
         return apto;
@@ -67,7 +67,7 @@ public class GestionarApartamento {
         persisApto.editar(apto);
     }
 
-    public boolean borrarA(int id,Torre torreSeleccionada) throws Exception {
+    public boolean borrarA(Long id,Torre torreSeleccionada) throws Exception {
         if (torreSeleccionada.getListaApartamentos().size()==1) {
             return false;
         }
@@ -90,7 +90,7 @@ public class GestionarApartamento {
         }
     }
     
-    public List<Apartamento> obtenerApartamentoTorres(int id){
+    public List<Apartamento> obtenerApartamentoTorres(Long id){
         Torre torre = persisTorre.obtener(id);
         return torre.getListaApartamentos();
     }

@@ -21,7 +21,7 @@ public class EditarApartamento extends javax.swing.JFrame {
     private GestionarApartamento gestiApto;
     private Apartamento apto;
     
-    public EditarApartamento(int id_apto) {
+    public EditarApartamento(Long id_apto) {
         I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
         this.gestiApto = new GestionarApartamento(factory);
         initComponents();
@@ -164,7 +164,7 @@ public class EditarApartamento extends javax.swing.JFrame {
     private javax.swing.JTextField txtValorApartamento;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarDatos(int id_apto) {
+    private void cargarDatos(Long id_apto) {
         
         this.apto = gestiApto.buscarPorId(id_apto);
         

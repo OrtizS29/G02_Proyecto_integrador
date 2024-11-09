@@ -52,7 +52,7 @@ public class GestionarProyecto {
         return proyecto;   
     }
 
-    public Proyecto buscarPorId(int id) throws Exception {
+    public Proyecto buscarPorId(Long id) throws Exception {
         Proyecto proyecto = null;
         proyecto = persisProyecto.obtener(id);
         return proyecto;
@@ -72,7 +72,7 @@ public class GestionarProyecto {
         }
     }
 
-    public void borrar(int id) {
+    public void borrar(Long  id) {
         try {
             Proyecto proyecto = persisProyecto.obtener(id);
         
@@ -102,7 +102,7 @@ public class GestionarProyecto {
     }
 
     public List<Proyecto> obtenerProyectosAdmin() throws Exception{
-        Administrador administrador = persisAdmin.obtener(68293849);
+        Administrador administrador = persisAdmin.obtener(68293849L);
         return administrador.getListaProyectos();
     }
 
