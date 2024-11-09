@@ -5,6 +5,7 @@
 package VISTA.asesor;
 
 import Modelo.ConexionORACLE;
+import VISTA.Login;
 
 /**
  *
@@ -27,28 +28,52 @@ public class menuAsesor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnSalirAsesor = new javax.swing.JButton();
+        btnAdministrarVenta = new javax.swing.JButton();
+        btnAdministrarPago = new javax.swing.JButton();
+        btnAdministrarCliente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(910, 510));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(49, 134, 181));
-        jButton1.setText("Salir");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 90, 40));
+        btnSalirAsesor.setBackground(new java.awt.Color(49, 134, 181));
+        btnSalirAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnSalirAsesor.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalirAsesor.setText("Salir");
+        btnSalirAsesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirAsesorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalirAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 100, 30));
 
-        jButton2.setText("Venta");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 250, 70));
+        btnAdministrarVenta.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAdministrarVenta.setText("ADMINISTRAR VENTA");
+        btnAdministrarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdministrarVentaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAdministrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 250, 70));
 
-        jButton3.setText("Pago");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 250, 70));
+        btnAdministrarPago.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAdministrarPago.setText("ADMINISTRAR PAGO");
+        btnAdministrarPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdministrarPagoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAdministrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 250, 70));
 
-        jButton4.setText("Cliente");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 250, 70));
+        btnAdministrarCliente.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAdministrarCliente.setText("ADMINISTRAR CLIENTE");
+        btnAdministrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdministrarClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAdministrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 250, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menuAsesorA.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -56,13 +81,45 @@ public class menuAsesor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSalirAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirAsesorActionPerformed
+
+        Login log = new Login();
+        log.setVisible(true);
+        log.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnSalirAsesorActionPerformed
+
+    private void btnAdministrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarVentaActionPerformed
+        
+        ventaSeleccionarCliente ventaSelectCliente = new ventaSeleccionarCliente();
+        ventaSelectCliente.setVisible(true);
+        ventaSelectCliente.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnAdministrarVentaActionPerformed
+
+    private void btnAdministrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarPagoActionPerformed
+        
+        pagoSeleccionarClienteYVenta pagoSelectClienteVenta = new pagoSeleccionarClienteYVenta();
+        pagoSelectClienteVenta.setVisible(true);
+        pagoSelectClienteVenta.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnAdministrarPagoActionPerformed
+
+    private void btnAdministrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarClienteActionPerformed
+        
+        administrarCliente adminCliente = new administrarCliente();
+        adminCliente.setVisible(true);
+        adminCliente.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnAdministrarClienteActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnAdministrarCliente;
+    private javax.swing.JButton btnAdministrarPago;
+    private javax.swing.JButton btnAdministrarVenta;
+    private javax.swing.JButton btnSalirAsesor;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

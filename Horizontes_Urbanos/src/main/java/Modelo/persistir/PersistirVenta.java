@@ -18,22 +18,22 @@ public class PersistirVenta implements IPersistencia<Venta> {
 
     @Override
     public void crear(Venta entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ventaJpa.create(entidad);
     }
 
     @Override
     public Venta obtener(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return ventaJpa.findVenta(id);
     }
 
     @Override
     public void editar(Venta entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ventaJpa.edit(entidad);
     }
 
     @Override
     public void eliminar(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ventaJpa.destroy(id);
     }
     
 }

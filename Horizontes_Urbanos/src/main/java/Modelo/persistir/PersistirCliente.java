@@ -18,22 +18,22 @@ public class PersistirCliente implements IPersistencia<Cliente> {
     
     @Override
     public void crear(Cliente entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        clienteJpa.create(entidad);
     }
 
     @Override
     public Cliente obtener(int id){
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return clienteJpa.findCliente(id);
     }
 
     @Override
     public void editar(Cliente entidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        clienteJpa.edit(entidad);
     }
 
     @Override
     public void eliminar(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        clienteJpa.destroy(id);
     }
     
 }

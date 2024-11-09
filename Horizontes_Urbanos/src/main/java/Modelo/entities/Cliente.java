@@ -27,7 +27,7 @@ public class Cliente implements Serializable {
     private Integer subsidio_ministerio;
     
     @Column(nullable = true)
-    private Integer sisben;
+    private String sisben;
 
     @Column(nullable = true)
     private String correo;
@@ -44,7 +44,7 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(int cedula, String nombre, String direccion, Integer subsidio_ministerio, Integer sisben, String correo, int telefono, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos) {
+    public Cliente(int cedula, String nombre, String direccion, Integer subsidio_ministerio, String sisben, String correo, int telefono, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -88,11 +88,11 @@ public class Cliente implements Serializable {
         this.subsidio_ministerio = subsidio_ministerio;
     }
 
-    public Integer getSisben() {
+    public String getSisben() {
         return sisben;
     }
 
-    public void setSisben(Integer sisben) {
+    public void setSisben(String sisben) {
         this.sisben = sisben;
     }
 

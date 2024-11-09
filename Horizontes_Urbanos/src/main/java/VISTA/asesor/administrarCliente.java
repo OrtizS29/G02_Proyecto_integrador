@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package VISTA.asesor;
 
 /**
  *
- * @author juanc
+ * @author juanc,Santiago
  */
 public class administrarCliente extends javax.swing.JFrame {
 
@@ -28,62 +25,100 @@ public class administrarCliente extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtNombreCliente = new javax.swing.JTextField();
+        btnGuardarCliente = new javax.swing.JButton();
+        txtDireccionCliente = new javax.swing.JTextField();
+        txtCorreoCliente = new javax.swing.JTextField();
+        txtCedulaCliente = new javax.swing.JTextField();
+        btnMenu = new javax.swing.JButton();
+        txtTelefonoCliente = new javax.swing.JTextField();
+        cmbSubsidio = new javax.swing.JComboBox<>();
+        txtSubsidioMinisterio = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaMostrarProyecto = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tablaMostrarCliente = new javax.swing.JTable();
+        btnEditarCliente = new javax.swing.JButton();
+        btnEliminarCliente = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(910, 510));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtNombreClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 370, 40));
+        jPanel1.add(txtNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 320, 30));
 
-        jButton1.setBackground(new java.awt.Color(49, 134, 181));
-        jButton1.setText("Guardar");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarCliente.setBackground(new java.awt.Color(49, 134, 181));
+        btnGuardarCliente.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnGuardarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardarCliente.setText("Guardar");
+        btnGuardarCliente.setBorder(null);
+        btnGuardarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnGuardarClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 60, 20));
+        jPanel1.add(btnGuardarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 90, 40));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtDireccionClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 370, 40));
+        jPanel1.add(txtDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 320, 30));
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtCorreoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtCorreoClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 370, 40));
+        jPanel1.add(txtCorreoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 320, 30));
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtCedulaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtCedulaClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 370, 40));
+        jPanel1.add(txtCedulaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 320, 30));
+
+        btnMenu.setBackground(new java.awt.Color(49, 134, 181));
+        btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
+        btnMenu.setText("Menu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 100, 40));
+
+        txtTelefonoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoClienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtTelefonoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 320, 30));
+
+        cmbSubsidio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "SI", "NO" }));
+        cmbSubsidio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSubsidioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 120, 30));
+
+        txtSubsidioMinisterio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSubsidioMinisterioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtSubsidioMinisterio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 320, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarCliente.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, -1, 471));
@@ -92,7 +127,7 @@ public class administrarCliente extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tablaMostrarProyecto.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMostrarCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -103,29 +138,33 @@ public class administrarCliente extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tablaMostrarProyecto);
+        jScrollPane1.setViewportView(tablaMostrarCliente);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 490, 270));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 600, 310));
 
-        jButton3.setBackground(new java.awt.Color(49, 134, 181));
-        jButton3.setText("Editar");
-        jButton3.setBorder(null);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarCliente.setBackground(new java.awt.Color(49, 134, 181));
+        btnEditarCliente.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnEditarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarCliente.setText("Editar");
+        btnEditarCliente.setBorder(null);
+        btnEditarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnEditarClienteActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 80, 30));
+        jPanel2.add(btnEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 90, 40));
 
-        jButton2.setBackground(new java.awt.Color(49, 134, 181));
-        jButton2.setText("Eliminar");
-        jButton2.setBorder(null);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarCliente.setBackground(new java.awt.Color(49, 134, 181));
+        btnEliminarCliente.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnEliminarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarCliente.setText("Eliminar");
+        btnEliminarCliente.setBorder(null);
+        btnEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnEliminarClienteActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 80, 30));
+        jPanel2.add(btnEliminarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 90, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarClienteA.png"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -137,83 +176,88 @@ public class administrarCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClienteActionPerformed
+        
+        btnGuardarCliente.setEnabled(false);
+        
+        int cedulaCliente = Integer.parseInt(txtCedulaCliente.getText());
+        String nombreCliente = txtNombreCliente.getText();
+        String direccionCliente = txtDireccionCliente.getText();
+        String subsidio = (String) cmbSubsidio.getSelectedItem();
+        String correo = txtCorreoCliente.getText();
+        int telefono = Integer.parseInt(txtTelefonoCliente.getText());
+        
+        
+        btnGuardarCliente.setEnabled(true);
+    }//GEN-LAST:event_btnGuardarClienteActionPerformed
+
+    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_txtNombreClienteActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtDireccionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtDireccionClienteActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtCorreoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtCorreoClienteActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtCedulaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtCedulaClienteActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_btnEliminarClienteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnEditarClienteActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+
+        btnMenu.setEnabled(false);
+
+        menuAsesor masesor = new menuAsesor();
+        masesor.setVisible(true);
+        this.dispose();
+
+        btnMenu.setEnabled(true);
+    }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void txtTelefonoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_txtTelefonoClienteActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(administrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(administrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(administrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(administrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void cmbSubsidioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSubsidioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSubsidioActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new administrarCliente().setVisible(true);
-            }
-        });
-    }
+    private void txtSubsidioMinisterioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubsidioMinisterioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSubsidioMinisterioActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnEditarCliente;
+    private javax.swing.JButton btnEliminarCliente;
+    private javax.swing.JButton btnGuardarCliente;
+    private javax.swing.JButton btnMenu;
+    private javax.swing.JComboBox<String> cmbSubsidio;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTable tablaMostrarProyecto;
+    private javax.swing.JTable tablaMostrarCliente;
+    private javax.swing.JTextField txtCedulaCliente;
+    private javax.swing.JTextField txtCorreoCliente;
+    private javax.swing.JTextField txtDireccionCliente;
+    private javax.swing.JTextField txtNombreCliente;
+    private javax.swing.JTextField txtSubsidioMinisterio;
+    private javax.swing.JTextField txtTelefonoCliente;
     // End of variables declaration//GEN-END:variables
 }
