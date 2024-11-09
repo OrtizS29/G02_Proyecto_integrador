@@ -9,5 +9,5 @@ import Modelo.entities.Torre;
  */
 public interface IPersistenciaTorre extends IPersistencia<Torre> {
     
-    int contarNAptos(int numero_torre);
+    int contarNAptos(int numero_torre,int id_proyecto);
 }

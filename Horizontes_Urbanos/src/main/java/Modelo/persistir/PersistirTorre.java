@@ -41,20 +41,8 @@ public class PersistirTorre implements IPersistenciaTorre {
         torreJpa.editarNumeroYNumeroT(torre);
     }*/
 
-    public int contarNAptos(int numero_torre) {
-        List<Object[]> Qresultado = torreJpa.contarNAptos();
-        
-        for (Object[] objects : Qresultado) {
-           
-            Number numeroT = (Number) objects[0];
-            Number canApto = (Number) objects[1];
-            
-            if (numeroT.intValue() == numero_torre) {
-                return canApto.intValue();
-            }
-        }
-        return 0;
-        
+    public int contarNAptos(int numero_torre,int id_proyecto) {
+        return torreJpa.contarNAptos(numero_torre,id_proyecto);
     }
     
 }

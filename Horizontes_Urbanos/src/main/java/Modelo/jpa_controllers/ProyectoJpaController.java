@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo.jpa_controllers;
 
 import java.io.Serializable;
@@ -22,7 +19,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author CLAUDIA
+ * @author Santiago
  */
 public class ProyectoJpaController implements Serializable {
 
@@ -256,14 +253,14 @@ public class ProyectoJpaController implements Serializable {
         }
     }
     
-    public List<Object[]> contarNTorres(){
+    public int contarNTorres(String nombreProyecto){
         EntityManager em = getEntityManager();
         try {
-            Query query = em.createQuery("SELECT p.nombre_proyecto, COUNT(t) AS numTorres " +
-                                          "FROM Proyecto p JOIN p.listaTorres t " +
-                                          "GROUP BY p.id_proyecto, p.nombre_proyecto"
-            );
-            return query.getResultList();
+            Query query = em.createNativeQuery("SELECT contarNTorres(?) FROM dual");
+            query.setParameter(1, nombreProyecto);
+            
+            Number numTorres = (Number) query.getSingleResult();
+            return numTorres != null ? numTorres.intValue() : 0;
         } finally {
             em.close();
         }

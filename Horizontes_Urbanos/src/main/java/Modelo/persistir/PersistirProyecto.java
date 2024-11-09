@@ -38,17 +38,6 @@ public class PersistirProyecto implements IPersistenciaProyecto {
     }
 
     public int contarNTorres(String nombre_proyecto) {
-        List<Object[]> Qresultado = proyectoJpa.contarNTorres();
-        
-        for (Object[] objects : Qresultado) {
-            
-            String nombreP = (String) objects[0];
-            Long CanTorres = (Long) objects[1];
-            
-            if (nombreP.equals(nombre_proyecto)) {
-                return CanTorres.intValue();
-            }
-        }
-        return 0;
+        return proyectoJpa.contarNTorres(nombre_proyecto);
     } 
 }

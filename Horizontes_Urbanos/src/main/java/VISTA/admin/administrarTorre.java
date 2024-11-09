@@ -271,7 +271,7 @@ public class administrarTorre extends javax.swing.JFrame {
             
             for(Torre torre: listaTorres){
                 int numero_torres = gestiProyecto.contarNTorres(torre.getProyecto().getNombre_proyecto());
-                int numero_apto = gestiTorre.contarNAptos(torre.getNumero_torre());
+                int numero_apto = gestiTorre.contarNAptos(torre.getNumero_torre(),id);
                 Object[] objeto ={torre.getId_torre(),torre.getNumero_torre(),numero_apto
                 ,torre.getProyecto().getNombre_proyecto(),numero_torres};
                 modeloTabla.addRow(objeto);
