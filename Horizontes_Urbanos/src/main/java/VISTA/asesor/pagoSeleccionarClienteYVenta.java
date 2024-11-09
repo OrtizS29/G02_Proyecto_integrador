@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package VISTA.asesor;
 
 /**
  *
- * @author juanc
+ * @author juanc,Santiago
  */
 public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
 
@@ -27,18 +24,17 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane3 = new javax.swing.JScrollPane();
-        tablaMostrarProyectos = new javax.swing.JTable();
+        tablaMostrarVentas = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tablaMostrarProyectos1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tablaMostrarClientes = new javax.swing.JTable();
+        btnSiguiente = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(910, 510));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tablaMostrarProyectos.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMostrarVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -49,16 +45,16 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
 
             }
         ));
-        tablaMostrarProyectos.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaMostrarVentas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaMostrarProyectosMouseClicked(evt);
+                tablaMostrarVentasMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tablaMostrarProyectos);
+        jScrollPane3.setViewportView(tablaMostrarVentas);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 480, 160));
 
-        tablaMostrarProyectos1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMostrarClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -69,34 +65,37 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
 
             }
         ));
-        tablaMostrarProyectos1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaMostrarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaMostrarProyectos1MouseClicked(evt);
+                tablaMostrarClientesMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(tablaMostrarProyectos1);
+        jScrollPane4.setViewportView(tablaMostrarClientes);
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 80, 480, 160));
 
-        jButton3.setBackground(new java.awt.Color(49, 134, 181));
-        jButton3.setText("Siguiente");
-        jButton3.setBorder(null);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSiguiente.setBackground(new java.awt.Color(49, 134, 181));
+        btnSiguiente.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnSiguiente.setForeground(new java.awt.Color(255, 255, 255));
+        btnSiguiente.setText("Siguiente");
+        btnSiguiente.setBorder(null);
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSiguienteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 450, 80, 30));
+        getContentPane().add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 100, 40));
 
-        jButton2.setBackground(new java.awt.Color(49, 134, 181));
-        jButton2.setText("Menu");
-        jButton2.setBorder(null);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnMenu.setBackground(new java.awt.Color(49, 134, 181));
+        btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
+        btnMenu.setText("Menu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 80, 30));
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 100, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pagoA.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -104,30 +103,12 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tablaMostrarProyectosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMostrarProyectosMouseClicked
+    private void tablaMostrarVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMostrarVentasMouseClicked
+        /*
+        if(tablaMostrarVentas.getRowCount() > 0){
+            if(tablaMostrarVentas.getSelectedRow() != -1){
 
-        if(tablaMostrarProyectos.getRowCount() > 0){
-            if(tablaMostrarProyectos.getSelectedRow() != -1){
-
-                this.idProyectoSeleccionado = Integer.parseInt(String.valueOf(tablaMostrarProyectos.getValueAt(tablaMostrarProyectos.getSelectedRow(), 0)));
-
-                try {
-                    ActualizarTorre(idProyectoSeleccionado);
-                } catch (Exception ex) {
-                    Logger.getLogger(apartamentoSeleccionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        }
-
-    }//GEN-LAST:event_tablaMostrarProyectosMouseClicked
-
-    private void tablaMostrarProyectos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMostrarProyectos1MouseClicked
-
-        if(tablaMostrarProyectos.getRowCount() > 0){
-            if(tablaMostrarProyectos.getSelectedRow() != -1){
-
-                this.idProyectoSeleccionado = Integer.parseInt(String.valueOf(tablaMostrarProyectos.getValueAt(tablaMostrarProyectos.getSelectedRow(), 0)));
+                this.idProyectoSeleccionado = Integer.parseInt(String.valueOf(tablaMostrarVentas.getValueAt(tablaMostrarVentas.getSelectedRow(), 0)));
 
                 try {
                     ActualizarTorre(idProyectoSeleccionado);
@@ -136,60 +117,50 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
                 }
 
             }
-        }
+        }*/
 
-    }//GEN-LAST:event_tablaMostrarProyectos1MouseClicked
+    }//GEN-LAST:event_tablaMostrarVentasMouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void tablaMostrarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMostrarClientesMouseClicked
+        /*
+        if(tablaMostrarVentas.getRowCount() > 0){
+            if(tablaMostrarVentas.getSelectedRow() != -1){
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+                this.idProyectoSeleccionado = Integer.parseInt(String.valueOf(tablaMostrarVentas.getValueAt(tablaMostrarVentas.getSelectedRow(), 0)));
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+                try {
+                    ActualizarTorre(idProyectoSeleccionado);
+                } catch (Exception ex) {
+                    Logger.getLogger(apartamentoSeleccionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(pagoSeleccionarClienteYVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(pagoSeleccionarClienteYVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(pagoSeleccionarClienteYVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(pagoSeleccionarClienteYVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new pagoSeleccionarClienteYVenta().setVisible(true);
             }
-        });
-    }
+        }*/
 
+    }//GEN-LAST:event_tablaMostrarClientesMouseClicked
+
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+
+        btnMenu.setEnabled(false);
+
+        menuAsesor masesor = new menuAsesor();
+        masesor.setVisible(true);
+        this.dispose();
+
+        btnMenu.setEnabled(true);
+    }//GEN-LAST:event_btnMenuActionPerformed
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable tablaMostrarProyectos;
-    private javax.swing.JTable tablaMostrarProyectos1;
+    private javax.swing.JTable tablaMostrarClientes;
+    private javax.swing.JTable tablaMostrarVentas;
     // End of variables declaration//GEN-END:variables
 }
