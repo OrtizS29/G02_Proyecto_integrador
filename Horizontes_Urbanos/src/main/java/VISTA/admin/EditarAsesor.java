@@ -125,7 +125,7 @@ public class EditarAsesor extends javax.swing.JFrame {
         Long cedulaAsesor = Long.parseLong(txtCedulaAsesor.getText());
         String direccionAsesor = txtDireccionAsesor.getText();
         String correoAsesor = txtCorreoAsesorReg.getText();
-        int telefonoAsesor = Integer.parseInt(txtTelefonoAsesorReg.getText());
+        Long telefonoAsesor = Long.parseLong(txtTelefonoAsesorReg.getText());
         String UsuarioAse = txtUsuarioAsesor.getText();
         String Contraseña = txtContraseñaAsesor.getText();
         

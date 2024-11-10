@@ -28,7 +28,7 @@ public class Pago implements Serializable {
     @SequenceGenerator(name = "seq_idPago", sequenceName = "seq_idPago", allocationSize = 1)
     private Long id_pago;
     private Date fecha;
-    private int valor_pago;
+    private Long valor_pago;
     
     @ManyToOne(optional=false)
     @JoinColumn(name = "Id_venta", referencedColumnName = "Id_venta")
@@ -45,7 +45,7 @@ public class Pago implements Serializable {
     public Pago() {
     }
 
-    public Pago(Long id_pago, Date fecha, int valor_pago, Venta venta, Asesor asesor, Cliente cliente) {
+    public Pago(Long id_pago, Date fecha, Long valor_pago, Venta venta, Asesor asesor, Cliente cliente) {
         this.id_pago = id_pago;
         this.fecha = fecha;
         this.valor_pago = valor_pago;
@@ -70,11 +70,11 @@ public class Pago implements Serializable {
         this.fecha = fecha;
     }
 
-    public int getValor_pago() {
+    public Long getValor_pago() {
         return valor_pago;
     }
 
-    public void setValor_pago(int valor_pago) {
+    public void setValor_pago(Long valor_pago) {
         this.valor_pago = valor_pago;
     }
 

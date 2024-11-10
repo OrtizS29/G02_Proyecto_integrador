@@ -26,7 +26,7 @@ public class GestionarApartamento {
         persisApto = fa.crearPersistirApartamento();
     }
 
-    public void guardarApartamento(int num_apartemento,int valor_apartamento,String tipo_unidad,
+    public void guardarApartamento(int num_apartemento,Long valor_apartamento,String tipo_unidad,
             double area,String matricula,Date fecha_escritura,Torre torre,Venta venta) throws Exception{
         Apartamento apartamento = new Apartamento();
         apartamento.setNum_apartamento(num_apartemento);
@@ -56,7 +56,8 @@ public class GestionarApartamento {
         return apto;
     }
 
-    public void editarApto(Apartamento apto, int numeroApartamento, int valorApartamento, String tipoUnidad, double area, String matricula, Date fechaEscritura) throws Exception {
+    public void editarApto(Apartamento apto, int numeroApartamento, Long valorApartamento, String tipoUnidad, 
+            double area, String matricula, Date fechaEscritura) throws Exception {
         
         apto.setNum_apartamento(numeroApartamento);
         apto.setValor_apartamento(valorApartamento);

@@ -133,7 +133,7 @@ public class EditarApartamento extends javax.swing.JFrame {
         btnGuardarApartamento.setEnabled(false);
 
         int numeroApartamento = Integer.parseInt(txtNumeroApartamento.getText());
-        int valorApartamento = Integer.parseInt(txtValorApartamento.getText());
+        Long valorApartamento = Long.parseLong(txtValorApartamento.getText());
         String tipoUnidad = txtTipoUnidad.getText();
         double area = Double.parseDouble(txtArea.getText().replace(",", "."));
         String matricula = txtMatricula.getText();

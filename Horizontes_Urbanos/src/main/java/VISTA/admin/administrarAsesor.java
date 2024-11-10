@@ -205,7 +205,7 @@ public class administrarAsesor extends javax.swing.JFrame {
         Long cedulaAsesor = Long.parseLong(txtCedulaAsesor.getText());
         String direccionAsesor = txtDireccionAsesor.getText();
         String correoAsesor = txtCorreoAsesorReg.getText();
-        int telefonoAsesor = Integer.parseInt(txtTelefonoAsesorReg.getText());
+        Long telefonoAsesor = Long.parseLong(txtTelefonoAsesorReg.getText());
         
         Asesor asesor = new Asesor();
         asesor.setNombre(nombreAsesor);
