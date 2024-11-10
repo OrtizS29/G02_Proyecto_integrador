@@ -6,8 +6,8 @@ package VISTA.admin;
 
 import VISTA.admin.administrarProyecto;
 import VISTA.admin.EditarTorre;
-import CONTROLADOR.GestionarProyecto;
-import CONTROLADOR.GestionarTorre;
+import CONTROLADOR.gestionar.GestionarProyecto;
+import CONTROLADOR.gestionar.GestionarTorre;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;

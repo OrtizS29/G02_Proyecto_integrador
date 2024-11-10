@@ -1,7 +1,7 @@
 
 package VISTA.asesor;
 
-import CONTROLADOR.GestionarCliente;
+import CONTROLADOR.gestionar.GestionarCliente;
 import Modelo.entities.Cliente;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;

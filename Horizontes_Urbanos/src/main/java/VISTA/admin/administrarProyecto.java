@@ -2,7 +2,7 @@
 package VISTA.admin;
 
 import VISTA.admin.EditarProyecto;
-import CONTROLADOR.GestionarProyecto;
+import CONTROLADOR.gestionar.GestionarProyecto;
 import Modelo.entities.Administrador;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;

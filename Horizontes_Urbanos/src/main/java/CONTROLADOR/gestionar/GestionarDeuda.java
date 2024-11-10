@@ -1,5 +1,5 @@
 
-package CONTROLADOR;
+package CONTROLADOR.gestionar;
 
 import Modelo.entities.Deuda;
 import Modelo.factory.I_PersistenciaFactory;

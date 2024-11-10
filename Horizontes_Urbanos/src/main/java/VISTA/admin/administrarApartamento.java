@@ -2,9 +2,9 @@
 package VISTA.admin;
 
 import VISTA.admin.EditarApartamento;
-import CONTROLADOR.GestionarApartamento;
-import CONTROLADOR.GestionarProyecto;
-import CONTROLADOR.GestionarTorre;
+import CONTROLADOR.gestionar.GestionarApartamento;
+import CONTROLADOR.gestionar.GestionarProyecto;
+import CONTROLADOR.gestionar.GestionarTorre;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;

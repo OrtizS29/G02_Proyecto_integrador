@@ -1,5 +1,5 @@
 
-package CONTROLADOR;
+package CONTROLADOR.gestionar;
 
 import Modelo.entities.Asesor;
 import Modelo.entities.Usuario;

@@ -4,7 +4,7 @@
  */
 package VISTA.admin;
 
-import CONTROLADOR.GestionarApartamento;
+import CONTROLADOR.gestionar.GestionarApartamento;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Torre;
 import Modelo.factory.I_PersistenciaFactory;
