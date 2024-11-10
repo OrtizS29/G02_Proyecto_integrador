@@ -27,7 +27,7 @@ public class Asesor implements Serializable {
     private String correo;
     
     @Column(nullable = true)
-    private int telefono;
+    private Long telefono;
     
     @OneToMany(mappedBy = "asesor")
     private ArrayList<Venta> listaVentas;
@@ -38,7 +38,7 @@ public class Asesor implements Serializable {
     public Asesor() {
     }
 
-    public Asesor(Long cedula, String nombre, String direccion, String correo, int telefono, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos) {
+    public Asesor(Long cedula, String nombre, String direccion, String correo, Long telefono, ArrayList<Venta> listaVentas, ArrayList<Pago> listaPagos) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -80,11 +80,11 @@ public class Asesor implements Serializable {
         this.correo = correo;
     }
 
-    public int getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 

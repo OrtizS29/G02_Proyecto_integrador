@@ -6,6 +6,8 @@ import CONTROLADOR.validarUsuarios;
 import Modelo.ConexionORACLE;
 import Modelo.entities.Usuario;
 import VISTA.asesor.menuAsesor;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -39,7 +41,7 @@ public class Login extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        imagenFondoLogin = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -84,8 +86,13 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Contraseña:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/DIOS YA.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 510));
+        imagenFondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/DIOS YA.png"))); // NOI18N
+        imagenFondoLogin.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                imagenFondoLoginComponentResized(evt);
+            }
+        });
+        getContentPane().add(imagenFondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,13 +146,18 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
+    private void imagenFondoLoginComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_imagenFondoLoginComponentResized
+    
+    }//GEN-LAST:event_imagenFondoLoginComponentResized
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEntrar;
+    private javax.swing.JLabel imagenFondoLogin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -37,7 +37,7 @@ public class GestionarAsesor {
     }
     
     public void editar(Asesor asesor, Long cedula,String nombre,String direccion,String correo,
-            int telefono) throws Exception {
+            Long telefono) throws Exception {
         
         asesor.setCedula(cedula);
         asesor.setNombre(nombre);

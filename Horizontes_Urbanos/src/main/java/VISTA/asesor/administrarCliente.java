@@ -211,7 +211,7 @@ public class administrarCliente extends javax.swing.JFrame {
         cliente.setDireccion(direccionCliente);
         cliente.setSisben(sisben);
         if (sisben.equals("SI") && !txtSubsidioMinisterio.getText().isEmpty()) {
-            int subsidioMinisterio = Integer.parseInt(txtSubsidioMinisterio.getText());
+            Long subsidioMinisterio = Long.parseLong(txtSubsidioMinisterio.getText());
             cliente.setSubsidio_ministerio(subsidioMinisterio);
         }
         cliente.setCorreo(correo);
