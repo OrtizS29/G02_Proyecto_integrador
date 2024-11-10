@@ -7,9 +7,9 @@ package VISTA.asesor;
  */
 public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
 
-    /**
-     * Creates new form pagoSeleccionarClienteYVenta
-     */
+    private Long cedClienteSeleccionado = 0L;
+    
+    
     public pagoSeleccionarClienteYVenta() {
         initComponents();
     }
@@ -122,20 +122,16 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaMostrarVentasMouseClicked
 
     private void tablaMostrarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMostrarClientesMouseClicked
-        /*
+        
         if(tablaMostrarVentas.getRowCount() > 0){
             if(tablaMostrarVentas.getSelectedRow() != -1){
 
-                this.idProyectoSeleccionado = Integer.parseInt(String.valueOf(tablaMostrarVentas.getValueAt(tablaMostrarVentas.getSelectedRow(), 0)));
+                this.cedClienteSeleccionado = Long.parseLong(String.valueOf(tablaMostrarVentas.getValueAt(tablaMostrarVentas.getSelectedRow(), 0)));
 
-                try {
-                    ActualizarTorre(idProyectoSeleccionado);
-                } catch (Exception ex) {
-                    Logger.getLogger(apartamentoSeleccionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                //ActualizarPago(cedClienteSeleccionado);
 
             }
-        }*/
+        }
 
     }//GEN-LAST:event_tablaMostrarClientesMouseClicked
 

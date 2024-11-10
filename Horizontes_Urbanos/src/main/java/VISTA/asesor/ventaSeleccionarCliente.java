@@ -1,16 +1,24 @@
 
 package VISTA.asesor;
 
+import CONTROLADOR.GestionarCliente;
+import Modelo.entities.Cliente;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author juanc,Santiago
  */
 public class ventaSeleccionarCliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ventaSeleccionarCliente
-     */
+    GestionarCliente gestiCliente;
+    
     public ventaSeleccionarCliente() {
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiCliente = new GestionarCliente(factory);
         initComponents();
     }
 
@@ -24,15 +32,20 @@ public class ventaSeleccionarCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane4 = new javax.swing.JScrollPane();
-        tablaMostrarProyectos1 = new javax.swing.JTable();
+        tablaMostrarClientes = new javax.swing.JTable();
         btnMenu = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tablaMostrarProyectos1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMostrarClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -43,12 +56,12 @@ public class ventaSeleccionarCliente extends javax.swing.JFrame {
 
             }
         ));
-        tablaMostrarProyectos1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaMostrarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaMostrarProyectos1MouseClicked(evt);
+                tablaMostrarClientesMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(tablaMostrarProyectos1);
+        jScrollPane4.setViewportView(tablaMostrarClientes);
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 480, 280));
 
@@ -81,22 +94,10 @@ public class ventaSeleccionarCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tablaMostrarProyectos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMostrarProyectos1MouseClicked
-        /*
-        if(tablaMostrarProyectos.getRowCount() > 0){
-            if(tablaMostrarProyectos.getSelectedRow() != -1){
-
-                this.idProyectoSeleccionado = Integer.parseInt(String.valueOf(tablaMostrarProyectos.getValueAt(tablaMostrarProyectos.getSelectedRow(), 0)));
-
-                try {
-                    ActualizarTorre(idProyectoSeleccionado);
-                } catch (Exception ex) {
-                    Logger.getLogger(apartamentoSeleccionarProyecto.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        }*/
-    }//GEN-LAST:event_tablaMostrarProyectos1MouseClicked
+    private void tablaMostrarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMostrarClientesMouseClicked
+        
+        
+    }//GEN-LAST:event_tablaMostrarClientesMouseClicked
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
 
@@ -110,8 +111,29 @@ public class ventaSeleccionarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        // TODO add your handling code here:
+        
+        if(tablaMostrarClientes.getRowCount() > 0){
+            if(tablaMostrarClientes.getSelectedRow() != -1){
+                
+                Long ced_cliente = Long.parseLong(String.valueOf(tablaMostrarClientes.getValueAt(tablaMostrarClientes.getSelectedRow(), 0)));
+
+                Cliente clienteSeleccionado = null;
+               
+                clienteSeleccionado = gestiCliente.buscarPorId(ced_cliente);
+                
+                administrarVenta adminVenta = new administrarVenta(clienteSeleccionado);
+                adminVenta.setVisible(true);
+                adminVenta.setLocationRelativeTo(null);
+                this.dispose();
+                
+            }
+        }
     }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        cargarTabla();
+    }//GEN-LAST:event_formWindowOpened
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -119,6 +141,28 @@ public class ventaSeleccionarCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable tablaMostrarProyectos1;
+    private javax.swing.JTable tablaMostrarClientes;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarTabla() {
+        
+        DefaultTableModel modeloTabla  = new DefaultTableModel(){
+            
+            @Override
+            public boolean isCellEditable (int row,int column){
+                return false;
+            }
+        };
+        
+        String titulos[] = {"Cedula","Nombre"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        List<Cliente> listaClientes = gestiCliente.traerClientes();
+        
+        for (Cliente cliente : listaClientes) {
+            Object[] objeto = {cliente.getCedula(),cliente.getNombre()};
+            modeloTabla.addRow(objeto);
+        }
+        tablaMostrarClientes.setModel(modeloTabla);
+    }
 }

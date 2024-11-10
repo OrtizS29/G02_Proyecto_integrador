@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -249,11 +251,54 @@ public class administrarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCedulaClienteActionPerformed
 
     private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
-        // TODO add your handling code here:
+        
+        btnEliminarCliente.setEnabled(false);
+        
+        if(tablaMostrarCliente.getRowCount() > 0){
+            if(tablaMostrarCliente.getSelectedRow() != -1){
+                
+                Long ced_cliente = Long .parseLong(String.valueOf(tablaMostrarCliente.getValueAt(tablaMostrarCliente.getSelectedRow(), 0)));
+               
+                gestiCliente.borrar(ced_cliente);
+                
+                JOptionPane optionPane = new JOptionPane("Cliente Eliminado Correctamente");
+                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                JDialog dialog = optionPane.createDialog("Borrado Exitoso");
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+            }
+        }
+        
+        cargarTabla();
+        
+        btnEliminarCliente.setEnabled(true);
     }//GEN-LAST:event_btnEliminarClienteActionPerformed
 
     private void btnEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClienteActionPerformed
-        // TODO add your handling code here:
+        
+        btnEditarCliente.setEnabled(false);
+        
+        if(tablaMostrarCliente.getRowCount() > 0){
+            if(tablaMostrarCliente.getSelectedRow() != -1){
+                
+                Long ced_cliente = Long .parseLong(String.valueOf(tablaMostrarCliente.getValueAt(tablaMostrarCliente.getSelectedRow(), 0)));
+                
+                EditarCliente editProyecto = null;
+                
+                editProyecto = new EditarCliente(ced_cliente);
+                editProyecto.setVisible(true);
+                editProyecto.setLocationRelativeTo(null);
+                this.dispose();
+            }
+            else {
+                
+            }
+        }
+        else{
+        
+        }
+        
+        btnEditarCliente.setEnabled(true);
     }//GEN-LAST:event_btnEditarClienteActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed

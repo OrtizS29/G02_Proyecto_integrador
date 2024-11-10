@@ -1,16 +1,21 @@
 
 package VISTA.asesor;
 
+import Modelo.entities.Cliente;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
+
 /**
  *
  * @author juanc,Santiago
  */
 public class administrarVenta extends javax.swing.JFrame {
 
-    /**
-     * Creates new form administrarVenta
-     */
-    public administrarVenta() {
+    Cliente clienteSeleccionado;
+    
+    public administrarVenta(Cliente clienteSeleccionado) {
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.clienteSeleccionado = clienteSeleccionado;
         initComponents();
     }
 
@@ -29,6 +34,7 @@ public class administrarVenta extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         btnMenu = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
+        txtClienteActual = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -38,6 +44,11 @@ public class administrarVenta extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,6 +89,15 @@ public class administrarVenta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 100, 40));
+
+        txtClienteActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        txtClienteActual.setText("jTextField1");
+        txtClienteActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClienteActualActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtClienteActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 240, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarVenta.png"))); // NOI18N
         jLabel1.setToolTipText("");
@@ -167,6 +187,16 @@ public class administrarVenta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
+    private void txtClienteActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClienteActualActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        this.txtClienteActual.setText(clienteSeleccionado.getNombre());
+        //cargarTabla();
+    }//GEN-LAST:event_formWindowOpened
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditarVenta;
     private javax.swing.JButton btnEliminarVenta;
@@ -181,5 +211,10 @@ public class administrarVenta extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTable tablaMostrarVenta;
+    private javax.swing.JTextField txtClienteActual;
     // End of variables declaration//GEN-END:variables
+    /*
+    private void cargarTabla() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }*/
 }

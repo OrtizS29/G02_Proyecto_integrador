@@ -88,6 +88,11 @@ public class administrarTorre extends javax.swing.JFrame {
 
         txtProyectoActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         txtProyectoActual.setText("jTextField1");
+        txtProyectoActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProyectoActualActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtProyectoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 240, 40));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
@@ -319,6 +324,10 @@ public class administrarTorre extends javax.swing.JFrame {
         
         btnMenu.setEnabled(true);
     }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void txtProyectoActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProyectoActualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProyectoActualActionPerformed
 
     /**
      * @param args the command line arguments
