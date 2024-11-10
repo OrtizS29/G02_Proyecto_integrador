@@ -51,6 +51,8 @@ public class administrarApartamento extends javax.swing.JFrame {
         txtArea = new javax.swing.JTextField();
         btnGuardarApartamento = new javax.swing.JButton();
         txtValorApartamento = new javax.swing.JTextField();
+        txtTorreActual = new javax.swing.JTextField();
+        txtProyectoActual = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -115,6 +117,24 @@ public class administrarApartamento extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtValorApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 290, 30));
+
+        txtTorreActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        txtTorreActual.setText("TorreActual");
+        txtTorreActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTorreActualActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtTorreActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 120, 40));
+
+        txtProyectoActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        txtProyectoActual.setText("ProyectoActual");
+        txtProyectoActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProyectoActualActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtProyectoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 230, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearApartamento.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 910, 510));
@@ -266,6 +286,8 @@ public class administrarApartamento extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
         cargarTabla();
+        this.txtProyectoActual.setText(proyectoSeleccionado.getNombre_proyecto());
+        this.txtTorreActual.setText(String.valueOf(torreSeleccionada.getNumero_torre()));
     }//GEN-LAST:event_formWindowOpened
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
@@ -321,6 +343,14 @@ public class administrarApartamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void txtTorreActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTorreActualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTorreActualActionPerformed
+
+    private void txtProyectoActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProyectoActualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProyectoActualActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -340,7 +370,9 @@ public class administrarApartamento extends javax.swing.JFrame {
     private javax.swing.JTextField txtArea;
     private javax.swing.JTextField txtMatricula;
     private javax.swing.JTextField txtNumeroApartamento;
+    private javax.swing.JTextField txtProyectoActual;
     private javax.swing.JTextField txtTipoUnidad;
+    private javax.swing.JTextField txtTorreActual;
     private javax.swing.JTextField txtValorApartamento;
     // End of variables declaration//GEN-END:variables
 
