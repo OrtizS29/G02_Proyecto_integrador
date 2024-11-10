@@ -1,7 +1,7 @@
 
 package VISTA.admin;
 
-import CONTROLADOR.GestionarTorre;
+import CONTROLADOR.gestionar.GestionarTorre;
 import Modelo.entities.Torre;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;

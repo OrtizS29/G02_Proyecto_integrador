@@ -4,7 +4,7 @@ package VISTA.admin;
 import Modelo.entities.Asesor;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
-import CONTROLADOR.GestionarUsuario;
+import CONTROLADOR.gestionar.GestionarUsuario;
 import Modelo.entities.Usuario;
 import java.util.logging.Level;
 import java.util.logging.Logger;

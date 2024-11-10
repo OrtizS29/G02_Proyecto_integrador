@@ -1,8 +1,8 @@
 
 package VISTA.admin;
 
-import CONTROLADOR.GestionarApartamento;
-import CONTROLADOR.GestionarTorre;
+import CONTROLADOR.gestionar.GestionarApartamento;
+import CONTROLADOR.gestionar.GestionarTorre;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Torre;
 import Modelo.factory.I_PersistenciaFactory;

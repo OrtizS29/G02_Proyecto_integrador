@@ -5,8 +5,8 @@
 package VISTA.admin;
 
 import VISTA.admin.administrarApartamento;
-import CONTROLADOR.GestionarProyecto;
-import CONTROLADOR.GestionarTorre;
+import CONTROLADOR.gestionar.GestionarProyecto;
+import CONTROLADOR.gestionar.GestionarTorre;
 import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
 import Modelo.factory.I_PersistenciaFactory;

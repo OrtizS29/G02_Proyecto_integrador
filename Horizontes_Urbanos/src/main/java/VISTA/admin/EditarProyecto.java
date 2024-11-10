@@ -1,7 +1,7 @@
 
 package VISTA.admin;
 
-import CONTROLADOR.GestionarProyecto;
+import CONTROLADOR.gestionar.GestionarProyecto;
 import Modelo.entities.Proyecto;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;

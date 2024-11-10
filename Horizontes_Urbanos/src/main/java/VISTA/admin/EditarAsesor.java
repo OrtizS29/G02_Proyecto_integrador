@@ -1,8 +1,8 @@
 
 package VISTA.admin;
 
-import CONTROLADOR.GestionarAsesor;
-import CONTROLADOR.GestionarUsuario;
+import CONTROLADOR.gestionar.GestionarAsesor;
+import CONTROLADOR.gestionar.GestionarUsuario;
 import Modelo.entities.Asesor;
 import Modelo.entities.Usuario;
 import Modelo.factory.I_PersistenciaFactory;

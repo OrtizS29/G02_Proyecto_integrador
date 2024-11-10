@@ -1,7 +1,7 @@
 
 package VISTA.asesor;
 
-import CONTROLADOR.GestionarCliente;
+import CONTROLADOR.gestionar.GestionarCliente;
 import Modelo.entities.Cliente;
 import Modelo.entities.Pago;
 import Modelo.entities.Venta;

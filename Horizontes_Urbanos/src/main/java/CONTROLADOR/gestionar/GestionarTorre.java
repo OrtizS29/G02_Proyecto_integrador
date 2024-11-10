@@ -1,5 +1,5 @@
 
-package CONTROLADOR;
+package CONTROLADOR.gestionar;
 
 import Modelo.entities.Apartamento;
 import Modelo.entities.Proyecto;
