@@ -18,10 +18,13 @@ import Modelo.entities.Deuda;
 import Modelo.entities.Venta;
 import Modelo.jpa_controllers.exceptions.IllegalOrphanException;
 import Modelo.jpa_controllers.exceptions.NonexistentEntityException;
+import java.sql.ResultSet;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.ParameterMode;
 import javax.persistence.Persistence;
+import javax.persistence.StoredProcedureQuery;
 
 /**
  *
@@ -362,4 +365,17 @@ public class VentaJpaController implements Serializable {
         }
     }
     
+    public List<Apartamento> obtenerAptosNoVendidos(){
+        EntityManager em = getEntityManager();
+        
+        List<Apartamento> apartamentosNoVendidos = new ArrayList<Apartamento>();
+        
+        StoredProcedureQuery query = em.createStoredProcedureQuery("obtenerAptosNoVendidos",Apartamento.class);
+        query.registerStoredProcedureParameter(1,  ResultSet.class, ParameterMode.REF_CURSOR);
+        query.execute();
+        
+        apartamentosNoVendidos = query.getResultList();
+        
+        return apartamentosNoVendidos;
+    }
 }

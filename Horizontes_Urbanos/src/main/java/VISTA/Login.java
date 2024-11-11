@@ -1,6 +1,7 @@
 
 package VISTA;
 
+import CONTROLADOR.SessionManager;
 import VISTA.admin.menuAdmin;
 import CONTROLADOR.validarUsuarios;
 import Modelo.ConexionORACLE;
@@ -96,7 +97,7 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         
         String usuario = txtUsuario.getText();
@@ -105,6 +106,8 @@ public class Login extends javax.swing.JFrame {
         
         if(usr != null) {
             String rol = usr.getRol();
+            
+            SessionManager.setUsuarioActual(usr);
             
             String dbUsuario = null;
             String dbContrasena = null;

@@ -1,14 +1,16 @@
 
 package Modelo.persistir;
 
+import Modelo.entities.Apartamento;
 import Modelo.entities.Venta;
 import Modelo.jpa_controllers.VentaJpaController;
+import java.util.List;
 
 /**
  *
  * @author Santiago
  */
-public class PersistirVenta implements IPersistencia<Venta> {
+public class PersistirVenta implements IPersistenciaVenta {
     
     private VentaJpaController ventaJpa;
 
@@ -36,4 +38,8 @@ public class PersistirVenta implements IPersistencia<Venta> {
         ventaJpa.destroy(id);
     }
     
+    public List<Apartamento> obtenerAptosNoVendidos(){
+        List<Apartamento> listaApartamentosNoVendidos = ventaJpa.obtenerAptosNoVendidos();
+        return listaApartamentosNoVendidos;
+    }
 }
