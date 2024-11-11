@@ -15,7 +15,7 @@ public class menuAdmin extends javax.swing.JFrame {
      
     public menuAdmin() {
         initComponents();
-        setSize(912, 510); 
+        setSize(911, 511); 
         setLocationRelativeTo(null);
     }
 
