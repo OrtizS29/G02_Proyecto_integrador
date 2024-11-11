@@ -377,6 +377,7 @@ public class administrarCliente extends javax.swing.JFrame {
             modeloTabla.addRow(objeto);
         }
         tablaMostrarCliente.setModel(modeloTabla);
+        tablaMostrarCliente.getTableHeader().setReorderingAllowed(false);
     }
 
 }

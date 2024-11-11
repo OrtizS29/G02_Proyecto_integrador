@@ -201,6 +201,7 @@ public class administrarTorre extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
         this.txtProyectoActual.setText(proyectoSeleccionado.getNombre_proyecto());
+        this.txtProyectoActual.setEditable(false);
         try {
             cargarTabla();
         } catch (Exception ex) {
@@ -283,6 +284,7 @@ public class administrarTorre extends javax.swing.JFrame {
             }
         }
         tablaMostrarTorre.setModel(modeloTabla);
+        tablaMostrarTorre.getTableHeader().setReorderingAllowed(false);
     }
     
     

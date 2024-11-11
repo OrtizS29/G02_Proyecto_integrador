@@ -80,7 +80,7 @@ public class administrarPago extends javax.swing.JFrame {
         jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 100, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarPago.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, 470));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 470));
 
         jTabbedPane1.addTab("registar pago", jPanel1);
 

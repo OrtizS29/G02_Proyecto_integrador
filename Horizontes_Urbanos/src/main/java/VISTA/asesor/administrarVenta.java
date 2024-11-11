@@ -253,6 +253,7 @@ public class administrarVenta extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
         this.txtClienteActual.setText(clienteSeleccionado.getNombre());
+        this.txtClienteActual.setEditable(false);
         //cargarTabla();
         cargarTablaAptosVendi();
     }//GEN-LAST:event_formWindowOpened
@@ -319,7 +320,9 @@ public class administrarVenta extends javax.swing.JFrame {
                 modeloTabla.addRow(objeto);
             }
         }
+        
         tablaMostrarAptosNoVendidos.setModel(modeloTabla);
+        tablaMostrarAptosNoVendidos.getTableHeader().setReorderingAllowed(false);
     }
     
     
