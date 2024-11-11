@@ -133,7 +133,7 @@ public class administrarVenta extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tablaMostrarAptosNoVendidos);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 440, 220));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 460, 220));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarVenta.png"))); // NOI18N
         jLabel1.setToolTipText("");
@@ -156,7 +156,7 @@ public class administrarVenta extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarVenta);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 600, 260));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 660, 330));
 
         btnEliminarVenta.setBackground(new java.awt.Color(49, 134, 181));
         btnEliminarVenta.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
