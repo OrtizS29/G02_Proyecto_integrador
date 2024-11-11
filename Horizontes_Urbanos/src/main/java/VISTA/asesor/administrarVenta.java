@@ -1,9 +1,25 @@
 
 package VISTA.asesor;
 
+import CONTROLADOR.SessionManager;
+import CONTROLADOR.gestionar.GestionarVenta;
+import Modelo.entities.Apartamento;
+import Modelo.entities.Asesor;
 import Modelo.entities.Cliente;
+import Modelo.entities.Deuda;
+import Modelo.entities.Pago;
+import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,9 +28,12 @@ import Modelo.factory.PersistenciaFactory_inyect;
 public class administrarVenta extends javax.swing.JFrame {
 
     Cliente clienteSeleccionado;
+    GestionarVenta gestiVenta;
+    Asesor asesorLogueado = SessionManager.getAsesorActual();
     
     public administrarVenta(Cliente clienteSeleccionado) {
         I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiVenta = new GestionarVenta(factory);
         this.clienteSeleccionado = clienteSeleccionado;
         initComponents();
     }
@@ -30,11 +49,13 @@ public class administrarVenta extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtNumeroCoutas = new javax.swing.JTextField();
+        txtFechaVenta = new javax.swing.JTextField();
         btnMenu = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
         txtClienteActual = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaMostrarAptosNoVendidos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -53,19 +74,19 @@ public class administrarVenta extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtNumeroCoutas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtNumeroCoutasActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 370, 30));
+        jPanel1.add(txtNumeroCoutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 370, 30));
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtFechaVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtFechaVentaActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 370, 30));
+        jPanel1.add(txtFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 370, 30));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -88,7 +109,7 @@ public class administrarVenta extends javax.swing.JFrame {
                 btnSiguienteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 100, 40));
+        jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 100, 40));
 
         txtClienteActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         txtClienteActual.setText("jTextField1");
@@ -97,13 +118,28 @@ public class administrarVenta extends javax.swing.JFrame {
                 txtClienteActualActionPerformed(evt);
             }
         });
-        jPanel1.add(txtClienteActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 240, 40));
+        jPanel1.add(txtClienteActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 240, 40));
+
+        tablaMostrarAptosNoVendidos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(tablaMostrarAptosNoVendidos);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 440, 220));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarVenta.png"))); // NOI18N
         jLabel1.setToolTipText("");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 470));
 
-        jTabbedPane1.addTab("registrar venta", jPanel1);
+        jTabbedPane1.addTab("Registrar venta", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -149,7 +185,7 @@ public class administrarVenta extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarVenta.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, -1, -1));
 
-        jTabbedPane1.addTab("gestionar venta", jPanel2);
+        jTabbedPane1.addTab("Gestionar venta", jPanel2);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 510));
 
@@ -164,13 +200,13 @@ public class administrarVenta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarVentaActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtNumeroCoutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroCoutasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtNumeroCoutasActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtFechaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaVentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtFechaVentaActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
 
@@ -184,7 +220,30 @@ public class administrarVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        // TODO add your handling code here:
+        
+        btnSiguiente.setEnabled(false);
+        
+        Date fecha = getFechaDesdeTxt();
+        int numeroCoutas = Integer.parseInt(txtNumeroCoutas.getText());
+        
+        Venta venta = new Venta();
+        venta.setFecha(fecha);
+        venta.setNumero_coutas(numeroCoutas);
+        venta.setListaApartamentos(new ArrayList<Apartamento>());
+        venta.setListaPagos(new ArrayList<Pago>());
+        venta.setListaDeuda(new ArrayList<Deuda>());
+        venta.setAsesor(asesorLogueado);
+        venta.setCliente(clienteSeleccionado);
+        
+        try {
+            gestiVenta.guardar(venta);
+        } catch (Exception ex) {
+            Logger.getLogger(administrarVenta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        btnSiguiente.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void txtClienteActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActualActionPerformed
@@ -195,6 +254,7 @@ public class administrarVenta extends javax.swing.JFrame {
         
         this.txtClienteActual.setText(clienteSeleccionado.getNombre());
         //cargarTabla();
+        cargarTablaAptosVendi();
     }//GEN-LAST:event_formWindowOpened
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -207,14 +267,60 @@ public class administrarVenta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTable tablaMostrarAptosNoVendidos;
     private javax.swing.JTable tablaMostrarVenta;
     private javax.swing.JTextField txtClienteActual;
+    private javax.swing.JTextField txtFechaVenta;
+    private javax.swing.JTextField txtNumeroCoutas;
     // End of variables declaration//GEN-END:variables
+
+    private Date getFechaDesdeTxt() {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String a = txtFechaVenta.getText();
+        if(a==null || a.isEmpty()){
+            return null;
+        }
+        else{
+            try {
+                java.util.Date utilDate = formato.parse(a);
+                return new Date(utilDate.getTime());
+            } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto. Debe ser yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            }
+        }
+    }
     /*
     private void cargarTabla() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }*/
+
+    private void cargarTablaAptosVendi() {
+        DefaultTableModel modeloTabla  = new DefaultTableModel(){
+            
+            @Override
+            public boolean isCellEditable (int row,int column){
+                return false;
+            }
+        };
+        String titulos[] = {"Nombre Proyecto","Num Torre","Num Apto","Valor Apto","Matricula"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        List<Apartamento> listaAptosNoVendidos = gestiVenta.obtenerAptosNoVendidos();
+        
+        
+        if(listaAptosNoVendidos != null){
+            for(Apartamento apartamento: listaAptosNoVendidos){
+                Object[] objeto ={apartamento.getTorre().getProyecto().getNombre_proyecto(),
+                apartamento.getTorre().getNumero_torre(),apartamento.getNum_apartamento(),
+                apartamento.getValor_apartamento(),apartamento.getMatricula()};
+                modeloTabla.addRow(objeto);
+            }
+        }
+        tablaMostrarAptosNoVendidos.setModel(modeloTabla);
+    }
+    
+    
 }

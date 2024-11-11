@@ -1,10 +1,13 @@
 
 package CONTROLADOR.gestionar;
 
+import Modelo.entities.Apartamento;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.persistir.IPersistencia;
+import Modelo.persistir.IPersistenciaVenta;
 import java.sql.Date;
+import java.util.List;
 
 /**
  *
@@ -12,7 +15,7 @@ import java.sql.Date;
  */
 public class GestionarVenta {
     
-    private IPersistencia<Venta> persisVenta;
+    private IPersistenciaVenta persisVenta;
 
     public GestionarVenta(I_PersistenciaFactory fa) {
         persisVenta = fa.crearPersistirVenta();
@@ -40,5 +43,8 @@ public class GestionarVenta {
     
     }
     
-    
+    public List<Apartamento> obtenerAptosNoVendidos(){
+        List<Apartamento> listaApartamentosNoVendidos = persisVenta.obtenerAptosNoVendidos();
+        return listaApartamentosNoVendidos;
+    }
 }
