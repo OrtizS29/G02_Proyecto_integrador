@@ -169,5 +169,6 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
             }
         }
         tablaSeleccionarProyecto.setModel(modeloTabla);
+        tablaSeleccionarProyecto.getTableHeader().setReorderingAllowed(false);
     }
 }

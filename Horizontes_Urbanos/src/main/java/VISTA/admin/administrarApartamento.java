@@ -288,6 +288,8 @@ public class administrarApartamento extends javax.swing.JFrame {
         cargarTabla();
         this.txtProyectoActual.setText(proyectoSeleccionado.getNombre_proyecto());
         this.txtTorreActual.setText(String.valueOf(torreSeleccionada.getNumero_torre()));
+        this.txtProyectoActual.setEditable(false);
+        this.txtTorreActual.setEditable(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
@@ -408,6 +410,7 @@ public class administrarApartamento extends javax.swing.JFrame {
             }
         }
         tablaMostrarApartamentos.setModel(modeloTabla);
+        tablaMostrarApartamentos.getTableHeader().setReorderingAllowed(false);
     }
 
 }
