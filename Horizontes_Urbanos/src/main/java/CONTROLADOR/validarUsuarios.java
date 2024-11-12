@@ -2,6 +2,8 @@
 package CONTROLADOR;
 
 import Modelo.entities.Usuario;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.persistir.IPersistenciaUsuario;
 import Modelo.persistir.PersistirUsuario;
 import java.util.List;
 
@@ -11,10 +13,10 @@ import java.util.List;
  */
 public class validarUsuarios {
     
-    PersistirUsuario persisUsu;
+    IPersistenciaUsuario persisUsu;
 
-    public validarUsuarios() {
-        persisUsu = new PersistirUsuario();
+    public validarUsuarios(I_PersistenciaFactory fa) {
+        persisUsu = fa.crearPersistirUsuario();
     }
     
     /**
@@ -27,7 +29,7 @@ public class validarUsuarios {
     public Usuario validarUsuario(String usuario, String contrasena) {
         
         Usuario usu = null;
-        List<Usuario> listaUsuarios = persisUsu.traerUsuarios();
+        List<Usuario> listaUsuarios = persisUsu.traerEntidades();
         
         for(Usuario usua:listaUsuarios){
             if(usua.getUsuario().equals(usuario)){

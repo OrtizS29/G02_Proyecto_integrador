@@ -3,6 +3,7 @@ package Modelo.persistir;
 
 import Modelo.entities.Apartamento;
 import Modelo.jpa_controllers.ApartamentoJpaController;
+import java.util.List;
 
 /**
  *
@@ -34,6 +35,12 @@ public class PersistirApartamento implements IPersistencia<Apartamento> {
     @Override
     public void eliminar(Long id) throws Exception {
         aptoJpa.destroy(id);
+    }
+
+    @Override
+    public List<Apartamento> traerEntidades() {
+        List<Apartamento> listaApartamentos = aptoJpa.findApartamentoEntities();
+        return listaApartamentos;
     }
     
 }

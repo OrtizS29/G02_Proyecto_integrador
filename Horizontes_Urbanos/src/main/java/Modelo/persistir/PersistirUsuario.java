@@ -38,12 +38,13 @@ public class PersistirUsuario implements IPersistenciaUsuario {
         usuarioJpa.destroy(id);
     }
     
-    public List<Usuario> traerUsuarios() {
-        List<Usuario> listaUsuario = usuarioJpa.findUsuarioEntities();
-        return listaUsuario;  
-    }
-    
     public Usuario obtenerAsesorCed(Long id){
         return usuarioJpa.obtenerPorCedulaAsesor(id);
+    }
+
+    @Override
+    public List<Usuario> traerEntidades() {
+        List<Usuario> listaUsuario = usuarioJpa.findUsuarioEntities();
+        return listaUsuario;  
     }
 }

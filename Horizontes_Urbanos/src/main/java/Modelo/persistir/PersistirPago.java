@@ -3,6 +3,7 @@ package Modelo.persistir;
 
 import Modelo.entities.Pago;
 import Modelo.jpa_controllers.PagoJpaController;
+import java.util.List;
 
 /**
  *
@@ -34,5 +35,11 @@ public class PersistirPago implements IPersistencia<Pago> {
     @Override
     public void eliminar(Long id) throws Exception {
         pagoJpa.destroy(id);
+    }
+
+    @Override
+    public List<Pago> traerEntidades() {
+        List<Pago> listaPagos = pagoJpa.findPagoEntities();
+        return listaPagos;
     }
 }

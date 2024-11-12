@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Santiago
  */
-public class PersistirCliente implements IPersistenciaCliente {
+public class PersistirCliente implements IPersistencia<Cliente> {
 
     private ClienteJpaController clienteJpa;
 
@@ -38,7 +38,7 @@ public class PersistirCliente implements IPersistenciaCliente {
     }
 
     @Override
-    public List<Cliente> traerClientes() {
+    public List<Cliente> traerEntidades() {
         List<Cliente> listaClientes = clienteJpa.findClienteEntities();
         return listaClientes;
     }

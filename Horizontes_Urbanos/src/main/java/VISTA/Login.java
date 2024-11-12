@@ -6,9 +6,9 @@ import VISTA.admin.menuAdmin;
 import CONTROLADOR.validarUsuarios;
 import Modelo.ConexionORACLE;
 import Modelo.entities.Usuario;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
 import VISTA.asesor.menuAsesor;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -23,8 +23,10 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Principal
      */
     public Login() {
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        valiUsuario = new validarUsuarios(factory);
         initComponents();
-        valiUsuario = new validarUsuarios();
+        
     }
 
     /**

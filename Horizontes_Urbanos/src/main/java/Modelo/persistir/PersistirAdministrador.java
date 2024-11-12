@@ -62,8 +62,10 @@ public class PersistirAdministrador implements IPersistencia<Administrador>{
     public void eliminar(Long id) throws Exception {
         adminJpa.destroy(id);
     }
-    
-    
-    
-    
+
+    @Override
+    public List<Administrador> traerEntidades() {
+        List<Administrador> listaAdministradores = adminJpa.findAdministradorEntities();
+        return listaAdministradores;
+    }
 }

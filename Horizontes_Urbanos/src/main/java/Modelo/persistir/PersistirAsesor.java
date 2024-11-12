@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Santiago
  */
-public class PersistirAsesor implements IPersistenciaAsesor {
+public class PersistirAsesor implements IPersistencia<Asesor> {
 
     private AsesorJpaController asesorJpa;
     
@@ -37,8 +37,9 @@ public class PersistirAsesor implements IPersistenciaAsesor {
     public void eliminar(Long id) throws Exception {
         asesorJpa.destroy(id);
     }
-    
-    public List<Asesor> traerAsesores(){
+  
+    @Override
+    public List<Asesor> traerEntidades() {
         List<Asesor> listaAsesores = asesorJpa.findAsesorEntities();
         return listaAsesores;
     }
