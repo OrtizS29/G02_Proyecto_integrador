@@ -50,42 +50,42 @@ public class EditarApartamento extends javax.swing.JFrame {
                 txtNumeroApartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNumeroApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 290, 30));
+        getContentPane().add(txtNumeroApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 290, 30));
 
         txtValorApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorApartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtValorApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 290, 30));
+        getContentPane().add(txtValorApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 290, 30));
 
         txtTipoUnidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTipoUnidadActionPerformed(evt);
             }
         });
-        getContentPane().add(txtTipoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 290, 30));
+        getContentPane().add(txtTipoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 290, 30));
 
         txtArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAreaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 290, 30));
+        getContentPane().add(txtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 290, 30));
 
         txtMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMatriculaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 290, 30));
+        getContentPane().add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 290, 30));
 
         txtFechaEscritura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFechaEscrituraActionPerformed(evt);
             }
         });
-        getContentPane().add(txtFechaEscritura, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 200, 30));
+        getContentPane().add(txtFechaEscritura, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 200, 30));
 
         btnGuardarApartamento.setBackground(new java.awt.Color(49, 134, 181));
         btnGuardarApartamento.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N

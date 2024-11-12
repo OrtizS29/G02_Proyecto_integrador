@@ -45,7 +45,7 @@ public class EditarTorre extends javax.swing.JFrame {
                 txtNumeroTorreActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNumeroTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 290, 30));
+        getContentPane().add(txtNumeroTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 290, 30));
 
         btnGuardar.setBackground(new java.awt.Color(49, 134, 181));
         btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -58,7 +58,7 @@ public class EditarTorre extends javax.swing.JFrame {
         });
         getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 100, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearProyecto2.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/EditarTorre.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
