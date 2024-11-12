@@ -3,11 +3,11 @@ package Modelo.factory;
 
 import Modelo.entities.Administrador;
 import Modelo.entities.Apartamento;
+import Modelo.entities.Asesor;
+import Modelo.entities.Cliente;
 import Modelo.entities.Deuda;
 import Modelo.entities.Pago;
 import Modelo.persistir.IPersistencia;
-import Modelo.persistir.IPersistenciaAsesor;
-import Modelo.persistir.IPersistenciaCliente;
 import Modelo.persistir.IPersistenciaProyecto;
 import Modelo.persistir.IPersistenciaTorre;
 import Modelo.persistir.IPersistenciaUsuario;
@@ -40,12 +40,12 @@ public class PersistenciaFactory_inyect implements I_PersistenciaFactory{
     }
 
     @Override
-    public IPersistenciaAsesor crearPersistirAsesor() {
+    public IPersistencia<Asesor> crearPersistirAsesor() {
         return new PersistirAsesor();
     }
 
     @Override
-    public IPersistenciaCliente crearPersistirCliente() {
+    public IPersistencia<Cliente> crearPersistirCliente() {
         return new PersistirCliente();
     }
 
