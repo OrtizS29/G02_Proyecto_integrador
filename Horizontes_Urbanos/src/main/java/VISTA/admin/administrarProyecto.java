@@ -285,6 +285,7 @@ public class administrarProyecto extends javax.swing.JFrame {
             }
         }
         tablaMostrarProyecto.setModel(modeloTabla);
+        tablaMostrarProyecto.getTableHeader().setReorderingAllowed(false);
     }
     
 

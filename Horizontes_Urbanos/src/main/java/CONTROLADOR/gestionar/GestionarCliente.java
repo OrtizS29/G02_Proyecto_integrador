@@ -3,7 +3,7 @@ package CONTROLADOR.gestionar;
 
 import Modelo.entities.Cliente;
 import Modelo.factory.I_PersistenciaFactory;
-import Modelo.persistir.IPersistenciaCliente;
+import Modelo.persistir.IPersistencia;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class GestionarCliente {
     
-    private IPersistenciaCliente persisCliente;
+    private IPersistencia<Cliente> persisCliente;
 
     public GestionarCliente(I_PersistenciaFactory fa) {
         persisCliente = fa.crearPersistirCliente();
@@ -24,7 +24,7 @@ public class GestionarCliente {
     }
 
     public List<Cliente> traerClientes() {
-        List<Cliente> listaClientes = persisCliente.traerClientes();
+        List<Cliente> listaClientes = persisCliente.traerEntidades();
         return listaClientes;
     }
 

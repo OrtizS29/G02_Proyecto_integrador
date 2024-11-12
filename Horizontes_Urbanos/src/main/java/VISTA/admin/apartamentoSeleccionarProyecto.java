@@ -215,6 +215,7 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
             }
         }
         tablaMostrarProyectos.setModel(modeloTabla);
+        tablaMostrarProyectos.getTableHeader().setReorderingAllowed(false);
     }
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -269,6 +270,7 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
             
         }
         tablaMostrarTorres.setModel(modeloTabla);
+        tablaMostrarTorres.getTableHeader().setReorderingAllowed(false);
     }
     
 

@@ -3,6 +3,7 @@ package Modelo.persistir;
 
 import Modelo.entities.Deuda;
 import Modelo.jpa_controllers.DeudaJpaController;
+import java.util.List;
 
 /**
  *
@@ -30,6 +31,12 @@ public class PersistirDeuda implements IPersistencia<Deuda> {
     @Override
     public void eliminar(Long id) throws Exception {
         deudaJpa.destroy(id);
+    }
+
+    @Override
+    public List<Deuda> traerEntidades() {
+        List<Deuda> listaDeudas = deudaJpa.findDeudaEntities();
+        return listaDeudas;
     }
     
     

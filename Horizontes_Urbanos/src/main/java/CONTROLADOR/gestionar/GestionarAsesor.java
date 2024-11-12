@@ -4,7 +4,7 @@ package CONTROLADOR.gestionar;
 import Modelo.entities.Asesor;
 import Modelo.entities.Usuario;
 import Modelo.factory.I_PersistenciaFactory;
-import Modelo.persistir.IPersistenciaAsesor;
+import Modelo.persistir.IPersistencia;
 import Modelo.persistir.IPersistenciaUsuario;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class GestionarAsesor {
     
-     private IPersistenciaAsesor persisAsesor;
+     private IPersistencia<Asesor> persisAsesor;
      private IPersistenciaUsuario persisUsuario;
 
     public GestionarAsesor(I_PersistenciaFactory fa) {
@@ -69,7 +69,7 @@ public class GestionarAsesor {
     }
     
     public List<Asesor> traerAsesores(){
-        List<Asesor> listaAsesores = persisAsesor.traerAsesores();
+        List<Asesor> listaAsesores = persisAsesor.traerEntidades();
         return listaAsesores;
     }
 }

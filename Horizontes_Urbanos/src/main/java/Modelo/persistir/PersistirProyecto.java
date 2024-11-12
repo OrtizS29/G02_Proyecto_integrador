@@ -40,4 +40,10 @@ public class PersistirProyecto implements IPersistenciaProyecto {
     public int contarNTorres(String nombre_proyecto) {
         return proyectoJpa.contarNTorres(nombre_proyecto);
     } 
+
+    @Override
+    public List<Proyecto> traerEntidades() {
+        List<Proyecto> listaProyectos = proyectoJpa.findProyectoEntities();
+        return listaProyectos;
+    }
 }

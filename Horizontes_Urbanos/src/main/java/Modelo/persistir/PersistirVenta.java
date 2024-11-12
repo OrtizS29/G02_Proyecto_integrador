@@ -42,4 +42,10 @@ public class PersistirVenta implements IPersistenciaVenta {
         List<Apartamento> listaApartamentosNoVendidos = ventaJpa.obtenerAptosNoVendidos();
         return listaApartamentosNoVendidos;
     }
+
+    @Override
+    public List<Venta> traerEntidades() {
+        List<Venta> listaVentas = ventaJpa.findVentaEntities();
+        return listaVentas;
+    }
 }

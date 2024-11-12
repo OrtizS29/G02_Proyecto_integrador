@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -53,9 +54,9 @@ public class administrarVenta extends javax.swing.JFrame {
         txtFechaVenta = new javax.swing.JTextField();
         btnMenu = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
-        txtClienteActual = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaMostrarAptosNoVendidos = new javax.swing.JTable();
+        lbClienteActual = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -111,15 +112,6 @@ public class administrarVenta extends javax.swing.JFrame {
         });
         jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 100, 40));
 
-        txtClienteActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        txtClienteActual.setText("jTextField1");
-        txtClienteActual.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtClienteActualActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtClienteActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 240, 40));
-
         tablaMostrarAptosNoVendidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -133,7 +125,12 @@ public class administrarVenta extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tablaMostrarAptosNoVendidos);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 440, 220));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 460, 220));
+
+        lbClienteActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        lbClienteActual.setForeground(new java.awt.Color(255, 255, 255));
+        lbClienteActual.setText("ClienteActual");
+        jPanel1.add(lbClienteActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarVenta.png"))); // NOI18N
         jLabel1.setToolTipText("");
@@ -156,7 +153,7 @@ public class administrarVenta extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarVenta);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 600, 260));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 660, 330));
 
         btnEliminarVenta.setBackground(new java.awt.Color(49, 134, 181));
         btnEliminarVenta.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -246,13 +243,11 @@ public class administrarVenta extends javax.swing.JFrame {
         btnSiguiente.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
-    private void txtClienteActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActualActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtClienteActualActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
-        this.txtClienteActual.setText(clienteSeleccionado.getNombre());
+      
+        this.lbClienteActual.setText(clienteSeleccionado.getNombre());
+        
         //cargarTabla();
         cargarTablaAptosVendi();
     }//GEN-LAST:event_formWindowOpened
@@ -269,9 +264,9 @@ public class administrarVenta extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lbClienteActual;
     private javax.swing.JTable tablaMostrarAptosNoVendidos;
     private javax.swing.JTable tablaMostrarVenta;
-    private javax.swing.JTextField txtClienteActual;
     private javax.swing.JTextField txtFechaVenta;
     private javax.swing.JTextField txtNumeroCoutas;
     // End of variables declaration//GEN-END:variables
@@ -319,8 +314,9 @@ public class administrarVenta extends javax.swing.JFrame {
                 modeloTabla.addRow(objeto);
             }
         }
+        
         tablaMostrarAptosNoVendidos.setModel(modeloTabla);
+        tablaMostrarAptosNoVendidos.getTableHeader().setReorderingAllowed(false);
+        tablaMostrarAptosNoVendidos.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     }
-    
-    
 }

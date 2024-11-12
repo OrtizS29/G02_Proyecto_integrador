@@ -346,6 +346,7 @@ public class administrarAsesor extends javax.swing.JFrame {
         }
 
         tablaMostrarAsesor.setModel(modeloTabla);
+        tablaMostrarAsesor.getTableHeader().setReorderingAllowed(false);
     }
 }
 

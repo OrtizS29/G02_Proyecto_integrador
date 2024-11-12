@@ -44,5 +44,11 @@ public class PersistirTorre implements IPersistenciaTorre {
     public int contarNAptos(int numero_torre,Long id_proyecto) {
         return torreJpa.contarNAptos(numero_torre,id_proyecto);
     }
+
+    @Override
+    public List<Torre> traerEntidades() {
+        List<Torre> listaTorres = torreJpa.findTorreEntities();
+        return listaTorres;
+    }
     
 }
