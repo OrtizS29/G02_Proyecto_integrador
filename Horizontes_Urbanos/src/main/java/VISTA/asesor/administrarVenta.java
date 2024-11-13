@@ -80,14 +80,14 @@ public class administrarVenta extends javax.swing.JFrame {
                 txtNumeroCoutasActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNumeroCoutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 370, 30));
+        jPanel1.add(txtNumeroCoutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 370, 30));
 
         txtFechaVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFechaVentaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 370, 30));
+        jPanel1.add(txtFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 370, 30));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -125,7 +125,7 @@ public class administrarVenta extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tablaMostrarAptosNoVendidos);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 460, 220));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 460, 150));
 
         lbClienteActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         lbClienteActual.setForeground(new java.awt.Color(255, 255, 255));

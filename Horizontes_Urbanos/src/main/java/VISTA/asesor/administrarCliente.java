@@ -116,7 +116,7 @@ public class administrarCliente extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 100, 40));
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 100, 40));
 
         txtTelefonoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
