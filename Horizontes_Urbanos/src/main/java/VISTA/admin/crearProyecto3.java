@@ -99,9 +99,9 @@ public class crearProyecto3 extends javax.swing.JFrame {
                 btnGuardarApartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardarApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 110, 40));
+        getContentPane().add(btnGuardarApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 450, 110, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearProyecto3.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearProyecto-apto.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

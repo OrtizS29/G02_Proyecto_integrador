@@ -51,7 +51,7 @@ public class administrarTorre extends javax.swing.JFrame {
         txtNumeroTorre = new javax.swing.JTextField();
         txtProyectoActual = new javax.swing.JTextField();
         btnMenu = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnEliminarProyecto = new javax.swing.JButton();
         btnEditarTorre = new javax.swing.JButton();
@@ -77,14 +77,14 @@ public class administrarTorre extends javax.swing.JFrame {
                 btnSiguienteCrearProyectoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSiguienteCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 100, 40));
+        jPanel1.add(btnSiguienteCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 100, 40));
 
         txtNumeroTorre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroTorreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNumeroTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 280, 30));
+        jPanel1.add(txtNumeroTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 280, 30));
 
         txtProyectoActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         txtProyectoActual.setText("jTextField1");
@@ -93,7 +93,7 @@ public class administrarTorre extends javax.swing.JFrame {
                 txtProyectoActualActionPerformed(evt);
             }
         });
-        jPanel1.add(txtProyectoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 240, 40));
+        jPanel1.add(txtProyectoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 280, 40));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -104,10 +104,10 @@ public class administrarTorre extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 100, 40));
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 100, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearTorre.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 440));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearTorre.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         jTabbedPane1.addTab("Crear Torre", jPanel1);
 
@@ -161,8 +161,7 @@ public class administrarTorre extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+                .addComponent(jTabbedPane1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,8 +338,8 @@ public class administrarTorre extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarProyecto;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSiguienteCrearProyecto;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -62,45 +62,45 @@ public class crearTorre2 extends javax.swing.JFrame {
                 btnGuardarApartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardarApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 100, 40));
+        getContentPane().add(btnGuardarApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 100, 40));
 
         txtNumeroApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroApartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNumeroApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 290, 20));
+        getContentPane().add(txtNumeroApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 290, 20));
 
         txtValorApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorApartamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtValorApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 290, 20));
+        getContentPane().add(txtValorApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 290, 20));
 
         txtTipoUnidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTipoUnidadActionPerformed(evt);
             }
         });
-        getContentPane().add(txtTipoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 290, 20));
+        getContentPane().add(txtTipoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 290, 20));
 
         txtArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAreaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 290, -1));
+        getContentPane().add(txtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 290, -1));
 
         txtMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMatriculaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 290, 20));
+        getContentPane().add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 290, 20));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorre2.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearTorreApto.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 910, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
