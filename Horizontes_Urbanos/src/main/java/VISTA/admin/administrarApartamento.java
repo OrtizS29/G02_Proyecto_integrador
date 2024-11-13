@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -156,7 +157,7 @@ public class administrarApartamento extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarApartamentos);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 860, 310));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 860, 310));
 
         btnEditarApto.setBackground(new java.awt.Color(49, 134, 181));
         btnEditarApto.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,7 +167,7 @@ public class administrarApartamento extends javax.swing.JFrame {
                 btnEditarAptoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEditarApto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 110, 40));
+        jPanel2.add(btnEditarApto, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 110, 40));
 
         btnEliminarApto.setBackground(new java.awt.Color(49, 134, 181));
         btnEliminarApto.setForeground(new java.awt.Color(255, 255, 255));
@@ -176,7 +177,7 @@ public class administrarApartamento extends javax.swing.JFrame {
                 btnEliminarAptoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminarApto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 110, 40));
+        jPanel2.add(btnEliminarApto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 110, 40));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -190,11 +191,11 @@ public class administrarApartamento extends javax.swing.JFrame {
         jPanel2.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 380, 100, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarApartamento.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1060, 500));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 500));
 
         jTabbedPane1.addTab("Gestionar Apartamento", jPanel2);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 530));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -411,6 +412,13 @@ public class administrarApartamento extends javax.swing.JFrame {
         }
         tablaMostrarApartamentos.setModel(modeloTabla);
         tablaMostrarApartamentos.getTableHeader().setReorderingAllowed(false);
+        
+        TableColumnModel columnModel = tablaMostrarApartamentos.getColumnModel();
+        columnModel.getColumn(0).setMinWidth(0);
+        columnModel.getColumn(0).setMaxWidth(0);
+        columnModel.getColumn(0).setWidth(0);
+        
+        tablaMostrarApartamentos.setRowHeight(30);
     }
 
 }

@@ -378,6 +378,8 @@ public class administrarCliente extends javax.swing.JFrame {
         }
         tablaMostrarCliente.setModel(modeloTabla);
         tablaMostrarCliente.getTableHeader().setReorderingAllowed(false);
+        
+        tablaMostrarCliente.setRowHeight(30);
     }
 
 }

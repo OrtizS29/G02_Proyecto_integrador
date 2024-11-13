@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -287,6 +288,13 @@ public class administrarProyecto extends javax.swing.JFrame {
         }
         tablaMostrarProyecto.setModel(modeloTabla);
         tablaMostrarProyecto.getTableHeader().setReorderingAllowed(false);
+        
+        TableColumnModel columnModel = tablaMostrarProyecto.getColumnModel();
+        columnModel.getColumn(0).setMinWidth(0);
+        columnModel.getColumn(0).setMaxWidth(0);
+        columnModel.getColumn(0).setWidth(0);
+        
+        tablaMostrarProyecto.setRowHeight(30);
     }
     
 

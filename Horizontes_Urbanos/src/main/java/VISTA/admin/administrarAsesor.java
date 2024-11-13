@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -347,6 +348,8 @@ public class administrarAsesor extends javax.swing.JFrame {
 
         tablaMostrarAsesor.setModel(modeloTabla);
         tablaMostrarAsesor.getTableHeader().setReorderingAllowed(false);
+        
+        tablaMostrarAsesor.setRowHeight(30);
     }
 }
 

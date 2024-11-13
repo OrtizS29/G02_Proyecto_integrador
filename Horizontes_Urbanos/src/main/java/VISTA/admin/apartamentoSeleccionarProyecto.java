@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -216,6 +217,13 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
         }
         tablaMostrarProyectos.setModel(modeloTabla);
         tablaMostrarProyectos.getTableHeader().setReorderingAllowed(false);
+        
+        TableColumnModel columnModel = tablaMostrarProyectos.getColumnModel();
+        columnModel.getColumn(0).setMinWidth(0);
+        columnModel.getColumn(0).setMaxWidth(0);
+        columnModel.getColumn(0).setWidth(0);
+        
+        tablaMostrarProyectos.setRowHeight(30);
     }
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -265,12 +273,17 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
                 Object[] objeto ={torre.getId_torre(),torre.getNumero_torre()};
                 modeloTabla.addRow(objeto);
             }
-            
-            
-            
+ 
         }
         tablaMostrarTorres.setModel(modeloTabla);
         tablaMostrarTorres.getTableHeader().setReorderingAllowed(false);
+        
+        TableColumnModel columnModel = tablaMostrarTorres.getColumnModel();
+        columnModel.getColumn(0).setMinWidth(0);
+        columnModel.getColumn(0).setMaxWidth(0);
+        columnModel.getColumn(0).setWidth(0);
+        
+        tablaMostrarTorres.setRowHeight(30);
     }
     
 
