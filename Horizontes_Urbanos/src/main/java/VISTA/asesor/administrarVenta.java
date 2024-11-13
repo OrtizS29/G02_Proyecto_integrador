@@ -319,7 +319,7 @@ public class administrarVenta extends javax.swing.JFrame {
       
         this.lbClienteActual.setText(clienteSeleccionado.getNombre());
         
-        //cargarTabla();
+        cargarTabla();
         cargarTablaAptosVendi();
     }//GEN-LAST:event_formWindowOpened
 
@@ -402,10 +402,35 @@ public class administrarVenta extends javax.swing.JFrame {
             }
         }
     }
-    /*
+    
     private void cargarTabla() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }*/
+       
+        DefaultTableModel modeloTabla  = new DefaultTableModel(){
+            
+            @Override
+            public boolean isCellEditable (int row,int column){
+                return false;
+            }
+        };
+        
+        String titulos[] = {"Precio Final","Num Coutas","Fecha Escritura","Valor Apto"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        List<Venta> listaVentas = gestiVenta.traerVentas();
+        
+        if(listaVentas != null){
+            for(Venta venta: listaVentas){
+                for(Apartamento apto:venta.getListaApartamentos()){
+                    Object[] objeto ={apto.getVenta().getPrecio_final(),apto.getVenta().getNumero_coutas(),
+                    apto.getFecha_escritura(),apto.getValor_apartamento()};
+                    modeloTabla.addRow(objeto);
+                }    
+            }
+        }
+        
+        tablaMostrarVenta.setModel(modeloTabla);
+        tablaMostrarAptosNoVendidos.getTableHeader().setReorderingAllowed(false);
+    }
 
     private void cargarTablaAptosVendi() {
         DefaultTableModel modeloTabla  = new DefaultTableModel(){
