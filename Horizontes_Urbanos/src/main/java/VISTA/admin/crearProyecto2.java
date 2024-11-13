@@ -57,16 +57,16 @@ public class crearProyecto2 extends javax.swing.JFrame {
                 btnSiguienteCrearTorreActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSiguienteCrearTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 110, 40));
+        getContentPane().add(btnSiguienteCrearTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 110, 40));
 
         txtNumeroTorre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroTorreActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNumeroTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 290, 30));
+        getContentPane().add(txtNumeroTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 290, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearProyecto2.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearProyecto-Torre.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

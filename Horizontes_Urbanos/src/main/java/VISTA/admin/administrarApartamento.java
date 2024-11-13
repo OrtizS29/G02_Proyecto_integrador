@@ -77,28 +77,28 @@ public class administrarApartamento extends javax.swing.JFrame {
                 txtMatriculaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 290, 30));
+        jPanel1.add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 290, 30));
 
         txtTipoUnidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTipoUnidadActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTipoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 290, 30));
+        jPanel1.add(txtTipoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 290, 30));
 
         txtNumeroApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroApartamentoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNumeroApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 290, 30));
+        jPanel1.add(txtNumeroApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 290, 30));
 
         txtArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAreaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 290, 30));
+        jPanel1.add(txtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 290, 30));
 
         btnGuardarApartamento.setBackground(new java.awt.Color(49, 134, 181));
         btnGuardarApartamento.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -109,14 +109,14 @@ public class administrarApartamento extends javax.swing.JFrame {
                 btnGuardarApartamentoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardarApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 110, 40));
+        jPanel1.add(btnGuardarApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 110, 40));
 
         txtValorApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorApartamentoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtValorApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 290, 30));
+        jPanel1.add(txtValorApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 290, 30));
 
         txtTorreActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         txtTorreActual.setText("TorreActual");
@@ -125,7 +125,7 @@ public class administrarApartamento extends javax.swing.JFrame {
                 txtTorreActualActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTorreActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 120, 40));
+        jPanel1.add(txtTorreActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 140, 40));
 
         txtProyectoActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         txtProyectoActual.setText("ProyectoActual");
@@ -134,10 +134,10 @@ public class administrarApartamento extends javax.swing.JFrame {
                 txtProyectoActualActionPerformed(evt);
             }
         });
-        jPanel1.add(txtProyectoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 230, 40));
+        jPanel1.add(txtProyectoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 230, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearApartamento.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 910, 510));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -70, 910, 520));
 
         jTabbedPane1.addTab("Crear Apartamento", jPanel1);
 

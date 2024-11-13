@@ -56,35 +56,35 @@ public class EditarAsesor extends javax.swing.JFrame {
                 txtNombreAsesorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombreAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 290, 20));
+        getContentPane().add(txtNombreAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 290, 20));
 
         txtCedulaAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCedulaAsesorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCedulaAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 290, -1));
+        getContentPane().add(txtCedulaAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 290, -1));
 
         txtDireccionAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDireccionAsesorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtDireccionAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 290, 20));
+        getContentPane().add(txtDireccionAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 290, 20));
 
         txtCorreoAsesorReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCorreoAsesorRegActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCorreoAsesorReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 290, 20));
+        getContentPane().add(txtCorreoAsesorReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 290, 20));
 
         txtContraseñaAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContraseñaAsesorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtContraseñaAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 290, 20));
+        getContentPane().add(txtContraseñaAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 290, 20));
 
         btnGuardarAsesor.setBackground(new java.awt.Color(49, 134, 181));
         btnGuardarAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -95,23 +95,23 @@ public class EditarAsesor extends javax.swing.JFrame {
                 btnGuardarAsesorActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 110, 40));
+        getContentPane().add(btnGuardarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 110, 40));
 
         txtUsuarioAsesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioAsesorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtUsuarioAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 290, 20));
+        getContentPane().add(txtUsuarioAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 290, 20));
 
         txtTelefonoAsesorReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoAsesorRegActionPerformed(evt);
             }
         });
-        getContentPane().add(txtTelefonoAsesorReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 290, 20));
+        getContentPane().add(txtTelefonoAsesorReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 290, 20));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarAsesor.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/editarAsesor.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
