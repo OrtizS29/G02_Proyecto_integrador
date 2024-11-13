@@ -338,9 +338,8 @@ public class administrarVenta extends javax.swing.JFrame {
             Long id_apto = (Long) tablaMostrarAptosNoVendidos.getValueAt(fila,2);
             Apartamento apto = gestiApto.buscarPorId(id_apto);
             
-            LocalDateTime fechaActual = LocalDateTime.now();
-            Date fechaSqlDate = new java.sql.Date(fechaActual.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
-            apto.setFecha_escritura(fechaSqlDate);
+            
+            apto.setFecha_escritura(ventaActual.getFecha());
             apto.setVenta(ventaActual);
             ventaActual.getListaApartamentos().add(apto);
             Long valor =apto.getValor_apartamento();
@@ -471,9 +470,5 @@ public class administrarVenta extends javax.swing.JFrame {
 
     private void pasarIdVenta(Long id_venta) {
         this.idVentaActual = id_venta; 
-    }
-
-   
-    
-    
+    } 
 }

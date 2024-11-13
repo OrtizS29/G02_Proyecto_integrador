@@ -34,7 +34,7 @@ public class administrarProyecto extends javax.swing.JFrame {
         persistirAdmin = new PersistirAdministrador();
         this.gestiProyecto = new GestionarProyecto(factory);
         initComponents();
-        setSize(912, 510); 
+        //setSize(909, 550); 
         setLocationRelativeTo(null);
     }
 
@@ -280,6 +280,7 @@ public class administrarProyecto extends javax.swing.JFrame {
             
             for(Proyecto proyect: listaProyectos){
                 int numero_torres = gestiProyecto.contarNTorres(proyect.getNombre_proyecto());
+                
                 Object[] objeto ={proyect.getId_proyecto(),proyect.getNombre_proyecto(),numero_torres};
                 modeloTabla.addRow(objeto);
             }

@@ -39,6 +39,7 @@ public class administrarTorre extends javax.swing.JFrame {
         this.gestiTorre = new GestionarTorre(factory);
         this.proyectoSeleccionado = proyectoSeleccionado;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
