@@ -165,5 +165,7 @@ public class ventaSeleccionarCliente extends javax.swing.JFrame {
         }
         tablaMostrarClientes.setModel(modeloTabla);
         tablaMostrarClientes.getTableHeader().setReorderingAllowed(false);
+        
+        tablaMostrarClientes.setRowHeight(30);
     }
 }

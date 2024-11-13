@@ -16,8 +16,6 @@ import Modelo.factory.PersistenciaFactory_inyect;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -68,7 +66,7 @@ public class administrarVenta extends javax.swing.JFrame {
         txtNumeroCoutas = new javax.swing.JTextField();
         txtFechaVenta = new javax.swing.JTextField();
         btnGuardarAptos = new javax.swing.JButton();
-        btnSiguiente = new javax.swing.JButton();
+        btnGuardarVenta = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaMostrarAptosNoVendidos = new javax.swing.JTable();
         btnMenu = new javax.swing.JButton();
@@ -120,19 +118,19 @@ public class administrarVenta extends javax.swing.JFrame {
                 btnGuardarAptosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardarAptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 130, 40));
+        jPanel1.add(btnGuardarAptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 130, 40));
 
-        btnSiguiente.setBackground(new java.awt.Color(49, 134, 181));
-        btnSiguiente.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnSiguiente.setForeground(new java.awt.Color(255, 255, 255));
-        btnSiguiente.setText("Guardar Venta");
-        btnSiguiente.setBorder(null);
-        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarVenta.setBackground(new java.awt.Color(49, 134, 181));
+        btnGuardarVenta.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnGuardarVenta.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardarVenta.setText("Guardar Venta");
+        btnGuardarVenta.setBorder(null);
+        btnGuardarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiguienteActionPerformed(evt);
+                btnGuardarVentaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 100, 40));
+        jPanel1.add(btnGuardarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, 100, 40));
 
         tablaMostrarAptosNoVendidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,7 +150,7 @@ public class administrarVenta extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tablaMostrarAptosNoVendidos);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 370, 160));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 460, 190));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -163,11 +161,11 @@ public class administrarVenta extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 100, 40));
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 100, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarVenta.png"))); // NOI18N
         jLabel1.setToolTipText("");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 470));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 510));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -223,7 +221,7 @@ public class administrarVenta extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Gestionar venta", jPanel2);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 510));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -280,14 +278,14 @@ public class administrarVenta extends javax.swing.JFrame {
             Logger.getLogger(administrarVenta.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        menuAsesor masesor = new menuAsesor();
-        masesor.setVisible(true);
+        pagoPrimeraCuota pagoPrimeraCuo = new pagoPrimeraCuota(ventaActual);
+        pagoPrimeraCuo.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnGuardarAptosActionPerformed
 
-    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+    private void btnGuardarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarVentaActionPerformed
         
-        btnSiguiente.setEnabled(false);
+        btnGuardarVenta.setEnabled(false);
         Date fecha = getFechaDesdeTxt();
         int numeroCoutas = Integer.parseInt(txtNumeroCoutas.getText());
         
@@ -320,8 +318,8 @@ public class administrarVenta extends javax.swing.JFrame {
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
         
-        btnSiguiente.setEnabled(true);
-    }//GEN-LAST:event_btnSiguienteActionPerformed
+        btnGuardarVenta.setEnabled(true);
+    }//GEN-LAST:event_btnGuardarVentaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
@@ -378,8 +376,8 @@ public class administrarVenta extends javax.swing.JFrame {
     private javax.swing.JButton btnEditarVenta;
     private javax.swing.JButton btnEliminarVenta;
     private javax.swing.JButton btnGuardarAptos;
+    private javax.swing.JButton btnGuardarVenta;
     private javax.swing.JButton btnMenu;
-    private javax.swing.JButton btnSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -472,12 +470,19 @@ public class administrarVenta extends javax.swing.JFrame {
         tablaMostrarAptosNoVendidos.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         
         TableColumnModel columnModel = tablaMostrarAptosNoVendidos.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(150); // Nombre Proyecto
-        columnModel.getColumn(1).setPreferredWidth(80);  // Num Torre
-        columnModel.getColumn(2).setPreferredWidth(60);  // Id_apto
-        columnModel.getColumn(3).setPreferredWidth(80);  // Num Apto
-        columnModel.getColumn(4).setPreferredWidth(100); // Valor Apto
-        columnModel.getColumn(5).setPreferredWidth(120); // Matricula
+        columnModel.getColumn(0).setPreferredWidth(150);
+        columnModel.getColumn(1).setPreferredWidth(80);  
+        columnModel.getColumn(2).setPreferredWidth(60);  
+        columnModel.getColumn(3).setPreferredWidth(80);  
+        columnModel.getColumn(4).setPreferredWidth(100);
+        columnModel.getColumn(5).setPreferredWidth(120); 
+        
+        // Ocultar la columna del ID
+        columnModel.getColumn(2).setMinWidth(0);
+        columnModel.getColumn(2).setMaxWidth(0);
+        columnModel.getColumn(2).setWidth(0);
+        
+        tablaMostrarAptosNoVendidos.setRowHeight(30); 
     }
 
     private void pasarIdVenta(Long id_venta) {

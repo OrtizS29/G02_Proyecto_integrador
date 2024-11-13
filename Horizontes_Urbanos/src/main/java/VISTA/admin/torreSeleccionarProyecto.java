@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -168,7 +169,16 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
                 modeloTabla.addRow(objeto);
             }
         }
+        
         tablaSeleccionarProyecto.setModel(modeloTabla);
         tablaSeleccionarProyecto.getTableHeader().setReorderingAllowed(false);
+        
+        TableColumnModel columnModel = tablaSeleccionarProyecto.getColumnModel();
+        columnModel.getColumn(0).setMinWidth(0);
+        columnModel.getColumn(0).setMaxWidth(0);
+        columnModel.getColumn(0).setWidth(0);
+        
+        //Espaciado de filas
+        tablaSeleccionarProyecto.setRowHeight(30); 
     }
 }

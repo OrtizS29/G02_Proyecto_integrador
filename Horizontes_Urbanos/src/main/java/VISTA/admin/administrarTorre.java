@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -108,7 +109,7 @@ public class administrarTorre extends javax.swing.JFrame {
         jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 100, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearTorre.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 510));
 
         jTabbedPane1.addTab("Crear Torre", jPanel1);
 
@@ -152,7 +153,7 @@ public class administrarTorre extends javax.swing.JFrame {
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 620, 280));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorree.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 460));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, -30, 910, 480));
 
         jTabbedPane1.addTab("Gestionar Torre", jPanel2);
 
@@ -160,9 +161,7 @@ public class administrarTorre extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,6 +284,13 @@ public class administrarTorre extends javax.swing.JFrame {
         }
         tablaMostrarTorre.setModel(modeloTabla);
         tablaMostrarTorre.getTableHeader().setReorderingAllowed(false);
+        
+        TableColumnModel columnModel = tablaMostrarTorre.getColumnModel();
+        columnModel.getColumn(0).setMinWidth(0);
+        columnModel.getColumn(0).setMaxWidth(0);
+        columnModel.getColumn(0).setWidth(0);
+        
+        tablaMostrarTorre.setRowHeight(30);
     }
     
     

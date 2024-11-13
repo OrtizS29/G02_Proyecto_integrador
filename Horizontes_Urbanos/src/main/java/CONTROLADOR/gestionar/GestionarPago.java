@@ -17,5 +17,8 @@ public class GestionarPago {
         persisPago = fa.crearPersistirPago();
     }
     
-    
+    public Pago guardar(Pago pago) throws Exception {
+        persisPago.crear(pago);
+        return pago;
+    }
 }
