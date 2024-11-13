@@ -60,6 +60,7 @@ public class administrarApartamento extends javax.swing.JFrame {
         btnEditarApto = new javax.swing.JButton();
         btnEliminarApto = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -155,7 +156,7 @@ public class administrarApartamento extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarApartamentos);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 860, 310));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 860, 310));
 
         btnEditarApto.setBackground(new java.awt.Color(49, 134, 181));
         btnEditarApto.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,7 +166,7 @@ public class administrarApartamento extends javax.swing.JFrame {
                 btnEditarAptoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEditarApto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 100, 40));
+        jPanel2.add(btnEditarApto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 110, 40));
 
         btnEliminarApto.setBackground(new java.awt.Color(49, 134, 181));
         btnEliminarApto.setForeground(new java.awt.Color(255, 255, 255));
@@ -175,7 +176,7 @@ public class administrarApartamento extends javax.swing.JFrame {
                 btnEliminarAptoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminarApto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 100, 40));
+        jPanel2.add(btnEliminarApto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 110, 40));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -186,7 +187,10 @@ public class administrarApartamento extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        jPanel2.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 100, 40));
+        jPanel2.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 380, 100, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarApartamento.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1060, 500));
 
         jTabbedPane1.addTab("Gestionar Apartamento", jPanel2);
 
@@ -359,6 +363,7 @@ public class administrarApartamento extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardarApartamento;
     private javax.swing.JButton btnMenu;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
