@@ -131,6 +131,29 @@ public class VentaJpaController implements Serializable {
         }
     }
 
+    public void editarVentaC(Venta venta) throws NonexistentEntityException, Exception {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            venta = em.merge(venta);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            String msg = ex.getLocalizedMessage();
+            if (msg == null || msg.length() == 0) {
+                Long id = venta.getId_venta();
+                if (findVenta(id) == null) {
+                    throw new NonexistentEntityException("El proyecto con id " + id + " no existe.");
+                }
+            }
+            throw ex;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+    
     public void edit(Venta venta) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {

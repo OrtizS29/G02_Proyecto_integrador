@@ -32,15 +32,17 @@ public class GestionarVenta {
         return venta;
     }
     
-    public void editar(Venta venta, Date fecha,int numero_coutas) throws Exception {
-        
-        venta.setFecha(fecha);
-        venta.setNumero_coutas(numero_coutas);
+    public void editar(Venta venta) throws Exception {
         persisVenta.editar(venta);
     }
     
     public void borrar(int id){
     
+    }
+    
+    public List<Venta> traerVentas() {
+        List<Venta> listaVentas = persisVenta.traerEntidades();
+        return listaVentas;
     }
     
     public List<Apartamento> obtenerAptosNoVendidos(){

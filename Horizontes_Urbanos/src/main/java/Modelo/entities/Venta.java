@@ -32,35 +32,35 @@ public class Venta implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idVenta")
     @SequenceGenerator(name = "seq_idVenta", sequenceName = "seq_idVenta", allocationSize = 1)
     private Long id_venta;
-    private Long precio_base;
+    private Long precio_base;//
     @Column(name = "Numero_cuotas")
-    private int numero_coutas;
+    private int numero_coutas;//
     private Long precio_final;
-    private Date fecha;
+    private Date fecha;//
     @Column(nullable = false)
-    private Integer intereses;
+    private Long intereses;//
     
     @OneToMany(mappedBy = "venta")
-    private ArrayList<Apartamento> listaApartamentos;
+    private ArrayList<Apartamento> listaApartamentos;//
     
     @OneToMany(mappedBy = "venta")
-    private ArrayList<Pago> listaPagos;
+    private ArrayList<Pago> listaPagos;//
     
     @OneToMany(mappedBy = "venta")
-    private ArrayList<Deuda> listaDeuda;
+    private ArrayList<Deuda> listaDeuda;//
     
     @ManyToOne(optional=false)
     @JoinColumn(name = "Cedula_asesor", referencedColumnName = "Cedula")
-    private Asesor asesor;
+    private Asesor asesor;//
     
     @ManyToOne(optional=false)
     @JoinColumn(name = "Cedula_cliente", referencedColumnName = "Cedula")
-    private Cliente cliente;
+    private Cliente cliente;//
 
     public Venta() {
     }
 
-    public Venta(Long id_venta, Long precio_base, int numero_coutas, Long precio_final, Date fecha, Integer intereses, ArrayList<Apartamento> listaApartamentos, ArrayList<Pago> listaPagos, ArrayList<Deuda> listaDeuda, Asesor asesor, Cliente cliente) {
+    public Venta(Long id_venta, Long precio_base, int numero_coutas, Long precio_final, Date fecha, Long intereses, ArrayList<Apartamento> listaApartamentos, ArrayList<Pago> listaPagos, ArrayList<Deuda> listaDeuda, Asesor asesor, Cliente cliente) {
         this.id_venta = id_venta;
         this.precio_base = precio_base;
         this.numero_coutas = numero_coutas;
@@ -114,11 +114,11 @@ public class Venta implements Serializable {
         this.fecha = fecha;
     }
 
-    public Integer getIntereses() {
+    public Long getIntereses() {
         return intereses;
     }
 
-    public void setIntereses(Integer intereses) {
+    public void setIntereses(Long intereses) {
         this.intereses = intereses;
     }
 
