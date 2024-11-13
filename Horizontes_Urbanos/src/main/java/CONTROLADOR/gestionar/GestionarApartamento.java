@@ -96,6 +96,10 @@ public class GestionarApartamento {
         return torre.getListaApartamentos();
     }
 
+    public void editar(Apartamento apto) throws Exception {
+        persisApto.editar(apto);
+    }
+
 
     
     
