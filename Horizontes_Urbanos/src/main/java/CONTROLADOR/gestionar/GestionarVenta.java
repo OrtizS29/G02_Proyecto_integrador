@@ -40,6 +40,11 @@ public class GestionarVenta {
     
     }
     
+    public List<Venta> traerVentas() {
+        List<Venta> listaVentas = persisVenta.traerEntidades();
+        return listaVentas;
+    }
+    
     public List<Apartamento> obtenerAptosNoVendidos(){
         List<Apartamento> listaApartamentosNoVendidos = persisVenta.obtenerAptosNoVendidos();
         return listaApartamentosNoVendidos;
