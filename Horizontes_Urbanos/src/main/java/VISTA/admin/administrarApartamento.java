@@ -60,7 +60,6 @@ public class administrarApartamento extends javax.swing.JFrame {
         btnEditarApto = new javax.swing.JButton();
         btnEliminarApto = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -189,12 +188,9 @@ public class administrarApartamento extends javax.swing.JFrame {
         });
         jPanel2.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 100, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarApartamento.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 940, 450));
-
         jTabbedPane1.addTab("Gestionar Apartamento", jPanel2);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 460));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -363,7 +359,6 @@ public class administrarApartamento extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardarApartamento;
     private javax.swing.JButton btnMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

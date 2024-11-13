@@ -63,15 +63,18 @@ public class administrarVenta extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        lbClienteActual = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         txtNumeroCoutas = new javax.swing.JTextField();
         txtFechaVenta = new javax.swing.JTextField();
         btnGuardarAptos = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaMostrarAptosNoVendidos = new javax.swing.JTable();
-        lbClienteActual = new javax.swing.JLabel();
         btnMenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMostrarVenta = new javax.swing.JTable();
@@ -88,6 +91,11 @@ public class administrarVenta extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbClienteActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        lbClienteActual.setText("ClienteActual");
+        jPanel1.add(lbClienteActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 130, 30));
 
         txtNumeroCoutas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,11 +154,6 @@ public class administrarVenta extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 370, 160));
 
-        lbClienteActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        lbClienteActual.setForeground(new java.awt.Color(255, 255, 255));
-        lbClienteActual.setText("ClienteActual");
-        jPanel1.add(lbClienteActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
-
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnMenu.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,11 +163,17 @@ public class administrarVenta extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 100, 40));
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 100, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarVenta.png"))); // NOI18N
         jLabel1.setToolTipText("");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 470));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jTabbedPane1.addTab("Registrar venta", jPanel1);
 
@@ -376,8 +385,11 @@ public class administrarVenta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbClienteActual;
     private javax.swing.JTable tablaMostrarAptosNoVendidos;
     private javax.swing.JTable tablaMostrarVenta;
