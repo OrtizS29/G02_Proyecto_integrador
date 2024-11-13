@@ -144,11 +144,7 @@ public class administrarVenta extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tablaMostrarAptosNoVendidos);
 
-<<<<<<< HEAD
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 460, 150));
-=======
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 480, 210));
->>>>>>> 70f2844528a685a5de5203693a569be180d32396
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 370, 160));
 
         lbClienteActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         lbClienteActual.setForeground(new java.awt.Color(255, 255, 255));
