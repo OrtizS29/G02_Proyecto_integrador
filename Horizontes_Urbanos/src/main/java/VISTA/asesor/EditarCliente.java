@@ -54,21 +54,21 @@ public class EditarCliente extends javax.swing.JFrame {
                 txtCedulaClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCedulaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 320, 30));
+        getContentPane().add(txtCedulaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 320, 30));
 
         txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 320, 30));
+        getContentPane().add(txtNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 320, 30));
 
         txtDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDireccionClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(txtDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 320, 30));
+        getContentPane().add(txtDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 320, 30));
 
         cmbSubsidio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "SI", "NO" }));
         cmbSubsidio.addActionListener(new java.awt.event.ActionListener() {
@@ -76,28 +76,28 @@ public class EditarCliente extends javax.swing.JFrame {
                 cmbSubsidioActionPerformed(evt);
             }
         });
-        getContentPane().add(cmbSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 120, 30));
+        getContentPane().add(cmbSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 120, 30));
 
         txtSubsidioMinisterio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSubsidioMinisterioActionPerformed(evt);
             }
         });
-        getContentPane().add(txtSubsidioMinisterio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 320, 30));
+        getContentPane().add(txtSubsidioMinisterio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 320, 30));
 
         txtCorreoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCorreoClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCorreoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 320, 30));
+        getContentPane().add(txtCorreoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 320, 30));
 
         txtTelefonoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(txtTelefonoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 320, 30));
+        getContentPane().add(txtTelefonoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 320, 30));
 
         btnGuardarCliente.setBackground(new java.awt.Color(49, 134, 181));
         btnGuardarCliente.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -109,9 +109,9 @@ public class EditarCliente extends javax.swing.JFrame {
                 btnGuardarClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 90, 40));
+        getContentPane().add(btnGuardarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 90, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarCliente.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/editarCliente.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
