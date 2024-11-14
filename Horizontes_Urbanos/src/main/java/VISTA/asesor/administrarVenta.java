@@ -65,10 +65,7 @@ public class administrarVenta extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         txtNumeroCoutas = new javax.swing.JTextField();
         txtFechaVenta = new javax.swing.JTextField();
-        btnGuardarAptos = new javax.swing.JButton();
         btnGuardarVenta = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tablaMostrarAptosNoVendidos = new javax.swing.JTable();
         btnMenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -92,33 +89,22 @@ public class administrarVenta extends javax.swing.JFrame {
 
         lbClienteActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         lbClienteActual.setText("ClienteActual");
-        jPanel1.add(lbClienteActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 130, 30));
+        jPanel1.add(lbClienteActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 130, 30));
 
         txtNumeroCoutas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroCoutasActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNumeroCoutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 370, 30));
+        jPanel1.add(txtNumeroCoutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 370, 30));
 
         txtFechaVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFechaVentaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 370, 30));
-
-        btnGuardarAptos.setBackground(new java.awt.Color(49, 134, 181));
-        btnGuardarAptos.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btnGuardarAptos.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardarAptos.setText("Guardar Aptos");
-        btnGuardarAptos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarAptosActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnGuardarAptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 130, 40));
+        jPanel1.add(txtFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 370, 30));
 
         btnGuardarVenta.setBackground(new java.awt.Color(49, 134, 181));
         btnGuardarVenta.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -130,27 +116,7 @@ public class administrarVenta extends javax.swing.JFrame {
                 btnGuardarVentaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, 100, 40));
-
-        tablaMostrarAptosNoVendidos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        tablaMostrarAptosNoVendidos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaMostrarAptosNoVendidosMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(tablaMostrarAptosNoVendidos);
-
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 460, 190));
+        jPanel1.add(btnGuardarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 100, 40));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -242,47 +208,6 @@ public class administrarVenta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFechaVentaActionPerformed
 
-    private void btnGuardarAptosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAptosActionPerformed
-
-        if (idVentaActual == null) {
-            JOptionPane.showMessageDialog(this, "Primero debe guardar la venta.");
-            return;
-        }
-        
-        ventaActual = gestiVenta.buscarPorId(idVentaActual);
-        ventaActual.setPrecio_base(precio_base);
-        
-        int numero_cuotas = ventaActual.getNumero_coutas();
-        Long precio_base = ventaActual.getPrecio_base();
-        
-        if(numero_cuotas>1){
-            Long precio_final = calcularIntereses.calcularPrecioFinal(precio_base,numero_cuotas);
-            ventaActual.setPrecio_final(precio_final);
-            ventaActual.setIntereses(precio_final-precio_base);
-        }else{
-            ventaActual.setPrecio_final(precio_base);
-        }
-        
-        for(Apartamento apto : ventaActual.getListaApartamentos()){
-            try {
-                gestiApto.editar(apto);
-            } catch (Exception ex) {
-                Logger.getLogger(administrarVenta.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        try {
-            gestiVenta.editar(ventaActual);
-            JOptionPane.showMessageDialog(this, "Venta y apartamentos guardados correctamente.");
-        } catch (Exception ex) {
-            Logger.getLogger(administrarVenta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        pagoPrimeraCuota pagoPrimeraCuo = new pagoPrimeraCuota(ventaActual);
-        pagoPrimeraCuo.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnGuardarAptosActionPerformed
-
     private void btnGuardarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarVentaActionPerformed
         
         btnGuardarVenta.setEnabled(false);
@@ -307,7 +232,6 @@ public class administrarVenta extends javax.swing.JFrame {
         
         try {
             gestiVenta.guardar(venta);
-            pasarIdVenta(venta.getId_venta());
         } catch (Exception ex) {
             Logger.getLogger(administrarVenta.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -318,6 +242,11 @@ public class administrarVenta extends javax.swing.JFrame {
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
         
+        SeleccionarAptoVenta selectAptovent = new SeleccionarAptoVenta(venta);
+        selectAptovent.setVisible(true);
+        selectAptovent.setLocationRelativeTo(null);
+        this.dispose();
+        
         btnGuardarVenta.setEnabled(true);
     }//GEN-LAST:event_btnGuardarVentaActionPerformed
 
@@ -327,55 +256,23 @@ public class administrarVenta extends javax.swing.JFrame {
         this.lbClienteActual.setText(clienteSeleccionado.getNombre());
         
         cargarTabla();
-        cargarTablaAptosVendi();
+        //cargarTablaAptosVendi();
     }//GEN-LAST:event_formWindowOpened
-
-    private void tablaMostrarAptosNoVendidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMostrarAptosNoVendidosMouseClicked
-        
-        if(idVentaActual == null){
-            JOptionPane.showMessageDialog(this, "Primero debe guardar la venta.");
-            return;
-        }
-        
-        ventaActual = gestiVenta.buscarPorId(idVentaActual);
-        int[] filasSeleccionadas = tablaMostrarAptosNoVendidos.getSelectedRows();
-        
-        
-        for (int fila : filasSeleccionadas) {
-            Long id_apto = (Long) tablaMostrarAptosNoVendidos.getValueAt(fila,2);
-            Apartamento apto = gestiApto.buscarPorId(id_apto);
-            
-            
-            apto.setFecha_escritura(ventaActual.getFecha());
-            apto.setVenta(ventaActual);
-            ventaActual.getListaApartamentos().add(apto);
-            Long valor =apto.getValor_apartamento();
-            precio_base+=valor;
-                
-            
-            try {
-                gestiApto.editar(apto);
-            } catch (Exception ex) {
-                Logger.getLogger(administrarVenta.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_tablaMostrarAptosNoVendidosMouseClicked
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         
-        btnGuardarAptos.setEnabled(false);
+        btnMenu.setEnabled(false);
 
         menuAsesor masesor = new menuAsesor();
         masesor.setVisible(true);
         this.dispose();
 
-        btnGuardarAptos.setEnabled(true);
+        btnMenu.setEnabled(true);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditarVenta;
     private javax.swing.JButton btnEliminarVenta;
-    private javax.swing.JButton btnGuardarAptos;
     private javax.swing.JButton btnGuardarVenta;
     private javax.swing.JButton btnMenu;
     private javax.swing.JLabel jLabel1;
@@ -384,12 +281,10 @@ public class administrarVenta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbClienteActual;
-    private javax.swing.JTable tablaMostrarAptosNoVendidos;
     private javax.swing.JTable tablaMostrarVenta;
     private javax.swing.JTextField txtFechaVenta;
     private javax.swing.JTextField txtNumeroCoutas;
@@ -438,54 +333,6 @@ public class administrarVenta extends javax.swing.JFrame {
         }
         
         tablaMostrarVenta.setModel(modeloTabla);
-        tablaMostrarAptosNoVendidos.getTableHeader().setReorderingAllowed(false);
+        tablaMostrarVenta.setRowHeight(30);
     }
-
-    private void cargarTablaAptosVendi() {
-        DefaultTableModel modeloTabla  = new DefaultTableModel(){
-            
-            @Override
-            public boolean isCellEditable (int row,int column){
-                return false;
-            }
-        };
-        String titulos[] = {"Nombre Proyecto","Num Torre","Id_apto","Num Apto","Valor Apto","Matricula"};
-        modeloTabla.setColumnIdentifiers(titulos);
-        
-        List<Apartamento> listaAptosNoVendidos = gestiVenta.obtenerAptosNoVendidos();
-        
-        
-        if(listaAptosNoVendidos != null){
-            for(Apartamento apartamento: listaAptosNoVendidos){
-                Object[] objeto ={apartamento.getTorre().getProyecto().getNombre_proyecto(),
-                apartamento.getTorre().getNumero_torre(),apartamento.getId_apartamento(),
-                apartamento.getNum_apartamento(),
-                apartamento.getValor_apartamento(),apartamento.getMatricula()};
-                modeloTabla.addRow(objeto);
-            }
-        }
-        
-        tablaMostrarAptosNoVendidos.setModel(modeloTabla);
-        tablaMostrarAptosNoVendidos.getTableHeader().setReorderingAllowed(false);
-        tablaMostrarAptosNoVendidos.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        
-        TableColumnModel columnModel = tablaMostrarAptosNoVendidos.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(150);
-        columnModel.getColumn(1).setPreferredWidth(80);  
-        columnModel.getColumn(2).setPreferredWidth(60);  
-        columnModel.getColumn(3).setPreferredWidth(80);  
-        columnModel.getColumn(4).setPreferredWidth(100);
-        columnModel.getColumn(5).setPreferredWidth(120); 
-        
-        // Ocultar la columna del ID
-        columnModel.getColumn(2).setMinWidth(0);
-        columnModel.getColumn(2).setMaxWidth(0);
-        columnModel.getColumn(2).setWidth(0);
-        
-        tablaMostrarAptosNoVendidos.setRowHeight(30); 
-    }
-
-    private void pasarIdVenta(Long id_venta) {
-        this.idVentaActual = id_venta; 
-    } 
 }

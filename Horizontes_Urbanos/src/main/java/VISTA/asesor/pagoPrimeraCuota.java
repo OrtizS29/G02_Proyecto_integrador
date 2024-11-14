@@ -44,6 +44,12 @@ public class pagoPrimeraCuota extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtValorPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorPagoActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtValorPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 280, 30));
         getContentPane().add(txtFechaPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 280, 30));
 
@@ -70,7 +76,9 @@ public class pagoPrimeraCuota extends javax.swing.JFrame {
         btnGuardarPago.setEnabled(false);
         
         Date fecha = getFechaDesdeTxt();
-        Long valor_pago = Long.parseLong(txtValorPago.getText());
+        Long valorCal = ventaActual.getPrecio_final()/ventaActual.getNumero_coutas();
+        txtValorPago.setText(valorCal.toString());
+        Long valor_pago = valorCal;
         
         Pago pago = new Pago();
         pago.setFecha(fecha);
@@ -97,6 +105,10 @@ public class pagoPrimeraCuota extends javax.swing.JFrame {
         
         btnGuardarPago.setEnabled(true);
     }//GEN-LAST:event_btnGuardarPagoActionPerformed
+
+    private void txtValorPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorPagoActionPerformed
 
     
 

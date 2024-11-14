@@ -23,7 +23,8 @@ public class ConexionORACLE {
 
         try {
             Class.forName("oracle.jdbc.OracleDriver"); //El driver DB
-            url = "jdbc:oracle:thin:@localhost:1521:XE";
+            //url = "jdbc:oracle:thin:@192.168.254.215:1521:orcl";//Base de datos remota
+            url = "jdbc:oracle:thin:@localhost:1521:XE";//Local
             conn = DriverManager.getConnection(url, usuario, contraseña);
             System.out.println("Se conecto");
         } catch (Exception e) {

@@ -7,9 +7,14 @@ package CONTROLADOR;
  */
 public class calcularIntereses {
     
-    public Long calcularPrecioFinal(Long precio_base,int numeroCuotas){
+    public Long calcularPrecioFinal(Long precio_base,int numeroCuotas,String sisben,Long sub_ministerio){
         long intereses = Math.round((precio_base * numeroCuotas) / 100); 
-        long precioFinal = precio_base+intereses;
-        return Long.valueOf(precioFinal);       
+        Long precioFinal = precio_base+intereses;
+        
+        if(sisben.equals("SI")){
+            precioFinal-=sub_ministerio;
+        }
+        
+        return precioFinal;       
     }
 }
