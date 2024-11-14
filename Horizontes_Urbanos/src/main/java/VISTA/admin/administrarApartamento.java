@@ -157,7 +157,7 @@ public class administrarApartamento extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarApartamentos);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 860, 310));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 860, 320));
 
         btnEditarApto.setBackground(new java.awt.Color(49, 134, 181));
         btnEditarApto.setForeground(new java.awt.Color(255, 255, 255));

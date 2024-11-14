@@ -154,13 +154,13 @@ public class ventaSeleccionarCliente extends javax.swing.JFrame {
             }
         };
         
-        String titulos[] = {"Cedula","Nombre"};
+        String titulos[] = {"Cedula","Nombre","Sisben"};
         modeloTabla.setColumnIdentifiers(titulos);
         
         List<Cliente> listaClientes = gestiCliente.traerClientes();
         
         for (Cliente cliente : listaClientes) {
-            Object[] objeto = {cliente.getCedula(),cliente.getNombre()};
+            Object[] objeto = {cliente.getCedula(),cliente.getNombre(),cliente.getSisben()};
             modeloTabla.addRow(objeto);
         }
         tablaMostrarClientes.setModel(modeloTabla);
