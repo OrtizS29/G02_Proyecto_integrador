@@ -1,16 +1,18 @@
 
 package VISTA.asesor;
 
+import Modelo.entities.Cliente;
+import Modelo.entities.Venta;
+
 /**
  *
  * @author juanc,Santiago
  */
 public class administrarPago extends javax.swing.JFrame {
 
-    /**
-     * Creates new form administrarPago
-     */
-    public administrarPago() {
+    
+    
+    public administrarPago(Cliente clienteSeleccionado,Venta ventaSeleccionada) {
         initComponents();
     }
 
@@ -130,7 +132,7 @@ public class administrarPago extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("gestionar pago", jPanel2);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 910, 510));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

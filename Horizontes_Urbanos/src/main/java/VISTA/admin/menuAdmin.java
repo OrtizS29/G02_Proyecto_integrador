@@ -1,7 +1,6 @@
 
 package VISTA.admin;
 
-import Modelo.ConexionORACLE;
 import VISTA.Login;
 import VISTA.admin.apartamentoSeleccionarProyecto;
 import VISTA.admin.administrarProyecto;
@@ -15,8 +14,7 @@ public class menuAdmin extends javax.swing.JFrame {
      
     public menuAdmin() {
         initComponents();
-        setSize(911, 511); 
-        setLocationRelativeTo(null);
+        setSize(911, 540); 
     }
 
     /**

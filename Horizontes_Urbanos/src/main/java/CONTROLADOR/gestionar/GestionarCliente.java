@@ -2,6 +2,7 @@
 package CONTROLADOR.gestionar;
 
 import Modelo.entities.Cliente;
+import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.persistir.IPersistencia;
 import java.util.List;
@@ -51,6 +52,11 @@ public class GestionarCliente {
         cliente.setCorreo(correo);
         cliente.setTelefono(telefono);
         persisCliente.editar(cliente);
+    }
+
+    public List<Venta> obtenerVentasCliente(Long cedClienteSeleccionado) {
+        Cliente cliente =persisCliente.obtener(cedClienteSeleccionado);
+        return cliente.getListaVentas();
     }
 
 }

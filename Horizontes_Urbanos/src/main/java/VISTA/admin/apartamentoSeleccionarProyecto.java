@@ -241,7 +241,7 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
         if (tablaMostrarTorres.getRowCount() > 0 && tablaMostrarTorres.getSelectedRow() != -1) {
                 //Proceso obtencion Id
                 this.idTorreSeleccionada = Long.parseLong(String.valueOf(tablaMostrarTorres.getValueAt(tablaMostrarTorres.getSelectedRow(), 0)));  
-            }
+        }
     }//GEN-LAST:event_tablaMostrarTorresMouseClicked
     
     private void ActualizarTorre(Long idProyecto) throws Exception  {
