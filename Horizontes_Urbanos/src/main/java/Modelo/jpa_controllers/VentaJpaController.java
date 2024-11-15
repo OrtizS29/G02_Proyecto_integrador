@@ -401,4 +401,17 @@ public class VentaJpaController implements Serializable {
         
         return apartamentosNoVendidos;
     }
+
+    public int contarNPagos(Long id_venta) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNativeQuery("SELECT contarNPagos(?) FROM dual");
+            query.setParameter(1, id_venta);
+            
+            Number numPagos = (Number) query.getSingleResult();
+            return numPagos != null ? numPagos.intValue() : 0;
+        } finally {
+            em.close();
+        }
+    }
 }
