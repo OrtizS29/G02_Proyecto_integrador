@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -28,6 +29,7 @@ import javax.swing.table.TableColumnModel;
 public class administrarPago extends javax.swing.JFrame {
 
     GestionarPago gestiPago;
+    GestionarVenta gestiVenta;
     Cliente clienteSeleccionado;
     Asesor asesorLogueado = SessionManager.getAsesorActual();
     Venta ventaSeleccionada;
@@ -37,8 +39,10 @@ public class administrarPago extends javax.swing.JFrame {
         initComponents();
         I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
         this.gestiPago = new GestionarPago(factory);
+        this.gestiVenta = new GestionarVenta(factory);
         this.ventaSeleccionada = ventaSeleccionada;
         this.clienteSeleccionado = clienteSeleccionado;
+        cargarTxtValor();
     }
 
     /**
@@ -180,9 +184,7 @@ public class administrarPago extends javax.swing.JFrame {
         btnGuardarPago.setEnabled(false);
         
         Date fecha = getFechaDesdeTxt();
-        Long valorCal = ventaSeleccionada.getPrecio_final()/ventaSeleccionada.getNumero_coutas();
-        txtValorPago.setText(valorCal.toString());
-        Long valor_pago = valorCal;
+        Long valor_pago = Long.parseLong(txtValorPago.getText());
         
         Pago pago = new Pago();
         pago.setFecha(fecha);
@@ -202,10 +204,19 @@ public class administrarPago extends javax.swing.JFrame {
             Logger.getLogger(pagoPrimeraCuota.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        menuAsesor masesor = new menuAsesor();
-        masesor.setVisible(true);
-        masesor.setLocationRelativeTo(null);
-        this.dispose();
+        //int numero_pagos = gestiVenta.contarNPagos(ventaSeleccionada.getId_venta());
+        //if(numero_pagos < ventaSeleccionada.getNumero_coutas()){
+            menuAsesor masesor = new menuAsesor();
+            masesor.setVisible(true);
+            masesor.setLocationRelativeTo(null);
+            this.dispose();
+        //}else{
+            //JOptionPane optionPane = new JOptionPane("No se pueden hacer mas pagos");
+            //optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+            //JDialog dialog = optionPane.createDialog("ERROR");
+            //dialog.setAlwaysOnTop(true);dialog.setVisible(true);btnGuardarPago.setEnabled(true);
+            //return;
+        //}
         
         btnGuardarPago.setEnabled(true);
     }//GEN-LAST:event_btnGuardarPagoActionPerformed
@@ -251,7 +262,13 @@ public class administrarPago extends javax.swing.JFrame {
         }
     }
 
-    
+    public void cargarTxtValor(){
+        
+        txtFechaPago.setText(String.valueOf(ventaSeleccionada.getFecha()));
+        Long valorCal = ventaSeleccionada.getPrecio_final()/ventaSeleccionada.getNumero_coutas();
+        txtValorPago.setText(valorCal.toString());
+        
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

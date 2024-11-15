@@ -58,5 +58,9 @@ public class GestionarVenta {
         Cliente cliente = persisCliente.obtener(ced);
         return cliente.getListaVentas();
     }
+
+    public int contarNPagos(Long id_venta){
+        return persisVenta.contarNPagos(id_venta);
+    }
                     
 }

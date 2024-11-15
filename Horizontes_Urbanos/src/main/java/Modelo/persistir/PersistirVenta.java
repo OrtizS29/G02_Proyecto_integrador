@@ -48,4 +48,9 @@ public class PersistirVenta implements IPersistenciaVenta {
         List<Venta> listaVentas = ventaJpa.findVentaEntities();
         return listaVentas;
     }
+
+    @Override
+    public int contarNPagos(Long id_venta) {
+        return ventaJpa.contarNPagos(id_venta);
+    }
 }

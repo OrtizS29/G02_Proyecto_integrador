@@ -313,7 +313,7 @@ public class administrarVenta extends javax.swing.JFrame {
             }
         };
         
-        String titulos[] = {"Precio Final","Num Coutas","Fecha Escritura","Valor Apto"};
+        String titulos[] = {"Precio Final","Num Coutas","Fecha Escritura","Valor Apto","Num pagos"};
         modeloTabla.setColumnIdentifiers(titulos);
         
         Long ced = clienteSeleccionado.getCedula();
@@ -321,9 +321,11 @@ public class administrarVenta extends javax.swing.JFrame {
         
         if(listaVentas != null){
             for(Venta venta: listaVentas){
+                int numero_pagos = gestiVenta.contarNPagos(venta.getId_venta());
                 for(Apartamento apto:venta.getListaApartamentos()){
                     Object[] objeto ={apto.getVenta().getPrecio_final(),apto.getVenta().getNumero_coutas(),
-                    apto.getFecha_escritura(),apto.getValor_apartamento()};
+                    apto.getFecha_escritura(),apto.getValor_apartamento(),
+                    numero_pagos};
                     modeloTabla.addRow(objeto);
                 }    
             }

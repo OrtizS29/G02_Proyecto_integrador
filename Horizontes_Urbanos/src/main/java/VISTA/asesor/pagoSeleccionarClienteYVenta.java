@@ -76,7 +76,7 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tablaMostrarVentas);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 480, 160));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 520, 160));
 
         tablaMostrarClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,7 +96,7 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tablaMostrarClientes);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 80, 480, 160));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 80, 520, 160));
 
         btnSiguiente.setBackground(new java.awt.Color(49, 134, 181));
         btnSiguiente.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -165,10 +165,19 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
             return;
         }
         
-        administrarPago adminPago = new administrarPago(clienteSeleccionado,ventaSeleccionada);
-        adminPago.setVisible(true);
-        adminPago.setLocationRelativeTo(null);
-        this.dispose();
+        int numero_pagos = gestiVenta.contarNPagos(ventaSeleccionada.getId_venta());
+        if(numero_pagos < ventaSeleccionada.getNumero_coutas()){
+            administrarPago adminPago = new administrarPago(clienteSeleccionado,ventaSeleccionada);
+            adminPago.setVisible(true);
+            adminPago.setLocationRelativeTo(null);
+            this.dispose();
+        }else{
+            JOptionPane optionPane = new JOptionPane("Ya pagaste");
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("ERROR");
+            dialog.setAlwaysOnTop(true);dialog.setVisible(true);btnSiguiente.setEnabled(true);
+            return;
+        }
         
         btnSiguiente.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteActionPerformed
@@ -224,7 +233,7 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
             }
         };
         
-        String titulos[] = {"Id venta","Precio Total","Numero Coutas"};
+        String titulos[] = {"Id venta","Precio Total","Numero Coutas","Num Pagos"};
         modeloTabla.setColumnIdentifiers(titulos);
         
         List<Venta> listaVentas = gestiCliente.obtenerVentasCliente(cedClienteSeleccionado);
@@ -239,7 +248,9 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
             });
             
             for(Venta venta: listaVentas){
-                Object[] objeto ={venta.getId_venta(),venta.getPrecio_final(),venta.getNumero_coutas()};
+                int numero_pagos = gestiVenta.contarNPagos(venta.getId_venta());
+                Object[] objeto ={venta.getId_venta(),venta.getPrecio_final(),venta.getNumero_coutas(),
+                numero_pagos};
                 modeloTabla.addRow(objeto);
             }
             
