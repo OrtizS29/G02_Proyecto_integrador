@@ -53,4 +53,10 @@ public class PersistirVenta implements IPersistenciaVenta {
     public int contarNPagos(Long id_venta) {
         return ventaJpa.contarNPagos(id_venta);
     }
+
+    @Override
+    public List<Apartamento> obtenerAptosVendidos(Long id_venta, Long ced_cliente) {
+        List<Apartamento> listaApartamentosVendidos = ventaJpa.obtenerAptosVendidos(id_venta,ced_cliente);
+        return listaApartamentosVendidos;
+    }
 }

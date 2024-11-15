@@ -414,4 +414,25 @@ public class VentaJpaController implements Serializable {
             em.close();
         }
     }
+
+    public List<Apartamento> obtenerAptosVendidos(Long id_venta, Long ced_cliente) {
+        EntityManager em = getEntityManager();
+        
+        List<Apartamento> apartamentosVendidos = new ArrayList<Apartamento>();
+        
+        StoredProcedureQuery query = em.createStoredProcedureQuery("obtenerAptosVendidos", Apartamento.class);
+        
+        query.registerStoredProcedureParameter(1, Long.class, ParameterMode.IN);
+        query.registerStoredProcedureParameter(2, Long.class, ParameterMode.IN);
+        query.registerStoredProcedureParameter(3, Void.class, ParameterMode.REF_CURSOR);
+        
+        query.setParameter(1, id_venta);
+        query.setParameter(2, ced_cliente);
+        
+        query.execute();
+        
+        apartamentosVendidos = query.getResultList();
+        
+        return apartamentosVendidos;
+    }
 }

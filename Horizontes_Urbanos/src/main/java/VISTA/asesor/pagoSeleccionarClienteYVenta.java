@@ -165,19 +165,19 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
             return;
         }
         
-        int numero_pagos = gestiVenta.contarNPagos(ventaSeleccionada.getId_venta());
-        if(numero_pagos < ventaSeleccionada.getNumero_coutas()){
+        //int numero_pagos = gestiVenta.contarNPagos(ventaSeleccionada.getId_venta());
+        //if(numero_pagos < ventaSeleccionada.getNumero_coutas()){
             administrarPago adminPago = new administrarPago(clienteSeleccionado,ventaSeleccionada);
             adminPago.setVisible(true);
             adminPago.setLocationRelativeTo(null);
             this.dispose();
-        }else{
-            JOptionPane optionPane = new JOptionPane("Ya pagaste");
-            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
-            JDialog dialog = optionPane.createDialog("ERROR");
-            dialog.setAlwaysOnTop(true);dialog.setVisible(true);btnSiguiente.setEnabled(true);
-            return;
-        }
+        //}else{
+            //JOptionPane optionPane = new JOptionPane("Ya pagaste");
+            //optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+            //JDialog dialog = optionPane.createDialog("ERROR");
+            //dialog.setAlwaysOnTop(true);dialog.setVisible(true);btnSiguiente.setEnabled(true);
+            //return;
+        //}
         
         btnSiguiente.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteActionPerformed
