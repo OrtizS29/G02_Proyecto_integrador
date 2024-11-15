@@ -13,6 +13,7 @@ import Modelo.entities.Pago;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
+import java.awt.Font;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -71,6 +72,7 @@ public class administrarVenta extends javax.swing.JFrame {
         tablaMostrarVenta = new javax.swing.JTable();
         btnEliminarVenta = new javax.swing.JButton();
         btnEditarVenta = new javax.swing.JButton();
+        btnMenu1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -152,7 +154,7 @@ public class administrarVenta extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarVenta);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 660, 330));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 670, 330));
 
         btnEliminarVenta.setBackground(new java.awt.Color(49, 134, 181));
         btnEliminarVenta.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -178,8 +180,19 @@ public class administrarVenta extends javax.swing.JFrame {
         });
         jPanel2.add(btnEditarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 90, 40));
 
+        btnMenu1.setBackground(new java.awt.Color(49, 134, 181));
+        btnMenu1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnMenu1.setForeground(new java.awt.Color(255, 255, 255));
+        btnMenu1.setText("Aptos Vendidos");
+        btnMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenu1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 140, 40));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarVenta.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -4, -1, 520));
 
         jTabbedPane1.addTab("Gestionar venta", jPanel2);
 
@@ -266,11 +279,20 @@ public class administrarVenta extends javax.swing.JFrame {
         btnMenu.setEnabled(true);
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void btnMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenu1ActionPerformed
+        
+        AptosVendidos aptoV = new AptosVendidos(clienteSeleccionado);
+        aptoV.setVisible(true);
+        aptoV.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnMenu1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditarVenta;
     private javax.swing.JButton btnEliminarVenta;
     private javax.swing.JButton btnGuardarVenta;
     private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnMenu1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -313,7 +335,7 @@ public class administrarVenta extends javax.swing.JFrame {
             }
         };
         
-        String titulos[] = {"Precio Final","Num Coutas","Fecha Escritura","Valor Apto","Num pagos"};
+        String titulos[] = {"Id Venta","Precio Base","Intereses","Precio Total","Num Coutas","Fecha","Num pagos"};
         modeloTabla.setColumnIdentifiers(titulos);
         
         Long ced = clienteSeleccionado.getCedula();
@@ -322,16 +344,25 @@ public class administrarVenta extends javax.swing.JFrame {
         if(listaVentas != null){
             for(Venta venta: listaVentas){
                 int numero_pagos = gestiVenta.contarNPagos(venta.getId_venta());
-                for(Apartamento apto:venta.getListaApartamentos()){
-                    Object[] objeto ={apto.getVenta().getPrecio_final(),apto.getVenta().getNumero_coutas(),
-                    apto.getFecha_escritura(),apto.getValor_apartamento(),
-                    numero_pagos};
-                    modeloTabla.addRow(objeto);
-                }    
+                Object[] objeto ={venta.getId_venta(),
+                venta.getPrecio_base(),
+                venta.getIntereses(),
+                venta.getPrecio_final(),
+                venta.getNumero_coutas(),
+                venta.getFecha(),
+                numero_pagos};
+                modeloTabla.addRow(objeto);   
             }
         }
         
         tablaMostrarVenta.setModel(modeloTabla);
         tablaMostrarVenta.setRowHeight(30);
+        
+        TableColumnModel columnModel = tablaMostrarVenta.getColumnModel();
+        columnModel.getColumn(0).setMinWidth(0);
+        columnModel.getColumn(0).setMaxWidth(0);
+        columnModel.getColumn(0).setWidth(0);
+        
+        tablaMostrarVenta.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
     }
 }

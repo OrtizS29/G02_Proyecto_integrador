@@ -53,7 +53,6 @@ public class GestionarVenta {
         return listaApartamentosNoVendidos;
     }
     
-
     public List<Venta> obtenerVentaCliente(Long ced) {
         Cliente cliente = persisCliente.obtener(ced);
         return cliente.getListaVentas();
@@ -61,6 +60,11 @@ public class GestionarVenta {
 
     public int contarNPagos(Long id_venta){
         return persisVenta.contarNPagos(id_venta);
+    }
+
+    public List<Apartamento> obtenerAptosVendidos(Long id_venta, Long ced_cliente) {
+        List<Apartamento> listaApartamentosVendidos = persisVenta.obtenerAptosVendidos(id_venta,ced_cliente);
+        return listaApartamentosVendidos;
     }
                     
 }

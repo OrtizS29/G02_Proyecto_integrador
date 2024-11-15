@@ -183,40 +183,41 @@ public class administrarPago extends javax.swing.JFrame {
         
         btnGuardarPago.setEnabled(false);
         
-        Date fecha = getFechaDesdeTxt();
-        Long valor_pago = Long.parseLong(txtValorPago.getText());
+        int numero_pagos = gestiVenta.contarNPagos(ventaSeleccionada.getId_venta());
+        if(numero_pagos < ventaSeleccionada.getNumero_coutas()){
+            Date fecha = getFechaDesdeTxt();
+            Long valor_pago = Long.parseLong(txtValorPago.getText());
         
-        Pago pago = new Pago();
-        pago.setFecha(fecha);
-        pago.setValor_pago(valor_pago);
+            Pago pago = new Pago();
+            pago.setFecha(fecha);
+            pago.setValor_pago(valor_pago);
         
-        pago.setAsesor(asesorLogueado);
-        pago.setCliente(ventaSeleccionada.getCliente()); 
-        pago.setVenta(ventaSeleccionada);
+            pago.setAsesor(asesorLogueado);
+            pago.setCliente(ventaSeleccionada.getCliente()); 
+            pago.setVenta(ventaSeleccionada);
         
-        ventaSeleccionada.getListaPagos().add(pago);
-        asesorLogueado.getListaPagos().add(pago);
-        ventaSeleccionada.getCliente().getListaPagos().add(pago);
+            ventaSeleccionada.getListaPagos().add(pago);
+            asesorLogueado.getListaPagos().add(pago);
+            ventaSeleccionada.getCliente().getListaPagos().add(pago);
         
-        try {
-            gestiPago.guardar(pago);
-        } catch (Exception ex) {
-            Logger.getLogger(pagoPrimeraCuota.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            try {
+                gestiPago.guardar(pago);
+            } catch (Exception ex) {
+                Logger.getLogger(pagoPrimeraCuota.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
-        //int numero_pagos = gestiVenta.contarNPagos(ventaSeleccionada.getId_venta());
-        //if(numero_pagos < ventaSeleccionada.getNumero_coutas()){
+        
             menuAsesor masesor = new menuAsesor();
             masesor.setVisible(true);
             masesor.setLocationRelativeTo(null);
             this.dispose();
-        //}else{
-            //JOptionPane optionPane = new JOptionPane("No se pueden hacer mas pagos");
-            //optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
-            //JDialog dialog = optionPane.createDialog("ERROR");
-            //dialog.setAlwaysOnTop(true);dialog.setVisible(true);btnGuardarPago.setEnabled(true);
-            //return;
-        //}
+        }else{
+            JOptionPane optionPane = new JOptionPane("No se pueden hacer mas pagos");
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("ERROR");
+            dialog.setAlwaysOnTop(true);dialog.setVisible(true);btnGuardarPago.setEnabled(true);
+            return;
+        }
         
         btnGuardarPago.setEnabled(true);
     }//GEN-LAST:event_btnGuardarPagoActionPerformed
