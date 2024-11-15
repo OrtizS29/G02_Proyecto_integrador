@@ -48,32 +48,38 @@ public class menuAsesor extends javax.swing.JFrame {
         });
         getContentPane().add(btnSalirAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 100, 30));
 
+        btnAdministrarVenta.setBackground(new java.awt.Color(255, 255, 255));
         btnAdministrarVenta.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnAdministrarVenta.setText("ADMINISTRAR VENTA");
+        btnAdministrarVenta.setBorderPainted(false);
         btnAdministrarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdministrarVentaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdministrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 250, 70));
+        getContentPane().add(btnAdministrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 190, 40));
 
+        btnAdministrarPago.setBackground(new java.awt.Color(255, 255, 255));
         btnAdministrarPago.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnAdministrarPago.setText("ADMINISTRAR PAGO");
+        btnAdministrarPago.setBorderPainted(false);
         btnAdministrarPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdministrarPagoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdministrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 250, 70));
+        getContentPane().add(btnAdministrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 190, 40));
 
+        btnAdministrarCliente.setBackground(new java.awt.Color(255, 255, 255));
         btnAdministrarCliente.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnAdministrarCliente.setText("ADMINISTRAR CLIENTE");
+        btnAdministrarCliente.setBorderPainted(false);
         btnAdministrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdministrarClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdministrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 250, 70));
+        getContentPane().add(btnAdministrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 180, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menuAsesorA.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

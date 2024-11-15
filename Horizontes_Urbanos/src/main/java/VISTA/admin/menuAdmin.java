@@ -38,6 +38,7 @@ public class menuAdmin extends javax.swing.JFrame {
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnAdministrarProyecto.setBackground(new java.awt.Color(255, 255, 255));
         btnAdministrarProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnAdministrarProyecto.setText("ADMINISTRAR PROYECTO");
         btnAdministrarProyecto.setBorder(null);
@@ -48,6 +49,7 @@ public class menuAdmin extends javax.swing.JFrame {
         });
         getContentPane().add(btnAdministrarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 230, 40));
 
+        btnAdministrarAsesor.setBackground(new java.awt.Color(255, 255, 255));
         btnAdministrarAsesor.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnAdministrarAsesor.setText("ADMINISTRAR ASESOR");
         btnAdministrarAsesor.setBorder(null);
@@ -56,8 +58,9 @@ public class menuAdmin extends javax.swing.JFrame {
                 btnAdministrarAsesorActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdministrarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 210, 50));
+        getContentPane().add(btnAdministrarAsesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 210, 40));
 
+        btnAdministrarApartamento.setBackground(new java.awt.Color(255, 255, 255));
         btnAdministrarApartamento.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnAdministrarApartamento.setText("ADMINISTRAR APARTAMENTO");
         btnAdministrarApartamento.setBorder(null);
@@ -68,6 +71,7 @@ public class menuAdmin extends javax.swing.JFrame {
         });
         getContentPane().add(btnAdministrarApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 230, 40));
 
+        btnAdministrarTorre.setBackground(new java.awt.Color(255, 255, 255));
         btnAdministrarTorre.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnAdministrarTorre.setText("ADMINISTRAR TORRE");
         btnAdministrarTorre.setBorder(null);

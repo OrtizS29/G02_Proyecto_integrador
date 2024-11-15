@@ -8,6 +8,8 @@ import Modelo.entities.Apartamento;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
+import java.awt.Font;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +27,7 @@ public class SeleccionarAptoVenta extends javax.swing.JFrame {
     GestionarVenta gestiVenta;
     GestionarApartamento gestiApto;
     Venta ventaActual;
-    Long precio_base=0L;
+    BigDecimal precio_base = new BigDecimal("0.00"); 
     calcularIntereses calcularIntereses;
     
     public SeleccionarAptoVenta(Venta ventaActual) {
@@ -121,7 +123,8 @@ public class SeleccionarAptoVenta extends javax.swing.JFrame {
                 apto.setVenta(ventaActual);
                 ventaActual.getListaApartamentos().add(apto);
                 Long valor =apto.getValor_apartamento();
-                precio_base+=valor; 
+                BigDecimal valorApartamentoDecimal = new BigDecimal(valor);
+                precio_base=precio_base.add(valorApartamentoDecimal); 
             }else{JOptionPane.showMessageDialog(this, "Este apartamento ya está seleccionado para esta venta.");
 }
             
@@ -144,21 +147,23 @@ public class SeleccionarAptoVenta extends javax.swing.JFrame {
         ventaActual.setPrecio_base(precio_base);
 
         int numero_cuotas = ventaActual.getNumero_coutas();
-        Long precio_base = ventaActual.getPrecio_base();
+        BigDecimal precio_base = ventaActual.getPrecio_base();
         Long sub_ministerio = ventaActual.getCliente().getSubsidio_ministerio();
         String sisben = ventaActual.getCliente().getSisben();
 
         if(numero_cuotas>1){
-            Long precio_final = calcularIntereses.calcularPrecioFinal(precio_base,numero_cuotas,sisben,sub_ministerio);  
+            BigDecimal precio_final = calcularIntereses.calcularPrecioFinal(precio_base,numero_cuotas,sisben,sub_ministerio);  
             ventaActual.setPrecio_final(precio_final);
             if(sub_ministerio != null){
-                ventaActual.setIntereses(precio_final-precio_base+sub_ministerio);
+                BigDecimal subMinDecimal = new BigDecimal(sub_ministerio);
+                ventaActual.setIntereses(precio_final.subtract(precio_base).add(subMinDecimal));
             }else{
-                ventaActual.setIntereses(precio_final-precio_base);
+                ventaActual.setIntereses(precio_final.subtract(precio_base));
             }
         }else{
             if(sisben.equals("SI")){
-                ventaActual.setPrecio_final(precio_base-sub_ministerio);
+                BigDecimal subMinDecimal = new BigDecimal(sub_ministerio);
+                ventaActual.setPrecio_final(precio_base.subtract(subMinDecimal));
             }else{ventaActual.setPrecio_final(precio_base);}
         }
 
@@ -239,6 +244,7 @@ public class SeleccionarAptoVenta extends javax.swing.JFrame {
         columnModel.getColumn(2).setWidth(0);
         
         tablaMostrarAptosNoVendidos.setRowHeight(30); 
+        tablaMostrarAptosNoVendidos.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
 
 }

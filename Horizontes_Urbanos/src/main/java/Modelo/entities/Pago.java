@@ -4,6 +4,7 @@ package Modelo.entities;
 import Modelo.entities.Cliente;
 import Modelo.entities.Asesor;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class Pago implements Serializable {
     @SequenceGenerator(name = "seq_idPago", sequenceName = "seq_idPago", allocationSize = 1)
     private Long id_pago;
     private Date fecha;
-    private Long valor_pago;
+    private BigDecimal valor_pago;
     
     @ManyToOne(optional=false)
     @JoinColumn(name = "Id_venta", referencedColumnName = "Id_venta")
@@ -45,7 +46,7 @@ public class Pago implements Serializable {
     public Pago() {
     }
 
-    public Pago(Long id_pago, Date fecha, Long valor_pago, Venta venta, Asesor asesor, Cliente cliente) {
+    public Pago(Long id_pago, Date fecha, BigDecimal valor_pago, Venta venta, Asesor asesor, Cliente cliente) {
         this.id_pago = id_pago;
         this.fecha = fecha;
         this.valor_pago = valor_pago;
@@ -70,11 +71,11 @@ public class Pago implements Serializable {
         this.fecha = fecha;
     }
 
-    public Long getValor_pago() {
+    public BigDecimal getValor_pago() {
         return valor_pago;
     }
 
-    public void setValor_pago(Long valor_pago) {
+    public void setValor_pago(BigDecimal valor_pago) {
         this.valor_pago = valor_pago;
     }
 
@@ -101,7 +102,4 @@ public class Pago implements Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
-    
-    
 }

@@ -9,6 +9,7 @@ import Modelo.entities.Torre;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
 import Modelo.persistir.PersistirAdministrador;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -115,7 +116,7 @@ public class administrarProyecto extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarProyecto);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 490, 270));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 600, 270));
 
         btnEliminarProyecto.setBackground(new java.awt.Color(49, 134, 181));
         btnEliminarProyecto.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -250,6 +251,7 @@ public class administrarProyecto extends javax.swing.JFrame {
 
         menuAdmin mAdmin = new menuAdmin();
         mAdmin.setVisible(true);
+        mAdmin.setLocationRelativeTo(null);
         this.dispose();
 
         btnMenu.setEnabled(true);
@@ -295,6 +297,7 @@ public class administrarProyecto extends javax.swing.JFrame {
         columnModel.getColumn(0).setWidth(0);
         
         tablaMostrarProyecto.setRowHeight(30);
+        tablaMostrarProyecto.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
     
 

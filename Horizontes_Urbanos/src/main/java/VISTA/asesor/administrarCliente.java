@@ -7,6 +7,7 @@ import Modelo.entities.Pago;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -380,6 +381,7 @@ public class administrarCliente extends javax.swing.JFrame {
         tablaMostrarCliente.getTableHeader().setReorderingAllowed(false);
         
         tablaMostrarCliente.setRowHeight(30);
+        tablaMostrarCliente.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
 
 }

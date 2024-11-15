@@ -5,6 +5,7 @@ import CONTROLADOR.gestionar.GestionarCliente;
 import Modelo.entities.Cliente;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
+import java.awt.Font;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -167,5 +168,6 @@ public class ventaSeleccionarCliente extends javax.swing.JFrame {
         tablaMostrarClientes.getTableHeader().setReorderingAllowed(false);
         
         tablaMostrarClientes.setRowHeight(30);
+        tablaMostrarClientes.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
 }

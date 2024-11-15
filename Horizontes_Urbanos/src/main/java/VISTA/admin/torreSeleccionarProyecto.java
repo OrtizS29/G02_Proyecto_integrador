@@ -7,6 +7,7 @@ import CONTROLADOR.gestionar.GestionarProyecto;
 import Modelo.entities.Proyecto;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
+import java.awt.Font;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -134,6 +135,7 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
 
         menuAdmin mAdmin = new menuAdmin();
         mAdmin.setVisible(true);
+        mAdmin.setLocationRelativeTo(null);
         this.dispose();
 
         btnMenu.setEnabled(true);
@@ -180,5 +182,6 @@ public class torreSeleccionarProyecto extends javax.swing.JFrame {
         
         //Espaciado de filas
         tablaSeleccionarProyecto.setRowHeight(30); 
+        tablaSeleccionarProyecto.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
 }

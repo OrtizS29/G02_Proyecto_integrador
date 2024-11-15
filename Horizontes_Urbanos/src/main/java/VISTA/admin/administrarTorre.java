@@ -13,6 +13,7 @@ import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -59,7 +60,7 @@ public class administrarTorre extends javax.swing.JFrame {
         btnEditarTorre = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMostrarTorre = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -79,7 +80,7 @@ public class administrarTorre extends javax.swing.JFrame {
                 btnSiguienteCrearProyectoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSiguienteCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 100, 40));
+        jPanel1.add(btnSiguienteCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, 100, 40));
 
         txtNumeroTorre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +96,7 @@ public class administrarTorre extends javax.swing.JFrame {
                 txtProyectoActualActionPerformed(evt);
             }
         });
-        jPanel1.add(txtProyectoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 280, 40));
+        jPanel1.add(txtProyectoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 210, 40));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -106,10 +107,10 @@ public class administrarTorre extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 100, 40));
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 100, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearTorre.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 510));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 510));
 
         jTabbedPane1.addTab("Crear Torre", jPanel1);
 
@@ -124,7 +125,7 @@ public class administrarTorre extends javax.swing.JFrame {
                 btnEliminarProyectoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 110, 40));
+        jPanel2.add(btnEliminarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 110, 40));
 
         btnEditarTorre.setBackground(new java.awt.Color(49, 134, 181));
         btnEditarTorre.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -135,7 +136,7 @@ public class administrarTorre extends javax.swing.JFrame {
                 btnEditarTorreActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEditarTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 110, 40));
+        jPanel2.add(btnEditarTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 110, 40));
 
         tablaMostrarTorre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,10 +151,10 @@ public class administrarTorre extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarTorre);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 620, 280));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 620, 300));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorree.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, -30, 910, 480));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorree.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 410));
 
         jTabbedPane1.addTab("Gestionar Torre", jPanel2);
 
@@ -165,7 +166,10 @@ public class administrarTorre extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -291,6 +295,7 @@ public class administrarTorre extends javax.swing.JFrame {
         columnModel.getColumn(0).setWidth(0);
         
         tablaMostrarTorre.setRowHeight(30);
+        tablaMostrarTorre.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
     
     
@@ -328,6 +333,7 @@ public class administrarTorre extends javax.swing.JFrame {
         
         menuAdmin mAdmin = new menuAdmin();
         mAdmin.setVisible(true);
+        mAdmin.setLocationRelativeTo(null);
         this.dispose();
         
         btnMenu.setEnabled(true);
@@ -345,7 +351,7 @@ public class administrarTorre extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarProyecto;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSiguienteCrearProyecto;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

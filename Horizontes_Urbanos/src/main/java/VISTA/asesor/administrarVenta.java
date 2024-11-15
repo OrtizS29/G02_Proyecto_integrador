@@ -14,6 +14,7 @@ import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
 import java.awt.Font;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -235,9 +236,9 @@ public class administrarVenta extends javax.swing.JFrame {
         venta.setCliente(clienteSeleccionado);
         
         //Datos falsos
-        venta.setPrecio_base(0L);
-        venta.setPrecio_final(0L);
-        venta.setIntereses(0L);
+        venta.setPrecio_base(BigDecimal.ZERO);
+        venta.setPrecio_final(BigDecimal.ZERO);
+        venta.setIntereses(BigDecimal.ZERO);
         
         try {
             gestiVenta.guardar(venta);
@@ -363,6 +364,8 @@ public class administrarVenta extends javax.swing.JFrame {
         columnModel.getColumn(0).setMaxWidth(0);
         columnModel.getColumn(0).setWidth(0);
         
-        tablaMostrarVenta.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
+        tablaMostrarVenta.getTableHeader().setReorderingAllowed(false);
+        
+        tablaMostrarVenta.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
 }
