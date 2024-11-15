@@ -1,8 +1,25 @@
 
 package VISTA.asesor;
 
+import CONTROLADOR.SessionManager;
+import CONTROLADOR.gestionar.GestionarCliente;
+import CONTROLADOR.gestionar.GestionarPago;
+import CONTROLADOR.gestionar.GestionarVenta;
+import Modelo.entities.Asesor;
 import Modelo.entities.Cliente;
+import Modelo.entities.Pago;
 import Modelo.entities.Venta;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -10,10 +27,18 @@ import Modelo.entities.Venta;
  */
 public class administrarPago extends javax.swing.JFrame {
 
+    GestionarPago gestiPago;
+    Cliente clienteSeleccionado;
+    Asesor asesorLogueado = SessionManager.getAsesorActual();
+    Venta ventaSeleccionada;
     
     
     public administrarPago(Cliente clienteSeleccionado,Venta ventaSeleccionada) {
         initComponents();
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiPago = new GestionarPago(factory);
+        this.ventaSeleccionada = ventaSeleccionada;
+        this.clienteSeleccionado = clienteSeleccionado;
     }
 
     /**
@@ -40,6 +65,11 @@ public class administrarPago extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -84,7 +114,7 @@ public class administrarPago extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarPago.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 470));
 
-        jTabbedPane1.addTab("registar pago", jPanel1);
+        jTabbedPane1.addTab("Registar Pago", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -101,7 +131,7 @@ public class administrarPago extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarPago);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 600, 280));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 680, 320));
 
         btnEliminarPago.setBackground(new java.awt.Color(49, 134, 181));
         btnEliminarPago.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -130,7 +160,7 @@ public class administrarPago extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarPago.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 475));
 
-        jTabbedPane1.addTab("gestionar pago", jPanel2);
+        jTabbedPane1.addTab("Gestionar Pago", jPanel2);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 520));
 
@@ -146,7 +176,38 @@ public class administrarPago extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarPagoActionPerformed
 
     private void btnGuardarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPagoActionPerformed
-        // TODO add your handling code here:
+        
+        btnGuardarPago.setEnabled(false);
+        
+        Date fecha = getFechaDesdeTxt();
+        Long valorCal = ventaSeleccionada.getPrecio_final()/ventaSeleccionada.getNumero_coutas();
+        txtValorPago.setText(valorCal.toString());
+        Long valor_pago = valorCal;
+        
+        Pago pago = new Pago();
+        pago.setFecha(fecha);
+        pago.setValor_pago(valor_pago);
+        
+        pago.setAsesor(asesorLogueado);
+        pago.setCliente(ventaSeleccionada.getCliente()); 
+        pago.setVenta(ventaSeleccionada);
+        
+        ventaSeleccionada.getListaPagos().add(pago);
+        asesorLogueado.getListaPagos().add(pago);
+        ventaSeleccionada.getCliente().getListaPagos().add(pago);
+        
+        try {
+            gestiPago.guardar(pago);
+        } catch (Exception ex) {
+            Logger.getLogger(pagoPrimeraCuota.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        menuAsesor masesor = new menuAsesor();
+        masesor.setVisible(true);
+        masesor.setLocationRelativeTo(null);
+        this.dispose();
+        
+        btnGuardarPago.setEnabled(true);
     }//GEN-LAST:event_btnGuardarPagoActionPerformed
 
     private void txtFechaPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaPagoActionPerformed
@@ -168,7 +229,31 @@ public class administrarPago extends javax.swing.JFrame {
         btnMenu.setEnabled(true);
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        cargarTabla();
+    }//GEN-LAST:event_formWindowOpened
 
+    private Date getFechaDesdeTxt() {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String a = txtFechaPago.getText();
+        if(a==null || a.isEmpty()){
+            return null;
+        }
+        else{
+            try {
+                java.util.Date utilDate = formato.parse(a);
+                return new Date(utilDate.getTime());
+            } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto. Debe ser yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            }
+        }
+    }
+
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditarPago;
     private javax.swing.JButton btnEliminarPago;
@@ -184,4 +269,39 @@ public class administrarPago extends javax.swing.JFrame {
     private javax.swing.JTextField txtFechaPago;
     private javax.swing.JTextField txtValorPago;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarTabla() {
+        DefaultTableModel modeloTabla  = new DefaultTableModel(){
+            
+            @Override
+            public boolean isCellEditable (int row,int column){
+                return false;
+            }
+        };
+        
+        String titulos[] = {"Id Pago","Valor Pago","Nombre Cliente","Subsidio","Num Coutas","Intereses","Precio Total"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        Long ced = clienteSeleccionado.getCedula();
+        Long id = ventaSeleccionada.getId_venta();
+        List<Pago> listaPagos = gestiPago.traerVentaPago(id);
+        
+        if(listaPagos != null){
+            for(Pago pago: listaPagos){
+                Object[] objeto ={pago.getId_pago(),pago.getValor_pago(),
+                    pago.getCliente().getNombre(),pago.getCliente().getSubsidio_ministerio(),
+                    pago.getVenta().getNumero_coutas(),pago.getVenta().getIntereses(),
+                    pago.getVenta().getPrecio_final()};
+                modeloTabla.addRow(objeto);
+            }
+        }
+        
+        tablaMostrarPago.setModel(modeloTabla);
+        tablaMostrarPago.setRowHeight(30);
+        
+        TableColumnModel columnModel = tablaMostrarPago.getColumnModel();
+        columnModel.getColumn(0).setMinWidth(0);
+        columnModel.getColumn(0).setMaxWidth(0);
+        columnModel.getColumn(0).setWidth(0);
+    }
 }

@@ -2,6 +2,7 @@
 package CONTROLADOR.gestionar;
 
 import Modelo.entities.Apartamento;
+import Modelo.entities.Cliente;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.persistir.IPersistencia;
@@ -16,9 +17,11 @@ import java.util.List;
 public class GestionarVenta {
     
     private IPersistenciaVenta persisVenta;
+    private IPersistencia<Cliente> persisCliente;
 
     public GestionarVenta(I_PersistenciaFactory fa) {
         persisVenta = fa.crearPersistirVenta();
+        persisCliente = fa.crearPersistirCliente();
     }
 
     public Venta guardar(Venta venta) throws Exception {
@@ -49,4 +52,11 @@ public class GestionarVenta {
         List<Apartamento> listaApartamentosNoVendidos = persisVenta.obtenerAptosNoVendidos();
         return listaApartamentosNoVendidos;
     }
+    
+
+    public List<Venta> obtenerVentaCliente(Long ced) {
+        Cliente cliente = persisCliente.obtener(ced);
+        return cliente.getListaVentas();
+    }
+                    
 }

@@ -151,7 +151,11 @@ public class SeleccionarAptoVenta extends javax.swing.JFrame {
         if(numero_cuotas>1){
             Long precio_final = calcularIntereses.calcularPrecioFinal(precio_base,numero_cuotas,sisben,sub_ministerio);  
             ventaActual.setPrecio_final(precio_final);
-            ventaActual.setIntereses(precio_final-precio_base+sub_ministerio);   
+            if(sub_ministerio != null){
+                ventaActual.setIntereses(precio_final-precio_base+sub_ministerio);
+            }else{
+                ventaActual.setIntereses(precio_final-precio_base);
+            }
         }else{
             if(sisben.equals("SI")){
                 ventaActual.setPrecio_final(precio_base-sub_ministerio);
