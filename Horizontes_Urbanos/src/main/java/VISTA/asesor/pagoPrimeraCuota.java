@@ -43,6 +43,11 @@ public class pagoPrimeraCuota extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtValorPago.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +114,10 @@ public class pagoPrimeraCuota extends javax.swing.JFrame {
     private void txtValorPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorPagoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValorPagoActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       
+    }//GEN-LAST:event_formWindowOpened
 
     
 

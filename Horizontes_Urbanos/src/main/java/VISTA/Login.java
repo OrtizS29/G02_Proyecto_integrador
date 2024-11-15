@@ -129,10 +129,12 @@ public class Login extends javax.swing.JFrame {
                 if(rol.equals("admin")){
                     menuAdmin mAdmin = new menuAdmin();
                     mAdmin.setVisible(true);
+                    mAdmin.setLocationRelativeTo(null);
                     this.dispose();
                 }else if(rol.equals("asesor")){
                     menuAsesor meAsesor = new menuAsesor();
                     meAsesor.setVisible(true);
+                    meAsesor.setLocationRelativeTo(null);
                     this.dispose();
                 }
             }

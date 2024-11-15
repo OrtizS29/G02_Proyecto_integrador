@@ -36,17 +36,13 @@ public class administrarVenta extends javax.swing.JFrame {
     GestionarVenta gestiVenta;
     GestionarApartamento gestiApto;
     Asesor asesorLogueado = SessionManager.getAsesorActual();
-    Long precio_base=0L;
-    private Long idVentaActual;
-    private Venta ventaActual;
-    calcularIntereses calcularIntereses;
+
     
     public administrarVenta(Cliente clienteSeleccionado) {
         I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
         this.gestiVenta = new GestionarVenta(factory);
         this.gestiApto = new GestionarApartamento(factory);
         this.clienteSeleccionado = clienteSeleccionado;
-        this.calcularIntereses = new calcularIntereses();
         initComponents();
     }
 
@@ -320,7 +316,8 @@ public class administrarVenta extends javax.swing.JFrame {
         String titulos[] = {"Precio Final","Num Coutas","Fecha Escritura","Valor Apto"};
         modeloTabla.setColumnIdentifiers(titulos);
         
-        List<Venta> listaVentas = gestiVenta.traerVentas();
+        Long ced = clienteSeleccionado.getCedula();
+        List<Venta> listaVentas = gestiVenta.obtenerVentaCliente(ced);
         
         if(listaVentas != null){
             for(Venta venta: listaVentas){
