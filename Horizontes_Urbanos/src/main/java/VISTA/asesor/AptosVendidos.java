@@ -7,6 +7,7 @@ import Modelo.entities.Cliente;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
+import java.awt.Font;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -122,6 +123,9 @@ public class AptosVendidos extends javax.swing.JFrame {
         
         tablaMostrarAptosVendidos.setModel(modeloTabla);
         tablaMostrarAptosVendidos.setRowHeight(30);
+        tablaMostrarAptosVendidos.getTableHeader().setReorderingAllowed(false);
+        
+        tablaMostrarAptosVendidos.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
     
 

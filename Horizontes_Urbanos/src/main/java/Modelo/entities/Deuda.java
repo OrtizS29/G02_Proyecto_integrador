@@ -26,7 +26,7 @@ public class Deuda implements Serializable {
     @SequenceGenerator(name = "seq_idDeuda", sequenceName = "seq_idDeuda", allocationSize = 1)
     private Long id_deuda;
     private Date fecha_inicia_deuda;
-    private Long valor;
+    private BigDecimal valor;
     
     @ManyToOne(optional=true)
     @JoinColumn(name = "Id_venta", referencedColumnName = "Id_venta")
@@ -35,7 +35,7 @@ public class Deuda implements Serializable {
     public Deuda() {
     }
 
-    public Deuda(Long id_deuda, Date fecha_inicia_deuda, Long valor, Venta venta) {
+    public Deuda(Long id_deuda, Date fecha_inicia_deuda, BigDecimal valor, Venta venta) {
         this.id_deuda = id_deuda;
         this.fecha_inicia_deuda = fecha_inicia_deuda;
         this.valor = valor;
@@ -58,11 +58,11 @@ public class Deuda implements Serializable {
         this.fecha_inicia_deuda = fecha_inicia_deuda;
     }
 
-    public Long getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(Long valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

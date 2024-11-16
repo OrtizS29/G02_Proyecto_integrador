@@ -7,6 +7,7 @@ import Modelo.entities.Cliente;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
+import java.awt.Font;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -221,6 +222,7 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
         tablaMostrarClientes.getTableHeader().setReorderingAllowed(false);
         
         tablaMostrarClientes.setRowHeight(30);
+        tablaMostrarClientes.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
     
     private void ActualizarVenta(Long cedClienteSeleccionado) {
@@ -262,6 +264,7 @@ public class pagoSeleccionarClienteYVenta extends javax.swing.JFrame {
             columnModel.getColumn(0).setWidth(0);
             
             tablaMostrarVentas.setRowHeight(30);
+            tablaMostrarVentas.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
         }
         
     }

@@ -7,6 +7,7 @@ import Modelo.entities.Pago;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -122,7 +123,7 @@ public class administrarAsesor extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 100, 40));
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 100, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarAsesor.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 430));
@@ -293,6 +294,7 @@ public class administrarAsesor extends javax.swing.JFrame {
 
         menuAdmin mAdmin = new menuAdmin();
         mAdmin.setVisible(true);
+        mAdmin.setLocationRelativeTo(null);
         this.dispose();
 
         btnMenu.setEnabled(true);
@@ -350,6 +352,7 @@ public class administrarAsesor extends javax.swing.JFrame {
         tablaMostrarAsesor.getTableHeader().setReorderingAllowed(false);
         
         tablaMostrarAsesor.setRowHeight(30);
+        tablaMostrarAsesor.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
 }
 

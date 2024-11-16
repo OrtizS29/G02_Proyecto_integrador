@@ -8,6 +8,8 @@ import Modelo.entities.Pago;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,6 +32,7 @@ public class pagoPrimeraCuota extends javax.swing.JFrame {
         this.gestiPago = new GestionarPago(factory);
         this.ventaActual = ventaActual;
         initComponents();
+        cargarTxtValor();
     }
 
     
@@ -81,9 +84,7 @@ public class pagoPrimeraCuota extends javax.swing.JFrame {
         btnGuardarPago.setEnabled(false);
         
         Date fecha = getFechaDesdeTxt();
-        Long valorCal = ventaActual.getPrecio_final()/ventaActual.getNumero_coutas();
-        txtValorPago.setText(valorCal.toString());
-        Long valor_pago = valorCal;
+        BigDecimal valor_pago = new BigDecimal(txtValorPago.getText());
         
         Pago pago = new Pago();
         pago.setFecha(fecha);
@@ -143,5 +144,14 @@ public class pagoPrimeraCuota extends javax.swing.JFrame {
             return null;
             }
         }
+    }
+    
+    public void cargarTxtValor(){
+        
+        txtFechaPago.setText(String.valueOf(ventaActual.getFecha()));
+        
+        BigDecimal numeroCuotas = new BigDecimal(ventaActual.getNumero_coutas());
+        BigDecimal valorCal = ventaActual.getPrecio_final().divide(numeroCuotas, 2, RoundingMode.HALF_UP);
+        txtValorPago.setText(valorCal.toString());
     }
 }

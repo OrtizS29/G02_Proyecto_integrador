@@ -6,6 +6,7 @@ import Modelo.entities.Cliente;
 import Modelo.entities.Asesor;
 import Modelo.entities.Apartamento;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.ArrayList;
 import javax.persistence.Column;
@@ -32,13 +33,13 @@ public class Venta implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="seq_idVenta")
     @SequenceGenerator(name = "seq_idVenta", sequenceName = "seq_idVenta", allocationSize = 1)
     private Long id_venta;
-    private Long precio_base;//
+    private BigDecimal precio_base;//
     @Column(name = "Numero_cuotas")
     private int numero_coutas;//
-    private Long precio_final;
+    private BigDecimal precio_final;
     private Date fecha;//
     @Column(nullable = false)
-    private Long intereses;//
+    private BigDecimal intereses;//
     
     @OneToMany(mappedBy = "venta")
     private ArrayList<Apartamento> listaApartamentos;//
@@ -60,7 +61,7 @@ public class Venta implements Serializable {
     public Venta() {
     }
 
-    public Venta(Long id_venta, Long precio_base, int numero_coutas, Long precio_final, Date fecha, Long intereses, ArrayList<Apartamento> listaApartamentos, ArrayList<Pago> listaPagos, ArrayList<Deuda> listaDeuda, Asesor asesor, Cliente cliente) {
+    public Venta(Long id_venta, BigDecimal precio_base, int numero_coutas, BigDecimal precio_final, Date fecha, BigDecimal intereses, ArrayList<Apartamento> listaApartamentos, ArrayList<Pago> listaPagos, ArrayList<Deuda> listaDeuda, Asesor asesor, Cliente cliente) {
         this.id_venta = id_venta;
         this.precio_base = precio_base;
         this.numero_coutas = numero_coutas;
@@ -82,11 +83,11 @@ public class Venta implements Serializable {
         this.id_venta = id_venta;
     }
 
-    public Long getPrecio_base() {
+    public BigDecimal getPrecio_base() {
         return precio_base;
     }
 
-    public void setPrecio_base(Long precio_base) {
+    public void setPrecio_base(BigDecimal precio_base) {
         this.precio_base = precio_base;
     }
 
@@ -98,11 +99,11 @@ public class Venta implements Serializable {
         this.numero_coutas = numero_coutas;
     }
 
-    public Long getPrecio_final() {
+    public BigDecimal getPrecio_final() {
         return precio_final;
     }
 
-    public void setPrecio_final(Long precio_final) {
+    public void setPrecio_final(BigDecimal precio_final) {
         this.precio_final = precio_final;
     }
 
@@ -114,11 +115,11 @@ public class Venta implements Serializable {
         this.fecha = fecha;
     }
 
-    public Long getIntereses() {
+    public BigDecimal getIntereses() {
         return intereses;
     }
 
-    public void setIntereses(Long intereses) {
+    public void setIntereses(BigDecimal intereses) {
         this.intereses = intereses;
     }
 

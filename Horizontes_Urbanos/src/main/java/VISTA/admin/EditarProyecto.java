@@ -81,6 +81,7 @@ public class EditarProyecto extends javax.swing.JFrame {
         
         menuAdmin mAdmin = new menuAdmin();
         mAdmin.setVisible(true);
+        mAdmin.setLocationRelativeTo(null);
         this.dispose();
 
         btnGuardar.setEnabled(true);

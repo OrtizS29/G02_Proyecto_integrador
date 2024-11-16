@@ -11,6 +11,7 @@ import Modelo.entities.Proyecto;
 import Modelo.entities.Torre;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
+import java.awt.Font;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -23,7 +24,7 @@ import javax.swing.table.TableColumnModel;
 
 /**
  *
- * @author juanc
+ * @author juanc,Santiago
  */
 public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
 
@@ -147,11 +148,11 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
         Torre torreSeleccionada = gestiTorre.buscarPorId(idTorreSeleccionada);
         
         if(torreSeleccionada == null){
-            JOptionPane optionPane = new JOptionPane("Torre no encontrada");
+            JOptionPane optionPane = new JOptionPane("Torre o Proyecto no encontrado");
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
             JDialog dialog = optionPane.createDialog("EROR");
-            dialog.setAlwaysOnTop(true);
-            dialog.setVisible(true);
+            dialog.setAlwaysOnTop(true);dialog.setVisible(true);
+            btnSiguienteSeleccionarPyT.setEnabled(true);
             return;
         }
         
@@ -171,6 +172,7 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
 
         menuAdmin mAdmin = new menuAdmin();
         mAdmin.setVisible(true);
+        mAdmin.setLocationRelativeTo(null);
         this.dispose();
 
         btnMenu.setEnabled(true);
@@ -224,6 +226,7 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
         columnModel.getColumn(0).setWidth(0);
         
         tablaMostrarProyectos.setRowHeight(30);
+        tablaMostrarProyectos.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -284,6 +287,7 @@ public class apartamentoSeleccionarProyecto extends javax.swing.JFrame {
         columnModel.getColumn(0).setWidth(0);
         
         tablaMostrarTorres.setRowHeight(30);
+        tablaMostrarTorres.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
     
 

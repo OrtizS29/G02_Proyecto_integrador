@@ -2,7 +2,6 @@
 package VISTA.asesor;
 
 import CONTROLADOR.SessionManager;
-import CONTROLADOR.gestionar.GestionarCliente;
 import CONTROLADOR.gestionar.GestionarPago;
 import CONTROLADOR.gestionar.GestionarVenta;
 import Modelo.entities.Asesor;
@@ -11,6 +10,9 @@ import Modelo.entities.Pago;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
+import java.awt.Font;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -186,7 +188,7 @@ public class administrarPago extends javax.swing.JFrame {
         int numero_pagos = gestiVenta.contarNPagos(ventaSeleccionada.getId_venta());
         if(numero_pagos < ventaSeleccionada.getNumero_coutas()){
             Date fecha = getFechaDesdeTxt();
-            Long valor_pago = Long.parseLong(txtValorPago.getText());
+            BigDecimal valor_pago = new BigDecimal(txtValorPago.getText());
         
             Pago pago = new Pago();
             pago.setFecha(fecha);
@@ -266,7 +268,9 @@ public class administrarPago extends javax.swing.JFrame {
     public void cargarTxtValor(){
         
         txtFechaPago.setText(String.valueOf(ventaSeleccionada.getFecha()));
-        Long valorCal = ventaSeleccionada.getPrecio_final()/ventaSeleccionada.getNumero_coutas();
+        
+        BigDecimal numeroCuotas = new BigDecimal(ventaSeleccionada.getNumero_coutas());
+        BigDecimal valorCal = ventaSeleccionada.getPrecio_final().divide(numeroCuotas, 2, RoundingMode.HALF_UP);
         txtValorPago.setText(valorCal.toString());
         
     }
@@ -321,5 +325,8 @@ public class administrarPago extends javax.swing.JFrame {
         columnModel.getColumn(0).setMinWidth(0);
         columnModel.getColumn(0).setMaxWidth(0);
         columnModel.getColumn(0).setWidth(0);
+        
+        tablaMostrarPago.getTableHeader().setReorderingAllowed(false);
+        tablaMostrarPago.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
 }
