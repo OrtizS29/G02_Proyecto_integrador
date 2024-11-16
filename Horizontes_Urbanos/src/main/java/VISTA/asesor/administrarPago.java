@@ -78,6 +78,8 @@ public class administrarPago extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtFechaPago.addActionListener(new java.awt.event.ActionListener() {
@@ -267,12 +269,12 @@ public class administrarPago extends javax.swing.JFrame {
 
     public void cargarTxtValor(){
         
-        txtFechaPago.setText(String.valueOf(ventaSeleccionada.getFecha()));
         
         BigDecimal numeroCuotas = new BigDecimal(ventaSeleccionada.getNumero_coutas());
         BigDecimal valorCal = ventaSeleccionada.getPrecio_final().divide(numeroCuotas, 2, RoundingMode.HALF_UP);
         txtValorPago.setText(valorCal.toString());
         
+        txtValorPago.setEditable(false);
     }
     
     

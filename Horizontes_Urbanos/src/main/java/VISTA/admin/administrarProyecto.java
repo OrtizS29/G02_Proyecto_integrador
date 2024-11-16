@@ -65,6 +65,8 @@ public class administrarProyecto extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSiguienteCrearProyecto.setBackground(new java.awt.Color(49, 134, 181));
@@ -145,7 +147,7 @@ public class administrarProyecto extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Gestionar Proyecto", jPanel2);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 510));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

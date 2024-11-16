@@ -66,6 +66,8 @@ public class administrarCliente extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +144,7 @@ public class administrarCliente extends javax.swing.JFrame {
         jPanel1.add(txtSubsidioMinisterio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 320, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarCliente.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, -1, 471));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 471));
 
         jTabbedPane1.addTab("Registrar Cliente", jPanel1);
 
