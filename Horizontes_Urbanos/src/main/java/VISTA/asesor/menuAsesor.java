@@ -15,7 +15,7 @@ public class menuAsesor extends javax.swing.JFrame {
     
     public menuAsesor() {
         initComponents();
-        setSize(912, 510);
+        //setSize(912, 510);
         setLocationRelativeTo(null);
     }
 
@@ -32,6 +32,7 @@ public class menuAsesor extends javax.swing.JFrame {
         btnAdministrarVenta = new javax.swing.JButton();
         btnAdministrarPago = new javax.swing.JButton();
         btnAdministrarCliente = new javax.swing.JButton();
+        btnAdministrarDeuda = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,8 +82,19 @@ public class menuAsesor extends javax.swing.JFrame {
         });
         getContentPane().add(btnAdministrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 180, 40));
 
+        btnAdministrarDeuda.setBackground(new java.awt.Color(255, 255, 255));
+        btnAdministrarDeuda.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAdministrarDeuda.setText("ADMINISTRAR DEUDA");
+        btnAdministrarDeuda.setBorderPainted(false);
+        btnAdministrarDeuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdministrarDeudaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAdministrarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 190, 40));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menuAsesorA.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -119,10 +131,19 @@ public class menuAsesor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnAdministrarClienteActionPerformed
 
+    private void btnAdministrarDeudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministrarDeudaActionPerformed
+
+        deudaSeleccionarClienteYVenta deuSelectCYV = new deudaSeleccionarClienteYVenta();
+        deuSelectCYV.setVisible(true);
+        deuSelectCYV.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnAdministrarDeudaActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdministrarCliente;
+    private javax.swing.JButton btnAdministrarDeuda;
     private javax.swing.JButton btnAdministrarPago;
     private javax.swing.JButton btnAdministrarVenta;
     private javax.swing.JButton btnSalirAsesor;

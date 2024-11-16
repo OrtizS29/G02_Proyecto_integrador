@@ -153,5 +153,8 @@ public class pagoPrimeraCuota extends javax.swing.JFrame {
         BigDecimal numeroCuotas = new BigDecimal(ventaActual.getNumero_coutas());
         BigDecimal valorCal = ventaActual.getPrecio_final().divide(numeroCuotas, 2, RoundingMode.HALF_UP);
         txtValorPago.setText(valorCal.toString());
+        
+        txtFechaPago.setEditable(false);
+        txtValorPago.setEditable(false);
     }
 }
