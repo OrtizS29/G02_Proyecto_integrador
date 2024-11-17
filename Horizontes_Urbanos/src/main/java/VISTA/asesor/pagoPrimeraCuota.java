@@ -1,6 +1,7 @@
 
 package VISTA.asesor;
 
+import CONTROLADOR.GenerarFactura;
 import CONTROLADOR.SessionManager;
 import CONTROLADOR.gestionar.GestionarPago;
 import Modelo.entities.Asesor;
@@ -100,6 +101,9 @@ public class pagoPrimeraCuota extends javax.swing.JFrame {
         
         try {
             gestiPago.guardar(pago);
+            GenerarFactura generarFactura = new GenerarFactura();
+            generarFactura.generarFactura(ventaActual.getId_venta());
+            JOptionPane.showMessageDialog(this, "Pago registrado y factura generada correctamente.");
         } catch (Exception ex) {
             Logger.getLogger(pagoPrimeraCuota.class.getName()).log(Level.SEVERE, null, ex);
         }
