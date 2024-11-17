@@ -50,4 +50,8 @@ public class ConexionORACLE {
             return false;
         }
     }
+    
+    public Connection getConnection() {
+        return conn;
+    }
 }

@@ -1,6 +1,7 @@
 
 package VISTA.asesor;
 
+import CONTROLADOR.GenerarFactura;
 import CONTROLADOR.SessionManager;
 import CONTROLADOR.gestionar.GestionarPago;
 import CONTROLADOR.gestionar.GestionarVenta;
@@ -62,6 +63,7 @@ public class administrarPago extends javax.swing.JFrame {
         txtValorPago = new javax.swing.JTextField();
         btnGuardarPago = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
+        btnGenerarFactura = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -106,7 +108,7 @@ public class administrarPago extends javax.swing.JFrame {
                 btnGuardarPagoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 90, 40));
+        jPanel1.add(btnGuardarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 90, 40));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -117,7 +119,18 @@ public class administrarPago extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 100, 40));
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 100, 40));
+
+        btnGenerarFactura.setBackground(new java.awt.Color(49, 134, 181));
+        btnGenerarFactura.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnGenerarFactura.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerarFactura.setText("Generar Factura");
+        btnGenerarFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarFacturaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnGenerarFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 140, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarPago.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 470));
@@ -250,6 +263,17 @@ public class administrarPago extends javax.swing.JFrame {
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnGenerarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarFacturaActionPerformed
+        
+        btnGenerarFactura.setEnabled(true);
+        
+        GenerarFactura generarFactura = new GenerarFactura();
+        generarFactura.generarFactura(ventaSeleccionada.getId_venta());
+        JOptionPane.showMessageDialog(this, "Pago registrado y factura generada correctamente.");
+        
+        btnGenerarFactura.setEnabled(true);
+    }//GEN-LAST:event_btnGenerarFacturaActionPerformed
+
     private Date getFechaDesdeTxt() {
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         String a = txtFechaPago.getText();
@@ -281,6 +305,7 @@ public class administrarPago extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditarPago;
     private javax.swing.JButton btnEliminarPago;
+    private javax.swing.JButton btnGenerarFactura;
     private javax.swing.JButton btnGuardarPago;
     private javax.swing.JButton btnMenu;
     private javax.swing.JLabel jLabel1;

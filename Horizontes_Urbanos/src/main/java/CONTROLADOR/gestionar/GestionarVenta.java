@@ -39,7 +39,7 @@ public class GestionarVenta {
         persisVenta.editar(venta);
     }
     
-    public void borrar(int id){
+    public void borrar(Long id){
     
     }
     
