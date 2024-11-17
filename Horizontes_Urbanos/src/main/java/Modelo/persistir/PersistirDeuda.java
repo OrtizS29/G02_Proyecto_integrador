@@ -12,7 +12,11 @@ import java.util.List;
 public class PersistirDeuda implements IPersistencia<Deuda> {
 
     private DeudaJpaController deudaJpa;
-    
+
+    public PersistirDeuda() {
+        deudaJpa = new DeudaJpaController();
+    }
+
     @Override
     public void crear(Deuda entidad) throws Exception {
         deudaJpa.create(entidad);

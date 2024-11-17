@@ -3,6 +3,7 @@ package CONTROLADOR.gestionar;
 
 import Modelo.entities.Apartamento;
 import Modelo.entities.Cliente;
+import Modelo.entities.Deuda;
 import Modelo.entities.Pago;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
