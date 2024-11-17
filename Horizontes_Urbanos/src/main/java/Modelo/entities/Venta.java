@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.ArrayList;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,7 +45,7 @@ public class Venta implements Serializable {
     @OneToMany(mappedBy = "venta")
     private ArrayList<Apartamento> listaApartamentos;//
     
-    @OneToMany(mappedBy = "venta")
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<Pago> listaPagos;//
     
     @OneToMany(mappedBy = "venta")

@@ -3,11 +3,14 @@ package CONTROLADOR.gestionar;
 
 import Modelo.entities.Apartamento;
 import Modelo.entities.Cliente;
+import Modelo.entities.Deuda;
+import Modelo.entities.Pago;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.persistir.IPersistencia;
 import Modelo.persistir.IPersistenciaVenta;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,11 +20,15 @@ import java.util.List;
 public class GestionarVenta {
     
     private IPersistenciaVenta persisVenta;
+    private IPersistencia<Pago> persisPago;
     private IPersistencia<Cliente> persisCliente;
+    private IPersistencia<Apartamento> persisApto;
 
     public GestionarVenta(I_PersistenciaFactory fa) {
         persisVenta = fa.crearPersistirVenta();
         persisCliente = fa.crearPersistirCliente();
+        persisPago = fa.crearPersistirPago();
+        persisApto = fa.crearPersistirApartamento();
     }
 
     public Venta guardar(Venta venta) throws Exception {
@@ -36,12 +43,18 @@ public class GestionarVenta {
     }
     
     public void editar(Venta venta) throws Exception {
+ 
         persisVenta.editar(venta);
     }
     
-    public void borrar(Long id){
-    
+    public void editarV(Venta venta,Date fecha,int numeroCoutas) throws Exception {
+        
+        venta.setFecha(fecha);
+        venta.setNumero_coutas(numeroCoutas);
+        persisVenta.editar(venta);
     }
+    
+    
     
     public List<Venta> traerVentas() {
         List<Venta> listaVentas = persisVenta.traerEntidades();
@@ -65,6 +78,34 @@ public class GestionarVenta {
     public List<Apartamento> obtenerAptosVendidos(Long id_venta, Long ced_cliente) {
         List<Apartamento> listaApartamentosVendidos = persisVenta.obtenerAptosVendidos(id_venta,ced_cliente);
         return listaApartamentosVendidos;
+    }
+
+    public boolean borrar(Cliente clienteSeleccionado, Long id_venta) throws Exception {
+        
+        if (clienteSeleccionado.getListaVentas().size()==1) {
+            return false;
+        }
+        else{
+            
+            Venta venta = persisVenta.obtener(id_venta);
+            
+            for (Apartamento apartamento : new ArrayList<>(venta.getListaApartamentos())) {
+                // Actualizar los atributos del apartamento
+                apartamento.setFecha_escritura(null);
+                apartamento.setVenta(null); // Desasocia el apartamento de la venta
+
+                // Guardar el cambio en la base de datos
+                persisApto.editar(apartamento);
+            }
+            
+            for (Pago pago : new ArrayList<>(venta.getListaPagos())) {
+                persisPago.eliminar(pago.getId_pago());
+            }
+            
+            persisVenta.eliminar(venta.getId_venta());
+            
+            return true;
+        }
     }
                     
 }

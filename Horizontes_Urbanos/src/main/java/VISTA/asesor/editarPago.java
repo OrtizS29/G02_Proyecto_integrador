@@ -1,14 +1,33 @@
 
 package VISTA.asesor;
 
+import CONTROLADOR.gestionar.GestionarPago;
+import Modelo.entities.Pago;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author juanc,Santiago
  */
 public class editarPago extends javax.swing.JFrame {
 
-    public editarPago() {
+    private GestionarPago gestiPago;
+    private Pago pago;
+    
+    public editarPago(Long id_pago) {
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiPago = new GestionarPago(factory);
         initComponents();
+        cargarDatos(id_pago);
     }
 
     /**
@@ -20,15 +39,15 @@ public class editarPago extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        txtFechaPago = new javax.swing.JTextField();
+        txtValorPago = new javax.swing.JTextField();
         btnGuardarPago = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 280, 30));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 280, 30));
+        getContentPane().add(txtFechaPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 280, 30));
+        getContentPane().add(txtValorPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 280, 30));
 
         btnGuardarPago.setBackground(new java.awt.Color(49, 134, 181));
         btnGuardarPago.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -51,7 +70,20 @@ public class editarPago extends javax.swing.JFrame {
 
         btnGuardarPago.setEnabled(false);
 
-
+        Date fecha = getFechaDesdeTxt();
+        BigDecimal valor_pago = new BigDecimal(txtValorPago.getText());
+        
+        try {
+            gestiPago.editar(pago,fecha,valor_pago);
+        } catch (Exception ex) {
+            Logger.getLogger(editarPago.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        menuAsesor masesor = new menuAsesor();
+        masesor.setVisible(true);
+        masesor.setLocationRelativeTo(null);
+        this.dispose();
+        
         btnGuardarPago.setEnabled(true);
     }//GEN-LAST:event_btnGuardarPagoActionPerformed
 
@@ -59,7 +91,35 @@ public class editarPago extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardarPago;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtFechaPago;
+    private javax.swing.JTextField txtValorPago;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDatos(Long id_pago) {
+        this.pago = gestiPago.buscarPorId(id_pago);
+        
+        txtFechaPago.setText(String.valueOf(pago.getFecha()));
+        BigDecimal numeroCuotas = new BigDecimal(pago.getVenta().getNumero_coutas());
+        BigDecimal valorCal = pago.getVenta().getPrecio_final().divide(numeroCuotas, 2, RoundingMode.HALF_UP);
+        txtValorPago.setText(valorCal.toString());
+        
+        txtValorPago.setEditable(false);
+    }
+    
+    private Date getFechaDesdeTxt() {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String a = txtFechaPago.getText();
+        if(a==null || a.isEmpty()){
+            return null;
+        }
+        else{
+            try {
+                java.util.Date utilDate = formato.parse(a);
+                return new Date(utilDate.getTime());
+            } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto. Debe ser yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            }
+        }
+    }
 }

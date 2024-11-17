@@ -1,17 +1,35 @@
 
 package VISTA.asesor;
 
+import CONTROLADOR.calcularIntereses;
+import CONTROLADOR.gestionar.GestionarVenta;
+import Modelo.entities.Venta;
+import Modelo.factory.I_PersistenciaFactory;
+import Modelo.factory.PersistenciaFactory_inyect;
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author juanc,Santiago
  */
 public class editarVenta extends javax.swing.JFrame {
 
-    /**
-     * Creates new form editarVenta
-     */
-    public editarVenta() {
+    GestionarVenta gestiVenta;
+    Venta venta;
+    calcularIntereses calcularIntereses;
+    
+    public editarVenta(Long id_venta) {
+        I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiVenta = new GestionarVenta(factory);
+        this.calcularIntereses = new calcularIntereses();
         initComponents();
+        cargarDatos(id_venta);
     }
 
     /**
@@ -23,15 +41,15 @@ public class editarVenta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        txtFechaVenta = new javax.swing.JTextField();
+        txtNumeroCuotas = new javax.swing.JTextField();
         btnGuardarVenta = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 280, 30));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 280, 30));
+        getContentPane().add(txtFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 280, 30));
+        getContentPane().add(txtNumeroCuotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 280, 30));
 
         btnGuardarVenta.setBackground(new java.awt.Color(49, 134, 181));
         btnGuardarVenta.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -54,6 +72,38 @@ public class editarVenta extends javax.swing.JFrame {
 
         btnGuardarVenta.setEnabled(false);
 
+        Date fecha = getFechaDesdeTxt();
+        int numeroCoutas = Integer.parseInt(txtNumeroCuotas.getText());
+        /*
+        //si cambia el numero de coutas
+        int numero_cuotas = venta.getNumero_coutas();
+        BigDecimal precio_base = venta.getPrecio_base();
+        Long sub_ministerio = venta.getCliente().getSubsidio_ministerio();
+        String sisben = venta.getCliente().getSisben();
+        
+        if(numero_cuotas>1){
+            BigDecimal precio_final = calcularIntereses.calcularPrecioFinal(precio_base,numero_cuotas,sisben,sub_ministerio);  
+            venta.setPrecio_final(precio_final);
+            if(sub_ministerio != null){
+                BigDecimal subMinDecimal = new BigDecimal(sub_ministerio);
+                venta.setIntereses(precio_final.subtract(precio_base).add(subMinDecimal));
+            }else{
+                venta.setIntereses(precio_final.subtract(precio_base));
+            }
+        }else{
+            if(sisben.equals("SI")){
+                BigDecimal subMinDecimal = new BigDecimal(sub_ministerio);
+                venta.setPrecio_final(precio_base.subtract(subMinDecimal));
+            }else{venta.setPrecio_final(precio_base);}
+        }*/
+        
+        try {
+            gestiVenta.editarV(venta,fecha,numeroCoutas);
+        } catch (Exception ex) {
+            Logger.getLogger(editarVenta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         btnGuardarVenta.setEnabled(true);
     }//GEN-LAST:event_btnGuardarVentaActionPerformed
 
@@ -61,7 +111,33 @@ public class editarVenta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardarVenta;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtFechaVenta;
+    private javax.swing.JTextField txtNumeroCuotas;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDatos(Long id_venta) {
+        
+        this.venta = gestiVenta.buscarPorId(id_venta);
+        
+        txtFechaVenta.setText(String.valueOf(venta.getFecha()));
+        txtNumeroCuotas.setText(String.valueOf(venta.getNumero_coutas()));
+        
+    }
+    
+    private Date getFechaDesdeTxt() {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String a = txtFechaVenta.getText();
+        if(a==null || a.isEmpty()){
+            return null;
+        }
+        else{
+            try {
+                java.util.Date utilDate = formato.parse(a);
+                return new Date(utilDate.getTime());
+            } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto. Debe ser yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+            }
+        }
+    }
 }

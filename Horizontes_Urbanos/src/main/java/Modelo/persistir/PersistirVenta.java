@@ -2,8 +2,10 @@
 package Modelo.persistir;
 
 import Modelo.entities.Apartamento;
+import Modelo.entities.Pago;
 import Modelo.entities.Venta;
 import Modelo.jpa_controllers.VentaJpaController;
+import Modelo.jpa_controllers.exceptions.IllegalOrphanException;
 import java.util.List;
 
 /**
@@ -30,6 +32,20 @@ public class PersistirVenta implements IPersistenciaVenta {
 
     @Override
     public void editar(Venta entidad) throws Exception {
+        
+        Venta ventaExistente = ventaJpa.findVenta(entidad.getId_venta());
+        if (ventaExistente != null) {
+            // Validar que los pagos actuales no queden huérfanos
+            for (Pago pago : ventaExistente.getListaPagos()) {
+                entidad.getListaPagos().add(pago);
+                if (!entidad.getListaPagos().contains(pago)) {
+                    
+                    System.out.println("Hay un error");
+                    return;
+                }
+            }
+        }
+        
         ventaJpa.edit(entidad);
     }
 

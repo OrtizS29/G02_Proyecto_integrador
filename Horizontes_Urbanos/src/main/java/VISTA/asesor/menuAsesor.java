@@ -33,6 +33,7 @@ public class menuAsesor extends javax.swing.JFrame {
         btnAdministrarPago = new javax.swing.JButton();
         btnAdministrarCliente = new javax.swing.JButton();
         btnAdministrarDeuda = new javax.swing.JButton();
+        btnDashboard = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,7 +92,18 @@ public class menuAsesor extends javax.swing.JFrame {
                 btnAdministrarDeudaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdministrarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 190, 40));
+        getContentPane().add(btnAdministrarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 190, 50));
+
+        btnDashboard.setBackground(new java.awt.Color(255, 255, 255));
+        btnDashboard.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnDashboard.setText("DASHBOARD");
+        btnDashboard.setBorderPainted(false);
+        btnDashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDashboardActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, 190, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menuAsesorA.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 510));
@@ -139,6 +151,16 @@ public class menuAsesor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnAdministrarDeudaActionPerformed
 
+    private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
+       
+        dashBoardSeleccionarCliente dSelectCliente = new dashBoardSeleccionarCliente();
+        dSelectCliente.setVisible(true);
+        dSelectCliente.setLocationRelativeTo(null);
+        this.dispose();
+        
+        
+    }//GEN-LAST:event_btnDashboardActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -146,6 +168,7 @@ public class menuAsesor extends javax.swing.JFrame {
     private javax.swing.JButton btnAdministrarDeuda;
     private javax.swing.JButton btnAdministrarPago;
     private javax.swing.JButton btnAdministrarVenta;
+    private javax.swing.JButton btnDashboard;
     private javax.swing.JButton btnSalirAsesor;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

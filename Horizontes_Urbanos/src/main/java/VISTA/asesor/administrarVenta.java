@@ -205,11 +205,65 @@ public class administrarVenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarVentaActionPerformed
-        // TODO add your handling code here:
+        
+         btnEditarVenta.setEnabled(false);
+        
+        if(tablaMostrarVenta.getRowCount() > 0){
+            if(tablaMostrarVenta.getSelectedRow() != -1){
+                
+                Long id_venta = Long.parseLong(String.valueOf(tablaMostrarVenta.getValueAt(tablaMostrarVenta.getSelectedRow(), 0)));
+                
+                editarVenta editVenta = new editarVenta(id_venta);
+                editVenta.setVisible(true);
+                editVenta.setLocationRelativeTo(null);
+                this.dispose();
+            }
+            else {
+                
+            }
+        }
+        else{
+        
+        }
+        
+         btnEditarVenta.setEnabled(false);
     }//GEN-LAST:event_btnEditarVentaActionPerformed
 
     private void btnEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarVentaActionPerformed
-        // TODO add your handling code here:
+        
+        if(tablaMostrarVenta.getRowCount() > 0){
+            if(tablaMostrarVenta.getSelectedRow() != -1){
+                
+                Long id_venta = Long.parseLong(String.valueOf(tablaMostrarVenta.getValueAt(tablaMostrarVenta.getSelectedRow(), 0)));
+                
+                try {
+                    boolean op = gestiVenta.borrar(clienteSeleccionado,id_venta);
+                    if(op == true){
+                        JOptionPane optionPane = new JOptionPane("Venta Eliminada Correctamente");
+                        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                        JDialog dialog = optionPane.createDialog("Borrado Exitoso");
+                        dialog.setAlwaysOnTop(true);
+                        dialog.setVisible(true);
+                    }
+                    else{
+                        JOptionPane optionPane = new JOptionPane("No se puede eliminar la unica Venta del Cliente");
+                        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                        JDialog dialog = optionPane.createDialog("Restriccion del sistema");
+                        dialog.setAlwaysOnTop(true);
+                        dialog.setVisible(true);
+                    }
+                } catch (Exception ex) {
+                    Logger.getLogger(administrarVenta.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else {
+                
+            }
+        }
+        else{
+        
+        }
+        cargarTabla();
     }//GEN-LAST:event_btnEliminarVentaActionPerformed
 
     private void txtNumeroCoutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroCoutasActionPerformed
