@@ -4,6 +4,7 @@ package VISTA.asesor;
 import CONTROLADOR.GenerarFactura;
 import CONTROLADOR.SessionManager;
 import CONTROLADOR.gestionar.GestionarPago;
+import CONTROLADOR.gestionar.GestionarVenta;
 import Modelo.entities.Asesor;
 import Modelo.entities.Pago;
 import Modelo.entities.Venta;
@@ -25,11 +26,13 @@ import javax.swing.JOptionPane;
 public class pagoPrimeraCuota extends javax.swing.JFrame {
 
     GestionarPago gestiPago;
+    GestionarVenta gestiVenta;
     Asesor asesorLogueado = SessionManager.getAsesorActual();
     Venta ventaActual;
     
     public pagoPrimeraCuota(Venta ventaActual) {
         I_PersistenciaFactory factory = new PersistenciaFactory_inyect();
+        this.gestiVenta = new GestionarVenta(factory);
         this.gestiPago = new GestionarPago(factory);
         this.ventaActual = ventaActual;
         initComponents();
@@ -101,6 +104,8 @@ public class pagoPrimeraCuota extends javax.swing.JFrame {
         
         try {
             gestiPago.guardar(pago);
+            gestiVenta.editar(ventaActual);
+            
             GenerarFactura generarFactura = new GenerarFactura();
             generarFactura.generarFactura(ventaActual.getId_venta());
             JOptionPane.showMessageDialog(this, "Pago registrado y factura generada correctamente.");

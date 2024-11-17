@@ -189,52 +189,102 @@ public class administrarPago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPagoActionPerformed
-        // TODO add your handling code here:
+        
+        if(tablaMostrarPago.getRowCount() > 0){
+            if(tablaMostrarPago.getSelectedRow() != -1){
+                
+                Long ced_cliente = Long .parseLong(String.valueOf(tablaMostrarPago.getValueAt(tablaMostrarPago.getSelectedRow(), 0)));
+               
+                try {
+                    boolean op = gestiPago.borrar(ced_cliente,ventaSeleccionada);
+                    
+                    if(op == true){
+                        JOptionPane optionPane = new JOptionPane("Pago Eliminado Correctamente");
+                        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                        JDialog dialog = optionPane.createDialog("Borrado Exitoso");
+                        dialog.setAlwaysOnTop(true);
+                        dialog.setVisible(true);
+                    }
+                    else{
+                        JOptionPane optionPane = new JOptionPane("No se puede eliminar el unico Pago de la Venta");
+                        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                        JDialog dialog = optionPane.createDialog("Restriccion del sistema");
+                        dialog.setAlwaysOnTop(true);
+                        dialog.setVisible(true);
+                    }
+                } catch (Exception ex) {
+                    Logger.getLogger(administrarPago.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        }
+        
+        cargarTabla();
     }//GEN-LAST:event_btnEliminarPagoActionPerformed
 
     private void btnEditarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPagoActionPerformed
-        // TODO add your handling code here:
+        
+        if(tablaMostrarPago.getRowCount() > 0){
+            if(tablaMostrarPago.getSelectedRow() != -1){
+                
+                Long id_pago = Long .parseLong(String.valueOf(tablaMostrarPago.getValueAt(tablaMostrarPago.getSelectedRow(), 0)));
+                
+                editarPago editPago = null;
+                
+                editPago = new editarPago(id_pago);
+                editPago.setVisible(true);
+                editPago.setLocationRelativeTo(null);
+                this.dispose();
+            }
+            else {
+                
+            }
+        }
+        else{
+        
+        }
     }//GEN-LAST:event_btnEditarPagoActionPerformed
 
     private void btnGuardarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPagoActionPerformed
         
-        btnGuardarPago.setEnabled(false);
-        
-        int numero_pagos = gestiVenta.contarNPagos(ventaSeleccionada.getId_venta());
-        if(numero_pagos < ventaSeleccionada.getNumero_coutas()){
-            Date fecha = getFechaDesdeTxt();
-            BigDecimal valor_pago = new BigDecimal(txtValorPago.getText());
-        
-            Pago pago = new Pago();
-            pago.setFecha(fecha);
-            pago.setValor_pago(valor_pago);
-        
-            pago.setAsesor(asesorLogueado);
-            pago.setCliente(ventaSeleccionada.getCliente()); 
-            pago.setVenta(ventaSeleccionada);
-        
-            ventaSeleccionada.getListaPagos().add(pago);
-            asesorLogueado.getListaPagos().add(pago);
-            ventaSeleccionada.getCliente().getListaPagos().add(pago);
-        
-            try {
-                gestiPago.guardar(pago);
-            } catch (Exception ex) {
-                Logger.getLogger(pagoPrimeraCuota.class.getName()).log(Level.SEVERE, null, ex);
+            btnGuardarPago.setEnabled(false);
+
+            int numero_pagos = gestiVenta.contarNPagos(ventaSeleccionada.getId_venta());
+            if(numero_pagos < ventaSeleccionada.getNumero_coutas()){
+                Date fecha = getFechaDesdeTxt();
+                BigDecimal valor_pago = new BigDecimal(txtValorPago.getText());
+
+                Pago pago = new Pago();
+                pago.setFecha(fecha);
+                pago.setValor_pago(valor_pago);
+
+                pago.setAsesor(asesorLogueado);
+                pago.setCliente(ventaSeleccionada.getCliente()); 
+                pago.setVenta(ventaSeleccionada);
+
+                ventaSeleccionada.getListaPagos().add(pago);
+                asesorLogueado.getListaPagos().add(pago);
+                ventaSeleccionada.getCliente().getListaPagos().add(pago);
+
+                try {
+                    gestiPago.guardar(pago);
+                    gestiVenta.editar(ventaSeleccionada);
+                } catch (Exception ex) {
+                    Logger.getLogger(pagoPrimeraCuota.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+
+                menuAsesor masesor = new menuAsesor();
+                masesor.setVisible(true);
+                masesor.setLocationRelativeTo(null);
+                this.dispose();
+            }else{
+                JOptionPane optionPane = new JOptionPane("No se pueden hacer mas pagos");
+                optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+                JDialog dialog = optionPane.createDialog("ERROR");
+                dialog.setAlwaysOnTop(true);dialog.setVisible(true);btnGuardarPago.setEnabled(true);
+                return;
             }
-        
-        
-            menuAsesor masesor = new menuAsesor();
-            masesor.setVisible(true);
-            masesor.setLocationRelativeTo(null);
-            this.dispose();
-        }else{
-            JOptionPane optionPane = new JOptionPane("No se pueden hacer mas pagos");
-            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
-            JDialog dialog = optionPane.createDialog("ERROR");
-            dialog.setAlwaysOnTop(true);dialog.setVisible(true);btnGuardarPago.setEnabled(true);
-            return;
-        }
         
         btnGuardarPago.setEnabled(true);
     }//GEN-LAST:event_btnGuardarPagoActionPerformed
