@@ -79,7 +79,7 @@ public class SeleccionarAptoVenta extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tablaMostrarAptosNoVendidos);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 860, 370));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 350));
 
         btnGuardarAptos.setBackground(new java.awt.Color(49, 134, 181));
         btnGuardarAptos.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -90,9 +90,9 @@ public class SeleccionarAptoVenta extends javax.swing.JFrame {
                 btnGuardarAptosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardarAptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 130, 40));
+        getContentPane().add(btnGuardarAptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, 130, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarApartamento.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/seleccionarAptoVenta.jpeg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 510));
 
         pack();

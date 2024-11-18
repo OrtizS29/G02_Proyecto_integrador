@@ -92,7 +92,7 @@ public class menuAsesor extends javax.swing.JFrame {
                 btnAdministrarDeudaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdministrarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 190, 50));
+        getContentPane().add(btnAdministrarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 190, 50));
 
         btnDashboard.setBackground(new java.awt.Color(255, 255, 255));
         btnDashboard.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -103,7 +103,7 @@ public class menuAsesor extends javax.swing.JFrame {
                 btnDashboardActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, 190, 50));
+        getContentPane().add(btnDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 190, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menuAsesorA.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 510));
