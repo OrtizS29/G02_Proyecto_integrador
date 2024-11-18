@@ -81,28 +81,28 @@ public class administrarApartamento extends javax.swing.JFrame {
                 txtMatriculaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 290, 30));
+        jPanel1.add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 290, 30));
 
         txtTipoUnidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTipoUnidadActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTipoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 290, 30));
+        jPanel1.add(txtTipoUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 290, 30));
 
         txtNumeroApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroApartamentoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNumeroApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 290, 30));
+        jPanel1.add(txtNumeroApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 290, 30));
 
         txtArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAreaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 290, 30));
+        jPanel1.add(txtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 290, 30));
 
         btnGuardarApartamento.setBackground(new java.awt.Color(49, 134, 181));
         btnGuardarApartamento.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -113,14 +113,14 @@ public class administrarApartamento extends javax.swing.JFrame {
                 btnGuardarApartamentoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardarApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 110, 40));
+        jPanel1.add(btnGuardarApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, 110, 40));
 
         txtValorApartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorApartamentoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtValorApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 290, 30));
+        jPanel1.add(txtValorApartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 290, 30));
 
         txtTorreActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         txtTorreActual.setText("TorreActual");
@@ -129,7 +129,7 @@ public class administrarApartamento extends javax.swing.JFrame {
                 txtTorreActualActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTorreActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 140, 40));
+        jPanel1.add(txtTorreActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 140, 40));
 
         txtProyectoActual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         txtProyectoActual.setText("ProyectoActual");
@@ -138,7 +138,7 @@ public class administrarApartamento extends javax.swing.JFrame {
                 txtProyectoActualActionPerformed(evt);
             }
         });
-        jPanel1.add(txtProyectoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 150, 40));
+        jPanel1.add(txtProyectoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 160, 40));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -151,8 +151,8 @@ public class administrarApartamento extends javax.swing.JFrame {
         });
         jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 100, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crearApartamento.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 500));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorreAC.jpeg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 500));
 
         jTabbedPane1.addTab("Crear Apartamento", jPanel1);
 
@@ -200,7 +200,7 @@ public class administrarApartamento extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Gestionar Apartamento", jPanel2);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 530));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

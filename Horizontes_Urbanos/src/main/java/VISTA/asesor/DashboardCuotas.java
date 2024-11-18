@@ -78,7 +78,7 @@ public class DashboardCuotas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarCuotasP);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 800, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 870, 290));
 
         btnMenuV.setBackground(new java.awt.Color(49, 134, 181));
         btnMenuV.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -89,10 +89,10 @@ public class DashboardCuotas extends javax.swing.JFrame {
                 btnMenuVActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMenuV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 270, 40));
+        jPanel1.add(btnMenuV, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 120, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarApartamento.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 409));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/coutasPorVencer.jpeg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         jTabbedPane1.addTab("Coutas Por Vencer", jPanel1);
 
@@ -111,7 +111,7 @@ public class DashboardCuotas extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaMostrarCuotasPV);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 800, 300));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 930, 300));
 
         btnMenuCV.setBackground(new java.awt.Color(49, 134, 181));
         btnMenuCV.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -122,10 +122,10 @@ public class DashboardCuotas extends javax.swing.JFrame {
                 btnMenuCVActionPerformed(evt);
             }
         });
-        jPanel2.add(btnMenuCV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 270, 40));
+        jPanel2.add(btnMenuCV, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 140, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarApartamento.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 409));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/coutasYaVencidas.jpeg"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         jTabbedPane1.addTab("Cuotas Vencidas", jPanel2);
 

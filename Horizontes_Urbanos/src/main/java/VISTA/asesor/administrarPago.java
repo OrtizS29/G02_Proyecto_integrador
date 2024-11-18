@@ -378,7 +378,8 @@ public class administrarPago extends javax.swing.JFrame {
             }
         };
         
-        String titulos[] = {"Id Pago","Valor Pago","Nombre Cliente","Subsidio","Num Coutas","Intereses","Precio Total"};
+        String titulos[] = {"Id Pago","Valor Pago","Nombre Cliente","Subsidio","Num Coutas","Intereses",
+            "Precio Total","Fecha Venta"};
         modeloTabla.setColumnIdentifiers(titulos);
         
         Long ced = clienteSeleccionado.getCedula();
@@ -390,7 +391,7 @@ public class administrarPago extends javax.swing.JFrame {
                 Object[] objeto ={pago.getId_pago(),pago.getValor_pago(),
                     pago.getCliente().getNombre(),pago.getCliente().getSubsidio_ministerio(),
                     pago.getVenta().getNumero_coutas(),pago.getVenta().getIntereses(),
-                    pago.getVenta().getPrecio_final()};
+                    pago.getVenta().getPrecio_final(),pago.getVenta().getFecha()};
                 modeloTabla.addRow(objeto);
             }
         }

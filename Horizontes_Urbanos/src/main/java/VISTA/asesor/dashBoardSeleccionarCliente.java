@@ -64,7 +64,7 @@ public class dashBoardSeleccionarCliente extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tablaMostrarClientes);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 480, 280));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 610, 280));
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
         btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -75,7 +75,7 @@ public class dashBoardSeleccionarCliente extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 100, 40));
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 110, 40));
 
         btnSiguiente.setBackground(new java.awt.Color(49, 134, 181));
         btnSiguiente.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -87,9 +87,9 @@ public class dashBoardSeleccionarCliente extends javax.swing.JFrame {
                 btnSiguienteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, 100, 40));
+        getContentPane().add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 600, 120, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Venta.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dashBoardCliente.jpeg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

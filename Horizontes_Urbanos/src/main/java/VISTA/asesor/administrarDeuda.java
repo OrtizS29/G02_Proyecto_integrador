@@ -77,7 +77,7 @@ public class administrarDeuda extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnMenu.setBackground(new java.awt.Color(49, 134, 181));
-        btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setText("Menu");
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -85,10 +85,10 @@ public class administrarDeuda extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 100, 40));
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 100, 40));
 
         btnGuardarDeuda.setBackground(new java.awt.Color(49, 134, 181));
-        btnGuardarDeuda.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnGuardarDeuda.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnGuardarDeuda.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardarDeuda.setText("Guardar");
         btnGuardarDeuda.addActionListener(new java.awt.event.ActionListener() {
@@ -96,24 +96,24 @@ public class administrarDeuda extends javax.swing.JFrame {
                 btnGuardarDeudaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 100, 40));
+        jPanel1.add(btnGuardarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 100, 40));
 
         txtFechaDeuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFechaDeudaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtFechaDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 370, 30));
+        jPanel1.add(txtFechaDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 370, 30));
 
         txtValorDeuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorDeudaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtValorDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 370, 30));
+        jPanel1.add(txtValorDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 370, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registrarPago.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 510));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 500));
 
         jTabbedPane1.addTab("Registrar Deuda", jPanel1);
 
@@ -132,10 +132,10 @@ public class administrarDeuda extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarPago);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 680, 320));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 620, 350));
 
         btnEliminarDeuda.setBackground(new java.awt.Color(49, 134, 181));
-        btnEliminarDeuda.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnEliminarDeuda.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnEliminarDeuda.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarDeuda.setText("Eliminar");
         btnEliminarDeuda.addActionListener(new java.awt.event.ActionListener() {
@@ -143,10 +143,10 @@ public class administrarDeuda extends javax.swing.JFrame {
                 btnEliminarDeudaActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 100, 40));
+        jPanel2.add(btnEliminarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 110, 40));
 
         btnEditarDeuda.setBackground(new java.awt.Color(49, 134, 181));
-        btnEditarDeuda.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnEditarDeuda.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnEditarDeuda.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarDeuda.setText("Editar");
         btnEditarDeuda.addActionListener(new java.awt.event.ActionListener() {
@@ -154,10 +154,10 @@ public class administrarDeuda extends javax.swing.JFrame {
                 btnEditarDeudaActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEditarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 100, 40));
+        jPanel2.add(btnEditarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 110, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarPago.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarClienteA.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 510));
 
         jTabbedPane1.addTab("Gestionar Deuda", jPanel2);
 

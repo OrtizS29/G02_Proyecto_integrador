@@ -127,7 +127,7 @@ public class administrarTorre extends javax.swing.JFrame {
                 btnEliminarProyectoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 110, 40));
+        jPanel2.add(btnEliminarProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 110, 40));
 
         btnEditarTorre.setBackground(new java.awt.Color(49, 134, 181));
         btnEditarTorre.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -138,7 +138,7 @@ public class administrarTorre extends javax.swing.JFrame {
                 btnEditarTorreActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEditarTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 110, 40));
+        jPanel2.add(btnEditarTorre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 110, 40));
 
         tablaMostrarTorre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -153,10 +153,10 @@ public class administrarTorre extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaMostrarTorre);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 620, 300));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 620, 320));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorree.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 410));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarTorre.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 510));
 
         jTabbedPane1.addTab("Gestionar Torre", jPanel2);
 
@@ -164,16 +164,11 @@ public class administrarTorre extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 904, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jTabbedPane1)
         );
 
         pack();
