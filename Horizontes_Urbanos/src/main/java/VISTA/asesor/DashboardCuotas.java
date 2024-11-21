@@ -5,6 +5,7 @@ import CONTROLADOR.gestionar.GestionarDeuda;
 import CONTROLADOR.gestionar.GestionarVenta;
 import Modelo.entities.Cliente;
 import Modelo.entities.Deuda;
+import Modelo.entities.Pago;
 import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.factory.PersistenciaFactory_inyect;
@@ -175,7 +176,8 @@ public class DashboardCuotas extends javax.swing.JFrame {
             }
         };
         
-        String titulos[] = {"Id Venta","Precio Total","Intereses","Num Coutas","Fecha","Num pagos"};
+        String titulos[] = {"Id Pago","Valor Pago","Fecha Pago","Precio Total",
+            "Num Coutas","Num pagos"};
         modeloTabla.setColumnIdentifiers(titulos);
         
         Long ced = clienteSeleccionado.getCedula();
@@ -183,14 +185,18 @@ public class DashboardCuotas extends javax.swing.JFrame {
         
         if(listaVentas != null){
             for(Venta venta: listaVentas){
-                int numero_pagos = gestiVenta.contarNPagos(venta.getId_venta());
-                Object[] objeto ={venta.getId_venta(),
-                venta.getPrecio_final(),
-                venta.getIntereses(),
-                venta.getNumero_coutas(),
-                venta.getFecha(),
-                numero_pagos};
-                modeloTabla.addRow(objeto);   
+                for(Pago pago : venta.getListaPagos()){
+                    int numero_pagos = gestiVenta.contarNPagos(venta.getId_venta());
+                    Object[] objeto ={
+                    pago.getId_pago(),
+                    pago.getValor_pago(),
+                    pago.getFecha(),
+                    venta.getPrecio_final(),
+                    venta.getNumero_coutas(),
+                    numero_pagos
+                    };
+                    modeloTabla.addRow(objeto);
+                }
             }
         }
         
@@ -228,19 +234,18 @@ public class DashboardCuotas extends javax.swing.JFrame {
             for(Venta venta: listaVentas){
                 Long id_venta = venta.getId_venta();
                 List<Deuda> listaDeudas = gestiDeuda.traerVentaDeuda(id_venta);
-                for (Deuda deuda : listaDeudas) {
-                    int numero_pagos = gestiVenta.contarNPagos(venta.getId_venta());
-                    Object[] objeto ={venta.getId_venta(),
-                    venta.getPrecio_final(),
-                    venta.getIntereses(),
-                    venta.getNumero_coutas(),
-                    venta.getFecha(),
-                    numero_pagos,
-                    deuda.getFecha_inicia_deuda(),
-                    deuda.getValor()};
-                    modeloTabla.addRow(objeto);
-                }
-                       
+                    for (Deuda deuda : listaDeudas) {
+                        int numero_pagos = gestiVenta.contarNPagos(venta.getId_venta());
+                        Object[] objeto ={venta.getId_venta(),
+                        venta.getPrecio_final(),
+                        venta.getIntereses(),
+                        venta.getNumero_coutas(),
+                        venta.getFecha(),
+                        numero_pagos,
+                        deuda.getFecha_inicia_deuda(),
+                        deuda.getValor()};
+                        modeloTabla.addRow(objeto);
+                    }          
             }
         }
         

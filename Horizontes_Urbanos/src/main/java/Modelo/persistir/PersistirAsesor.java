@@ -3,7 +3,6 @@ package Modelo.persistir;
 
 import Modelo.entities.Asesor;
 import Modelo.jpa_controllers.AsesorJpaController;
-
 import java.util.List;
 
 /**
@@ -30,7 +29,8 @@ public class PersistirAsesor implements IPersistencia<Asesor> {
 
     @Override
     public void editar(Asesor entidad) throws Exception {
-        asesorJpa.edit(entidad);
+        
+        asesorJpa.editarAsesor(entidad);
     }
 
     @Override

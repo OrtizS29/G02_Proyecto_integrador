@@ -32,7 +32,7 @@ public class Pago implements Serializable {
     private BigDecimal valor_pago;
     
     @ManyToOne(optional=false)
-    @JoinColumn(name = "Id_venta", referencedColumnName = "Id_venta",nullable=true)
+    @JoinColumn(name = "Id_venta", referencedColumnName = "Id_venta")
     private Venta venta;
     
     @ManyToOne(optional=false)

@@ -2,7 +2,9 @@
 package CONTROLADOR.gestionar;
 
 import Modelo.entities.Asesor;
+import Modelo.entities.Pago;
 import Modelo.entities.Usuario;
+import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.persistir.IPersistencia;
 import Modelo.persistir.IPersistenciaUsuario;
@@ -18,11 +20,16 @@ public class GestionarAsesor {
     
      private IPersistencia<Asesor> persisAsesor;
      private IPersistenciaUsuario persisUsuario;
+     private IPersistencia<Pago> persisPago;
+     private IPersistencia<Venta> persisVenta;
 
     public GestionarAsesor(I_PersistenciaFactory fa) {
         
+        
         persisAsesor = fa.crearPersistirAsesor();
         persisUsuario = fa.crearPersistirUsuario();
+        persisPago = fa.crearPersistirPago();
+        persisVenta = fa.crearPersistirVenta();
     }
 
     public Asesor guardar(Asesor asesor) throws Exception {
@@ -44,8 +51,11 @@ public class GestionarAsesor {
         asesor.setDireccion(direccion);
         asesor.setCorreo(correo);
         asesor.setTelefono(telefono);
+        
         persisAsesor.editar(asesor);
     }
+    
+    
     
     public void borrar(Long id){
         

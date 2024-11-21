@@ -129,6 +129,9 @@ public class EditarAsesor extends javax.swing.JFrame {
         String UsuarioAse = txtUsuarioAsesor.getText();
         String Contraseña = txtContraseñaAsesor.getText();
         
+        
+        
+        
         try {
             gestiAsesor.editar(asesor, cedulaAsesor, nombreAsesor, direccionAsesor,correoAsesor,telefonoAsesor);
         } catch (Exception ex) {
@@ -194,7 +197,10 @@ public class EditarAsesor extends javax.swing.JFrame {
         this.usuario = gestiUsuario.obtenerAsesorCed(ced_asesor);
         
         txtNombreAsesor.setText(asesor.getNombre());
+        
         txtCedulaAsesor.setText(String.valueOf(asesor.getCedula()));
+        txtCedulaAsesor.setEditable(false);
+        
         txtDireccionAsesor.setText(asesor.getDireccion());
         txtCorreoAsesorReg.setText(asesor.getCorreo());
         txtTelefonoAsesorReg.setText(String.valueOf(asesor.getTelefono()));

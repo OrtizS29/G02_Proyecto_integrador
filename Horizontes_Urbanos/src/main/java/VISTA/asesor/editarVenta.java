@@ -103,6 +103,10 @@ public class editarVenta extends javax.swing.JFrame {
             Logger.getLogger(editarVenta.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        menuAsesor masesor = new menuAsesor();
+        masesor.setVisible(true);
+        masesor.setLocationRelativeTo(null);
+        this.dispose();
         
         btnGuardarVenta.setEnabled(true);
     }//GEN-LAST:event_btnGuardarVentaActionPerformed
