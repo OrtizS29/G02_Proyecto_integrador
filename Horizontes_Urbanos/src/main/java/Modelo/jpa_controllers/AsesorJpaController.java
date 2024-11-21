@@ -95,19 +95,28 @@ public class AsesorJpaController implements Serializable {
     public void edit(Asesor asesor) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
+            System.out.println("Iniciando edición del asesor con cédula: " + asesor.getCedula());
             em = getEntityManager();
             em.getTransaction().begin();
+            
             Asesor persistentAsesor = em.find(Asesor.class, asesor.getCedula());
+            System.out.println("Asesor persistente encontrado: " + persistentAsesor);
+            
             ArrayList<Venta> listaVentasOld = persistentAsesor.getListaVentas();
             ArrayList<Venta> listaVentasNew = asesor.getListaVentas();
             ArrayList<Pago> listaPagosOld = persistentAsesor.getListaPagos();
             ArrayList<Pago> listaPagosNew = asesor.getListaPagos();
+            
+            System.out.println("Listas cargadas: Ventas antiguas (" + listaVentasOld.size() + "), Ventas nuevas (" + listaVentasNew.size() + ")");
+            System.out.println("Listas cargadas: Pagos antiguos (" + listaPagosOld.size() + "), Pagos nuevos (" + listaPagosNew.size() + ")");
+            
             List<String> illegalOrphanMessages = null;
             for (Venta listaVentasOldVenta : listaVentasOld) {
                 if (!listaVentasNew.contains(listaVentasOldVenta)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
+                    System.err.println("Venta no retenida: " + listaVentasOldVenta.getId_venta());
                     illegalOrphanMessages.add("You must retain Venta " + listaVentasOldVenta + " since its asesor field is not nullable.");
                 }
             }
@@ -116,17 +125,21 @@ public class AsesorJpaController implements Serializable {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
+                    System.err.println("Pago no retenido: " + listaPagosOldPago.getId_pago());
                     illegalOrphanMessages.add("You must retain Pago " + listaPagosOldPago + " since its asesor field is not nullable.");
                 }
             }
+            
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
+            
             ArrayList<Venta> attachedListaVentasNew = new ArrayList<Venta>();
             for (Venta listaVentasNewVentaToAttach : listaVentasNew) {
                 listaVentasNewVentaToAttach = em.getReference(listaVentasNewVentaToAttach.getClass(), listaVentasNewVentaToAttach.getId_venta());
                 attachedListaVentasNew.add(listaVentasNewVentaToAttach);
             }
+            
             listaVentasNew = attachedListaVentasNew;
             asesor.setListaVentas(listaVentasNew);
             ArrayList<Pago> attachedListaPagosNew = new ArrayList<Pago>();
@@ -134,9 +147,12 @@ public class AsesorJpaController implements Serializable {
                 listaPagosNewPagoToAttach = em.getReference(listaPagosNewPagoToAttach.getClass(), listaPagosNewPagoToAttach.getId_pago());
                 attachedListaPagosNew.add(listaPagosNewPagoToAttach);
             }
+            
             listaPagosNew = attachedListaPagosNew;
             asesor.setListaPagos(listaPagosNew);
             asesor = em.merge(asesor);
+            System.out.println("Asesor actualizado: " + asesor);
+            
             for (Venta listaVentasNewVenta : listaVentasNew) {
                 if (!listaVentasOld.contains(listaVentasNewVenta)) {
                     Asesor oldAsesorOfListaVentasNewVenta = listaVentasNewVenta.getAsesor();
@@ -160,12 +176,38 @@ public class AsesorJpaController implements Serializable {
                 }
             }
             em.getTransaction().commit();
+            System.out.println("Edición completada exitosamente.");
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 Long id = asesor.getCedula();
                 if (findAsesor(id) == null) {
+                    System.err.println("El asesor con id " + id + " no existe.");
                     throw new NonexistentEntityException("The asesor with id " + id + " no longer exists.");
+                }
+            }
+            System.err.println("Error durante la edición: " + ex.getMessage());
+            throw ex;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+
+    public void editarAsesor(Asesor asesor) throws NonexistentEntityException, Exception {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            asesor = em.merge(asesor);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            String msg = ex.getLocalizedMessage();
+            if (msg == null || msg.length() == 0) {
+                Long id = asesor.getCedula();
+                if (findAsesor(id) == null) {
+                    throw new NonexistentEntityException("El asesor con id " + id + " no existe.");
                 }
             }
             throw ex;
@@ -175,10 +217,12 @@ public class AsesorJpaController implements Serializable {
             }
         }
     }
-
+    
+    
     public void destroy(Long id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
+            System.out.println("Iniciando edición del asesor con cédula: " + id);
             em = getEntityManager();
             em.getTransaction().begin();
             Asesor asesor;

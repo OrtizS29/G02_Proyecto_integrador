@@ -4,6 +4,7 @@ package Modelo.persistir;
 import Modelo.entities.Apartamento;
 import Modelo.entities.Pago;
 import Modelo.entities.Venta;
+import Modelo.factory.I_PersistenciaFactory;
 import Modelo.jpa_controllers.VentaJpaController;
 import Modelo.jpa_controllers.exceptions.IllegalOrphanException;
 import java.util.List;
@@ -15,9 +16,11 @@ import java.util.List;
 public class PersistirVenta implements IPersistenciaVenta {
     
     private VentaJpaController ventaJpa;
+    private IPersistencia<Pago> persisPago;
 
-    public PersistirVenta() {
+    public PersistirVenta(I_PersistenciaFactory fa) {
         ventaJpa = new VentaJpaController();
+        persisPago = fa.crearPersistirPago();
     }
 
     @Override
@@ -33,20 +36,17 @@ public class PersistirVenta implements IPersistenciaVenta {
     @Override
     public void editar(Venta entidad) throws Exception {
         
-        Venta ventaExistente = ventaJpa.findVenta(entidad.getId_venta());
-        if (ventaExistente != null) {
-            // Validar que los pagos actuales no queden huérfanos
-            for (Pago pago : ventaExistente.getListaPagos()) {
-                entidad.getListaPagos().add(pago);
-                if (!entidad.getListaPagos().contains(pago)) {
-                    
-                    System.out.println("Hay un error");
-                    return;
-                }
+        // Sincronizar los pagos nuevos
+        for (Pago pago : entidad.getListaPagos()) {
+            pago.setVenta(entidad);  // Asociar cada pago nuevo a la venta
+            persisPago.editar(pago);  // Persistir el pago actualizado
+            
+            if (pago.getCliente() == null) {
+                pago.setCliente(entidad.getCliente());  // Asociar el cliente al pago si no está asociado
             }
         }
-        
         ventaJpa.edit(entidad);
+        
     }
 
     @Override

@@ -2,7 +2,10 @@
 package Modelo.persistir;
 
 import Modelo.entities.Pago;
+import Modelo.entities.Venta;
+import Modelo.factory.I_PersistenciaFactory;
 import Modelo.jpa_controllers.PagoJpaController;
+import Modelo.jpa_controllers.VentaJpaController;
 import java.util.List;
 
 /**
@@ -29,6 +32,11 @@ public class PersistirPago implements IPersistencia<Pago> {
 
     @Override
     public void editar(Pago entidad) throws Exception {
+        if (entidad.getVenta() == null) {
+            throw new IllegalArgumentException("El pago debe estar asociado a una venta.");
+        }
+       
+        
         pagoJpa.edit(entidad);
     }
 

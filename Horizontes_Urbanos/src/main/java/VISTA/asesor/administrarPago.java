@@ -388,8 +388,11 @@ public class administrarPago extends javax.swing.JFrame {
         
         if(listaPagos != null){
             for(Pago pago: listaPagos){
-                Object[] objeto ={pago.getId_pago(),pago.getValor_pago(),
-                    pago.getCliente().getNombre(),pago.getCliente().getSubsidio_ministerio(),
+                Object[] objeto ={
+                    pago.getId_pago(),
+                    pago.getValor_pago(),
+                    pago.getCliente().getNombre(),
+                    pago.getCliente().getSubsidio_ministerio(),
                     pago.getVenta().getNumero_coutas(),pago.getVenta().getIntereses(),
                     pago.getVenta().getPrecio_final(),pago.getVenta().getFecha()};
                 modeloTabla.addRow(objeto);

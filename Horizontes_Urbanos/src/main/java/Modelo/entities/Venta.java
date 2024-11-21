@@ -42,17 +42,17 @@ public class Venta implements Serializable {
     @Column(nullable = false)
     private BigDecimal intereses;//
     
-    @OneToMany(mappedBy = "venta")
+    @OneToMany(mappedBy = "venta",cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<Apartamento> listaApartamentos;//
     
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<Pago> listaPagos;//
     
-    @OneToMany(mappedBy = "venta")
+    @OneToMany(mappedBy = "venta",cascade = CascadeType.ALL)
     private ArrayList<Deuda> listaDeuda;//
     
     @ManyToOne(optional=false)
-    @JoinColumn(name = "Cedula_asesor", referencedColumnName = "Cedula")
+    @JoinColumn(name = "Cedula_asesor", referencedColumnName = "Cedula",nullable = false)
     private Asesor asesor;//
     
     @ManyToOne(optional=false)

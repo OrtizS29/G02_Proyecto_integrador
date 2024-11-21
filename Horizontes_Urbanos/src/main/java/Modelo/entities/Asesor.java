@@ -3,6 +3,8 @@ package Modelo.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -29,10 +31,10 @@ public class Asesor implements Serializable {
     @Column(nullable = true)
     private Long telefono;
     
-    @OneToMany(mappedBy = "asesor")
+    @OneToMany(mappedBy = "asesor",cascade = CascadeType.ALL)
     private ArrayList<Venta> listaVentas;
     
-    @OneToMany(mappedBy = "asesor")
+    @OneToMany(mappedBy = "asesor",cascade = CascadeType.ALL)
     private ArrayList<Pago> listaPagos;
 
     public Asesor() {
@@ -103,4 +105,29 @@ public class Asesor implements Serializable {
     public void setListaPagos(ArrayList<Pago> listaPagos) {
         this.listaPagos = listaPagos;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 73 * hash + Objects.hashCode(this.cedula);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Asesor other = (Asesor) obj;
+        return Objects.equals(this.cedula, other.cedula);
+    }
+    
+    
+
 }

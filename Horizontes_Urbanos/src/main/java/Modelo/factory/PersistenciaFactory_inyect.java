@@ -43,7 +43,7 @@ public class PersistenciaFactory_inyect implements I_PersistenciaFactory{
     public IPersistencia<Asesor> crearPersistirAsesor() {
         return new PersistirAsesor();
     }
-
+    
     @Override
     public IPersistencia<Cliente> crearPersistirCliente() {
         return new PersistirCliente();
@@ -71,7 +71,7 @@ public class PersistenciaFactory_inyect implements I_PersistenciaFactory{
 
     @Override
     public IPersistenciaVenta crearPersistirVenta() {
-        return new PersistirVenta();
+        return new PersistirVenta(this);
     }
 
     @Override
