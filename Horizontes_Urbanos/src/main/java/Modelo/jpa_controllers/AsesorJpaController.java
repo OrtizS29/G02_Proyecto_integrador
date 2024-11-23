@@ -218,7 +218,6 @@ public class AsesorJpaController implements Serializable {
         }
     }
     
-    
     public void destroy(Long id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {

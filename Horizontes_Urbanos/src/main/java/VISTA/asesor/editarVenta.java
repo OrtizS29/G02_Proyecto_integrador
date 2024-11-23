@@ -74,31 +74,33 @@ public class editarVenta extends javax.swing.JFrame {
 
         Date fecha = getFechaDesdeTxt();
         int numeroCoutas = Integer.parseInt(txtNumeroCuotas.getText());
-        /*
+        
         //si cambia el numero de coutas
         int numero_cuotas = venta.getNumero_coutas();
         BigDecimal precio_base = venta.getPrecio_base();
         Long sub_ministerio = venta.getCliente().getSubsidio_ministerio();
         String sisben = venta.getCliente().getSisben();
+        BigDecimal intereses = BigDecimal.ZERO;
+        BigDecimal precio_final = BigDecimal.ZERO;
         
         if(numero_cuotas>1){
-            BigDecimal precio_final = calcularIntereses.calcularPrecioFinal(precio_base,numero_cuotas,sisben,sub_ministerio);  
-            venta.setPrecio_final(precio_final);
+            precio_final = calcularIntereses.calcularPrecioFinal(precio_base,numero_cuotas,sisben,sub_ministerio);  
+            precio_final = precio_final;
             if(sub_ministerio != null){
                 BigDecimal subMinDecimal = new BigDecimal(sub_ministerio);
-                venta.setIntereses(precio_final.subtract(precio_base).add(subMinDecimal));
+                intereses = precio_final.subtract(precio_base).add(subMinDecimal);
             }else{
-                venta.setIntereses(precio_final.subtract(precio_base));
+                intereses = precio_final.subtract(precio_base);
             }
         }else{
             if(sisben.equals("SI")){
                 BigDecimal subMinDecimal = new BigDecimal(sub_ministerio);
-                venta.setPrecio_final(precio_base.subtract(subMinDecimal));
-            }else{venta.setPrecio_final(precio_base);}
-        }*/
+                precio_final = precio_base.subtract(subMinDecimal);
+            }else{precio_final = precio_base;}
+        }
         
         try {
-            gestiVenta.editarV(venta,fecha,numeroCoutas);
+            gestiVenta.editarV(venta,fecha,numeroCoutas,precio_final,precio_base,intereses);
         } catch (Exception ex) {
             Logger.getLogger(editarVenta.class.getName()).log(Level.SEVERE, null, ex);
         }

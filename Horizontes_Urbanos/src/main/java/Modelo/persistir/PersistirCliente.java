@@ -29,7 +29,8 @@ public class PersistirCliente implements IPersistencia<Cliente> {
 
     @Override
     public void editar(Cliente entidad) throws Exception {
-        clienteJpa.edit(entidad);
+        
+        clienteJpa.editarCliente(entidad);
     }
 
     @Override

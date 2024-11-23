@@ -36,16 +36,7 @@ public class PersistirVenta implements IPersistenciaVenta {
     @Override
     public void editar(Venta entidad) throws Exception {
         
-        // Sincronizar los pagos nuevos
-        for (Pago pago : entidad.getListaPagos()) {
-            pago.setVenta(entidad);  // Asociar cada pago nuevo a la venta
-            persisPago.editar(pago);  // Persistir el pago actualizado
-            
-            if (pago.getCliente() == null) {
-                pago.setCliente(entidad.getCliente());  // Asociar el cliente al pago si no está asociado
-            }
-        }
-        ventaJpa.edit(entidad);
+        ventaJpa.editarVentaC(entidad);
         
     }
 

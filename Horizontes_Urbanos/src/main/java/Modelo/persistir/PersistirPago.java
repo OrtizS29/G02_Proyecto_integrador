@@ -35,7 +35,6 @@ public class PersistirPago implements IPersistencia<Pago> {
         if (entidad.getVenta() == null) {
             throw new IllegalArgumentException("El pago debe estar asociado a una venta.");
         }
-       
         
         pagoJpa.edit(entidad);
     }
