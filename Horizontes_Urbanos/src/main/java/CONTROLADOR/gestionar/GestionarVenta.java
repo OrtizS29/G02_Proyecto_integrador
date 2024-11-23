@@ -9,6 +9,7 @@ import Modelo.entities.Venta;
 import Modelo.factory.I_PersistenciaFactory;
 import Modelo.persistir.IPersistencia;
 import Modelo.persistir.IPersistenciaVenta;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,10 +48,14 @@ public class GestionarVenta {
         persisVenta.editar(venta);
     }
     
-    public void editarV(Venta venta,Date fecha,int numeroCoutas) throws Exception {
+    public void editarV(Venta venta,Date fecha,int numeroCoutas,BigDecimal precio_final,
+            BigDecimal precio_base,BigDecimal intereses) throws Exception {
         
         venta.setFecha(fecha);
         venta.setNumero_coutas(numeroCoutas);
+        venta.setPrecio_final(precio_final);
+        venta.setPrecio_base(precio_base);
+        venta.setIntereses(intereses);
         persisVenta.editar(venta);
     }
     

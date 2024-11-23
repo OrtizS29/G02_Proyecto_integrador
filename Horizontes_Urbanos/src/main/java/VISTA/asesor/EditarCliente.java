@@ -109,7 +109,7 @@ public class EditarCliente extends javax.swing.JFrame {
                 btnGuardarClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 90, 40));
+        getContentPane().add(btnGuardarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, 100, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/editarCliente.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -174,6 +174,7 @@ public class EditarCliente extends javax.swing.JFrame {
         }
         menuAsesor masesor = new menuAsesor();
         masesor.setVisible(true);
+        masesor.setLocationRelativeTo(null);
         this.dispose();
 
         btnGuardarCliente.setEnabled(true);

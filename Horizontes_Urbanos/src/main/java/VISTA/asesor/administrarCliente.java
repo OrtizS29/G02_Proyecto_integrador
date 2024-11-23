@@ -310,6 +310,7 @@ public class administrarCliente extends javax.swing.JFrame {
 
         menuAsesor masesor = new menuAsesor();
         masesor.setVisible(true);
+        masesor.setLocationRelativeTo(null);
         this.dispose();
 
         btnMenu.setEnabled(true);

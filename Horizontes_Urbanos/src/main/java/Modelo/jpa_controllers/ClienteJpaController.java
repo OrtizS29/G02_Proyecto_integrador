@@ -179,6 +179,29 @@ public class ClienteJpaController implements Serializable {
         }
     }
 
+    public void editarCliente(Cliente cliente) throws Modelo.jpa_controllers.exceptions.NonexistentEntityException, Exception {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            cliente = em.merge(cliente);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            String msg = ex.getLocalizedMessage();
+            if (msg == null || msg.length() == 0) {
+                Long id = cliente.getCedula();
+                if (findCliente(id) == null) {
+                    throw new Modelo.jpa_controllers.exceptions.NonexistentEntityException("El cliente con id " + id + " no existe.");
+                }
+            }
+            throw ex;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+    
     public void destroy(Long id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
