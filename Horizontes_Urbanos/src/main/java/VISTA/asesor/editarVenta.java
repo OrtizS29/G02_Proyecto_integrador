@@ -73,10 +73,10 @@ public class editarVenta extends javax.swing.JFrame {
         btnGuardarVenta.setEnabled(false);
 
         Date fecha = getFechaDesdeTxt();
-        int numeroCoutas = Integer.parseInt(txtNumeroCuotas.getText());
+        int numero_cuotas = Integer.parseInt(txtNumeroCuotas.getText());
         
         //si cambia el numero de coutas
-        int numero_cuotas = venta.getNumero_coutas();
+        //int numero_cuotas = venta.getNumero_coutas();
         BigDecimal precio_base = venta.getPrecio_base();
         Long sub_ministerio = venta.getCliente().getSubsidio_ministerio();
         String sisben = venta.getCliente().getSisben();
@@ -85,7 +85,6 @@ public class editarVenta extends javax.swing.JFrame {
         
         if(numero_cuotas>1){
             precio_final = calcularIntereses.calcularPrecioFinal(precio_base,numero_cuotas,sisben,sub_ministerio);  
-            precio_final = precio_final;
             if(sub_ministerio != null){
                 BigDecimal subMinDecimal = new BigDecimal(sub_ministerio);
                 intereses = precio_final.subtract(precio_base).add(subMinDecimal);
@@ -100,7 +99,7 @@ public class editarVenta extends javax.swing.JFrame {
         }
         
         try {
-            gestiVenta.editarV(venta,fecha,numeroCoutas,precio_final,precio_base,intereses);
+            gestiVenta.editarV(venta,fecha,numero_cuotas,precio_final,precio_base,intereses);
         } catch (Exception ex) {
             Logger.getLogger(editarVenta.class.getName()).log(Level.SEVERE, null, ex);
         }

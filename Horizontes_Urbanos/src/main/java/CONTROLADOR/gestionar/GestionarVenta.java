@@ -85,8 +85,8 @@ public class GestionarVenta {
         return listaApartamentosVendidos;
     }
 
-    public boolean borrar(Cliente clienteSeleccionado, Long id_venta) throws Exception {
-        
+    public void borrar(Cliente clienteSeleccionado, Long id_venta) throws Exception {
+        /*
         if (clienteSeleccionado.getListaVentas().size()==1) {
             return false;
         }
@@ -110,7 +110,24 @@ public class GestionarVenta {
             persisVenta.eliminar(venta.getId_venta());
             
             return true;
-        }
+        }*/
+        
+         Venta venta = persisVenta.obtener(id_venta);
+            
+            for (Apartamento apartamento : new ArrayList<>(venta.getListaApartamentos())) {
+                // Actualizar los atributos del apartamento
+                apartamento.setFecha_escritura(null);
+                apartamento.setVenta(null); // Desasocia el apartamento de la venta
+
+                // Guardar el cambio en la base de datos
+                persisApto.editar(apartamento);
+            }
+            
+            for (Pago pago : new ArrayList<>(venta.getListaPagos())) {
+                persisPago.eliminar(pago.getId_pago());
+            }
+            
+            persisVenta.eliminar(venta.getId_venta());
     }
                     
 }
