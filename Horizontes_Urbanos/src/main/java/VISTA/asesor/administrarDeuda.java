@@ -59,7 +59,7 @@ public class administrarDeuda extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaMostrarPago = new javax.swing.JTable();
+        tablaMostrarDeuda = new javax.swing.JTable();
         btnEliminarDeuda = new javax.swing.JButton();
         btnEditarDeuda = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -119,7 +119,7 @@ public class administrarDeuda extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tablaMostrarPago.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMostrarDeuda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -130,7 +130,7 @@ public class administrarDeuda extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tablaMostrarPago);
+        jScrollPane1.setViewportView(tablaMostrarDeuda);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 620, 350));
 
@@ -143,7 +143,7 @@ public class administrarDeuda extends javax.swing.JFrame {
                 btnEliminarDeudaActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 110, 40));
+        jPanel2.add(btnEliminarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 110, 40));
 
         btnEditarDeuda.setBackground(new java.awt.Color(49, 134, 181));
         btnEditarDeuda.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -154,7 +154,7 @@ public class administrarDeuda extends javax.swing.JFrame {
                 btnEditarDeudaActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEditarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 110, 40));
+        jPanel2.add(btnEditarDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 110, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestionarClienteA.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 510));
@@ -179,36 +179,52 @@ public class administrarDeuda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnGuardarDeudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarDeudaActionPerformed
+
+        btnGuardarDeuda.setEnabled(false);
         
-        Date fecha = getFechaDesdeTxt();
-        BigDecimal valor_pago = new BigDecimal(txtValorDeuda.getText());
-        
-        Deuda deuda = new Deuda();
-        deuda.setFecha_inicia_deuda(fecha);
-        deuda.setValor(valor_pago);
-        
-        deuda.setVenta(ventaSeleccionada);
-        
-        ventaSeleccionada.getListaDeuda().add(deuda);
-        
-        
-        try {
-            gestiDeuda.guardar(deuda);
-            gestiVenta.editar(ventaSeleccionada);
-        } catch (Exception ex) {
-            Logger.getLogger(administrarDeuda.class.getName()).log(Level.SEVERE, null, ex);
+        int numero_pagos = gestiVenta.contarNPagos(ventaSeleccionada.getId_venta());
+        int numero_deudas = gestiVenta.contarNDeudas(ventaSeleccionada.getId_venta());
+        int suma = numero_pagos+numero_deudas;
+        if( suma != ventaSeleccionada.getNumero_coutas()){
+            Date fecha = getFechaDesdeTxt();
+            BigDecimal valor_pago = new BigDecimal(txtValorDeuda.getText());
+
+            Deuda deuda = new Deuda();
+            deuda.setFecha_inicia_deuda(fecha);
+            deuda.setValor(valor_pago);
+
+            deuda.setVenta(ventaSeleccionada);
+
+            ventaSeleccionada.getListaDeuda().add(deuda);
+
+
+            try {
+                gestiDeuda.guardar(deuda);
+                gestiVenta.editar(ventaSeleccionada);
+            } catch (Exception ex) {
+                Logger.getLogger(administrarDeuda.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane optionPane = new JOptionPane("Deuda Guardada Correctamente");
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Guardado Exitoso");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+
+            menuAsesor masesor = new menuAsesor();
+            masesor.setVisible(true);
+            masesor.setLocationRelativeTo(null);
+            this.dispose();
+        }
+        else{
+            JOptionPane optionPane = new JOptionPane("No se pueden agregar mas cuotas vencidas");
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("ERROR");
+            dialog.setAlwaysOnTop(true);dialog.setVisible(true);btnGuardarDeuda.setEnabled(true);
+            return;
         }
         
-        JOptionPane optionPane = new JOptionPane("Deuda Guardada Correctamente");
-        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        JDialog dialog = optionPane.createDialog("Guardado Exitoso");
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
-        
-        menuAsesor masesor = new menuAsesor();
-        masesor.setVisible(true);
-        masesor.setLocationRelativeTo(null);
-        this.dispose();
+        btnGuardarDeuda.setEnabled(true);
         
     }//GEN-LAST:event_btnGuardarDeudaActionPerformed
 
@@ -221,7 +237,28 @@ public class administrarDeuda extends javax.swing.JFrame {
     }//GEN-LAST:event_txtValorDeudaActionPerformed
 
     private void btnEliminarDeudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDeudaActionPerformed
-        // TODO add your handling code here:
+        
+        if(tablaMostrarDeuda.getRowCount() > 0){
+            if(tablaMostrarDeuda.getSelectedRow() != -1){
+                
+                Long id_deuda = Long .parseLong(String.valueOf(tablaMostrarDeuda.getValueAt(tablaMostrarDeuda.getSelectedRow(), 0)));
+               
+                try {
+                    gestiDeuda.borrar(id_deuda,ventaSeleccionada);
+                } catch (Exception ex) {
+                    Logger.getLogger(administrarDeuda.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                JOptionPane optionPane = new JOptionPane("Deuda Eliminada Correctamente");
+                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                JDialog dialog = optionPane.createDialog("Borrado Exitoso");
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+            }
+        }
+        
+        cargarTabla();
+        
     }//GEN-LAST:event_btnEliminarDeudaActionPerformed
 
     private void btnEditarDeudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarDeudaActionPerformed
@@ -260,7 +297,7 @@ public class administrarDeuda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tablaMostrarPago;
+    private javax.swing.JTable tablaMostrarDeuda;
     private javax.swing.JTextField txtFechaDeuda;
     private javax.swing.JTextField txtValorDeuda;
     // End of variables declaration//GEN-END:variables
@@ -292,16 +329,16 @@ public class administrarDeuda extends javax.swing.JFrame {
             }
         }
         
-        tablaMostrarPago.setModel(modeloTabla);
-        tablaMostrarPago.setRowHeight(30);
+        tablaMostrarDeuda.setModel(modeloTabla);
+        tablaMostrarDeuda.setRowHeight(30);
         
-        TableColumnModel columnModel = tablaMostrarPago.getColumnModel();
+        TableColumnModel columnModel = tablaMostrarDeuda.getColumnModel();
         columnModel.getColumn(0).setMinWidth(0);
         columnModel.getColumn(0).setMaxWidth(0);
         columnModel.getColumn(0).setWidth(0);
         
-        tablaMostrarPago.getTableHeader().setReorderingAllowed(false);
-        tablaMostrarPago.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
+        tablaMostrarDeuda.getTableHeader().setReorderingAllowed(false);
+        tablaMostrarDeuda.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
     }
 
 }

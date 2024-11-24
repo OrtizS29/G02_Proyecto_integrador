@@ -79,6 +79,10 @@ public class GestionarVenta {
     public int contarNPagos(Long id_venta){
         return persisVenta.contarNPagos(id_venta);
     }
+    
+    public int contarNDeudas(Long id_venta){
+        return persisVenta.contarNDeudas(id_venta);
+    }
 
     public List<Apartamento> obtenerAptosVendidos(Long id_venta, Long ced_cliente) {
         List<Apartamento> listaApartamentosVendidos = persisVenta.obtenerAptosVendidos(id_venta,ced_cliente);

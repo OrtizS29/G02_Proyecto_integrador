@@ -31,6 +31,19 @@ public class GestionarDeuda {
         Venta venta = persisVenta.obtener(id);
         return venta.getListaDeuda();
     }
+
+    public void borrar(Long id_deuda, Venta ventaSeleccionada) throws Exception {
+        
+        Deuda deuda = persisDeuda.obtener(id_deuda);
+        persisDeuda.eliminar(id_deuda);
+        
+        Venta ventaR = persisVenta.obtener(ventaSeleccionada.getId_venta());
+        
+        if(!ventaR.getListaDeuda().contains(deuda)){
+            
+            ventaSeleccionada.setListaDeuda(ventaR.getListaDeuda());
+        }
+    }
     
     
     
