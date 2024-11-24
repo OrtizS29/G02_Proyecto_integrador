@@ -262,7 +262,11 @@ public class administrarCliente extends javax.swing.JFrame {
                 
                 Long ced_cliente = Long .parseLong(String.valueOf(tablaMostrarCliente.getValueAt(tablaMostrarCliente.getSelectedRow(), 0)));
                
-                gestiCliente.borrar(ced_cliente);
+                try {
+                    gestiCliente.borrar(ced_cliente);
+                } catch (Exception ex) {
+                    Logger.getLogger(administrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
                 JOptionPane optionPane = new JOptionPane("Cliente Eliminado Correctamente");
                 optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);

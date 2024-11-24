@@ -13,5 +13,6 @@ public interface IPersistenciaVenta extends IPersistencia<Venta> {
     
     public List<Apartamento> obtenerAptosNoVendidos();
     int contarNPagos(Long id_venta);
+    int contarNDeudas(Long id_venta);
     public List<Apartamento> obtenerAptosVendidos(Long id_venta, Long ced_cliente);
 }
